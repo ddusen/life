@@ -91,7 +91,7 @@ DATABASES = {
         'HOST': 'meditator.cc',
         'NAME': 'life',
         'USER': 'sdu',
-        'PASSWORD': 'DUSEN.84',
+        'PASSWORD': '',
         'PORT': 3306,
         'OPTIONS': {'charset': 'utf8mb4'},
     }
