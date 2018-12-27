@@ -71,8 +71,8 @@ def edit_log(pubtime, log):
 def get_count():
     return Data.objects.count()
 
-def get_log(start, length=10):
-    return Data.objects.order_by('pubtime')[start::length]
+def get_log(start, end):
+    return Data.objects.order_by('pubtime')[start:end:]
 
 def data_exists(pubtime):
     try:

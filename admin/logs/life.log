@@ -74,3 +74,150 @@ Not Found: /favicon.ico
 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+"GET /admin/base/data/ HTTP/1.1" 200 32508
+"GET /static/admin/css/base.css HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+"GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+"GET /static/admin/js/core.js HTTP/1.1" 304 0
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+"GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+"GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+"GET /static/admin/js/actions.js HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+"GET /static/import_export/action_formats.js HTTP/1.1" 304 0
+"GET /static/admin/img/search.svg HTTP/1.1" 304 0
+"GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+"GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+"GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+"GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+"GET /admin/base/data/?o=1 HTTP/1.1" 200 35462
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35454
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=1 HTTP/1.1" 200 35462
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35456
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35456
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=1 HTTP/1.1" 200 35462
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=1 HTTP/1.1" 200 35462
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35456
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/441/change/?_changelist_filters=o%3D-1 HTTP/1.1" 200 6985
+"GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+"GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+"GET /static/admin/css/forms.css HTTP/1.1" 304 0
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+"POST /admin/base/data/441/change/?_changelist_filters=o%3D-1 HTTP/1.1" 200 7194
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"POST /admin/base/data/441/change/?_changelist_filters=o%3D-1 HTTP/1.1" 200 7196
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"POST /admin/base/data/441/change/?_changelist_filters=o%3D-1 HTTP/1.1" 302 0
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35620
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /admin/base/data/542/change/?_changelist_filters=o%3D-1 HTTP/1.1" 200 7262
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"POST /admin/base/data/542/change/?_changelist_filters=o%3D-1 HTTP/1.1" 302 0
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35619
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/537/change/?_changelist_filters=o%3D-1 HTTP/1.1" 200 7012
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35453
+"GET /admin/base/data/?o=-1 HTTP/1.1" 200 35453
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/?o=1 HTTP/1.1" 200 35495
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+"GET /admin/base/data/508/change/?_changelist_filters=o%3D1 HTTP/1.1" 200 15479
+"GET /admin/jsi18n/ HTTP/1.1" 200 7684
+Internal Server Error: /admin/base/data/
+Traceback (most recent call last):
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/cursors.py", line 255, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/cursors.py", line 252, in execute
+    res = self._query(query)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/cursors.py", line 378, in _query
+    db.query(q)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'base_data.keywords' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/contrib/admin/options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/import_export/admin.py", line 317, in changelist_view
+    return super(ImportMixin, self).changelist_view(request, extra_context)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/import_export/admin.py", line 477, in changelist_view
+    return super(ExportMixin, self).changelist_view(request, extra_context)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1793, in changelist_view
+    'selection_note': _('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/models/query.py", line 250, in __len__
+    self._fetch_all()
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/models/query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/models/query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/cursors.py", line 255, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/cursors.py", line 252, in execute
+    res = self._query(query)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/cursors.py", line 378, in _query
+    db.query(q)
+  File "/home/sdu/Documents/life/VENV/lib/python3.5/site-packages/MySQLdb/connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'base_data.keywords' in 'field list'")
+"GET /admin/base/data/?o=1 HTTP/1.1" 500 217066

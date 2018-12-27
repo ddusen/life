@@ -24,8 +24,6 @@ def baidu_keywords(my_str):
     """ 如果有可选参数 """
     options = {}
     options["type"] = '8'
-    print(text)
-    print(type(text))
     """ 带参数调用评论观点抽取 """
     return client.commentTag(text, options)
 

@@ -3,6 +3,7 @@ from django.db import models
 class Data(models.Model):
     pubtime = models.DateField(verbose_name='日期')
     mood = models.FloatField(verbose_name='心情')
+    keywords = models.CharField(max_length=255, default='', verbose_name='关键词')
     consume = models.TextField(default='', verbose_name='消费')
     time = models.TextField(default='', verbose_name='时间')
     log = models.TextField(default='', verbose_name='记录')
