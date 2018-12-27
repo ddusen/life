@@ -45,7 +45,7 @@ def edit_mood(pubtime, mood):
 def edit_consume(pubtime, consume):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.consume = consume
+        data_obj.consume = data_obj.consume + consume
         data_obj.save()
         logger.record(msg_e % ('data', pubtime, ))
     except ObjectDoesNotExist:
@@ -75,3 +75,4 @@ def data_exists(pubtime):
         return Data.objects.get(pubtime=pubtime)
     except ObjectDoesNotExist:
         return None
+        
