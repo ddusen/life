@@ -61,6 +61,7 @@ def data_log():
             edit_log(pubtime, content)
 
 def run():
+    pass
     # data_time()
-    data_consume()
+    # data_consume()
     # data_log()

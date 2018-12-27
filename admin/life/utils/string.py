@@ -18,5 +18,5 @@ def wash_str(raw_str):
     except re.error:
         str_re = re.compile('[\uD800-\uDBFF][\uDC00-\uDFFF]')
     new_str = str_re.sub('', raw_str)
-    new_str = new_str.replace('\xa0', '')
+    new_str = new_str.replace('\xa0', '').replace('\u2615', '').replace('\ufe0f', '').replace('\u2044', '')
     return new_str
