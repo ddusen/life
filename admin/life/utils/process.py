@@ -53,23 +53,15 @@ def edit_mood_keywords(pubtime, mood_keywords):
     except ObjectDoesNotExist:
         save_data(pubtime=pubtime, mood_keywords=mood_keywords)
 
-def edit_monetary(pubtime, monetary):
+def edit_consume_keywords(pubtime, amount, consume_keywords):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.monetary = monetary
-        data_obj.save()
-        logger.record(msg_e % ('DATA(monetary)', pubtime, ))
-    except ObjectDoesNotExist:
-        save_data(pubtime=pubtime, monetary=monetary)
-
-def edit_consume_keywords(pubtime, consume_keywords):
-    try:
-        data_obj = Data.objects.get(pubtime=pubtime)
+        data_obj.monetary = amount
         data_obj.consume_keywords = consume_keywords
         data_obj.save()
-        logger.record(msg_e % ('DATA(consume_keywords)', pubtime, ))
+        logger.record(msg_e % ('DATA(amount, consume_keywords)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime=pubtime, consume_keywords=consume_keywords)
+        save_data(pubtime=pubtime, monetary=amount, consume_keywords=consume_keywords)
 
 def edit_consume(pubtime, consume):
     try:

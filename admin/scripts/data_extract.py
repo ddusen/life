@@ -38,7 +38,7 @@ def data_consume():
             
             data_list = raw_data.strip().split(',')
             pubtime = data_list[0]
-            consume = '''{'category':'%s', 'amount':'%s', 'detail':'%s'},''' % (data_list[2], data_list[3], data_list[6])
+            consume = '''{'category':'%s', 'price':'%s', 'detail':'%s'},''' % (data_list[2], data_list[3], data_list[6])
             edit_consume(pubtime, consume)
 
             raw_data = f.readline()
@@ -61,7 +61,6 @@ def data_log():
             edit_log(pubtime, content)
 
 def run():
-    pass
     # data_time()
-    # data_consume()
+    data_consume()
     # data_log()

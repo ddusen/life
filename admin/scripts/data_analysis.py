@@ -3,7 +3,7 @@ import re
 
 from life.utils.process import (edit_mood, edit_mood_keywords, edit_consume, 
                                 edit_time, edit_log, get_data, 
-                                get_count, edit_monetary, edit_consume_keywords, )
+                                get_count, edit_consume_keywords, )
 from life.utils.logger import Logger
 from life.utils.analysis import (baidu_emotion, baidu_keywords, )
 from life.utils.string import (wash_str, extract_zh, )
@@ -66,7 +66,31 @@ def mood_keywords():
 
         end += 10
     
+def consume():
+    count = get_count()
+    end = 10
+    while end <= count:
+        # sleep
+        # thread_sleep(end) 
+
+        queryset = get_data(end-10, end)
+        for q in queryset:
+            pubtime = q.pubtime
+            raw_data = eval('[%s]' % q.consume)
+            amount = 0.0
+            consume_keywords_list = []
+
+            for r in raw_data:
+                amount += float(r['price'])
+                consume_keywords_list.append(r['category'])
+
+            consume_keywords = " ".join(set(consume_keywords_list))
+
+            edit_consume_keywords(pubtime, amount, consume_keywords)
+
+        end += 10
 
 def run():
     # mood()
-    # mood_keywords()
+    mood_keywords()
+    # consume()
