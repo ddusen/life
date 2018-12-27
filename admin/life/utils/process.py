@@ -22,7 +22,7 @@ msg_e = 'EDIT %s < %s > SUCCESS!'
 def save_data(pubtime, mood=-1, consume='', time='', log=''):
     try:
         Data.objects.get(pubtime=pubtime)
-        logger.record(msg_f % ('data', pubtime, ))
+        logger.record(msg_f % ('DATA', pubtime, ))
     except ObjectDoesNotExist:
         Data(
             pubtime=pubtime, 
@@ -38,16 +38,16 @@ def edit_mood(pubtime, mood):
         data_obj = Data.objects.get(pubtime=pubtime)
         data_obj.mood = mood
         data_obj.save()
-        logger.record(msg_e % ('data', pubtime, ))
+        logger.record(msg_e % ('DATA(mood)', pubtime, ))
     except ObjectDoesNotExist:
         save_data(pubtime, mood, '', '', '')
 
 def edit_consume(pubtime, consume):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.consume = data_obj.consume + consume
+        data_obj.consume = '''%s%s''' % (data_obj.consume, consume, )
         data_obj.save()
-        logger.record(msg_e % ('data', pubtime, ))
+        logger.record(msg_e % ('DATA(consume)', pubtime, ))
     except ObjectDoesNotExist:
         save_data(pubtime, -1, consume, '', '')
 
@@ -56,7 +56,7 @@ def edit_time(pubtime, time):
         data_obj = Data.objects.get(pubtime=pubtime)
         data_obj.time = time
         data_obj.save()
-        logger.record(msg_e % ('data', pubtime, ))
+        logger.record(msg_e % ('DATA(time)', pubtime, ))
     except ObjectDoesNotExist:
         save_data(pubtime, -1, '', time, '')
 
@@ -65,7 +65,7 @@ def edit_log(pubtime, log):
         data_obj = Data.objects.get(pubtime=pubtime)
         data_obj.log = log
         data_obj.save()
-        logger.record(msg_e % ('data', pubtime, ))
+        logger.record(msg_e % ('DATA(log)', pubtime, ))
     except ObjectDoesNotExist:
         save_data(pubtime, -1, '', '', log)
 

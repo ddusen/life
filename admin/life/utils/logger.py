@@ -20,8 +20,6 @@ class Logger:
         '''
         FORMAT_MSG = """\nDATETIME:{0}\nMESSAGE:{1}\n""".format(datetime.now(), msg)
 
-        print(FORMAT_MSG)
-        
         if 'DEBUG' == lt:
             logging.debug(FORMAT_MSG)
         elif 'WARNING' == lt:

@@ -38,9 +38,30 @@ def data_consume():
             
             data_list = raw_data.strip().split(',')
             pubtime = data_list[0]
-            consume = '''{'category':'%s', 'amount':'%s', 'detail':'%s'}''' % (data_list[2], data_list[3], data_list[6])
+            consume = '''{'category':'%s', 'amount':'%s', 'detail':'%s'},''' % (data_list[2], data_list[3], data_list[6])
             edit_consume(pubtime, consume)
 
+            raw_data = f.readline()
+
+#处理每日日志信息
+def data_log():
+    index = 0
+    with open('/home/sdu/Downloads/mood-log.html','r') as f:
+        raw_data = f.read()
+        title_pattern = re.compile(r'<h1>(......)</h1>')
+        title_list = title_pattern.findall(raw_data)
+        content_pattern = re.compile(r'</h1>([\s\S]*?)<hr>')
+        content_list = content_pattern.findall(raw_data)
+        for index, content in enumerate(content_list):
+            #sleep
+            thread_sleep(index)
+
+            title = title_list[index]
+            pubtime = '20%s-%s-%s' % (title[0:2], title[2:4], title[4:6], )
+            edit_log(pubtime, content)
+
 def run():
-    data_time()
-    data_consume()
+    pass
+    # data_time()
+    # data_consume()
+    # data_log()
