@@ -18,7 +18,7 @@ msg_f = 'SYNC %s < %s > FAIL!（已存在）'
 msg_e = 'EDIT %s < %s > SUCCESS!'
 
 
-def save_data(pubtime, mood=-1, consume='', time='', log=''):
+def save_data(pubtime, mood=-1, keywords='', consume='', time='', log=''):
     try:
         Data.objects.get(pubtime=pubtime)
         logger.record(msg_f % ('DATA', pubtime, ))
@@ -26,6 +26,7 @@ def save_data(pubtime, mood=-1, consume='', time='', log=''):
         Data(
             pubtime=pubtime, 
             mood=mood, 
+            keywords=keywords,
             consume=consume,
             time=time,
             log=log,
@@ -39,7 +40,16 @@ def edit_mood(pubtime, mood):
         data_obj.save()
         logger.record(msg_e % ('DATA(mood)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime, mood, '', '', '')
+        save_data(pubtime=pubtime, mood=mood)
+
+def edit_keywords(pubtime, keywords):
+    try:
+        data_obj = Data.objects.get(pubtime=pubtime)
+        data_obj.keywords = keywords
+        data_obj.save()
+        logger.record(msg_e % ('DATA(keywords)', pubtime, ))
+    except ObjectDoesNotExist:
+        save_data(pubtime=pubtime, keywords=keywords)
 
 def edit_consume(pubtime, consume):
     try:
@@ -48,7 +58,7 @@ def edit_consume(pubtime, consume):
         data_obj.save()
         logger.record(msg_e % ('DATA(consume)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime, -1, consume, '', '')
+        save_data(pubtime=pubtime, consume=consume)
 
 def edit_time(pubtime, time):
     try:
@@ -57,7 +67,7 @@ def edit_time(pubtime, time):
         data_obj.save()
         logger.record(msg_e % ('DATA(time)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime, -1, '', time, '')
+        save_data(pubtime=pubtime, time=time)
 
 def edit_log(pubtime, log):
     try:
@@ -66,7 +76,7 @@ def edit_log(pubtime, log):
         data_obj.save()
         logger.record(msg_e % ('DATA(log)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime, -1, '', '', log)
+        save_data(pubtime=pubtime, log=log)
 
 def get_count():
     return Data.objects.count()

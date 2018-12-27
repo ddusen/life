@@ -10,7 +10,7 @@ from aip import AipNlp
 
 # baidu 文章标签
 def baidu_keywords(my_str):
-    text = repr(my_str.encode("GBK"))[1::]
+    text = my_str
 
     """ 你的 APPID AK SK """
     key = {
@@ -23,7 +23,7 @@ def baidu_keywords(my_str):
 
     """ 如果有可选参数 """
     options = {}
-    options["type"] = '8'
+    options["type"] = 11
     """ 带参数调用评论观点抽取 """
     return client.commentTag(text, options)
 
