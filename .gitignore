@@ -1,4 +1,2 @@
 *.pyc
-*.log
-logs/*.log
 VENV
