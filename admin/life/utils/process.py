@@ -18,7 +18,7 @@ msg_f = 'SYNC %s < %s > FAIL!（已存在）'
 msg_e = 'EDIT %s < %s > SUCCESS!'
 
 
-def save_data(pubtime, mood=-1, keywords='', consume='', time='', log=''):
+def save_data(pubtime, mood=-1, mood_keywords='', monetary=0.0, consume_keywords='', consume='', time='', log=''):
     try:
         Data.objects.get(pubtime=pubtime)
         logger.record(msg_f % ('DATA', pubtime, ))
@@ -26,7 +26,9 @@ def save_data(pubtime, mood=-1, keywords='', consume='', time='', log=''):
         Data(
             pubtime=pubtime, 
             mood=mood, 
-            keywords=keywords,
+            mood_keywords=mood_keywords,
+            monetary=monetary,
+            consume_keywords=consume_keywords,
             consume=consume,
             time=time,
             log=log,
@@ -42,14 +44,32 @@ def edit_mood(pubtime, mood):
     except ObjectDoesNotExist:
         save_data(pubtime=pubtime, mood=mood)
 
-def edit_keywords(pubtime, keywords):
+def edit_mood_keywords(pubtime, mood_keywords):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.keywords = keywords
+        data_obj.mood_keywords = mood_keywords
         data_obj.save()
-        logger.record(msg_e % ('DATA(keywords)', pubtime, ))
+        logger.record(msg_e % ('DATA(mood_keywords)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime=pubtime, keywords=keywords)
+        save_data(pubtime=pubtime, mood_keywords=mood_keywords)
+
+def edit_monetary(pubtime, monetary):
+    try:
+        data_obj = Data.objects.get(pubtime=pubtime)
+        data_obj.monetary = monetary
+        data_obj.save()
+        logger.record(msg_e % ('DATA(monetary)', pubtime, ))
+    except ObjectDoesNotExist:
+        save_data(pubtime=pubtime, monetary=monetary)
+
+def edit_consume_keywords(pubtime, consume_keywords):
+    try:
+        data_obj = Data.objects.get(pubtime=pubtime)
+        data_obj.consume_keywords = consume_keywords
+        data_obj.save()
+        logger.record(msg_e % ('DATA(consume_keywords)', pubtime, ))
+    except ObjectDoesNotExist:
+        save_data(pubtime=pubtime, consume_keywords=consume_keywords)
 
 def edit_consume(pubtime, consume):
     try:
@@ -81,8 +101,8 @@ def edit_log(pubtime, log):
 def get_count():
     return Data.objects.count()
 
-def get_log(start, end):
-    return Data.objects.order_by('pubtime')[start:end:]
+def get_data(start, end):
+    return Data.objects.order_by('-pubtime')[start:end:]
 
 def data_exists(pubtime):
     try:
