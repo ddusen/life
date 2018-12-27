@@ -9,7 +9,6 @@ from bs4 import BeautifulSoup
 from django.core.exceptions import ObjectDoesNotExist
 
 from life.base.models import (Data)
-from life.utils.str_format import (str_to_md5str, )
 from life.utils.analysis import baidu_emotion
 from life.utils.logger import Logger
 
@@ -69,6 +68,11 @@ def edit_log(pubtime, log):
     except ObjectDoesNotExist:
         save_data(pubtime, -1, '', '', log)
 
+def get_count():
+    return Data.objects.count()
+
+def get_log(start, length=10):
+    return Data.objects.order_by('pubtime')[start::length]
 
 def data_exists(pubtime):
     try:

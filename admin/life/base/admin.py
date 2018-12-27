@@ -2,7 +2,6 @@ from django.contrib import admin
 from import_export.admin import ImportExportActionModelAdmin
 
 from life.base.models import (Data, )
-from life.utils.str_format import str_to_md5str
 
 
 class DataAdmin(ImportExportActionModelAdmin):
