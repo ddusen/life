@@ -64,6 +64,15 @@ def edit_consume_keywords(pubtime, amount, consume_keywords):
     except ObjectDoesNotExist:
         save_data(pubtime=pubtime, consume=amount, consume_keywords=consume_keywords)
 
+def edit_time_keywords(pubtime, time_keywords):
+    try:
+        data_obj = Data.objects.get(pubtime=pubtime)
+        data_obj.time_keywords = time_keywords
+        data_obj.save()
+        logger.record(msg_e % ('DATA(time_keywords)', pubtime, ))
+    except ObjectDoesNotExist:
+        save_data(pubtime=pubtime, time_keywords=time_keywords)
+
 def edit_consume_log(pubtime, consume_log):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
