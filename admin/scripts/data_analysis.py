@@ -1,9 +1,8 @@
 import time
 import re
 
-from life.utils.process import (edit_mood, edit_mood_keywords, edit_consume, 
-                                edit_time, edit_log, get_data, 
-                                get_count, edit_consume_keywords, )
+from life.utils.process import (edit_mood, edit_mood_keywords, get_count,
+                                get_data, edit_consume_keywords, )
 from life.utils.logger import Logger
 from life.utils.analysis import (baidu_emotion, baidu_keywords, )
 from life.utils.string import (wash_str, extract_zh, )

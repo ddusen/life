@@ -18,7 +18,7 @@ msg_f = 'SYNC %s < %s > FAIL!（已存在）'
 msg_e = 'EDIT %s < %s > SUCCESS!'
 
 
-def save_data(pubtime, mood=-1, mood_keywords='', monetary=0.0, consume_keywords='', consume='', time='', log=''):
+def save_data(pubtime, mood=-1, mood_keywords='', consume=0.0, consume_keywords='', time_keywords='', consume_log='', time_log='', event_log=''):
     try:
         Data.objects.get(pubtime=pubtime)
         logger.record(msg_f % ('DATA', pubtime, ))
@@ -27,11 +27,12 @@ def save_data(pubtime, mood=-1, mood_keywords='', monetary=0.0, consume_keywords
             pubtime=pubtime, 
             mood=mood, 
             mood_keywords=mood_keywords,
-            monetary=monetary,
-            consume_keywords=consume_keywords,
             consume=consume,
-            time=time,
-            log=log,
+            consume_keywords=consume_keywords,
+            time_keywords=time_keywords,
+            consume_log=consume_log,
+            time_log=time_log,
+            event_log=event_log,
         ).save()
         logger.record(msg_s % ('data', pubtime, ))
 
@@ -56,39 +57,39 @@ def edit_mood_keywords(pubtime, mood_keywords):
 def edit_consume_keywords(pubtime, amount, consume_keywords):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.monetary = amount
+        data_obj.consume = amount
         data_obj.consume_keywords = consume_keywords
         data_obj.save()
         logger.record(msg_e % ('DATA(amount, consume_keywords)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime=pubtime, monetary=amount, consume_keywords=consume_keywords)
+        save_data(pubtime=pubtime, consume=amount, consume_keywords=consume_keywords)
 
-def edit_consume(pubtime, consume):
+def edit_consume_log(pubtime, consume_log):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.consume = '''%s%s''' % (data_obj.consume, consume, )
+        data_obj.consume_log = '''%s%s''' % (data_obj.consume_log, consume_log, )
         data_obj.save()
-        logger.record(msg_e % ('DATA(consume)', pubtime, ))
+        logger.record(msg_e % ('DATA(consume_log)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime=pubtime, consume=consume)
+        save_data(pubtime=pubtime, consume_log=consume_log)
 
-def edit_time(pubtime, time):
+def edit_time_log(pubtime, time_log):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.time = time
+        data_obj.time_log = time_log
         data_obj.save()
-        logger.record(msg_e % ('DATA(time)', pubtime, ))
+        logger.record(msg_e % ('DATA(time_log)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime=pubtime, time=time)
+        save_data(pubtime=pubtime, time_log=time_log)
 
-def edit_log(pubtime, log):
+def edit_event_log(pubtime, event_log):
     try:
         data_obj = Data.objects.get(pubtime=pubtime)
-        data_obj.log = log
+        data_obj.event_log = event_log
         data_obj.save()
-        logger.record(msg_e % ('DATA(log)', pubtime, ))
+        logger.record(msg_e % ('DATA(event_log)', pubtime, ))
     except ObjectDoesNotExist:
-        save_data(pubtime=pubtime, log=log)
+        save_data(pubtime=pubtime, event_log=event_log)
 
 def get_count():
     return Data.objects.count()

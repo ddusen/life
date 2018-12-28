@@ -1,8 +1,8 @@
 import time
 import re
 
-from life.utils.process import (edit_mood, edit_consume, edit_time, 
-                                edit_log, )
+from life.utils.process import (edit_mood, edit_consume_log, edit_time_log, 
+                                edit_event_log, )
 from life.utils.logger import Logger
 
 def thread_sleep(index):
@@ -10,7 +10,7 @@ def thread_sleep(index):
         time.sleep(1)
 
 #处理每日时间消费信息
-def data_time():
+def data_time_log():
     with open('/home/sdu/Downloads/time-log.enex','r') as f:
         raw_data = f.read()
         title_pattern = re.compile(r'<title>(......)</title>')
@@ -24,10 +24,10 @@ def data_time():
 
             title = title_list[index]
             pubtime = '20%s-%s-%s' % (title[0:2], title[2:4], title[4:6], )
-            edit_time(pubtime, content)
+            edit_time_log(pubtime, content)
 
 #处理每日金钱消费信息
-def data_consume():
+def data_consume_log():
     index = 0
     with open('/home/sdu/Downloads/DailyCost.csv','r') as f:
         raw_data = f.readline()
@@ -39,12 +39,12 @@ def data_consume():
             data_list = raw_data.strip().split(',')
             pubtime = data_list[0]
             consume = '''{'category':'%s', 'price':'%s', 'detail':'%s'},''' % (data_list[2], data_list[3], data_list[6])
-            edit_consume(pubtime, consume)
+            edit_consume_log(pubtime, consume)
 
             raw_data = f.readline()
 
 #处理每日日志信息
-def data_log():
+def data_event_log():
     index = 0
     with open('/home/sdu/Downloads/mood-log.html','r') as f:
         raw_data = f.read()
@@ -58,10 +58,9 @@ def data_log():
 
             title = title_list[index]
             pubtime = '20%s-%s-%s' % (title[0:2], title[2:4], title[4:6], )
-            edit_log(pubtime, content)
+            edit_event_log(pubtime, content)
 
 def run():
-    pass
-    # data_time()
-    # data_consume()
-    # data_log()
+    data_time_log()
+    data_consume_log()
+    data_event_log()
