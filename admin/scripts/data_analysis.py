@@ -5,7 +5,8 @@ from life.utils.process import (edit_mood, edit_mood_keywords, get_count,
                                 get_data, edit_consume_keywords, edit_time_keywords, )
 from life.utils.logger import Logger
 from life.utils.analysis import (baidu_emotion, baidu_keywords, )
-from life.utils.string import (wash_str, extract_zh, )
+from life.utils.string import (wash_str, extract_zh, calculate_time, 
+                                calculate_time_format, )
 
 
 def thread_sleep(index):
@@ -65,6 +66,7 @@ def mood_keywords():
 
         end += 10
     
+
 def consume():
     count = get_count()
     end = 10
@@ -89,18 +91,19 @@ def consume():
 
         end += 10
 
+
 def time_keywords():
     corpus = {
-        'Study': ['学', '复习', '读', '研'],
+        'Study': ['学', '复习', '读', '研', '背'],
         'Coding': ['工作', '制作', 'coding'],
         'Fitness': ['锻炼', '羽毛球'],
         'Eat': ['饭', '菜'],
         'Sleep': ['休'],
         'Entertainment': ['娱乐'],
         'Walk': ['路', '走'],
-        'Others': [],
+        'Others': [], # 零碎的事情
+        'Blank': [], # 一天中未记录时间
     }
-    result = {}
     count = get_count()
     end = 10
     while end <= count:
@@ -114,21 +117,26 @@ def time_keywords():
 
             item_list = re.compile(r'<div>(.*?)</div>').findall(raw_data)
 
-            for index, item in item_list[1:-1:]:
+            result = {}
+            result['Sleep'] = calculate_time(result, 'Sleep', item_list[0]) #起床
+            result['Sleep'] = calculate_time(result, 'Sleep', item_list[-1]) #睡觉
 
+            for item in item_list[1:-1:]:
                 def inner():
                     try:
                         name, content = item.split('：')
                     except:
                         name, content = item.split(':')
-                    for key, values in corpus.items()
+                    for key, values in corpus.items():
                         for value in values:
                             if name.find(value) > -1:
-                                # calculate_time()
+                                result[key] = calculate_time(result, key, item)
                                 return
+                    result['Others'] = calculate_time(result, 'Others', item)
 
                 inner()
-            # edit_time_keywords(pubtime, time_keywords)
+            time_keywords = calculate_time_format(result)
+            edit_time_keywords(pubtime, time_keywords)
 
         end += 10
 
