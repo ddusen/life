@@ -52,11 +52,11 @@ def data_event_log():
         title_list = title_pattern.findall(raw_data)
         content_pattern = re.compile(r'</h1>([\s\S]*?)<hr>')
         content_list = content_pattern.findall(raw_data)
-        for index, content in enumerate(content_list):
+        for index, title in enumerate(title_list):
             #sleep
             thread_sleep(index)
 
-            title = title_list[index]
+            content = content_list[index]
             pubtime = '20%s-%s-%s' % (title[0:2], title[2:4], title[4:6], )
             edit_event_log(pubtime, content)
 
