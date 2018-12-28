@@ -116,7 +116,11 @@ def time_keywords():
             raw_data = q.time_log
 
             item_list = re.compile(r'<div>(.*?)</div>').findall(raw_data)
+            if not item_list:
+                edit_time_keywords(pubtime, 'Blank(24.0)')
+                continue
 
+            print(item_list)
             result = {}
             result['Sleep'] = calculate_time(result, 'Sleep', item_list[0]) #起床
             result['Sleep'] = calculate_time(result, 'Sleep', item_list[-1]) #睡觉
@@ -126,15 +130,21 @@ def time_keywords():
                     try:
                         name, content = item.split('：')
                     except:
-                        name, content = item.split(':')
+                        try:
+                            name, content = item.split(':')
+                        except:
+                            try:
+                                name, content = item.split(' ')
+                            except:
+                                return
                     for key, values in corpus.items():
                         for value in values:
                             if name.find(value) > -1:
                                 result[key] = calculate_time(result, key, item)
                                 return
                     result['Others'] = calculate_time(result, 'Others', item)
-
                 inner()
+
             time_keywords = calculate_time_format(result)
             edit_time_keywords(pubtime, time_keywords)
 

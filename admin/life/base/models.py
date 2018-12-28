@@ -6,8 +6,8 @@ class Data(models.Model):
     mood_keywords = models.CharField(max_length=255, default='', verbose_name='心情关键词')
     consume = models.FloatField(default=0.0, verbose_name='消费额(元)')
     consume_keywords = models.CharField(max_length=255, default='', verbose_name='消费关键词')
-    time_keywords = models.CharField(max_length=255, default='', verbose_name='时间关键词')
-    
+    time_keywords = models.CharField(max_length=255, default='', verbose_name='时间分布(时)')
+
     consume_log = models.TextField(default='', verbose_name='消费日志')
     time_log = models.TextField(default='', verbose_name='时间日志')
     event_log = models.TextField(default='', verbose_name='事件日志')

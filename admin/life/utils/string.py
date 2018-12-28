@@ -23,12 +23,12 @@ def wash_str(raw_str):
 
 #计算总时间
 def calculate_time(d_dict, key, value):
-    pattern_1 = re.compile(r'(.*?)点半')
-    pattern_2 = re.compile(r'(..)分钟')
-    pattern_3 = re.compile(r'(.)小时')
-    pattern_4 = re.compile(r'(..)点(..)')
-    pattern_5 = re.compile(r'(..)点')
-    pattern_6 = re.compile(r'(.)个半小时')
+    pattern_1 = re.compile(r'(\d+)点半')
+    pattern_2 = re.compile(r'(\d+)分钟')
+    pattern_3 = re.compile(r'(\d+)小时')
+    pattern_4 = re.compile(r'(\d+)点(\d+)')
+    pattern_5 = re.compile(r'(\d+)点')
+    pattern_6 = re.compile(r'(\d+)个半小时')
 
     temp = 0
     if pattern_1.findall(value):
@@ -39,13 +39,12 @@ def calculate_time(d_dict, key, value):
         temp = float(pattern_3.findall(value)[0]) * 60
     elif pattern_4.findall(value):
         hours, minute = pattern_4.findall(value)[0]
-        temp = (24 - float(hours)) * 60 - float(minute)
+        temp = float(hours) * 60 + float(minute)
     elif pattern_5.findall(value):
-        hours = float(pattern_5.findall(value))
-        temp = (hours if hours < 16 else 24-hours) * 60
+        temp = float(pattern_5.findall(value)[0]) * 60
     elif pattern_6.findall(value):
-        temp = (float(pattern_6.findall(value)) + 0.5 ) * 60
-
+        temp = (float(pattern_6.findall(value)[0]) + 0.5 ) * 60
+    temp = 24*60-temp if temp > 16*60 else temp
     return d_dict[key] + temp if d_dict.get(key) else temp
 
 # 格式化字符串
