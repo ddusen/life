@@ -94,7 +94,7 @@ def get_count():
     return Data.objects.count()
 
 def get_data(start, end):
-    return Data.objects.filter(pubtime__lte='2017-07-30').order_by('-pubtime')[start:end:]
+    return Data.objects.filter(pubtime__gte='2017-12-31').order_by('-pubtime')[start:end:]
 
 def data_exists(pubtime):
     try:
