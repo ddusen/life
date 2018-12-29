@@ -1,202 +1,70 @@
 {% extends "pages/abstract/_layout.html" %}
-
 {% block css %}
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css">
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-fixedcolumns-bs4/dataTables.fixedcolumns.bootstrap4.css">
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-rowgroup-bs4/dataTables.rowgroup.bootstrap4.css">
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-scroller-bs4/dataTables.scroller.bootstrap4.css">
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css">
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
-  <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-bs4/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-fixedcolumns-bs4/dataTables.fixedcolumns.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-rowgroup-bs4/dataTables.rowgroup.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-scroller-bs4/dataTables.scroller.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
 {% endblock %}
 {% block page %}
-  <div class="page">
-    <div class="page-content">
-      <!-- Panel Basic -->
-      <div class="panel" style="overflow: scroll;">
-        <header class="panel-heading">
-          <div class="panel-actions"></div>
-          <h3 class="panel-title">服务质量顾客满意度调查</h3>
-        </header>
-        <div class="panel-body">
-          <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" id="dataTables">
-            <thead>
-              <tr>
-                <th>开始答题时间</th>
-                <th>结束答题时间</th>
-                <th>地区</th>
-                <th>1.与理想状况相比，您对本市2017年餐饮服务质量的总体评价为</th>
-                <th>2.与同类城市相比，您对本市2017年餐饮服务质量的总体评价为</th>
-                <th>3.点餐台等候时间短</th>
-                <th>4.店内环境气氛舒适</th>
-                <th>5.餐点/饮品卫生安全</th>
-                <th>6.消费名目清楚</th>
-                <th>7.价格与实际享受的服务质量相比</th>
-                <th>8.与理想状况相比，您对本市2017年移动通信服务质量的总体评价为</th>
-                <th>9.与同类城市相比，您对本市2017年移动通信服务质量的总体评价为</th>
-                <th>10.信号稳定性/网络速度</th>
-                <th>11.营业办理流程的简便程度</th>
-                <th>12.营业厅的交通便利程度</th>
-                <th>13.解决故障问题的速度</th>
-                <th>14.您认为该服务商的资费水平如何</th>
-                <th>15.与理想状况相比，您对本市2017年医疗服务质量的总体评价为</th>
-                <th>16.与同类城市相比，您对本市2017年医疗服务质量的总体评价为</th>
-                <th>17.门诊的就诊环境</th>
-                <th>18.医院的便民措施（如停车、饮水、候诊座椅，洗手间是否有可以挂吊瓶的设备等）</th>
-                <th>19.医护人员的诊疗技术、服务效率和态度</th>
-                <th>20.挂号、候诊、取药的排队或等候时间</th>
-                <th>21.价格与实际享受的医疗服务质量相比</th>
-                <th>22.与理想状况相比，您对本市2017年公交服务质量的总体评价为</th>
-                <th>23.与同类城市相比，您对本市2017年公交质量的总体评价为</th>
-                <th>24.司机服务态度</th>
-                <th>25.车辆行使（遵章与安全）</th>
-                <th>26.车辆安排密度及站点线路布局合理性</th>
-                <th>27.公交行驶过程中的拥堵程度</th>
-                <th>28.价格与实际享受的公交服务质量相比</th>
-                <th>29.与理想状况相比，您对本市2017年出租车服务质量的总体评价为</th>
-                <th>30.与同类城市相比，您对本市2017年出租车质量的总体评价为</th>
-                <th>31.司机服务态度和诚信意识（不拒载、不绕路）</th>
-                <th>32.满足乘客合理要求</th>
-                <th>33.车辆行使（遵章、安全）</th>
-                <th>34.乘坐出租车难易度 </th>
-                <th>35.价格与实际享受的出租车服务质量相比 </th>
-                <th>36.与理想状况相比，您对本市2017年银行服务质量的总体评价为 </th>
-                <th>37.与同类城市相比，您对本市2017年银行质量的总体评价为 </th>
-                <th>38.网点数量及布局 </th>
-                <th>39.员工的业务素质与服务态度 </th>
-                <th>40.服务效率 </th>
-                <th>41.ATM机的可靠性</th>
-                <th>42.价格与实际享受的银行服务质量相比</th>
-                <th>43.与理想状况相比，您对本市2017年物业服务质量的总体评价为</th>
-                <th>44.与同类城市相比，您对本市2017年物业服务质量的总体评价为</th>
-                <th>45.社区生活环境与公共基础设施维护</th>
-                <th>46.物业管理人员的专业素质与服务态度</th>
-                <th>47.物业维修的响应速度与维修效率</th>
-                <th>48.物业咨询服务与社区文化建设</th>
-                <th>49.价格与实际享受的物业服务质量相比</th>
-                <th>50.与理想状况相比，您对本市2017年义务教育服务质量的总体评价为</th>
-                <th>51.与同类城市相比，您对本市2017年义务教育服务质量的总体评价为</th>
-                <th>52.环境美化与卫生</th>
-                <th>53.教师的态度与责任心</th>
-                <th>54.课程内容设置</th>
-                <th>55.生活护理</th>
-                <th>56.价格与实际的服务质量相比</th>
-                <th>57.性别：</th>
-                <th>58.年龄</th>
-                <th>59.文化程度：</th>
-                <th>60.工作单位性质</th>
-                <th>61.工作职位</th>
-                <th>62.月收入</th>
-                <th>63.电话</th>
-                <th>64.邮箱</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
+<div class="page">
+  <div class="page-content">
+    <!-- Panel Basic -->
+    <div class="panel" style="overflow: scroll;">
+      <header class="panel-heading">
+        <div class="panel-actions"></div>
+        <h3 class="panel-title">时间/事件日志数据</h3>
+      </header>
+      <div class="panel-body">
+        <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" id="dataTables">
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>心情</th>
+              <th>心情关键词</th>
+              <th>消费额(元)</th>
+              <th>消费关键词</th>
+              <th>时间分布(时)</th>
+            </tr>
+          </thead>
+        </table>
       </div>
-      <!-- End Panel Basic -->
     </div>
+    <!-- End Panel Basic -->
   </div>
+</div>
 {% endblock %}
 {% block scripts %}
-  <script src="/templates/static/global/vendor/datatables.net/jquery.dataTables.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-fixedheader/dataTables.fixedHeader.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-fixedcolumns/dataTables.fixedColumns.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-rowgroup/dataTables.rowGroup.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-scroller/dataTables.scroller.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-select-bs4/dataTables.select.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-responsive/dataTables.responsive.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-buttons/dataTables.buttons.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.html5.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.flash.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.print.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.colVis.js"></script>
-  <script src="/templates/static/global/vendor/datatables.net-buttons-bs4/buttons.bootstrap4.js"></script>
-  <script src="/templates/static/global/js/Plugin/datatables.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      /*
-      $('#dataTables').DataTable( {
-        "scrollX": true,
-        'ordering': false,
-        'searching': true,
-        "ajax": "/api/data",
-        "columns": [
-          { "data": "start_at"}, 
-          { "data": "end_at" }, 
-          { "data": "city" }, 
-          { "data": "1" }, 
-          { "data": "2" }, 
-          { "data": "3" }, 
-          { "data": "4" }, 
-          { "data": "5" }, 
-          { "data": "6" }, 
-          { "data": "7" }, 
-          { "data": "8" }, 
-          { "data": "9" }, 
-          { "data": "10" }, 
-          { "data": "11" }, 
-          { "data": "12" }, 
-          { "data": "13" }, 
-          { "data": "14" }, 
-          { "data": "15" }, 
-          { "data": "16" }, 
-          { "data": "17" }, 
-          { "data": "18" }, 
-          { "data": "19" }, 
-          { "data": "20" }, 
-          { "data": "21" }, 
-          { "data": "22" }, 
-          { "data": "23" }, 
-          { "data": "24" }, 
-          { "data": "25" }, 
-          { "data": "26" }, 
-          { "data": "27" }, 
-          { "data": "28" }, 
-          { "data": "29" }, 
-          { "data": "30" }, 
-          { "data": "31" }, 
-          { "data": "32" }, 
-          { "data": "33" }, 
-          { "data": "34" }, 
-          { "data": "35" }, 
-          { "data": "36" }, 
-          { "data": "37" }, 
-          { "data": "38" }, 
-          { "data": "39" }, 
-          { "data": "40" }, 
-          { "data": "41" }, 
-          { "data": "42" }, 
-          { "data": "43" }, 
-          { "data": "44" }, 
-          { "data": "45" }, 
-          { "data": "46" }, 
-          { "data": "47" }, 
-          { "data": "48" }, 
-          { "data": "49" }, 
-          { "data": "50" }, 
-          { "data": "51" }, 
-          { "data": "52" }, 
-          { "data": "53" }, 
-          { "data": "54" }, 
-          { "data": "55" }, 
-          { "data": "56" }, 
-          { "data": "57" }, 
-          { "data": "58" }, 
-          { "data": "59" }, 
-          { "data": "60" }, 
-          { "data": "61" }, 
-          { "data": "62" }, 
-          { "data": "email" }, 
-          { "data": "phone" }], 
-          'language': {
-            url: '/static/data/Chinese.lang'
-          },
-      });
-      */
-    });
-  </script>
+<script src="/templates/static/global/vendor/datatables.net/jquery.dataTables.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-fixedheader/dataTables.fixedHeader.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-fixedcolumns/dataTables.fixedColumns.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-rowgroup/dataTables.rowGroup.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-scroller/dataTables.scroller.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-select-bs4/dataTables.select.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-responsive/dataTables.responsive.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-buttons/dataTables.buttons.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-buttons/buttons.html5.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-buttons/buttons.flash.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-buttons/buttons.print.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-buttons/buttons.colVis.js"></script>
+<script src="/templates/static/global/vendor/datatables.net-buttons-bs4/buttons.bootstrap4.js"></script>
+<script src="/templates/static/global/js/Plugin/datatables.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#dataTables').DataTable({
+    "scrollX": true,
+    'ordering': false,
+    'searching': true,
+    "ajax": "/api/data",
+    'language': {
+      url: '/templates/static/data/Chinese.lang'
+    },
+  });
+});
+</script>
 {% endblock %}
