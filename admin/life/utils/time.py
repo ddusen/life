@@ -36,7 +36,7 @@ def utc_to_local_time(dt):
     return utc_to_local(dt)
 
 
-def date_format(time, pattern):
+def date_format(time):
     return utc_to_local_time(time).strftime(pattern)
 
 
