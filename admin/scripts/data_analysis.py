@@ -50,15 +50,15 @@ def mood_keywords():
         for q in queryset:
             washed_str = wash_str(q.event_log)
             result = baidu_keywords(washed_str)
-            mood_keywords = ''
+            mood_keywords = []
             try:
                 for item in result['items']:
-                    mood_keywords += '%s%s ' % (item['prop'], item['adj'],)
+                    mood_keywords.append({'prop': item['prop'], 'adj': item['adj']})
             except:
                 try:
                     zh_str = extract_zh(washed_str)
                     for item in result['items']:
-                        mood_keywords += '%s%s ' % (item['prop'], item['adj'],)
+                        mood_keywords.append({'prop': item['prop'], 'adj': item['adj']})
                 except:
                     pass
 
@@ -79,14 +79,12 @@ def consume():
             pubtime = q.pubtime
             raw_data = eval('[%s]' % q.consume_log)
             amount = 0.0
-            consume_keywords_list = []
+            consume_keywords = {}
 
             for r in raw_data:
-                amount += float(r['price'])
-                consume_keywords_list.append(r['category'])
-
-            consume_keywords = " ".join(set(consume_keywords_list))
-
+                price = float(r['price'])
+                amount += price
+                consume_keywords[r['category']] = price if not consume_keywords.get(r['category']) else consume_keywords[r['category']] + price
             edit_consume_keywords(pubtime, amount, consume_keywords)
 
         end += 10
@@ -117,10 +115,9 @@ def time_keywords():
 
             item_list = re.compile(r'<div>(.*?)</div>').findall(raw_data)
             if not item_list:
-                edit_time_keywords(pubtime, 'Blank(24.0)')
+                edit_time_keywords(pubtime, {'Blank': 24.0})
                 continue
 
-            print(item_list)
             result = {}
             result['Sleep'] = calculate_time(result, 'Sleep', item_list[0]) #起床
             result['Sleep'] = calculate_time(result, 'Sleep', item_list[-1]) #睡觉
@@ -153,5 +150,5 @@ def time_keywords():
 def run():
     # mood()
     # mood_keywords()
-    # consume()
-    time_keywords()
+    consume()
+    # time_keywords()
