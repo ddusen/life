@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'life.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'meditator.cc',
+        'HOST': '127.0.0.1',
         'NAME': 'life',
-        'USER': 'sdu',
-        'PASSWORD': 'DUSEN.84',
+        'USER': 'root',
+        'PASSWORD': '123456',
         'PORT': 3306,
         'OPTIONS': {'charset': 'utf8mb4'},
     }

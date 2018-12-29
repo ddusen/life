@@ -42,20 +42,35 @@ class DataView(BaseView):
         super(DataView, self).set_params(request.GET)
 
     def paging(self, queryset):
-        return super(DataView, self).paging(queryset, self.query_params.get('page', 1), self.query_params.get('length', 15))
+        start = self.query_params.get('start')
+        start = int(start) / 10 + 1 if start else 1
+        return super(DataView, self).paging(queryset, start, self.query_params.get('length', 10))
     
     def serialize(self, queryset):
         total = queryset.count()
         result = self.paging(queryset)
+
+        def mk(items):
+            mk_str = ''
+            for item in items:
+                mk_str += '%s%s ' % (item['prop'], item['adj'], )
+            return mk_str
+        def ck_or_tk(d_dict):
+            k_str = ''
+            for k, v in d_dict.items():
+                k_str += '%s(%0.1f) ' % (k, v, )
+            return k_str
+
         data = {
-            'total': total,
-            'list': map(lambda r: {
-                'pubtime': r['pubtime'],
-                'mood': r['mood'],
-                'mood_keywords': eval(r['mood_keywords']),
-                'consume': r['consume'],
-                'consume_keywords': eval(r['consume_keywords']),
-                'time_keywords': eval(r['time_keywords']),
+            'recordsTotal': total,
+            'recordsFiltered': total,
+            'data': map(lambda r: {
+                 '0': r['pubtime'],
+                 '1': r['mood'],
+                 '2': mk(eval(r['mood_keywords'])),
+                 '3': r['consume'],
+                 '4': ck_or_tk(eval(r['consume_keywords'])),
+                 '5': ck_or_tk(eval(r['time_keywords'])),
             }, result)
         }
 

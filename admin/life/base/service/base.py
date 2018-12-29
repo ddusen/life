@@ -23,6 +23,6 @@ class DataQueryset(Abstract):  # 风险品牌
 
         args = dict([k, v] for k, v in cond.items() if v)
         
-        queryset = Data.objects.filter(**args).values(*fields)
+        queryset = Data.objects.order_by('-pubtime').filter(**args).values(*fields)
 
         return queryset

@@ -19,7 +19,7 @@
         <h3 class="panel-title">时间/事件日志数据</h3>
       </header>
       <div class="panel-body">
-        <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" id="dataTables">
+        <table class="table table-hover dataTable table-striped w-full" id="dataTables">
           <thead>
             <tr>
               <th>日期</th>
@@ -56,13 +56,15 @@
 <script src="/templates/static/global/js/Plugin/datatables.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#dataTables').DataTable({
+  $("#dataTables").DataTable({
     "scrollX": true,
-    'ordering': false,
-    'searching': true,
+    "ordering": false,
+    "searching": true,
+    "processing": true,
+    "serverSide": true,
     "ajax": "/api/data",
-    'language': {
-      url: '/templates/static/data/Chinese.lang'
+    "language": {
+      "url": "/templates/static/data/Chinese.lang"
     },
   });
 });
