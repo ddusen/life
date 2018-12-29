@@ -50,6 +50,7 @@ class DataView(BaseView):
         total = queryset.count()
         result = self.paging(queryset)
 
+        m = lambda x : round(float(x) * 100, 2) 
         def mk(items):
             mk_str = ''
             for item in items:
@@ -65,12 +66,12 @@ class DataView(BaseView):
             'recordsTotal': total,
             'recordsFiltered': total,
             'data': map(lambda r: {
-                 '0': r['pubtime'],
-                 '1': r['mood'],
-                 '2': mk(eval(r['mood_keywords'])),
-                 '3': r['consume'],
-                 '4': ck_or_tk(eval(r['consume_keywords'])),
-                 '5': ck_or_tk(eval(r['time_keywords'])),
+                 'pubtime': r['pubtime'],
+                 'mood': m(r['mood']),
+                 'mood_keywords': mk(eval(r['mood_keywords'])),
+                 'consume': r['consume'],
+                 'consume_keywords': ck_or_tk(eval(r['consume_keywords'])),
+                 'time_keywords': ck_or_tk(eval(r['time_keywords'])),
             }, result)
         }
 

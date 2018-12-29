@@ -22,12 +22,12 @@
         <table class="table table-hover dataTable table-striped w-full" id="dataTables">
           <thead>
             <tr>
-              <th>日期</th>
-              <th>心情</th>
-              <th>心情关键词</th>
-              <th>消费额(元)</th>
-              <th>消费关键词</th>
-              <th>时间分布(时)</th>
+              <th width="10%">日期</th>
+              <th width="8%">心情</th>
+              <th width="10%">心情关键词</th>
+              <th width="10%">消费额(元)</th>
+              <th width="26%">消费关键词</th>
+              <th width="36%">时间分布(时)</th>
             </tr>
           </thead>
         </table>
@@ -57,11 +57,44 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $("#dataTables").DataTable({
-    "scrollX": true,
-    "ordering": false,
+    "scrollX": false,
+    "scrollY": false,
+    "ordering": true,
     "searching": true,
     "processing": true,
     "serverSide": true,
+    "columns": [
+      { "data": "pubtime" },
+      { "data": "mood" },
+      { "data": "mood_keywords" },
+      { "data": "consume" },
+      { "data": "consume_keywords" },
+      { "data": "time_keywords" },
+    ],
+    "columnDefs": [
+      { "width": "10%", "targets": 0 },
+      { 
+        "targets": [1], 
+        "width": "8%",
+        "data": "mood", 
+        "render": function(data, type, full) { 
+          if(data < 10){
+            color = 'danger';
+          }else if(data < 40){
+            color = 'warning';
+          }else if(data < 70){
+            color = 'primary';
+          }else{
+            color = 'success';
+          }
+          return '<div class="progress progress-xs my-10 "><div class="progress-bar progress-bar-'+ color +'" style="width: '+ data +'%"></div></div>';
+        },
+      },
+      { "width": "10%", "targets": 2 },
+      { "width": "10%", "targets": 3 },
+      { "width": "26%", "targets": 4 },
+      { "width": "36%", "targets": 5 },
+    ],
     "ajax": "/api/data",
     "language": {
       "url": "/templates/static/data/Chinese.lang"
