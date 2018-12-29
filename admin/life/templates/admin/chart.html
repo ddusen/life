@@ -1,0 +1,77 @@
+{% extends "admin/abstract/_layout.html" %}
+
+{% block page %}
+<div class="page">
+  <div class="page-content">
+    <div class="card card-block">
+      <h5>1.与理想状况相比，您对本市2017年餐饮服务质量的总体评价为</h5>
+      <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
+        <thead>
+          <tr>
+            <th>选项</th>
+            <th>小记</th>
+            <th>百分比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>很差</td>
+            <td>1</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>较差</td>
+            <td>1</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>一般</td>
+            <td>1</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>好</td>
+            <td>1</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>很好</td>
+            <td>1</td>
+            <td>100</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="nav-tabs-horizontal" data-plugin="tabs">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" data-toggle="tab" href="#exampleTabsOne" aria-controls="exampleTabsOne" role="tab"><i class="icon wb-pie-chart"></i> 饼状图</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" data-toggle="tab" href="#exampleTabsTwo" aria-controls="exampleTabsTwo" role="tab"><i class="icon wb-stats-bars"></i> 柱状图</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" data-toggle="tab" href="#exampleTabsThree" aria-controls="exampleTabsThree" role="tab"><i class="icon wb-sort-des"></i> 条形图</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" data-toggle="tab" href="#exampleTabsFour" aria-controls="exampleTabsFour" role="tab"><i class="icon wb-graph-up"></i> 折线图</a>
+          </li>
+        </ul>
+        <div class="tab-content pt-20">
+          <div class="tab-pane active" id="exampleTabsOne" role="tabpanel">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neglegentur sabinum instructus fingitur accusantibus harum neque consuetudine intereant numeris, ipse tuemur suum apud mediocrem iactant. Libidinibus amatoriis dicta albuci manum, statue.
+          </div>
+          <div class="tab-pane" id="exampleTabsTwo" role="tabpanel">
+            Negant parvos fructu nostram mutans supplicii ac dissentias, maius tibi licebit ruinae philosophia. Salutatus repellere titillaret expetendum ipsi. Cupiditates intellegam exercitumque privatio concederetur, sempiternum, verbis malint dissensio nullas noctesque earumque.
+          </div>
+          <div class="tab-pane" id="exampleTabsThree" role="tabpanel">
+            Benivole horrent tantalo fuisset adamare fugiendam tractatos indicaverunt animis chaere, brevi minuendas, ubi angoribus iisque deorsum audita haec dedocendi utilitas. Panaetium erimus platonem varias imperitos animum, iudiciorumque operis multa disputando.
+          </div>
+          <div class="tab-pane" id="exampleTabsFour" role="tabpanel">
+            Metus subtilius texit consilio fugiendam, opinionum levius amici inertissimae pecuniae tribus ordiamur, alienus artes solitudo, minime praesidia proficiscuntur reiciat detracta involuta veterum. Rutilius quis honestatis hominum, quisquis percussit sibi explicari.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

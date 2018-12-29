@@ -1,0 +1,276 @@
+{% extends "admin/abstract/_layout.html" %}
+{% block page %}
+<div class="page">
+  <div class="page-content">
+    <div class="row">
+      <div class="col-xl-6 col-lg-12">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header card-header-transparent" style="font-weight: bold;">
+                问卷浏览量
+              </div>
+              <div class="card-block">
+                <div class="counter counter-lg">
+                  <span class="counter-number visits_amount">1</span>
+                  <div class="counter-label text-uppercase">问卷实时访问量</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header card-header-transparent" style="font-weight: bold;">
+                问卷回收量
+              </div>
+              <div class="card-block">
+                <div class="counter counter-lg">
+                  <span class="counter-number recycle_amount">1</span>
+                  <div class="counter-label text-uppercase">问卷实时回收量</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header card-header-transparent" style="font-weight: bold;">
+                回收率
+              </div>
+              <div class="card-block">
+                <div class="counter counter-lg">
+                  <span class="counter-number recycle_rate">0%</span>
+                  <div class="counter-label text-uppercase">小贴士</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header card-header-transparent" style="font-weight: bold;">
+                平均完成时间
+              </div>
+              <div class="card-block">
+                <div class="counter counter-lg">
+                  <span class="counter-number average_completion_time">0</span>
+                  <div class="counter-label text-uppercase">时长</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-12">
+        <div class="card">
+          <div class="card-header card-header-transparent" style="font-weight: bold;">
+            问卷回收量
+            <div class="float-right total">总回收量:<span></span></div>
+          </div>
+          <div class="card-block">
+            <div id="echarts-recycle-amount-trend" style="height: 285px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-12">
+        <div class="card">
+          <div class="card-header card-header-transparent" style="font-weight: bold;">
+            回收来源
+            <div class="float-right">
+              <select class="form-control" data-plugin="select2" id="recycle_source">
+                <option selected="selected" value="system">按系统分类</option>
+                <option value="device">按设备分类</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-block">
+            <div id="echarts-recycle-source-pie" style="height: 285px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-12">
+        <div class="card">
+          <div class="card-header card-header-transparent" style="font-weight: bold;">
+            地域分布
+          </div>
+          <div class="card-block">
+            <div id="echarts-geographical-distribution-map" style="height: 285px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+$(function() {
+  function api_dashboard_data() {
+    var result;
+    $.ajax({
+      url: "/api/index",
+      async: false,
+      type: "GET",
+      success: function(response) {
+        result = response;
+      }
+    });
+    return result;
+  }
+
+  function setOption(id, option, theme, opts) {
+    theme = (theme === undefined) ? 'walden' : theme
+    myChart = echarts.init(document.getElementById(id), theme, opts)
+    myChart.setOption(option)
+  }
+
+  function recycle_amount_chart(data1, data2) {
+    var option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#6a7985'
+          }
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [{
+        type: 'category',
+        boundaryGap: false,
+        data: data1
+      }],
+      yAxis: [{
+        type: 'value'
+      }],
+      series: [{
+        name: '问卷回收量',
+        type: 'line',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true,
+            position: 'top'
+          }
+        },
+        areaStyle: { normal: {} },
+        data: data2
+      }]
+    };
+    return option;
+  }
+
+  function recycle_source_pie(data1, data2) {
+    var option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+      },
+      legend: {
+        type: 'scroll',
+        orient: 'vertical',
+        right: 50,
+        top: 20,
+        bottom: 20,
+        data: data1
+      },
+      series: [{
+        name: '姓名',
+        type: 'pie',
+        radius: '55%',
+        center: ['40%', '50%'],
+        data: data2,
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }]
+    };
+    return option;
+  }
+
+  function geographical_distribution_map(data) {
+    var option = {
+      visualMap: {
+        min: 0,
+        max: 150,
+        left: 'left',
+        top: 'bottom',
+        text: ['高', '低'], // 文本，默认为数值文本
+        calculable: true,
+      },
+      series: [{
+        type: 'map',
+        mapType: 'hubei',
+        label: {
+          normal: {
+            show: true
+          },
+        },
+        animation: false,
+        data: data
+      }]
+    };
+    return option;
+  }
+
+  var result = api_dashboard_data()
+  $(".visits_amount").text(result.visits_amount);
+  $(".recycle_amount").text(result.recycle_amount);
+  $(".recycle_rate").text(result.recycle_rate);
+  $(".average_completion_time").text(result.average_completion_time);
+
+  //问卷回收量（图）
+  var data_one = [];
+  var data_two = [];
+  $.each(result.recycle_amount_chart, function(i, val) {
+    data_one.push(val[0]);
+    data_two.push(val[1]);
+  })
+  setOption("echarts-recycle-amount-trend", recycle_amount_chart(data_one, data_two), "walden")
+  $(".total span").text(result.recycle_amount)
+
+  // 回收来源（图） - 按系统分类
+  data_one = [];
+  data_two = [];
+  $.each(result.recycle_source_system, function(i, val) {
+    data_two.push({ "value": val[1], "name": val[0] })
+    data_one.push(val[0]);
+  })
+  setOption("echarts-recycle-source-pie", recycle_source_pie(data_one, data_two), "walden")
+
+  //回收来源（图） - 按设备分类
+  var data_three = [];
+  var data_four = [];
+  $.each(result.recycle_source_device, function(i, val) {
+    data_four.push({ "value": val[1], "name": val[0] })
+    data_three.push(val[0]);
+  })
+
+  $('#recycle_source').on('change', function() {
+    var option_value = $(this).val()
+    if ($(this).val() == "system") {
+      setOption("echarts-recycle-source-pie", recycle_source_pie(data_one, data_two), "walden")
+    } else {
+      setOption("echarts-recycle-source-pie", recycle_source_pie(data_three, data_four), "walden")
+    }
+
+  })
+
+  // 地域分布(图)
+  var map_data = []
+  $.each(result.geographical_distribution, function(i, val) {
+    map_data.push({ "name": val[0], "value": val[1] })
+  })
+  setOption("echarts-geographical-distribution-map", geographical_distribution_map(map_data), "walden")
+
+})
+</script>
+{% endblock %}
