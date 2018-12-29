@@ -9,19 +9,19 @@ from life.base.models import *
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'pages/index.html')
 
 
 def data(request):
-    return render(request, 'data.html')
+    return render(request, 'pages/data.html')
 
 
 def chart(request):
-    return render(request, 'chart.html')
+    return render(request, 'pages/chart.html')
 
 
 def analytics(request):
-    return render(request, 'analytics.html')
+    return render(request, 'pages/analytics.html')
 
 
 def api_index(request):

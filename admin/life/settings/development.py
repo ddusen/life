@@ -204,12 +204,12 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'templates/static')
 ]
 
 STATIC_ROOT = '/var/www/life/static/'
 
-STATIC_URL = '/static/'
+STATIC_URL = '/templates/static/'
 
 MEDIA_URL = '/media/'
 
