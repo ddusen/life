@@ -9,7 +9,7 @@
 <!-- Page -->
 <div class="page">
   <div class="page-header">
-    <h1 class="page-title">Analytics Overview</h1>
+    <h1 class="page-title">整体概览</h1>
   </div>
   <!-- Page Content -->
   <div class="page-content container-fluid">
@@ -20,23 +20,18 @@
           <!-- The Header Of First Card -->
           <div class="card-header card-header-transparent py-20">
             <div class="btn-group dropdown">
-              <a href="#" class="text-body dropdown-toggle blue-grey-700 text-uppercase" data-toggle="dropdown">Product Sales</a>
-              <div class="dropdown-menu animate" role="menu">
-                <a class="dropdown-item" href="#" role="menuitem">Sales</a>
-                <a class="dropdown-item" href="#" role="menuitem">Total sales</a>
-                <a class="dropdown-item" href="#" role="menuitem">Profit</a>
-              </div>
+              <p class="font-size-14 blue-grey-700 mb-0">年度时间使用情况</p>
             </div>
             <div class="card-header-actions">
               <ul class="nav nav-pills nav-pills-rounded product-filters">
                 <li class="nav-item">
-                  <a class="active nav-link" href="#scoreLineToDay" data-toggle="tab">Day</a>
+                  <a class="active nav-link" href="#scoreLineToDay" data-toggle="tab">日</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#scoreLineToWeek" data-toggle="tab">Week</a>
+                  <a class="nav-link" href="#scoreLineToWeek" data-toggle="tab">周</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#scoreLineToMonth" data-toggle="tab">Month</a>
+                  <a class="nav-link" href="#scoreLineToMonth" data-toggle="tab">月</a>
                 </li>
               </ul>
             </div>
@@ -54,9 +49,8 @@
                 <!-- The First Counter Block-->
                 <div class="col-xl-3 col-md-6">
                   <div class="counter">
-                    <div class="counter-label">Vist</div>
+                    <div class="counter-label">学习</div>
                     <div class="counter-number-group text-truncate">
-                      <span class="counter-number-related red-600">+</span>
                       <span class="counter-number">681</span>
                     </div>
                     <div class="ct-chart" data-counter-type="productVist"></div>
@@ -66,9 +60,8 @@
                 <!-- The Second Counter Block-->
                 <div class="col-xl-3 col-md-6">
                   <div class="counter">
-                    <div class="counter-label">Unique Vistors</div>
+                    <div class="counter-label">工作</div>
                     <div class="counter-number-group text-truncate">
-                      <span class="counter-number-related green-600">-</span>
                       <span class="counter-number">522</span>
                     </div>
                     <div class="ct-chart" data-counter-type="productVistors"></div>
@@ -78,9 +71,8 @@
                 <!-- The Third Counter Block-->
                 <div class="col-xl-3 col-md-6">
                   <div class="counter">
-                    <div class="counter-label">Page Views</div>
+                    <div class="counter-label">健身</div>
                     <div class="counter-number-group text-truncate">
-                      <span class="counter-number-related green-600">-</span>
                       <span class="counter-number">1,622</span>
                     </div>
                     <div class="ct-chart" data-counter-type="productPageViews"></div>
@@ -90,9 +82,8 @@
                 <!-- The fourth Counter Block-->
                 <div class="col-xl-3 col-md-6">
                   <div class="counter">
-                    <div class="counter-label">Bounce Rate</div>
+                    <div class="counter-label">睡觉</div>
                     <div class="counter-number-group text-truncate">
-                      <span class="counter-number-related red-600">+</span>
                       <span class="counter-number">843</span>
                     </div>
                     <div class="ct-chart" data-counter-type="productBounceRate"></div>
@@ -110,7 +101,7 @@
         <!-- Browser Flow Card -->
         <div id="browsersFlowWidget" class="card card-shadow card-md">
           <div class="card-header card-header-transparent pb-15">
-            <p class="font-size-14 blue-grey-700 mb-0">BROWSER FLOW</p>
+            <p class="font-size-14 blue-grey-700 mb-0">年度金钱消费情况</p>
           </div>
           <div class="card-block px-30">
             <div class="row">
@@ -120,8 +111,8 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Browser</th>
-                      <th>Vists</th>
+                      <th>类别</th>
+                      <th>总金额(元)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -205,16 +196,16 @@
         <!-- Countries Vists Card -->
         <div id="countriesVistsWidget" class="card card-shadow card-md">
           <div class="card-header card-header-transparent pb-15">
-            <p class="font-size-14 blue-grey-700 mb-0">VISTS IN DIFFERENT COUNTRIES</p>
+            <p class="font-size-14 blue-grey-700 mb-0">年度心情关键词</p>
           </div>
           <div class="card-block px-30 pt-0">
             <div class="table-responsive">
               <table class="table table-analytics mb-0 text-nowrap">
                 <thead>
                   <tr>
-                    <th class="language">Language</th>
-                    <th class="vists">Vists</th>
-                    <th class="vists-percent">%Vists</th>
+                    <th class="language">关键词</th>
+                    <th class="vists">总次数</th>
+                    <th class="vists-percent">总比重</th>
                   </tr>
                 </thead>
                 <tbody>
