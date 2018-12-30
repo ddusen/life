@@ -19,22 +19,28 @@
         <div id="productOverviewWidget" class="card card-shadow card-md">
           <!-- The Header Of First Card -->
           <div class="card-header card-header-transparent py-20">
-            <div class="btn-group dropdown">
-              <p class="font-size-14 blue-grey-700 mb-0">年度时间使用情况</p>
+            <div class="row pb-40" data-plugin="matchHeight">
+              <div class="col-md-6 col-sm-12">
+                <div class="counter text-left pl-10">
+                  <div class="counter-label">Team Total Completed</div>
+                  <div class="counter-number-group text-truncate">
+                    <span>1,439</span>
+                    <span>86%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <ul class="list-inline mr-50">
+                  <li class="list-inline-item">
+                    Task Completed
+                  </li>
+                  <li class="list-inline-item">
+                    Cards Completed
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="card-header-actions">
-              <ul class="nav nav-pills nav-pills-rounded product-filters">
-                <li class="nav-item">
-                  <a class="active nav-link" href="#scoreLineToDay" data-toggle="tab">日</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#scoreLineToWeek" data-toggle="tab">周</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#scoreLineToMonth" data-toggle="tab">月</a>
-                </li>
-              </ul>
-            </div>
+            <div class="ct-chart"></div>
           </div>
           <!-- End The Header Of First Card -->
           <!-- The Content Of First Card -->
@@ -316,4 +322,11 @@
 <!-- End Page -->
 {% endblock %}
 {% block scripts %}
+<script src="/templates/static/global/vendor/chartist/chartist.js"></script>
+<script src="/templates/static/global/vendor/raphael/raphael.min.js"></script>
+<script src="/templates/static/global/vendor/morris/morris.min.js"></script>
+<script src="/templates/static/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+<script src="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
+<script src="/templates/static/global/js/Plugin/matchheight.js"></script>
+<script src="/templates/static/assets/examples/js/dashboard/analytics.js"></script>
 {% endblock %}

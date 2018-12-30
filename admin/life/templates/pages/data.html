@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css">
 <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
 <link rel="stylesheet" href="/templates/static/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
+<link rel="stylesheet" href="/templates/static/assets/examples/css/tables/datatable.css">
+<link rel="stylesheet" href="/templates/static/global/fonts/font-awesome/font-awesome.css">
 {% endblock %}
 {% block page %}
 <div class="page">
@@ -44,7 +46,6 @@
 <script src="/templates/static/global/vendor/datatables.net-fixedcolumns/dataTables.fixedColumns.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-rowgroup/dataTables.rowGroup.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-scroller/dataTables.scroller.js"></script>
-<script src="/templates/static/global/vendor/datatables.net-select-bs4/dataTables.select.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-responsive/dataTables.responsive.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-buttons/dataTables.buttons.js"></script>
@@ -53,7 +54,10 @@
 <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.print.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.colVis.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-buttons-bs4/buttons.bootstrap4.js"></script>
-<!-- <script src="/templates/static/global/js/Plugin/datatables.js"></script> -->
+<script src="/templates/static/global/vendor/asrange/jquery-asRange.min.js"></script>
+<script src="/templates/static/global/vendor/bootbox/bootbox.js"></script>
+<script src="/templates/static/global/js/Plugin/datatables.js"></script>
+<script src="/templates/static/assets/examples/js/tables/datatable.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $("#dataTables").DataTable({
@@ -73,21 +77,21 @@ $(document).ready(function() {
     ],
     "columnDefs": [
       { "width": "10%", "targets": 0 },
-      { 
-        "targets": [1], 
+      {
+        "targets": [1],
         "width": "11%",
-        "data": "mood", 
-        "render": function(data, type, full) { 
-          if(data < 10){
+        "data": "mood",
+        "render": function(data, type, full) {
+          if (data < 10) {
             color = 'danger';
-          }else if(data < 40){
+          } else if (data < 40) {
             color = 'warning';
-          }else if(data < 70){
+          } else if (data < 70) {
             color = 'primary';
-          }else{
+          } else {
             color = 'success';
           }
-          return '<div class="progress progress-xs mb-0 "><div class="progress-bar progress-bar-'+ color +'" style="width: '+ data +'%"></div></div>';
+          return '<div class="progress progress-xs mb-0 "><div class="progress-bar progress-bar-' + color + '" style="width: ' + data + '%"></div></div>';
         },
       },
       { "width": "10%", "targets": 2 },
