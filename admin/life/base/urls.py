@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 
-from life.base.views import (index, data, chart, analytics, )
+from life.base.views import (index, data, analytics, )
 from life.base.api_views import(DataView, )
 
 urlpatterns = [
@@ -10,6 +10,5 @@ urlpatterns = [
 
     path('api/index', DataView.as_view()),
     path('api/data', DataView.as_view()),
-    path('api/chart', DataView.as_view()),
     path('api/analytics', DataView.as_view()),
 ]
