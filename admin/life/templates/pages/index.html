@@ -1,5 +1,6 @@
 {% extends "pages/abstract/_layout.html" %}
 {% block css %}
+<!-- Plugins -->
 <link rel="stylesheet" href="/templates/static/global/vendor/morris/morris.css">
 <link rel="stylesheet" href="/templates/static/global/vendor/chartist/chartist.css">
 <link rel="stylesheet" href="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
@@ -19,36 +20,54 @@
         <div id="productOverviewWidget" class="card card-shadow card-md">
           <!-- The Header Of First Card -->
           <div class="card-header card-header-transparent py-20">
-            <div class="row pb-40" data-plugin="matchHeight">
-              <div class="col-md-6 col-sm-12">
-                <div class="counter text-left pl-10">
-                  <div class="counter-label">Team Total Completed</div>
-                  <div class="counter-number-group text-truncate">
-                    <span>1,439</span>
-                    <span>86%</span>
+            <div class="row pb-20" style="height:calc(100% - 322px);">
+              <div class="col-md-8 col-sm-6">
+                <div class="font-size-15 blue-grey-700 mb-0">年度时间使用情况</div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="counter counter-md">
+                      <div class="counter-number-group text-nowrap">
+                        <span class="counter-number">76</span>
+                        <span class="counter-number-related">%</span>
+                      </div>
+                      <div class="counter-label blue-grey-400">有效时间</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="counter counter-md">
+                      <div class="counter-number-group text-nowrap">
+                        <span class="counter-number">24</span>
+                        <span class="counter-number-related">%</span>
+                      </div>
+                      <div class="counter-label blue-grey-400">无效时间</div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 col-sm-12">
-                <ul class="list-inline mr-50">
-                  <li class="list-inline-item">
-                    Task Completed
-                  </li>
-                  <li class="list-inline-item">
-                    Cards Completed
-                  </li>
-                </ul>
-              </div>
             </div>
-            <div class="ct-chart"></div>
+            <div class="card-header-actions">
+              <ul class="nav nav-pills nav-pills-rounded product-filters">
+                <li class="nav-item" hidden="true">
+                  <a class="active nav-link" href="#scoreLineToDay">Day</a>
+                </li>
+              </ul>
+            </div>
+            <ul class="list-inline text-center mb-0">
+              <li class="list-inline-item">
+                <i class="icon wb-large-point blue-200 mr-10" aria-hidden="true"></i> 有效时间
+              </li>
+              <li class="list-inline-item ml-35">
+                <i class="icon wb-large-point teal-200 mr-10" aria-hidden="true"></i> 无效时间
+              </li>
+            </ul>
           </div>
           <!-- End The Header Of First Card -->
           <!-- The Content Of First Card -->
           <div class="card-block p-20">
             <div class="tab-content">
               <div class="ct-chart tab-pane active" id="scoreLineToDay"></div>
-              <div class="ct-chart tab-pane" id="scoreLineToWeek"></div>
-              <div class="ct-chart tab-pane" id="scoreLineToMonth"></div>
             </div>
             <div id="productOptionsData" class="text-center">
               <div class="row no-space">
@@ -107,7 +126,7 @@
         <!-- Browser Flow Card -->
         <div id="browsersFlowWidget" class="card card-shadow card-md">
           <div class="card-header card-header-transparent pb-15">
-            <p class="font-size-14 blue-grey-700 mb-0">年度金钱消费情况</p>
+            <p class="font-size-15 blue-grey-700 mb-0">年度金钱消费情况</p>
           </div>
           <div class="card-block px-30">
             <div class="row">
@@ -202,7 +221,7 @@
         <!-- Countries Vists Card -->
         <div id="countriesVistsWidget" class="card card-shadow card-md">
           <div class="card-header card-header-transparent pb-15">
-            <p class="font-size-14 blue-grey-700 mb-0">年度心情关键词</p>
+            <p class="font-size-15 blue-grey-700 mb-0">年度心情关键词</p>
           </div>
           <div class="card-block px-30 pt-0">
             <div class="table-responsive">
@@ -322,11 +341,13 @@
 <!-- End Page -->
 {% endblock %}
 {% block scripts %}
+<!-- Plugins -->
 <script src="/templates/static/global/vendor/chartist/chartist.js"></script>
 <script src="/templates/static/global/vendor/raphael/raphael.min.js"></script>
 <script src="/templates/static/global/vendor/morris/morris.min.js"></script>
 <script src="/templates/static/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
 <script src="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
+<!-- Page -->
 <script src="/templates/static/global/js/Plugin/matchheight.js"></script>
 <script src="/templates/static/assets/examples/js/dashboard/analytics.js"></script>
 {% endblock %}
