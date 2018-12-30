@@ -1,25 +1,21 @@
 @import 'vars';
-
-
-$default-container-opacity:.95;
+$default-container-opacity: .95;
 $notie-color-success: $brand-success-hover;
 $notie-color-warning: $brand-warning-hover;
 $notie-color-error: $brand-danger-hover;
 $notie-color-info: $brand-info-hover;
 $notie-color-neutral: $color-blue-grey-400;
-$notie-color-text: #FFFFFF !default;
-$notie-color-background: #FFFFFF !default;
-
+$notie-color-text: #fff !default;
+$notie-color-background: #fff !default;
 $notie-font-size-small: 18px !default;
 $notie-font-size-big: 24px !default;
 $notie-breakpoint: '(max-width: 600px)' !default;
 $notie-content-width: 900px !default;
-$notie-transition: all 0.3s ease !default;
-
+$notie-transition: all .3s ease !default;
 $notie-date-arrow-up: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDI4bDEwLTEwIDEwIDEweiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNMCAwaDQ4djQ4aC00OHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=' !default;
 $notie-date-arrow-down: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDIwbDEwIDEwIDEwLTEweiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNMCAwaDQ4djQ4aC00OHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=' !default;
+$notie-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
 
-$notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 @mixin notie-box-shadow($notie-box-shadow) {
   -o-box-shadow: $notie-box-shadow;
   -ms-box-shadow: $notie-box-shadow;
@@ -37,40 +33,47 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 .notie-background-success {
   background-color: $notie-color-success !important;
 }
+
 .notie-background-warning {
   background-color: $notie-color-warning !important;
 }
+
 .notie-background-error {
   background-color: $notie-color-error !important;
 }
+
 .notie-background-info {
   background-color: $notie-color-info !important;
 }
 
 #notie-alert-outer {
+  @include notie-box-shadow($notie-box-shadow);
+
+  @media #{$notie-breakpoint} {
+    font-size: $notie-font-size-small;
+  }
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999999999;
-  height: auto;
-  width: 100%;
   display: none;
+  width: 100%;
+  height: auto;
+  font-size: $notie-font-size-big;
   text-align: center;
   cursor: pointer;
-  font-size: $notie-font-size-big;
-  @include notie-box-shadow($notie-box-shadow);
-  @media #{$notie-breakpoint} {
-    font-size: $notie-font-size-small;
-  }
 }
+
 #notie-alert-inner {
-  padding: 20px;
   display: table-cell;
+  padding: 20px;
 }
+
 #notie-alert-content {
   max-width: $notie-content-width;
   margin: 0 auto;
 }
+
 #notie-alert-text {
   color: $notie-color-text;
 }
@@ -79,44 +82,51 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   @extend #notie-alert-outer;
   cursor: default;
 }
+
 #notie-confirm-inner {
   box-sizing: border-box;
+  display: block;
   width: 100%;
   padding: 20px;
-  display: block;
   cursor: default;
   background-color: $notie-color-info;
 }
+
 #notie-confirm-text {
   color: $notie-color-text;
 }
+
 #notie-confirm-text-yes {
   color: $notie-color-text;
 }
+
 #notie-confirm-text-no {
   color: $notie-color-text;
 }
+
 #notie-confirm-yes {
   float: left;
+  width: 50%;
   height: 50px;
   line-height: 50px;
-  width: 50%;
   cursor: pointer;
   background-color: $notie-color-success;
 }
+
 #notie-confirm-no {
   @extend #notie-confirm-yes;
   float: right;
   background-color: $notie-color-error;
 }
+
 #notie-confirm-background {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999999980;
-  height: 100%;
-  width: 100%;
   display: none;
+  width: 100%;
+  height: 100%;
   background-color: $notie-color-background;
   opacity: 0;
 }
@@ -127,19 +137,23 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   @extend #notie-alert-outer;
   cursor: default;
 }
+
 #notie-force-inner {
   @extend #notie-confirm-inner;
 }
+
 #notie-force-text {
   color: $notie-color-text;
 }
+
 #notie-force-button {
+  width: 100%;
   height: 50px;
   line-height: 50px;
-  width: 100%;
-  cursor: pointer;
   color: $notie-color-text;
+  cursor: pointer;
 }
+
 #notie-force-background {
   @extend #notie-confirm-background;
 }
@@ -151,39 +165,48 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   @extend #notie-alert-outer;
   cursor: default;
 }
+
 #notie-input-inner {
   @extend #notie-confirm-inner;
 }
+
 #notie-input-field {
-  display: block;
-  box-sizing: border-box;
-  height: 55px;
-  width: 100%;
-  text-align: center;
-  outline: 0;
-  border: 0;
-  background-color: $notie-color-background;
-  font-family: inherit;
-  font-size: $notie-font-size-big;
+
   @media #{$notie-breakpoint} {
     font-size: $notie-font-size-small;
   }
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 55px;
+  font-family: inherit;
+  font-size: $notie-font-size-big;
+  text-align: center;
+  background-color: $notie-color-background;
+  border: 0;
+  outline: 0;
 }
+
 #notie-input-background {
   @extend #notie-confirm-background;
 }
+
 #notie-input-yes {
   @extend #notie-confirm-yes;
 }
+
 #notie-input-no {
   @extend #notie-confirm-no;
 }
+
 #notie-input-text {
   color: $notie-color-text;
 }
+
 #notie-input-text-yes {
   color: $notie-color-text;
 }
+
 #notie-input-text-no {
   color: $notie-color-text;
 }
@@ -194,18 +217,23 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   bottom: 0;
   cursor: default;
 }
+
 #notie-select-inner {
   @extend #notie-confirm-inner;
 }
+
 #notie-select-background {
   @extend #notie-confirm-background;
 }
+
 #notie-select-text {
   color: $notie-color-text;
 }
+
 #notie-select-choices {
   background-color: $notie-color-success;
 }
+
 .notie-select-choice {
   @extend #notie-select-choices;
   height: 50px;
@@ -213,6 +241,7 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   color: $notie-color-text;
   cursor: pointer;
 }
+
 #notie-select-cancel {
   height: 60px;
   line-height: 60px;
@@ -220,54 +249,63 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   background-color: $notie-color-neutral;
 }
+
 .notie-select-choice-bottom-border {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
 }
 
 #notie-date-outer {
   @extend #notie-alert-outer;
-  background-color: $notie-color-info;
   color: $notie-color-text;
   cursor: default;
+  background-color: $notie-color-info;
 }
+
 #notie-date-selector {
-  margin: 0 auto;
   max-width: $notie-content-width;
-  padding-left: 10px;
   padding-right: 10px;
+  padding-left: 10px;
+  margin: 0 auto;
 }
+
 #notie-date-background {
   @extend #notie-confirm-background;
 }
+
 .notie-date-up {
-  height: 50px;
   float: left;
   width: 33.333333%;
+  height: 50px;
   cursor: pointer;
 }
+
 .notie-date-arrow {
-  height: 40px;
   width: 40px;
-  background-size: 40px 40px;
+  height: 40px;
   margin: 0 auto;
   margin-top: 5px;
+  background-size: 40px 40px;
 }
+
 .notie-date-arrow-up {
   @extend .notie-date-arrow;
   background-image: url(#{$notie-date-arrow-up});
 }
+
 .notie-date-arrow-down {
   @extend .notie-date-arrow;
   background-image: url($notie-date-arrow-down);
 }
+
 .notie-date-down {
   @extend .notie-date-up;
 }
+
 .notie-date-text {
-  height: 50px;
-  line-height: 50px;
   float: left;
   width: 33.333333%;
+  height: 50px;
+  line-height: 50px;
 }
 
 #notie-date-yes {
@@ -276,9 +314,10 @@ $notie-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   height: 50px;
   line-height: 50px;
   color: $notie-color-text;
-  background-color: $notie-color-success;
   cursor: pointer;
+  background-color: $notie-color-success;
 }
+
 #notie-date-no {
   @extend #notie-date-yes;
   background-color: $notie-color-error;

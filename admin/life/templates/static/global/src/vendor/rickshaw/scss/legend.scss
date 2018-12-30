@@ -1,7 +1,7 @@
 .rickshaw_legend {
   font-family: Arial;
   font-size: 12px;
-  color: $gray-darker;
+  color: $gray-600;
   display: inline-block;
   padding: 12px 5px;
   border-radius: 2px;
@@ -31,7 +31,7 @@
   display: inline;
   font-size: inherit;
   background-color: transparent;
-  color: $gray-dark;
+  color: $gray-500;
   font-weight: normal;
   line-height: normal;
   padding: 0px;
@@ -40,7 +40,7 @@
 .rickshaw_legend .action {
   margin-right: 0.2em;
   font-size: 10px;
-  color: $gray-dark;
+  color: $gray-500;
   opacity: 0.8;
   cursor: pointer;
   font-size: 14px;
@@ -66,13 +66,13 @@
 }
 .rickshaw_legend li:hover,
 .rickshaw_legend li:active {
-  background: rgba($gray-light, (20/100));
+  background: rgba($gray-300, (20/100));
 
   .label {
-    color: $gray-darkest;
+    color: $gray-700;
   }
   .action {
-    color: $gray-darkest;
+    color: $gray-700;
   }
   border-radius: 3px;
 }

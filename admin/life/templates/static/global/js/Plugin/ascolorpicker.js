@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'asColorPicker'; // import $ from 'jquery';
+  var NAME = 'asColorPicker';
 
   var AsColorPicker = function (_Plugin) {
     babelHelpers.inherits(AsColorPicker, _Plugin);

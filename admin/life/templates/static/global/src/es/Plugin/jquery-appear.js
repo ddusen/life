@@ -13,7 +13,9 @@ class Appear extends Plugin {
       if (this.$el.hasClass('appear-no-repeat')) {
         return;
       }
-      this.$el.removeClass('invisible').addClass(`animation-${this.options.animate}`);
+      this.$el
+        .removeClass('invisible')
+        .addClass(`animation-${this.options.animate}`);
 
       if (this.$el.data('repeat') === false) {
         this.$el.addClass('appear-no-repeat');
@@ -25,7 +27,9 @@ class Appear extends Plugin {
         return;
       }
 
-      this.$el.addClass('invisible').removeClass(`animation-${this.options.animate}`);
+      this.$el
+        .addClass('invisible')
+        .removeClass(`animation-${this.options.animate}`);
     });
   }
 

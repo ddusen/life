@@ -1,4 +1,3 @@
-// import $ from 'jquery';
 import Plugin from 'Plugin';
 
 const NAME = 'breadcrumb';
@@ -9,7 +8,7 @@ class Breadcrumb extends Plugin {
   }
   static getDefaults() {
     return {
-      overflow: "left",
+      overflow: 'left',
       namespace: 'breadcrumb',
       dropdownMenuClass: 'dropdown-menu',
       dropdownItemClass: 'dropdown-item',
@@ -37,7 +36,7 @@ class Breadcrumb extends Plugin {
           return `<a class="${classes.dropdownItemClass} ${classes.dropdownItemDisableClass}" href="#">${label}</a>`;
         }
         return `<a class="${classes.dropdownItemClass}" href="${href}">${label}</a>`;
-      },
+      }
     };
   }
   render() {

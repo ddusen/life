@@ -2,15 +2,12 @@
 
 @mixin list-group-hover-item-variant($state, $background, $color) {
   .list-group-hover {
-    .list-group-item-#{$state},
-    a.list-group-item-#{$state},
-    button.list-group-item-#{$state} {
-      color: $color;
-
+    .list-group-item-#{$state}, a.list-group-item-#{$state}, button.list-group-item-#{$state} {
       @include hover-focus {
         color: $color;
         background-color: darken($background, 5%);
       }
+      color: $color;
 
       &.active {
         color: #fff;

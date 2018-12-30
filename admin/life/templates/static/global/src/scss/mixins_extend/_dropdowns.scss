@@ -1,8 +1,6 @@
-@mixin dropdown-states-variant($parent, $active-color, $active-bg){
+@mixin dropdown-states-variant($parent, $active-color, $active-bg) {
   .dropdown-iten.active {
-    &,
-    &:hover,
-    &:focus {
+    &, &:hover, &:focus {
       color: $active-color;
       background-color: $active-bg;
     }

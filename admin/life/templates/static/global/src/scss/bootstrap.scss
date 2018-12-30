@@ -5,10 +5,11 @@
 
 // Reset and dependencies
 // @import "bootstrap/normalize";
-@import "bootstrap/print";
 
 // Core CSS
 // -------------------------------
+@import "bootstrap/root";
+@import "bootstrap/print";
 @import "bootstrap/reboot";
 @import 'bootstrap/type';
 @import 'bootstrap/images';
@@ -36,7 +37,6 @@
 // @import 'bootstrap/progress';
 @import 'bootstrap/media';
 @import 'bootstrap/list-group';
-@import 'bootstrap/responsive-embed';
 @import 'bootstrap/close';
 
 // Components w/ JavaScript

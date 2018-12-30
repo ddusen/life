@@ -24,17 +24,17 @@ class asSelectable {
     const options = this.options;
 
     self.$element.on('change', options.allSelector, function() {
-      const value = $(this).prop("checked");
+      const value = $(this).prop('checked');
       self.getItems().each(function() {
         const $one = $(this);
-        $one.prop("checked", value).trigger('change', [true]);;
+        $one.prop('checked', value).trigger('change', [true]);
         self.selectRow($one, value);
       });
     });
 
     self.$element.on('click', options.itemSelector, function(e) {
       const $one = $(this);
-      const value = $one.prop("checked");
+      const value = $one.prop('checked');
       self.selectRow($one, value);
       e.stopPropagation();
     });
@@ -60,10 +60,15 @@ class asSelectable {
 
     if (options.rowSelectable) {
       self.$element.on('click', options.rowSelector, function(e) {
-        if ("checkbox" !== e.target.type && "button" !== e.target.type && "a" !== e.target.tagName.toLowerCase() && !$(e.target).parent("div.checkbox-custom").length) {
+        if (
+          'checkbox' !== e.target.type &&
+          'button' !== e.target.type &&
+          'a' !== e.target.tagName.toLowerCase() &&
+          !$(e.target).parent('div.checkbox-custom').length
+        ) {
           const $checkbox = $(options.itemSelector, this);
-          const value = $checkbox.prop("checked");
-          $checkbox.prop("checked", !value);
+          const value = $checkbox.prop('checked');
+          $checkbox.prop('checked', !value);
           self.selectRow($checkbox, !value);
         }
       });
@@ -72,9 +77,13 @@ class asSelectable {
 
   selectRow(item, value) {
     if (value) {
-      item.parents(this.options.rowSelector).addClass(this.options.rowActiveClass);
+      item
+        .parents(this.options.rowSelector)
+        .addClass(this.options.rowActiveClass);
     } else {
-      item.parents(this.options.rowSelector).removeClass(this.options.rowActiveClass);
+      item
+        .parents(this.options.rowSelector)
+        .removeClass(this.options.rowActiveClass);
     }
   }
 
@@ -94,7 +103,10 @@ class asSelectable {
     this.$element.trigger(`${pluginName}::${eventType}`, data);
 
     // callback
-    eventType = eventType.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1));
+    eventType = eventType.replace(
+      /\b\w+\b/g,
+      word => word.substring(0, 1).toUpperCase() + word.substring(1)
+    );
     const onFunction = `on${eventType}`;
     if (typeof this.options[onFunction] === 'function') {
       this.options[onFunction].apply(this, method_arguments);
@@ -107,7 +119,7 @@ class asSelectable {
 
       if (/^\_/.test(method)) {
         return false;
-      } else if ((/^(get)/.test(method))) {
+      } else if (/^(get)/.test(method)) {
         const api = this.first().data(pluginName);
 
         if (api && typeof api[method] === 'function') {

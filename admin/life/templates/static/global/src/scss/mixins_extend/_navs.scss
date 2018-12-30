@@ -1,4 +1,4 @@
-@mixin nav-tabs-size($font-size, $line-height, $padding){
+@mixin nav-tabs-size($font-size, $line-height, $padding) {
   .nav-link {
     padding: $padding;
     font-size: $font-size;

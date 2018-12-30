@@ -60,7 +60,10 @@ export default class Plugin {
         let plugin = $el.data('pluginInstance');
 
         if (!plugin) {
-          plugin = new obj($el, $.extend(true, {}, getDefaults(name), $el.data()));
+          plugin = new obj(
+            $el,
+            $.extend(true, {}, getDefaults(name), $el.data())
+          );
           plugin.initialize();
           $el.data('pluginInstance', plugin);
         }

@@ -20,7 +20,10 @@ class TabClose {
     }
 
     if ($toggle.hasClass('active')) {
-      const $next = $li.siblings().eq(0).children('[data-toggle="tab"]');
+      const $next = $li
+        .siblings()
+        .eq(0)
+        .children('[data-toggle="tab"]');
       if ($next.length > 0) {
         const api = $next.tab().data('bs.tab');
         api.show();
@@ -30,15 +33,18 @@ class TabClose {
     const $parent = $(selector);
     if (e) e.preventDefault();
 
-    $parent.trigger(e = $.Event('close.bs.tab'))
+    $parent.trigger((e = $.Event('close.bs.tab')));
 
-    if (e.isDefaultPrevented()) return
+    if (e.isDefaultPrevented()) return;
 
-    $parent.removeClass('in')
+    $parent.removeClass('in');
 
     function removeElement() {
       // detach from parent, fire event then clean up data
-      $parent.detach().trigger('closed.bs.tab').remove();
+      $parent
+        .detach()
+        .trigger('closed.bs.tab')
+        .remove();
       $li.detach().remove();
     }
 
@@ -50,7 +56,7 @@ class TabClose {
   }
 
   static _jQueryInterface(option) {
-    console.log(option)
+    console.log(option);
     return this.each(function() {
       const $this = $(this);
       let data = $this.data('bs.tab.close');
@@ -65,10 +71,10 @@ class TabClose {
   }
 }
 
-TabClose.TRANSITION_DURATION = 150
+TabClose.TRANSITION_DURATION = 150;
 
 $.fn[pluginName] = TabClose._jQueryInterface;
-$.fn[pluginName].Constructor = TabClose
+$.fn[pluginName].Constructor = TabClose;
 $.fn[pluginName].noConflict = () => {
   'use strict';
   $.fn[pluginName] = window.JQUERY_NO_CONFLICT;
@@ -78,6 +84,10 @@ $.fn[pluginName].noConflict = () => {
 // TAB CLOSE DATA-API
 // ==================
 
-$(document).on('click.bs.tab-close.data-api', dismiss, TabClose.prototype.close);
+$(document).on(
+  'click.bs.tab-close.data-api',
+  dismiss,
+  TabClose.prototype.close
+);
 
 export default TabClose;

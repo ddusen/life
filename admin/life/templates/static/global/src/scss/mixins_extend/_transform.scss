@@ -6,6 +6,6 @@
   transform-style: $transform-style;
 }
 
-@mixin translate($x,$y) {
+@mixin translate($x, $y) {
   transform: translate($x, $y);
 }

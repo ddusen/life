@@ -7,11 +7,11 @@
 @import 'vars';
 
 #jqstooltip {
-	box-sizing: content-box !important;
+  box-sizing: content-box !important;
 }
 // z-index 
 $jqstooltip-z-index: $zindex-tooltip;
 
 .jqstooltip {
-	z-index: $jqstooltip-z-index;
+  z-index: $jqstooltip-z-index;
 }

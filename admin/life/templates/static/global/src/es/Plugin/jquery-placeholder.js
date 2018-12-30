@@ -4,7 +4,6 @@ import Plugin from 'Plugin';
 const NAME = 'placeholder';
 
 class Placeholder extends Plugin {
-
   getName() {
     return NAME;
   }

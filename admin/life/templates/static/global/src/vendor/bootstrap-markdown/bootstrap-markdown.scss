@@ -1,30 +1,32 @@
 @import 'vars';
 // var
 // =============================================================
-$md-header-bg:                   $bg-color-base;
-$md-border:                      $input-border;
-$md-edit-bg:                     $color-white;
-
-$md-text-color:                  $text-color;
-
-$md-btn-color:                   $gray;
-$md-btn-active-color:            $gray-darkest;
-
-$md-control-color:               $gray-lighter;
-$md-control-active-color:        $gray-dark;
-
-$md-btn-divider-color:           $gray-lighter;
+$md-header-bg: $bg-color-base;
+$md-border: $input-border;
+$md-edit-bg: $color-white;
+$md-text-color: $text-color;
+$md-btn-color: $gray-400;
+$md-btn-active-color: $gray-700;
+$md-control-color: $gray-200;
+$md-control-active-color: $gray-500;
+$md-btn-divider-color: $gray-200;
 
 //                               z-index
-$md-fullscreen-z-index:          $zindex-fullscreen;
+$md-fullscreen-z-index: $zindex-fullscreen;
 $md-fullscreen-controls-z-index: $zindex-overlay;
+$md-preview-bg: #fff;
 
-$md-preview-bg:                  #fff;
+// for v4a-v4b;
+$input-bg-disabled: $input-disabled-bg;
 
 // Bootstrap-Markdown.less
 // =============================================================
 
 .md-editor {
+
+  // Hover state
+  $color: $input-focus-border-color;
+  $color-rgba: rgba(red($color), green($color), blue($color), .6);
   display: block;
   border: 1px solid $md-border;
   border-radius: $border-radius;
@@ -41,40 +43,36 @@ $md-preview-bg:                  #fff;
   }
 
   > .md-preview {
+    min-height: 8px;
+    padding: 10px;
+    overflow: auto;
     background: $md-preview-bg;
     border-top: 1px dashed transparent;
     border-bottom: 1px solid transparent;
-    min-height: 8px;
-    overflow: auto;
     border-radius: 0 0 $border-radius $border-radius;
-    padding: 10px;
   }
 
   > textarea {
-    font-family: $font-family-monospace;
-    font-size: $font-size-base;
-    outline: 0;
+    display: block;
+    width: 100%;
+    padding: 10px;
     // outline: thin dotted  \9; /* IE6-9 */
     margin: 0;
-    display: block;
-    padding: 10px;
-    width: 100%;
+    font-family: $font-family-monospace;
+    font-size: $font-size-base;
+    background: $md-edit-bg;
     border: 0;
     border-top: 1px dashed transparent;
     border-bottom: 1px solid transparent;
-    box-shadow: none;
-    background: $md-edit-bg;
     border-radius: 0 0 $border-radius $border-radius;
+    outline: 0;
+    box-shadow: none;
 
     &:focus {
-      box-shadow: none;
       background: $input-bg;
+      box-shadow: none;
     }
   }
-
-  // Hover state
-  $color: $input-border-focus;
-  $color-rgba: rgba(red($color), green($color), blue($color), .6);
 
   &.active {
     border-color: $md-border;
@@ -88,8 +86,8 @@ $md-preview-bg:                  #fff;
 
     .md-control {
       right: 5px;
-      color: $md-control-color;
       padding: 3px 3px 3px 10px;
+      color: $md-control-color;
 
       &:hover {
         color: $md-control-active-color;
@@ -99,14 +97,14 @@ $md-preview-bg:                  #fff;
 
   // fullscreen mode styles
   &.md-fullscreen-mode {
-    width: 100%;
-    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     // z-index: 99999;
     // @include z-index(fullscreen);
     z-index: $md-fullscreen-z-index;
+    width: 100%;
+    height: 100%;
     padding: 60px 30px 15px;
     background: #fff !important;
     border: 0 !important;
@@ -115,39 +113,37 @@ $md-preview-bg:                  #fff;
       display: none;
     }
 
-    .md-input,
-    .md-preview {
-      margin: 0 auto !important;
+    .md-input, .md-preview {
       height: 100% !important;
-      font-size: 20px !important;
       padding: 20px !important;
-      color: #999;
+      margin: 0 auto !important;
+      font-size: 20px !important;
       line-height: 1.6em !important;
+      color: #999;
       resize: none !important;
-      box-shadow: none !important;
       background: #fff !important;
       border: 0 !important;
+      box-shadow: none !important;
     }
 
     .md-preview {
-      color: #333;
       overflow: auto;
+      color: #333;
     }
 
     .md-input {
-      &:hover,
-      &:focus {
+      &:hover, &:focus {
         color: #333;
         background: #fff !important;
       }
     }
 
     .md-header {
-      background: none;
-      text-align: center;
       position: fixed;
-      width: 100%;
       top: 20px;
+      width: 100%;
+      text-align: center;
+      background: none;
     }
 
     .btn-group {
@@ -155,16 +151,13 @@ $md-preview-bg:                  #fff;
     }
 
     .btn {
-      border: 0;
-      background: none;
       color: #b3b3b3;
+      background: none;
+      border: 0;
 
-      &:hover,
-      &:focus,
-      &.active,
-      &:active {
-        box-shadow: none;
+      &:hover, &:focus, &.active, &:active {
         color: #333;
+        box-shadow: none;
       }
     }
 
@@ -172,16 +165,16 @@ $md-preview-bg:                  #fff;
       position: absolute;
       top: 20px;
       right: 20px;
-      text-align: right;
       z-index: 1002;
       display: block;
+      text-align: right;
 
       a {
-        color: #b3b3b3;
-        clear: right;
-        margin: 10px;
         width: 30px;
         height: 30px;
+        margin: 10px;
+        clear: right;
+        color: #b3b3b3;
         text-align: center;
 
         &:hover {
@@ -192,8 +185,8 @@ $md-preview-bg:                  #fff;
     }
 
     .md-editor {
-      height: 100% !important;
       position: relative;
+      height: 100% !important;
     }
   }
 
@@ -203,9 +196,9 @@ $md-preview-bg:                  #fff;
 }
 
 .md-nooverflow {
-  overflow: hidden;
   position: fixed;
   width: 100%;
+  overflow: hidden;
 }
 
 .md-editor .btn-toolbar {
@@ -222,38 +215,37 @@ $md-preview-bg:                  #fff;
     }
 
     &:after {
-        content: "";
-        position: absolute;
-        top: 2px;
-        left: -17px;
-        width: 2px;
-        height: 30px;
-        margin: 0 5px;
-        background: $md-btn-divider-color;
+      position: absolute;
+      top: 2px;
+      left: -17px;
+      width: 2px;
+      height: 30px;
+      margin: 0 5px;
+      content: "";
+      background: $md-btn-divider-color;
     }
   }
 
   .btn-group .btn-default {
     color: $md-btn-color;
-    border: none;
     background-color: transparent;
     background-image: none;
+    border: none;
     box-shadow: none;
 
     &:hover {
       color: $md-btn-active-color;
-      border: none;
       background-color: transparent;
       background-image: none;
+      border: none;
       box-shadow: none;
     }
 
-    &.active,
-    &:active {
+    &.active, &:active {
       color: $md-btn-active-color;
-      border: none;
       background-color: transparent;
       background-image: none;
+      border: none;
       box-shadow: none;
     }
   }
@@ -261,10 +253,10 @@ $md-preview-bg:                  #fff;
 
 .md-footer {
   .icon-ok {
-    font-family: '#{$wb-font-family}';
+    font-family: "#{$wb-font-family}";
 
     &:before {
-      content: '#{$wb-var-check}';
+      content: "#{$wb-var-check}";
     }
   }
 }

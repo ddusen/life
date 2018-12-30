@@ -10,7 +10,7 @@
   opacity: 0.95;
 }
 .c3-tooltip tr {
-  border:1px solid rgba($gray-light, (80/100));
+  border:1px solid rgba($gray-300, (80/100));
 }
 .c3-tooltip th {
   background-color: $bg-color-base;
@@ -24,7 +24,7 @@
   font-size:13px;
   padding: 3px 6px;
   background-color:#fff;
-  border-left:1px dotted rgba($gray-light, (80/100));
+  border-left:1px dotted rgba($gray-300, (80/100));
 }
 .c3-tooltip td > span {
   display: inline-block;

@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'maxlength'; // import $ from 'jquery';
+  var NAME = 'maxlength';
 
   var Maxlength = function (_Plugin) {
     babelHelpers.inherits(Maxlength, _Plugin);

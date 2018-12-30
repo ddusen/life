@@ -25,29 +25,45 @@ class Panel extends Plugin {
 
   static api() {
     return () => {
-      $(document).on('click.site.panel', '[data-toggle="panel-fullscreen"]', function(e) {
-        e.preventDefault();
-        let api = getPanelAPI($(this).closest('.panel'));
-        api.toggleFullscreen();
-      });
+      $(document).on(
+        'click.site.panel',
+        '[data-toggle="panel-fullscreen"]',
+        function(e) {
+          e.preventDefault();
+          let api = getPanelAPI($(this).closest('.panel'));
+          api.toggleFullscreen();
+        }
+      );
 
-      $(document).on('click.site.panel', '[data-toggle="panel-collapse"]', function(e) {
-        e.preventDefault();
-        let api = getPanelAPI($(this).closest('.panel'));
-        api.toggleContent();
-      });
+      $(document).on(
+        'click.site.panel',
+        '[data-toggle="panel-collapse"]',
+        function(e) {
+          e.preventDefault();
+          let api = getPanelAPI($(this).closest('.panel'));
+          api.toggleContent();
+        }
+      );
 
-      $(document).on('click.site.panel', '[data-toggle="panel-close"]', function(e) {
-        e.preventDefault();
-        let api = getPanelAPI($(this).closest('.panel'));
-        api.close();
-      });
+      $(document).on(
+        'click.site.panel',
+        '[data-toggle="panel-close"]',
+        function(e) {
+          e.preventDefault();
+          let api = getPanelAPI($(this).closest('.panel'));
+          api.close();
+        }
+      );
 
-      $(document).on('click.site.panel', '[data-toggle="panel-refresh"]', function(e) {
-        e.preventDefault();
-        let api = getPanelAPI($(this).closest('.panel'));
-        api.load();
-      });
+      $(document).on(
+        'click.site.panel',
+        '[data-toggle="panel-refresh"]',
+        function(e) {
+          e.preventDefault();
+          let api = getPanelAPI($(this).closest('.panel'));
+          api.load();
+        }
+      );
     };
   }
 
@@ -191,7 +207,6 @@ class Panel extends Plugin {
 
   close() {
     if (this.isClose !== true) {
-
       this.$el.addClass('is-close');
       this.$el.trigger('close.uikit.panel');
 

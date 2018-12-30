@@ -1,11 +1,9 @@
-// import $ from 'jquery';
 import Plugin from 'Plugin';
-import * as Config from 'Config';
+import * as Config from "Config";
 
 const NAME = 'gauge';
 
 class GaugePlugin extends Plugin {
-
   getName() {
     return NAME;
   }

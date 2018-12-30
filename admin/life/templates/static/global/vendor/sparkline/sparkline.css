@@ -1,11 +1,7 @@
-#jqstooltip
-{
-    -webkit-box-sizing: content-box !important;
-       -moz-box-sizing: content-box !important;
-            box-sizing: content-box !important;
+#jqstooltip {
+  box-sizing: content-box !important;
 }
 
-.jqstooltip
-{
-    z-index: 1900;
+.jqstooltip {
+  z-index: 1900;
 }

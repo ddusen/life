@@ -7,7 +7,7 @@ function isChar(e) {
   if (typeof e.which === 'undefined') {
     return true;
   } else if (typeof e.which === 'number' && e.which > 0) {
-    return !e.ctrlKey && !e.metaKey && !e.altKey && e.which !== 8 && e.which !== 9;
+    return (!e.ctrlKey && !e.metaKey && !e.altKey && e.which !== 8 && e.which !== 9);
   }
   return false;
 }
@@ -20,7 +20,7 @@ class FormMaterial extends Plugin {
   render() {
     let $el = this.$el;
 
-    let $control = this.$control = $el.find('.form-control');
+    let $control = (this.$control = $el.find('.form-control'));
 
     // Add hint label if required
     if ($control.attr('data-hint')) {
@@ -36,7 +36,11 @@ class FormMaterial extends Plugin {
       }
 
       // Set as empty if is empty
-      if ($control.val() === null || $control.val() === 'undefined' || $control.val() === '') {
+      if (
+        $control.val() === null ||
+        $control.val() === 'undefined' ||
+        $control.val() === ''
+      ) {
         $control.addClass('empty');
       }
     }
@@ -53,40 +57,49 @@ class FormMaterial extends Plugin {
 
   bind() {
     let $el = this.$el;
-    let $control = this.$control = $el.find('.form-control');
+    let $control = (this.$control = $el.find('.form-control'));
 
-    $el.on('keydown.site.material paste.site.material', '.form-control', (e) => {
-      if (isChar(e)) {
-        $control.removeClass('empty');
-      }
-    }).on('keyup.site.material change.site.material', '.form-control', () => {
-      if ($control.val() === '' && (typeof $control[0].checkValidity !== 'undefined' && $control[0].checkValidity())) {
-        $control.addClass('empty');
-      } else {
-        $control.removeClass('empty');
-      }
-    });
+    $el
+      .on('keydown.site.material paste.site.material', '.form-control', e => {
+        if (isChar(e)) {
+          $control.removeClass('empty');
+        }
+      })
+      .on('keyup.site.material change.site.material', '.form-control', () => {
+        if (
+          $control.val() === '' &&
+          (typeof $control[0].checkValidity !== 'undefined' &&
+            $control[0].checkValidity())
+        ) {
+          $control.addClass('empty');
+        } else {
+          $control.removeClass('empty');
+        }
+      });
 
     if (this.$file.length > 0) {
-      this.$file.on('focus', () => {
-        this.$el.find('input').addClass('focus');
-      }).on('blur', () => {
-        this.$el.find('input').removeClass('focus');
-      }).on('change', function() {
-        let $this = $(this);
-        let value = '';
+      this.$file
+        .on('focus', () => {
+          this.$el.find('input').addClass('focus');
+        })
+        .on('blur', () => {
+          this.$el.find('input').removeClass('focus');
+        })
+        .on('change', function() {
+          let $this = $(this);
+          let value = '';
 
-        $.each($this[0].files, (i, file) => {
-          value += `${file.name}, `;
+          $.each($this[0].files, (i, file) => {
+            value += `${file.name}, `;
+          });
+          value = value.substring(0, value.length - 2);
+          if (value) {
+            $this.prev().removeClass('empty');
+          } else {
+            $this.prev().addClass('empty');
+          }
+          $this.prev().val(value);
         });
-        value = value.substring(0, value.length - 2);
-        if (value) {
-          $this.prev().removeClass('empty');
-        } else {
-          $this.prev().addClass('empty');
-        }
-        $this.prev().val(value);
-      });
     }
   }
 }

@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'multiSelect'; // import $ from 'jquery';
+  var NAME = 'multiSelect';
 
   var MultiSelect = function (_Plugin) {
     babelHelpers.inherits(MultiSelect, _Plugin);

@@ -1,5 +1,4 @@
-
-@mixin hamburger-arrow-left(){
+@mixin hamburger-arrow-left() {
   transform: rotate(180deg);
 
   &:before {
@@ -8,7 +7,7 @@
   }
 
   .hamburger-bar {
-    border-radius: 0.2em;
+    border-radius: .2em;
   }
 
   &:after {

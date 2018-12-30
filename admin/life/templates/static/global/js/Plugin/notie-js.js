@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'notie'; // import $ from 'jquery';
+  var NAME = 'notie';
 
   var Notie = function (_Plugin) {
     babelHelpers.inherits(Notie, _Plugin);

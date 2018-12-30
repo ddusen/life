@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'magnificPopup'; // import $ from 'jquery';
+  var NAME = 'magnificPopup';
 
   var MagnificPopup = function (_Plugin) {
     babelHelpers.inherits(MagnificPopup, _Plugin);

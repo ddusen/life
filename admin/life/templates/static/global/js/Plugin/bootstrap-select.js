@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'selectpicker'; // import $ from 'jquery';
+  var NAME = 'selectpicker';
 
   var Selectpicker = function (_Plugin) {
     babelHelpers.inherits(Selectpicker, _Plugin);

@@ -73,7 +73,7 @@ class actionBtn {
 
       if (/^\_/.test(method)) {
         return false;
-      } else if ((/^(get)$/.test(method))) {
+      } else if (/^(get)$/.test(method)) {
         const api = this.first().data(pluginName);
         if (api && typeof api[method] === 'function') {
           return api[method](...args);
@@ -103,7 +103,6 @@ $.fn[pluginName].noConflict = () => {
   $.fn[pluginName] = window.JQUERY_NO_CONFLICT;
   return actionBtn._jQueryInterface;
 };
-
 
 class ActionBtn extends Plugin {
   getName() {

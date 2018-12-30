@@ -180,6 +180,12 @@
 .#{$owi-css-prefix}-gnusocial:before {
 	content: $owi-var-gnusocial;
 }
+.#{$owi-css-prefix}-mastodon:before {
+	content: $owi-var-mastodon;
+}
+.#{$owi-css-prefix}-mastodon-simple:before {
+	content: $owi-var-mastodon-simple;
+}
 .#{$owi-css-prefix}-html5:before {
 	content: $owi-var-html5;
 }

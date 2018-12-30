@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'alertify'; // import $ from 'jquery';
+  var NAME = 'alertify';
 
   var Alertify = function (_Plugin) {
     babelHelpers.inherits(Alertify, _Plugin);

@@ -1,21 +1,21 @@
 @import "vars";
 
 .table-dragger-handle {
-  font-family: '#{$wb-font-family}';
   @include make-icon();
-  margin-left: 0.3em;
+  margin-left: .3em;
+  font-family: "#{$wb-font-family}";
 
   &:before {
-    content: '#{$wb-var-move}';
+    content: "#{$wb-var-move}";
   }
 }
 
 .sindu_dragger {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  list-style: none;
 }
 
 .sindu_handle {
@@ -23,14 +23,14 @@
 }
 
 .sindu_dragger table {
-  background: $gray-lightest;
+  background: $gray-100;
 }
 
 .sindu_dragger li {
-  margin: 0;
   padding: 0;
-  list-style: none;
+  margin: 0;
   text-align: inherit;
+  list-style: none;
 }
 
 .sindu_dragger li table, .sindu_dragger tr, .sindu_dragger th, .sindu_dragger td {
@@ -51,20 +51,20 @@
 
 .gu-mirror {
   position: fixed !important;
-  margin: 0 !important;
   z-index: 9999 !important;
-  opacity: 0.8;
+  margin: 0 !important;
+  opacity: .8;
 }
 
 .gu-mirror li {
-  margin: 0;
   padding: 0;
-  list-style: none;
+  margin: 0;
   text-align: inherit;
+  list-style: none;
 }
 
 .gu-mirror table {
-  background: $gray-lighter;
+  background: $gray-200;
 }
 
 .gu-mirror li table, .gu-mirror tr, .gu-mirror th, .gu-mirror td {
@@ -80,5 +80,9 @@
 }
 
 .gu-transit {
-  opacity: 0.5;
+  opacity: .5;
+}
+
+.sindu_dragger table {
+  background: transparent !important;
 }

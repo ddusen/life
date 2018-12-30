@@ -27,7 +27,10 @@ class Bootbox extends Plugin {
       options.className = options.className + ' modal-simple';
     }
 
-    if (typeof options.callback === 'string' && $.isFunction(window[options.callback])) {
+    if (
+      typeof options.callback === 'string' &&
+      $.isFunction(window[options.callback])
+    ) {
       options.callback = window[options.callback];
     }
 

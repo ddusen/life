@@ -1,31 +1,27 @@
 // Base class
 .tooltip {
+  .arrow::before {
+    border-color: transparent;
+  }
 
-  &.tooltip-top,
-  &.bs-tether-element-attached-bottom {
-
-    .tooltip-arrow {
+  &.bs-tooltip-top {
+    .arrow::before {
       border-top-color: $tooltip-arrow-color;
     }
   }
-  &.tooltip-right,
-  &.bs-tether-element-attached-left {
 
-    .tooltip-arrow {
+  &.bs-tooltip-right {
+    .arrow::before {
       border-right-color: $tooltip-arrow-color;
     }
   }
-  &.tooltip-bottom,
-  &.bs-tether-element-attached-top {
-
-    .tooltip-arrow {
+  &.bs-tooltip-bottom {
+    .arrow::before {
       border-bottom-color: $tooltip-arrow-color;
     }
   }
-  &.tooltip-left,
-  &.bs-tether-element-attached-right {
-
-    .tooltip-arrow {
+  &.bs-tooltip-left {
+    .arrow::before {
       border-left-color: $tooltip-arrow-color;
     }
   }

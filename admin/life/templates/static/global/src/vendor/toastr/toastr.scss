@@ -2,31 +2,24 @@
 
 
 // Mix-ins
-@mixin word-wrap($value: break-word){
+@mixin word-wrap($value: break-word) {
   -ms-word-wrap: $value;
   word-wrap: $value;
 }
 
 // Variables
-$black:       #000;
-$white:       #fff;
-$default:     #e4eaee;
-
-$success:     $inverse;
-$success-bg:  $brand-success-hover;
-
-$error:      $inverse;
-$error-bg:   $brand-danger-hover;
-
-$info:        $inverse;
-$info-bg:     $brand-info-hover;
-
-$warning:     $inverse;
-$warning-bg:  $brand-warning-hover;
-
-
+$black: #000;
+$white: #fff;
+$default: #e4eaee;
+$success: $inverse;
+$success-bg: $brand-success-hover;
+$error: $inverse;
+$error-bg: $brand-danger-hover;
+$info: $inverse;
+$info-bg: $brand-info-hover;
+$warning: $inverse;
+$warning-bg: $brand-warning-hover;
 $progress-bg: #000;
-
 $default-container-opacity: .95;
 
 // z-index
@@ -38,39 +31,38 @@ $toastr-border-radius: $border-radius;
 .toast-title {
   font-weight: $font-weight-bold;
 }
+
 .toast-message {
   @include word-wrap();
 
-  a,
-  label {
+  a, label {
     color: $white;
   }
 
   a:hover {
-    color: $gray-light;
+    color: $gray-300;
     text-decoration: none;
   }
 }
 
 .toast-close-button {
   position: relative;
-  right: -0.3em;
   top: -0.3em;
-  margin-bottom: -.5em;
+  right: -0.3em;
   float: right;
+  margin-bottom: -.5em;
   font-size: 20px;
   font-weight: $font-weight-normal;
   color: $white;
   -webkit-text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
-  opacity: 0.8;
+  opacity: .8;
 
-  &:hover,
-  &:focus {
+  &:hover, &:focus {
     color: $black;
     text-decoration: none;
     cursor: pointer;
-    opacity: 0.4;
+    opacity: .4;
   }
 }
 
@@ -94,8 +86,8 @@ button.toast-close-button {
 }
 
 .toast-bottom-center {
-  bottom: 12px;
   right: 0;
+  bottom: 12px;
   width: 100%;
 }
 
@@ -110,8 +102,8 @@ button.toast-close-button {
 }
 
 .toast-bottom-full-width {
-  bottom: 0;
   right: 0;
+  bottom: 0;
   width: 100%;
 
   .toast {
@@ -144,58 +136,56 @@ button.toast-close-button {
   // z-index: 999999;
   z-index: $toastr-z-index;
   pointer-events: none;
+
   * {
     box-sizing: border-box;
   }
 
   > div {
     position: relative;
-    pointer-events: auto;
-    overflow: hidden;
-    margin: 0 0 6px;
-    padding: 15px 20px;
     width: 300px;
-    border-radius: $toastr-border-radius;
-    border: 1px solid $toastr-border-color;
-    background-position: 15px center;
+    padding: 15px 20px;
+    margin: 0 0 6px;
+    overflow: hidden;
+    color: $gray-400;
+    pointer-events: auto;
     background-repeat: no-repeat;
-    color: $gray;
+    background-position: 15px center;
+    border: 1px solid $toastr-border-color;
+    border-radius: $toastr-border-radius;
     opacity: $default-container-opacity;
   }
 
   > .toast-shadow {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .23);
 
     &:hover {
-      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.23);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, .23);
     }
   }
 
   > :hover {
-    opacity: 1;
     cursor: pointer;
+    opacity: 1;
   }
 
-  > .toast-success,
-  > .toast-info,
-  > .toast-warning,
-  > .toast-error {
+  > .toast-success, > .toast-info, > .toast-warning, > .toast-error {
     &:not(.toast-just-text) {
       padding-left: 50px;
 
       &:before {
+        position: absolute;
+        top: 50%;
+        left: 12px;
         font-family: $wb-font-family;
+        font-size: 30px;
         font-style: normal;
         font-weight: $font-weight-normal;
+        transform: translate(0, -50%);
         text-rendering: auto;
         speak: none;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        position: absolute;
-        top: 50%;
-        left: 12px;
-        font-size: 30px;
-        transform: translate(0, -50%);
       }
     }
   }
@@ -241,18 +231,16 @@ button.toast-close-button {
   }
 
   /*overrides*/
-  &.toast-top-center > div,
-  &.toast-bottom-center > div {
+  &.toast-top-center > div, &.toast-bottom-center > div {
     width: 300px;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
 
-  &.toast-top-full-width > div,
-  &.toast-bottom-full-width > div {
+  &.toast-top-full-width > div, &.toast-bottom-full-width > div {
     width: 100%;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
     border-radius: 0;
   }
 }
@@ -279,25 +267,24 @@ button.toast-close-button {
 
 .toast-progress {
   position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
   height: 4px;
   background-color: $progress-bg;
-  opacity: 0.1;
+  opacity: .1;
 }
 
 /*Responsive Design*/
 
 @media all and (max-width: 240px) {
-  [aria-live="polite"]  {
-
+  [aria-live="polite"] {
     > div {
       width: 11em;
     }
 
     & .toast-close-button {
-      right: -0.2em;
       top: -0.2em;
+      right: -0.2em;
     }
   }
 }
@@ -309,8 +296,8 @@ button.toast-close-button {
     }
 
     & .toast-close-button {
-      right: -0.2em;
       top: -0.2em;
+      right: -0.2em;
     }
   }
 }

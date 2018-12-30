@@ -1,6 +1,5 @@
-// import $ from 'jquery';
 import Plugin from 'Plugin';
-import * as Config from 'Config';
+import * as Config from "Config";
 
 const NAME = 'gmaps';
 
@@ -9,9 +8,7 @@ class GmapsPlugin extends Plugin {
     return NAME;
   }
 
-  render() {
-
-  }
+  render() {}
 
   static getDefaults() {
     return {

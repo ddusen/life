@@ -1,8 +1,11 @@
 .select2-selection--single {
+  background-color: #fff;
+  border: 1px solid $input-border-color;
+  border-radius: $border-radius;
   height: $input-height;
   line-height: $line-height-base;
   padding: $padding-base-vertical $padding-base-horizontal + $caret-width*3 $padding-base-vertical $padding-base-horizontal;
-
+  
   .select2-selection__rendered {
     color: $input-color;
     padding: 0;
@@ -76,6 +79,10 @@
     .select2-selection__clear {
       display: none;
     }
+  }
+
+  .select2-search__field {
+    background-color: $input-bg-disabled;
   }
 }
 

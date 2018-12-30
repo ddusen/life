@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'asSpinner'; // import $ from 'jquery';
+  var NAME = 'asSpinner';
 
   var AsSpinner = function (_Plugin) {
     babelHelpers.inherits(AsSpinner, _Plugin);

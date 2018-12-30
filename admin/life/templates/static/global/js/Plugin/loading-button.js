@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'loadingButton'; // import $ from 'jquery';
+  var NAME = 'loadingButton';
 
   var LoadingButton = function (_Plugin) {
     babelHelpers.inherits(LoadingButton, _Plugin);

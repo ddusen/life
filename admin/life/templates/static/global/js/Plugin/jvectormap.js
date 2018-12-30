@@ -19,8 +19,6 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var Config = babelHelpers.interopRequireWildcard(_Config);
-  // import $ from 'jquery';
   var NAME = 'vectorMap';
 
   var VectorMap = function (_Plugin) {
@@ -45,27 +43,27 @@
           zoomAnimate: true,
           regionStyle: {
             initial: {
-              fill: Config.colors('primary', 600)
+              fill: (0, _Config.colors)('primary', 600)
             },
             hover: {
-              fill: Config.colors('primary', 500)
+              fill: (0, _Config.colors)('primary', 500)
             },
             selected: {
-              fill: Config.colors('primary', 800)
+              fill: (0, _Config.colors)('primary', 800)
             },
             selectedHover: {
-              fill: Config.colors('primary', 500)
+              fill: (0, _Config.colors)('primary', 500)
             }
           },
           markerStyle: {
             initial: {
               r: 8,
-              fill: Config.colors('red', 600),
+              fill: (0, _Config.colors)('red', 600),
               'stroke-width': 0
             },
             hover: {
               r: 12,
-              stroke: Config.colors('red', 600),
+              stroke: (0, _Config.colors)('red', 600),
               'stroke-width': 0
             }
           }

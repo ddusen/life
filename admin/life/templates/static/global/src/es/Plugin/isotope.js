@@ -4,7 +4,6 @@ import Plugin from 'Plugin';
 const NAME = 'isotope';
 
 class Isotope extends Plugin {
-
   getName() {
     return NAME;
   }

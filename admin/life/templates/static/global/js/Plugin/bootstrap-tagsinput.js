@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'tagsinput'; // import $ from 'jquery';
+  var NAME = 'tagsinput';
 
   var Tagsinput = function (_Plugin) {
     babelHelpers.inherits(Tagsinput, _Plugin);

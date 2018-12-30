@@ -39,12 +39,7 @@
     }, {
       key: 'render',
       value: function render() {
-        if (typeof _jquery2.default.fn.hightlight === 'undefined') {
-          return;
-        }
-
-        // hljs.configure({useBR: true});
-        hljs.highlightBlock(block);
+        hljs.initHighlightingOnLoad();
       }
     }], [{
       key: 'getDefaults',

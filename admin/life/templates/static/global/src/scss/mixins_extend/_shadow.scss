@@ -15,8 +15,7 @@
 
 // active
 @mixin shadow-active($shadow-active) {
-  &:hover,
-  &:focus {
+  &:hover, &:focus {
     box-shadow: $shadow-active;
   }
 }

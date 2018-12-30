@@ -13,12 +13,11 @@
 
 // Variables
 // ========================================================================
-
-$list-tasks-done-bg:                   $gray-lightest;
-$list-tasks-done-success-bg:           rgba($brand-success, (10/100));
-$list-tasks-done-info-bg:              rgba($brand-info, (10/100));
-$list-tasks-done-warning-bg:           rgba($brand-warning, (10/100));
-$list-tasks-done-danger-bg:            rgba($brand-danger, (10/100));
+$list-tasks-done-bg: $gray-100;
+$list-tasks-done-success-bg: rgba($brand-success, (10/100));
+$list-tasks-done-info-bg: rgba($brand-info, (10/100));
+$list-tasks-done-warning-bg: rgba($brand-warning, (10/100));
+$list-tasks-done-danger-bg: rgba($brand-danger, (10/100));
 
 // Component: List task
 // ========================================================================

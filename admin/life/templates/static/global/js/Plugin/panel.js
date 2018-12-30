@@ -198,7 +198,6 @@
       key: 'close',
       value: function close() {
         if (this.isClose !== true) {
-
           this.$el.addClass('is-close');
           this.$el.trigger('close.uikit.panel');
 

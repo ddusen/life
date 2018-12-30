@@ -64,5 +64,6 @@
   }(_Plugin3.default);
 
   _Plugin3.default.register(NAME, InputGroupFile);
+
   exports.default = InputGroupFile;
 });

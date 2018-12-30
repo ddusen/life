@@ -37,9 +37,14 @@ class Filterable extends Plugin {
       let $this = $(this);
       let $li = $this.parent('li');
 
-      $li.siblings().find('.nav-link.active').each(function() {
-        $(this).attr('aria-expanded', false).removeClass('active');
-      });
+      $li
+        .siblings()
+        .find('.nav-link.active')
+        .each(function() {
+          $(this)
+            .attr('aria-expanded', false)
+            .removeClass('active');
+        });
 
       $this.addClass('active').attr('aria-expanded', true);
 

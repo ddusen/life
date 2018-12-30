@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'tokenfield'; // import $ from 'jquery';
+  var NAME = 'tokenfield';
 
   var Tokenfield = function (_Plugin) {
     babelHelpers.inherits(Tokenfield, _Plugin);

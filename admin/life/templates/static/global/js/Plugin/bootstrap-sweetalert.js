@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'sweetalert'; // import $ from 'jquery';
+  var NAME = 'sweetalert';
 
   var Sweetalert = function (_Plugin) {
     babelHelpers.inherits(Sweetalert, _Plugin);

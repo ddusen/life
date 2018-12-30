@@ -34,7 +34,9 @@ class Formatter extends Plugin {
       options = this.options;
 
     if (options.pattern) {
-      options.pattern = options.pattern.replace(/\[\[/g, '{{').replace(/\]\]/g, '}}');
+      options.pattern = options.pattern
+        .replace(/\[\[/g, '{{')
+        .replace(/\]\]/g, '}}');
     }
     $el.formatter(options);
   }

@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'jstree'; // import $ from 'jquery';
+  var NAME = 'jstree';
 
   var Jstree = function (_Plugin) {
     babelHelpers.inherits(Jstree, _Plugin);

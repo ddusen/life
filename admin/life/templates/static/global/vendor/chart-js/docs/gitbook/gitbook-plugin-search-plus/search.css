@@ -14,11 +14,11 @@
 }
 #book-search-results .search-results ul.search-results-list li {
   margin-bottom: 1.5rem;
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
   /* Highlight results */
 }
 #book-search-results .search-results ul.search-results-list li p em {
-  background-color: rgba(255, 220, 0, .4);
+  background-color: rgba(255, 220, 0, 0.4);
   font-style: normal;
 }
 #book-search-results .search-results .no-results {

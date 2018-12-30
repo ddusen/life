@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'iCheck'; // import $ from 'jquery';
+  var NAME = 'iCheck';
 
   var ICheck = function (_Plugin) {
     babelHelpers.inherits(ICheck, _Plugin);

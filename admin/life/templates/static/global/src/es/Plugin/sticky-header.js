@@ -20,11 +20,11 @@ class stickyHeader {
   init(options) {
     const $el = this.$el.css('transition', 'none');
 
-    const $header = this.$header = $el.find(options.headerSelector).css({
+    const $header = (this.$header = $el.find(options.headerSelector).css({
       position: 'absolute',
       top: 0,
       left: 0
-    });
+    }));
 
     this.options = $.extend(true, {}, defaults, options, $header.data());
     this.headerHeight = $header.outerHeight();
@@ -46,19 +46,28 @@ class stickyHeader {
     const self = this;
     this.$el.on('scroll', function() {
       if (self.options.method === 'toggle') {
-        if ($(this).scrollTop() > self.options.changeHeaderOn && !self.isActive) {
+        if (
+          $(this).scrollTop() > self.options.changeHeaderOn &&
+          !self.isActive
+        ) {
           self.$el.addClass(self.options.activeClassName);
           self.isActive = true;
           self.$header.css('height', self.options.min);
           self.$el.trigger('toggle:sticky', [self, self.isActive]);
-        } else if ($(this).scrollTop() <= self.options.changeHeaderOn && self.isActive) {
+        } else if (
+          $(this).scrollTop() <= self.options.changeHeaderOn &&
+          self.isActive
+        ) {
           self.$el.removeClass(self.options.activeClassName);
           self.isActive = false;
           self.$header.css('height', self.headerHeight);
           self.$el.trigger('toggle:sticky', [self, self.isActive]);
         }
       } else if (self.options.method === 'scroll') {
-        const offset = Math.max(self.headerHeight - $(this).scrollTop(), self.options.min);
+        const offset = Math.max(
+          self.headerHeight - $(this).scrollTop(),
+          self.options.min
+        );
         if (offset === self.headerHeight) {
           self.$el.removeClass(self.options.activeClassName);
         } else {

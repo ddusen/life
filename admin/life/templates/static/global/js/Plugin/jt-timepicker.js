@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'timepicker'; // import $ from 'jquery';
+  var NAME = 'timepicker';
 
   var Timepicker = function (_Plugin) {
     babelHelpers.inherits(Timepicker, _Plugin);

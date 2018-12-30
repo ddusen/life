@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'datepair'; // import $ from 'jquery';
+  var NAME = 'datepair';
 
   var Datepair = function (_Plugin) {
     babelHelpers.inherits(Datepair, _Plugin);

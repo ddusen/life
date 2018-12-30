@@ -63,13 +63,13 @@
         this.$delBtn.on('click', function () {
           if (typeof _bootbox2.default === 'undefined') return;
           _bootbox2.default.dialog({
-            message: "Do you want to delete the contact?",
+            message: 'Do you want to delete the contact?',
             buttons: {
               success: {
-                label: "Delete",
-                className: "btn-danger",
+                label: 'Delete',
+                className: 'btn-danger',
                 callback: function callback() {
-                  // $(e.target).closest('.list-group-item').remove();
+                  self.$element.remove();
                 }
               }
             }

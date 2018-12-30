@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'TouchSpin'; // import $ from 'jquery';
+  var NAME = 'TouchSpin';
 
   var TouchSpin = function (_Plugin) {
     babelHelpers.inherits(TouchSpin, _Plugin);

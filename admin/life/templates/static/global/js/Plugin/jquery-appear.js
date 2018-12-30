@@ -77,5 +77,6 @@
   }(_Plugin3.default);
 
   _Plugin3.default.register(NAME, Appear);
+
   exports.default = Appear;
 });

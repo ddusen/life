@@ -13,7 +13,12 @@ class TableSection extends Plugin {
   }
   toggle(e) {
     let $el = this.$el;
-    if (e.target.type !== 'checkbox' && e.target.type !== 'button' && e.target.tagName.toLowerCase() !== 'a' && !$(e.target).parent('div.checkbox-custom').length) {
+    if (
+      e.target.type !== 'checkbox' &&
+      e.target.type !== 'button' &&
+      e.target.tagName.toLowerCase() !== 'a' &&
+      !$(e.target).parent('div.checkbox-custom').length
+    ) {
       if ($el.hasClass('active')) {
         $el.removeClass('active');
       } else {

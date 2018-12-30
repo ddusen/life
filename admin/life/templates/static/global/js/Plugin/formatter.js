@@ -43,16 +43,9 @@
           return;
         }
 
-        var browserName = navigator.userAgent.toLowerCase(),
-            ieOptions = void 0;
+        var browserName = navigator.userAgent.toLowerCase();
 
-        if (/msie/i.test(browserName) && !/opera/.test(browserName)) {
-          ieOptions = {
-            persistent: false
-          };
-        } else {
-          ieOptions = {};
-        }
+        if (/msie/i.test(browserName) && !/opera/.test(browserName)) {} else {}
 
         var $el = this.$el,
             options = this.options;

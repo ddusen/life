@@ -1,4 +1,3 @@
-// import $ from 'jquery';
 import Plugin from 'Plugin';
 
 const NAME = 'asRange';

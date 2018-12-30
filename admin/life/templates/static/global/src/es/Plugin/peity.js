@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Plugin from 'Plugin';
-import * as Config from 'Config';
+import * as Config from "Config";
 
 class PeityBar extends Plugin {
   getName() {
@@ -48,7 +48,11 @@ class PeityDonut extends Plugin {
   static getDefaults() {
     return {
       delimiter: null,
-      fill: [Config.colors('primary', 700), Config.colors('primary', 400), Config.colors('primary', 200)],
+      fill: [
+        Config.colors('primary', 700),
+        Config.colors('primary', 400),
+        Config.colors('primary', 200)
+      ],
       height: null,
       innerRadius: null,
       radius: 11,
@@ -123,7 +127,11 @@ class PeityPie extends Plugin {
   static getDefaults() {
     return {
       delimiter: null,
-      fill: [Config.colors('primary', 700), Config.colors('primary', 400), Config.colors('primary', 200)],
+      fill: [
+        Config.colors('primary', 700),
+        Config.colors('primary', 400),
+        Config.colors('primary', 200)
+      ],
       height: null,
       radius: 11,
       width: null

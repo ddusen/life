@@ -7,6 +7,7 @@
       display: none !important;
     }
   }
+
   .hidden-#{$bp}-down {
     @include media-breakpoint-down($bp) {
       display: none !important;

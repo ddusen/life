@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'ionRangeSlider'; // import $ from 'jquery';
+  var NAME = 'ionRangeSlider';
 
   var IonRangeSlider = function (_Plugin) {
     babelHelpers.inherits(IonRangeSlider, _Plugin);

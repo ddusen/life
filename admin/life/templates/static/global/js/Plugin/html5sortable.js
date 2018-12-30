@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'sortable'; // import $ from 'jquery';
+  var NAME = 'sortable';
 
   var Sortable = function (_Plugin) {
     babelHelpers.inherits(Sortable, _Plugin);
@@ -37,8 +37,6 @@
     }, {
       key: 'render',
       value: function render() {
-        var $el = this.$el;
-
         sortable(this.$el.get(0), this.options);
       }
     }], [{

@@ -1,18 +1,7 @@
-// Base class
-//
-// Kickstart any navigation component with a set of style resets. Works with
-// `<nav>`s or `<ul>`s.
-
 .nav-link {
-
-  // Disabled state lightens text and removes hover/tab effects
+  // Disabled state lightens text
   &.disabled {
-    color: $nav-disabled-link-color;
-
-    @include plain-hover-focus {
-      color: $nav-disabled-link-hover-color;
-      background-color: $nav-disabled-link-hover-bg;
-    }
+    color: $nav-link-disabled-color;
   }
 }
 
@@ -31,34 +20,28 @@
     }
 
     &.disabled {
-      @include plain-hover-focus {
-        color: $nav-disabled-link-color;
-      }
+      color: $nav-link-disabled-color;
+      background-color: transparent;
+      border-color: transparent;
     }
   }
 
   .nav-link.active,
-  .nav-item.open .nav-link {
-    @include plain-hover-focus {
-      color: $nav-tabs-active-link-hover-color;
-      background-color: $nav-tabs-active-link-hover-bg;
-      border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
-    }
+  .nav-item.show .nav-link {
+    color: $nav-tabs-link-active-color;
+    background-color: $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color $nav-tabs-link-active-border-color $nav-tabs-link-active-bg;
   }
 }
-
 
 //
 // Pills
 //
 
 .nav-pills {
-
   .nav-link.active,
-  .nav-item.open .nav-link {
-    @include plain-hover-focus {
-      color: $nav-pills-active-link-color;
-      background-color: $nav-pills-active-link-bg;
-    }
+  .show > .nav-link {
+    color: $nav-pills-link-active-color;
+    background-color: $nav-pills-link-active-bg;
   }
 }

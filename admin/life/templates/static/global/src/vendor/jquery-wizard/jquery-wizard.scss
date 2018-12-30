@@ -1,16 +1,14 @@
 @import 'vars';
-
 $wizard-pane-transition-duration: .2s;
-$wizard-pane-color-active:        $brand-primary;
-$wizard-pane-color-error:         $brand-danger;
-$wizard-pane-color-done:          $brand-success;   
+$wizard-pane-color-active: $brand-primary;
+$wizard-pane-color-error: $brand-danger;
+$wizard-pane-color-done: $brand-success;
 
 .wizard-pane {
   position: absolute;
-  opacity: 0;
   top: 0;
   visibility: hidden;
-
+  opacity: 0;
   transition: opacity $wizard-pane-transition-duration ease;
 
   &.active {
@@ -31,8 +29,7 @@ $wizard-pane-color-done:          $brand-success;
 }
 
 .wizard-buttons {
-  .panel-body > &,
-  .tab-content > & {
+  .panel-body > &, .tab-content > & {
     margin-top: $line-height-computed;
   }
 }

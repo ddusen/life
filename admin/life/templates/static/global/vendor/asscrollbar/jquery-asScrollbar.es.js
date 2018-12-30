@@ -1,5 +1,5 @@
 /**
-* jQuery asScrollbar v0.5.4
+* jQuery asScrollbar v0.5.7
 * https://github.com/amazingSurge/jquery-asScrollbar
 *
 * Copyright (c) amazingSurge
@@ -1007,7 +1007,7 @@ class asScrollbar {
 }
 
 var info = {
-  version:'0.5.4'
+  version:'0.5.7'
 };
 
 const NAMESPACE = 'asScrollbar';

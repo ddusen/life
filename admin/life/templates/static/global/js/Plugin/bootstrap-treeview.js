@@ -21,9 +21,6 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var Config = babelHelpers.interopRequireWildcard(_Config);
-
-
   var NAME = 'treeview';
 
   var Treeview = function (_Plugin) {
@@ -71,12 +68,12 @@
           showBorder: false,
           // color: undefined, // "#000000",
           // backColor: undefined, // "#FFFFFF",
-          borderColor: Config.colors('blue-grey', 200),
-          onhoverColor: Config.colors('blue-grey', 100),
+          borderColor: (0, _Config.colors)('blue-grey', 200),
+          onhoverColor: (0, _Config.colors)('blue-grey', 100),
           selectedColor: '#ffffff',
-          selectedBackColor: Config.colors('primary', 600),
+          selectedBackColor: (0, _Config.colors)('primary', 600),
 
-          searchResultColor: Config.colors('primary', 600),
+          searchResultColor: (0, _Config.colors)('primary', 600),
           searchResultBackColor: '#ffffff'
         };
       }

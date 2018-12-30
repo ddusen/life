@@ -1,23 +1,21 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define('/Plugin/ace-editor', ['exports', 'jquery', 'Plugin'], factory);
+    define('/Plugin/ace-editor', ['exports', 'Plugin'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('jquery'), require('Plugin'));
+    factory(exports, require('Plugin'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.jQuery, global.Plugin);
+    factory(mod.exports, global.Plugin);
     global.PluginAceEditor = mod.exports;
   }
-})(this, function (exports, _jquery, _Plugin2) {
+})(this, function (exports, _Plugin2) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
-  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 

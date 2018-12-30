@@ -3,8 +3,7 @@ import Component from 'Component';
 import {
   pluginFactory,
   getPluginAPI
-}
-from 'Plugin';
+} from 'Plugin';
 
 export default class extends Component {
   initializePlugins(context = false) {
@@ -12,6 +11,7 @@ export default class extends Component {
       let $this = $(this),
         name = $this.data('plugin'),
         plugin = pluginFactory(name, $this, $this.data());
+
       if (plugin) {
         plugin.initialize();
       }

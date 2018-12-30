@@ -24,17 +24,17 @@
 }
 
 .jsgrid-grid-header {
-  background: $gray-lighter;
+  background: $gray-200;
 }
 
 .jsgrid-header-scrollbar {
-  scrollbar-arrow-color: $gray-lightest;
-  scrollbar-base-color: $gray-lightest;
-  scrollbar-3dlight-color: $gray-lightest;
-  scrollbar-highlight-color: $gray-lightest;
-  scrollbar-track-color: $gray-lightest;
-  scrollbar-shadow-color: $gray-lightest;
-  scrollbar-dark-shadow-color: $gray-lightest;
+  scrollbar-arrow-color: $gray-100;
+  scrollbar-base-color: $gray-100;
+  scrollbar-3dlight-color: $gray-100;
+  scrollbar-highlight-color: $gray-100;
+  scrollbar-track-color: $gray-100;
+  scrollbar-shadow-color: $gray-100;
+  scrollbar-dark-shadow-color: $gray-100;
 }
 
 .jsgrid-header-scrollbar::-webkit-scrollbar {
@@ -42,7 +42,7 @@
 }
 
 .jsgrid-header-scrollbar::-webkit-scrollbar-track {
-  background: $gray-lightest;
+  background: $gray-100;
 }
 
 .jsgrid-header-sortable:hover {

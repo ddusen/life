@@ -1,10 +1,10 @@
 table.dt-rowReorder-float {
   position: absolute !important;
-  opacity: 0.8;
+  z-index: 2001;
   table-layout: fixed;
   outline: 2px solid #0275d8;
   outline-offset: -2px;
-  z-index: 2001;
+  opacity: .8;
 }
 
 tr.dt-rowReorder-moving {

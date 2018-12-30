@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'toastr'; // import $ from 'jquery';
+  var NAME = 'toastr';
 
   var Toastr = function (_Plugin) {
     babelHelpers.inherits(Toastr, _Plugin);

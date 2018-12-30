@@ -1,6 +1,7 @@
 @import 'vars'; // z-index
 $summernote-fullscreen-z-index: $zindex-fullscreen;
 $summernote-dropzone-z-index: $zindex-overlay;
+
 /* Theme Variables
  ------------------------------------------*/
 @import "scss/elements";
@@ -14,25 +15,25 @@ $background-color: #f5f5f5;
 /* Layout
  ------------------------------------------*/
 .note-editor {
-  position: relative;
-
   /* dropzone */
   $dropzone-color: lightskyblue;
   $dropzone-active-color: darken($dropzone-color, 30);
+  position: relative;
+
   .note-dropzone {
     position: absolute;
-    display: none;
     z-index: $summernote-dropzone-z-index;
+    display: none;
     color: $dropzone-color;
     background-color: white;
-    opacity: 0.95;
+    opacity: .95;
 
     .note-dropzone-message {
       display: table-cell;
-      vertical-align: middle;
-      text-align: center;
       font-size: 28px;
       font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
     }
 
     &.hover {
@@ -72,6 +73,7 @@ $background-color: #f5f5f5;
       .note-editable {
         display: none;
       }
+
       .note-codable {
         display: block;
       }
@@ -83,10 +85,10 @@ $background-color: #f5f5f5;
 
     /* editable */
     .note-editable {
-      background-color: #fff;
-      color: #000;
       padding: 10px;
       overflow: auto;
+      color: #000;
+      background-color: #fff;
 
       &[contenteditable="false"] {
         background-color: #e5e5e5;
@@ -95,21 +97,20 @@ $background-color: #f5f5f5;
 
     /* codeable */
     .note-codable {
-      display: none;
-      width: 100%;
-      padding: 10px;
-      border: none;
-      box-shadow: none;
-      font-family: Menlo, Monaco, monospace, sans-serif;
-      font-size: 14px;
-      color: #ccc;
-      background-color: #222;
-      resize: none;
-
       /* override BS2 default style */
       @include box-sizing(border-box);
       @include rounded(0);
+      display: none;
+      width: 100%;
+      padding: 10px;
       margin-bottom: 0;
+      font-family: Menlo, Monaco, monospace, sans-serif;
+      font-size: 14px;
+      color: #ccc;
+      resize: none;
+      background-color: #222;
+      border: none;
+      box-shadow: none;
     }
   }
 
@@ -118,11 +119,12 @@ $background-color: #f5f5f5;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100% !important;
     z-index: $summernote-fullscreen-z-index; /* bs3 modal-backdrop: 1030, bs2: 1040 */
+    width: 100% !important;
     .note-editable {
       background-color: white;
     }
+
     .note-resizebar {
       display: none;
     }
@@ -131,13 +133,15 @@ $background-color: #f5f5f5;
   /* statusbar */
   .note-statusbar {
     background-color: $background-color;
-    border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+
     .note-resizebar {
-      padding-top: 1px;
-      height: 8px;
       width: 100%;
+      height: 8px;
+      padding-top: 1px;
       cursor: ns-resize;
+
       .note-icon-bar {
         width: 20px;
         margin: 1px auto;
@@ -145,6 +149,7 @@ $background-color: #f5f5f5;
       }
     }
   }
+
   .note-placeholder {
     padding: 10px;
   }
@@ -154,6 +159,7 @@ $background-color: #f5f5f5;
 ------------------------------------------*/
 .note-popover.popover {
   max-width: none;
+
   .popover-content {
     a {
       display: inline-block;
@@ -164,6 +170,7 @@ $background-color: #f5f5f5;
       vertical-align: middle; /* for FF */
     }
   }
+
   .arrow {
     left: 20px !important;
   }
@@ -172,21 +179,23 @@ $background-color: #f5f5f5;
 /* Popover and Toolbar (Button container)
 ------------------------------------------*/
 .note-popover .popover-content, .panel-heading.note-toolbar {
-  margin: 0;
   padding: 0 0 5px 5px;
+  margin: 0;
 
-  &>.btn-group {
+  & > .btn-group {
     margin-top: 5px;
-    margin-left: 0;
     margin-right: 5px;
+    margin-left: 0;
   }
 
   .btn-group {
     .note-table {
       min-width: 0;
       padding: 5px;
+
       .note-dimension-picker {
         font-size: 18px;
+
         .note-dimension-picker-mousecatcher {
           position: absolute !important;
           z-index: 3;
@@ -194,19 +203,21 @@ $background-color: #f5f5f5;
           height: 10em;
           cursor: pointer;
         }
+
         .note-dimension-picker-unhighlighted {
           position: relative !important;
           z-index: 1;
           width: 5em;
           height: 5em;
-          background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC') repeat;
+          background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat;
         }
+
         .note-dimension-picker-highlighted {
           position: absolute !important;
           z-index: 2;
           width: 1em;
           height: 1em;
-          background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC') repeat;
+          background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat;
         }
       }
     }
@@ -223,27 +234,30 @@ $background-color: #f5f5f5;
       width: 20px;
       padding-left: 5px;
     }
+
     .dropdown-menu {
       min-width: 340px;
+
       .btn-group {
         margin: 0;
+
         &:first-child {
           margin: 0 5px;
         }
 
         .note-palette-title {
-          font-size: 12px;
           margin: 2px 7px;
+          font-size: 12px;
           text-align: center;
           border-bottom: 1px solid #eee;
         }
 
         .note-color-reset {
-          font-size: 11px;
-          margin: 3px;
-          padding: 0 3px;
-          cursor: pointer;
           @include rounded(5px);
+          padding: 0 3px;
+          margin: 3px;
+          font-size: 11px;
+          cursor: pointer;
         }
 
         .note-color-row {
@@ -261,7 +275,8 @@ $background-color: #f5f5f5;
     .dropdown-menu {
       min-width: 216px;
       padding: 5px;
-      &>div:first-child {
+
+      & > div:first-child {
         margin-right: 5px;
       }
     }
@@ -272,24 +287,34 @@ $background-color: #f5f5f5;
     min-width: 90px;
 
     /* dropdown-menu right position */
+
     /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
     &.right {
       right: 0;
       left: auto;
-      &::before { right: 9px; left: auto !important;  }
-      &::after { right: 10px; left: auto !important;  }
+
+      &::before {
+        right: 9px;
+        left: auto !important;
+      }
+
+      &::after {
+        right: 10px;
+        left: auto !important;
+      }
     }
+
     /* dropdown-menu for selectbox */
     &.note-check {
       li a i {
         color: deepskyblue;
         visibility: hidden;
       }
+
       li a.checked i {
         visibility: visible;
       }
     }
-
   }
 
   .note-fontsize-10 {
@@ -299,6 +324,7 @@ $background-color: #f5f5f5;
   /* color palette for toolbar and popover */
   .note-color-palette {
     line-height: 1;
+
     div {
       .note-color-btn {
         width: 20px;
@@ -307,6 +333,7 @@ $background-color: #f5f5f5;
         margin: 0;
         border: 1px solid #fff;
       }
+
       .note-color-btn:hover {
         border: 1px solid #000;
       }
@@ -317,25 +344,28 @@ $background-color: #f5f5f5;
 /* Dialog
 ------------------------------------------*/
 .note-dialog {
-  &>div {
+  & > div {
     display: none; /* BS2's hide pacth. */
   }
+
   .form-group { /* overwrite BS's form-horizontal minus margins */
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
   }
+
   .note-modal-form {
     margin: 0; /* overwrite BS2's form margin bottom */
   }
+
   .note-image-dialog {
     .note-dropzone {
       min-height: 100px;
+      margin-bottom: 10px;
       font-size: 30px;
       line-height: 4; /* vertical-align */
       color: lightgray;
       text-align: center;
       border: 4px dashed lightgray;
-      margin-bottom: 10px;
     }
   }
 }
@@ -356,13 +386,16 @@ $background-color: #f5f5f5;
     position: absolute;
     display: none;
     border: 1px solid black;
-    &>div { position: absolute; }
+
+    & > div {
+      position: absolute;
+    }
 
     .note-control-selection-bg {
+      @include opacity(0.3);
       width: 100%;
       height: 100%;
       background-color: black;
-      @include opacity(0.3);
     }
 
     .note-control-handle {
@@ -414,15 +447,15 @@ $background-color: #f5f5f5;
     }
 
     .note-control-selection-info {
+      @include rounded(5px);
+      @include opacity(0.7);
       right: 0;
       bottom: 0;
       padding: 5px;
       margin: 5px;
+      font-size: 12px;
       color: white;
       background-color: black;
-      font-size: 12px;
-      @include rounded(5px);
-      @include opacity(0.7);
     }
   }
 }
@@ -432,8 +465,8 @@ $background-color: #f5f5f5;
   padding: 2px;
 
   .popover-content {
-    padding: 3px;
     max-height: 150px;
+    padding: 3px;
     overflow: auto;
 
     .note-hint-group {
@@ -447,11 +480,11 @@ $background-color: #f5f5f5;
           font-weight: 400;
           line-height: 1.4;
           color: white;
-          white-space: nowrap;
           text-decoration: none;
+          white-space: nowrap;
+          cursor: pointer;
           background-color: #428bca;
           outline: 0;
-          cursor: pointer;
         }
       }
     }
@@ -465,8 +498,7 @@ $background-color: #f5f5f5;
 
 // dropdown is diffrent in v4 and v3
 // for bootstrapV3.x dropdown-menu style
-.note-popover.note-air-popover,
-.note-editor .note-toolbar { 
+.note-popover.note-air-popover, .note-editor .note-toolbar {
   .note-btn.dropdown-toggle:after {
     display: none;
     margin: 0;
@@ -474,67 +506,61 @@ $background-color: #f5f5f5;
   }
 
   .dropdown-menu > li {
-    padding: 0px 5px;
-    margin: 2px 0px;
+    padding: 0 5px;
+    margin: 2px 0;
   }
 
   .note-color .dropdown-menu > li {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
   }
 
   .dropdown-menu > li.divider {
     height: 1px;
     margin: 10px 0;
     overflow: hidden;
-    background-color: $gray-lighter;
+    background-color: $gray-200;
   }
 
   .dropdown-menu > li > a {
     display: block;
-    padding: $dropdown-link-padding;
-    border-radius: $dropdown-link-border-radius;
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
     font-weight: normal;
     line-height: $line-height-base;
     color: $dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
+    border-radius: $dropdown-item-border-radius;
     transition: background-color .25s;
 
-    &:hover,
-    &:focus {
-      text-decoration: none;
+    &:hover, &:focus {
       color: $dropdown-link-hover-color;
+      text-decoration: none;
       background-color: $dropdown-link-hover-bg;
     }
   }
 
   // Active state
   .dropdown-menu > .active > a {
-    &,
-    &:hover,
-    &:focus {
+    &, &:hover, &:focus {
       color: $dropdown-link-active-color;
       text-decoration: none;
-      outline: 0;
       background-color: $dropdown-link-active-bg;
+      outline: 0;
     }
   }
   // disabled state
   .dropdown-menu > .disabled > a {
-    &,
-    &:hover,
-    &:focus {
+    &, &:hover, &:focus {
       color: $dropdown-link-disabled-color;
     }
 
     // Nuke hover/focus effects
-    &:hover,
-    &:focus {
+    &:hover, &:focus {
       text-decoration: none;
-      background-color: transparent;
-      background-image: none; // Remove CSS gradient
       // @include reset-filter;
       cursor: $cursor-disabled;
+      background-color: transparent;
+      background-image: none; // Remove CSS gradient
     }
   }
 }

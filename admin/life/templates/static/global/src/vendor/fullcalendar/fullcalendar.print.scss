@@ -19,8 +19,8 @@
 --------------------------------------------------------------------------------------------------*/
 
 .fc-event {
-  background: #fff !important;
   color: #000 !important;
+  background: #fff !important;
   page-break-inside: avoid;
 }
 
@@ -32,27 +32,15 @@
 /* Table & Day-Row Restyling
 --------------------------------------------------------------------------------------------------*/
 
-.fc th,
-.fc td,
-.fc hr,
-.fc thead,
-.fc tbody,
-.fc-row {
-  border-color: #ccc !important;
+.fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row {
   background: #fff !important;
+  border-color: #ccc !important;
 }
 
 /* kill the overlaid, absolutely-positioned components */
+
 /* common... */
-.fc-bg,
-.fc-bgevent-skeleton,
-.fc-highlight-skeleton,
-.fc-helper-skeleton,
-/* for timegrid. within cells within table skeletons... */
-.fc-bgevent-container,
-.fc-business-container,
-.fc-highlight-container,
-.fc-helper-container {
+.fc-bg, .fc-bgevent-skeleton, .fc-highlight-skeleton, .fc-helper-skeleton, .fc-bgevent-container, .fc-business-container, .fc-highlight-container, .fc-helper-container {
   display: none;
 }
 
@@ -81,8 +69,7 @@
 /* Undo month-view event limiting. Display all events and hide the "more" links
 --------------------------------------------------------------------------------------------------*/
 
-.fc-more-cell,
-.fc-more {
+.fc-more-cell, .fc-more {
   display: none !important;
 }
 
@@ -113,8 +100,7 @@
 }
 
 /* don't display the horizontal lines */
-.fc-slats,
-.fc-time-grid hr { /* this hr is used when height is underused and needs to be filled */
+.fc-slats, .fc-time-grid hr { /* this hr is used when height is underused and needs to be filled */
   display: none !important; /* important overrides inline declaration */
 }
 
@@ -185,24 +171,21 @@
 --------------------------------------------------------------------------------------------------*/
 
 /* kill the scrollbars and allow natural height */
-.fc-scroller,
-.fc-day-grid-container,    /* these divs might be assigned height, which we need to cleared */
-.fc-time-grid-container {  /* */
-  overflow: visible !important;
+.fc-scroller, .fc-day-grid-container, .fc-time-grid-container {  /* */
   height: auto !important;
+  overflow: visible !important;
 }
 
 /* kill the horizontal border/padding used to compensate for scrollbars */
 .fc-row {
-  border: 0 !important;
   margin: 0 !important;
+  border: 0 !important;
 }
 
 
 /* Button Controls
 --------------------------------------------------------------------------------------------------*/
 
-.fc-button-group,
-.fc button {
+.fc-button-group, .fc button {
   display: none; /* don't display any button-related controls */
 }

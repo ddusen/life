@@ -22,8 +22,6 @@
 
   var _Plugin6 = babelHelpers.interopRequireDefault(_Plugin5);
 
-  var Config = babelHelpers.interopRequireWildcard(_Config);
-
   var PeityBar = function (_Plugin) {
     babelHelpers.inherits(PeityBar, _Plugin);
 
@@ -48,7 +46,7 @@
             options = this.options;
 
         if (options.skin) {
-          var skinColors = Config.colors(options.skin);
+          var skinColors = (0, _Config.colors)(options.skin);
           if (skinColors) {
             options.fill = [skinColors[400]];
           }
@@ -61,7 +59,7 @@
       value: function getDefaults() {
         return {
           delimiter: ',',
-          fill: [Config.colors('primary', 400)],
+          fill: [(0, _Config.colors)('primary', 400)],
           height: 22,
           max: null,
           min: 0,
@@ -99,7 +97,7 @@
             options = this.options;
 
         if (options.skin) {
-          var skinColors = Config.colors(options.skin);
+          var skinColors = (0, _Config.colors)(options.skin);
           if (skinColors) {
             options.fill = [skinColors[700], skinColors[400], skinColors[200]];
           }
@@ -112,7 +110,7 @@
       value: function getDefaults() {
         return {
           delimiter: null,
-          fill: [Config.colors('primary', 700), Config.colors('primary', 400), Config.colors('primary', 200)],
+          fill: [(0, _Config.colors)('primary', 700), (0, _Config.colors)('primary', 400), (0, _Config.colors)('primary', 200)],
           height: null,
           innerRadius: null,
           radius: 11,
@@ -149,7 +147,7 @@
             options = this.options;
 
         if (options.skin) {
-          var skinColors = Config.colors(options.skin);
+          var skinColors = (0, _Config.colors)(options.skin);
           if (skinColors) {
             options.fill = [skinColors[200]];
             options.stroke = skinColors[600];
@@ -163,11 +161,11 @@
       value: function getDefaults() {
         return {
           delimiter: ',',
-          fill: [Config.colors('primary', 200)],
+          fill: [(0, _Config.colors)('primary', 200)],
           height: 22,
           max: null,
           min: 0,
-          stroke: Config.colors('primary', 600),
+          stroke: (0, _Config.colors)('primary', 600),
           strokeWidth: 1,
           width: 44
         };
@@ -202,7 +200,7 @@
             options = this.options;
 
         if (options.skin) {
-          var skinColors = Config.colors(options.skin);
+          var skinColors = (0, _Config.colors)(options.skin);
           if (skinColors) {
             options.fill = [skinColors[700], skinColors[400], skinColors[200]];
           }
@@ -215,7 +213,7 @@
       value: function getDefaults() {
         return {
           delimiter: null,
-          fill: [Config.colors('primary', 700), Config.colors('primary', 400), Config.colors('primary', 200)],
+          fill: [(0, _Config.colors)('primary', 700), (0, _Config.colors)('primary', 400), (0, _Config.colors)('primary', 200)],
           height: null,
           radius: 11,
           width: null

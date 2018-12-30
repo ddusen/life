@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Plugin from 'Plugin';
-import * as Config from 'Config';
+import * as Config from "Config";
 
 const NAME = 'treeview';
 
@@ -36,7 +36,10 @@ class Treeview extends Plugin {
     let $el = this.$el,
       options = this.options;
 
-    if (typeof options.source === 'string' && $.isFunction(window[options.source])) {
+    if (
+      typeof options.source === 'string' &&
+      $.isFunction(window[options.source])
+    ) {
       options.data = window[options.source]();
       delete options.source;
     } else if ($.isFunction(options.souce)) {

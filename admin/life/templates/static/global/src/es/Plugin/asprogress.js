@@ -15,11 +15,17 @@ class Progress extends Plugin {
       onUpdate(n) {
         let per = (n - this.min) / (this.max - this.min);
         if (per < 0.5) {
-          this.$target.addClass('progress-bar-success').removeClass('progress-bar-warning progress-bar-danger');
+          this.$target
+            .addClass('progress-bar-success')
+            .removeClass('progress-bar-warning progress-bar-danger');
         } else if (per >= 0.5 && per < 0.8) {
-          this.$target.addClass('progress-bar-warning').removeClass('progress-bar-success progress-bar-danger');
+          this.$target
+            .addClass('progress-bar-warning')
+            .removeClass('progress-bar-success progress-bar-danger');
         } else {
-          this.$target.addClass('progress-bar-danger').removeClass('progress-bar-success progress-bar-warning');
+          this.$target
+            .addClass('progress-bar-danger')
+            .removeClass('progress-bar-success progress-bar-warning');
         }
       },
 
@@ -42,7 +48,10 @@ class Progress extends Plugin {
         }
 
         if (this.$element.parent().hasClass('contextual-progress')) {
-          this.$element.parent().find('.progress-label').html(label);
+          this.$element
+            .parent()
+            .find('.progress-label')
+            .html(label);
         }
 
         return label;

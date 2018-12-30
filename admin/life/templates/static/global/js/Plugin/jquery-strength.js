@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'strength'; // import $ from 'jquery';
+  var NAME = 'strength';
 
   var Strength = function (_Plugin) {
     babelHelpers.inherits(Strength, _Plugin);

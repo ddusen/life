@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'ladda'; // import $ from 'jquery';
+  var NAME = 'ladda';
 
   var LaddaPlugin = function (_Plugin) {
     babelHelpers.inherits(LaddaPlugin, _Plugin);

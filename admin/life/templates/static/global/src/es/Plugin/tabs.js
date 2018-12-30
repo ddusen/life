@@ -13,7 +13,10 @@ class Tabs extends Plugin {
   }
 
   render() {
-    if (this.$el.find('.nav-tabs-horizontal') && $.fn.responsiveHorizontalTabs) {
+    if (
+      this.$el.find('.nav-tabs-horizontal') &&
+      $.fn.responsiveHorizontalTabs
+    ) {
       this.type = 'horizontal';
       this.$el.responsiveHorizontalTabs();
     } else if (this.$el.find('.nav-tabs-vertical')) {

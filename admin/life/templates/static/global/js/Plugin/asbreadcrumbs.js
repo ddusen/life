@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'breadcrumb'; // import $ from 'jquery';
+  var NAME = 'breadcrumb';
 
   var Breadcrumb = function (_Plugin) {
     babelHelpers.inherits(Breadcrumb, _Plugin);
@@ -44,7 +44,7 @@
       key: 'getDefaults',
       value: function getDefaults() {
         return {
-          overflow: "left",
+          overflow: 'left',
           namespace: 'breadcrumb',
           dropdownMenuClass: 'dropdown-menu',
           dropdownItemClass: 'dropdown-item',

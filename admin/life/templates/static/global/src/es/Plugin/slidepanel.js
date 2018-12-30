@@ -32,7 +32,8 @@ class SlidePanel extends Plugin {
     }
     if (!this.options.url) {
       this.options.url = this.$el.attr('href');
-      this.options.url = this.options.url && this.options.url.replace(/.*(?=#[^\s]*$)/, '');
+      this.options.url =
+        this.options.url && this.options.url.replace(/.*(?=#[^\s]*$)/, '');
     }
 
     this.$el.data('slidePanelWrapAPI', this);
@@ -41,8 +42,10 @@ class SlidePanel extends Plugin {
     let options = this.options;
 
     $.slidePanel.show({
-      url: options.url
-    }, options);
+        url: options.url
+      },
+      options
+    );
   }
   static api() {
     return 'click|show';

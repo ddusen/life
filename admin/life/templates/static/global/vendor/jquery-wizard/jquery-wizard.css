@@ -1,57 +1,39 @@
-.wizard-pane
-{
-    position: absolute;
-    top: 0;
-
-    visibility: hidden;
-
-    -webkit-transition: opacity .2s ease;
-         -o-transition: opacity .2s ease;
-            transition: opacity .2s ease; 
-
-    opacity: 0;
-}
-.wizard-pane.active
-{
-    position: relative;
-
-    visibility: visible;
-
-    opacity: 1;
-}
-.wizard-pane.activing
-{
-    visibility: visible;
+.wizard-pane {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s ease;
 }
 
-.wizard-content
-{
-    position: relative;
-
-    padding: 0;
-
-    -webkit-transition: height .2s ease;
-         -o-transition: height .2s ease;
-            transition: height .2s ease;
+.wizard-pane.active {
+  position: relative;
+  visibility: visible;
+  opacity: 1;
 }
 
-.panel-body > .wizard-buttons,
-.tab-content > .wizard-buttons
-{
-    margin-top: 22px;
+.wizard-pane.activing {
+  visibility: visible;
 }
 
-.color-active
-{
-    color: #62a8ea !important;
+.wizard-content {
+  position: relative;
+  padding: 0;
+  transition: height .2s ease;
 }
 
-.color-error
-{
-    color: #f96868 !important;
+.panel-body > .wizard-buttons, .tab-content > .wizard-buttons {
+  margin-top: 22px;
 }
 
-.color-done
-{
-    color: #46be8a !important;
+.color-active {
+  color: #3e8ef7 !important;
+}
+
+.color-error {
+  color: #ff4c52 !important;
+}
+
+.color-done {
+  color: #11c26d !important;
 }

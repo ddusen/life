@@ -4,7 +4,7 @@
 }
 
 .c3-chart-arcs .c3-chart-arcs-background {
-  fill: $gray-light;
+  fill: $gray-300;
   stroke: none;
 }
 .c3-chart-arcs .c3-chart-arcs-gauge-unit {
@@ -12,10 +12,10 @@
   font-size: 16px;
 }
 .c3-chart-arcs .c3-chart-arcs-gauge-max {
-  fill: $gray-dark;
+  fill: $gray-500;
 }
 .c3-chart-arcs .c3-chart-arcs-gauge-min {
-  fill: $gray-dark;
+  fill: $gray-500;
 }
 
 .c3-chart-arc .c3-gauge-value {

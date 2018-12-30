@@ -76,7 +76,11 @@
         }
 
         for (var i = 0; i < length - 2; i++) {
-          if (i === 0) this.breakpoints.push(this.$items.eq(i).outerWidth() + dropWidth);else this.breakpoints.push(this.breakpoints[i - 1] + this.$items.eq(i).width());
+          if (i === 0) {
+            this.breakpoints.push(this.$items.eq(i).outerWidth() + dropWidth);
+          } else {
+            this.breakpoints.push(this.breakpoints[i - 1] + this.$items.eq(i).width());
+          }
         }
 
         for (i = 0; i < length; i++) {

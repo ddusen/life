@@ -13,12 +13,7 @@ class Highlight extends Plugin {
   }
 
   render() {
-    if (typeof $.fn.hightlight === 'undefined') {
-      return;
-    }
-
-    // hljs.configure({useBR: true});
-    hljs.highlightBlock(block);
+    hljs.initHighlightingOnLoad();
   }
 }
 

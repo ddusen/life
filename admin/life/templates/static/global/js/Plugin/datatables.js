@@ -72,13 +72,13 @@
             //   previous: '<i class="icon wb-chevron-left-mini"></i>',
             //   next: '<i class="icon wb-chevron-right-mini"></i>'
             // }
-          }
-          // ,
-          // classes: {
-          //   sFilterInput: "form-control form-control-sm",
-          //   sLengthSelect: "form-control form-control-sm"
-          // }
-        };
+
+            // ,
+            // classes: {
+            //   sFilterInput: "form-control form-control-sm",
+            //   sLengthSelect: "form-control form-control-sm"
+            // }
+          } };
       }
     }]);
     return DataTable;

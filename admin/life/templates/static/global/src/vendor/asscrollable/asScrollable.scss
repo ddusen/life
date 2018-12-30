@@ -1,19 +1,19 @@
 @import 'vars';
+$scrollable: scrollable;
 
-$scrollable:                                   scrollable;
+$scrollable-bar-size: 4px !default;
+$scrollable-bar-dragging-size: 8px !default;
+$scrollable-bar-dragging-color: transparent !default;
+$scrollable-bar-hovering-color: transparent !default;
+$scrollable-bar-handle-offset: 4px !default;
+$scrollable-bar-handle-color: rgba($gray-400, (60/100)) !default;
+$scrollable-bar-handle-hovering-color: rgba($gray-400, (80/100)) !default;
+$scrollable-bar-handle-dragging-color: rgba($gray-400, (80/100)) !default;
 
-$scrollable-bar-size:                          4px;
-$scrollable-bar-dragging-size:                 8px;
-$scrollable-bar-handle-offset:                 4px;
-
-$scrollable-bar-handle-color:                  rgba($gray, (60/100));
-$scrollable-bar-handle-dragging-color:         rgba($gray, (80/100));
-$scrollable-shadow-bar-color:                  rgba($gray-lighter, (50/100));
-
-$scrollable-inverse-bar-handle-color:          rgba($gray-lighter, (60/100));
-$scrollable-inverse-bar-handle-dragging-color: rgba($gray-lighter, (80/100));
-$scrollable-inverse-shadow-bar-color:          rgba($gray-lighter, (40/100));
-
+$scrollable-shadow-bar-color: rgba($gray-200, (50/100)) !default;
+$scrollable-inverse-bar-handle-color: rgba($gray-200, (60/100)) !default;
+$scrollable-inverse-bar-handle-dragging-color: rgba($gray-200, (80/100)) !default;
+$scrollable-inverse-shadow-bar-color: rgba($gray-200, (40/100)) !default;
 
 .#{$scrollable} {
   &.is-enabled {
@@ -22,8 +22,8 @@ $scrollable-inverse-shadow-bar-color:          rgba($gray-lighter, (40/100));
 
   &-container {
     .is-enabled & {
-      overflow: hidden !important;
       box-sizing: content-box !important;
+      overflow: hidden !important;
     }
 
     .is-enabled &::-webkit-scrollbar {
@@ -37,6 +37,7 @@ $scrollable-inverse-shadow-bar-color:          rgba($gray-lighter, (40/100));
         overflow-y: scroll !important;
       }
     }
+
     .#{$scrollable}-horizontal.is-enabled & {
       overflow-x: scroll !important;
     }
@@ -45,47 +46,49 @@ $scrollable-inverse-shadow-bar-color:          rgba($gray-lighter, (40/100));
   &-content {
     .is-enabled & {
       position: relative !important;
-      overflow: visible !important;
       box-sizing: border-box;
-      &:before,
-      &:after {
-        content: " ";
+      overflow: visible !important;
+
+      &::before,
+      &::after {
         display: table;
+        content: " ";
       }
-      &:after {
+      &::after {
         clear: both;
       }
     }
   }
+
   &-bar {
     .is-disabled & {
       display: none;
     }
-    transition: opacity 0.5s;
+
     &-hide {
-      transition-delay: 400ms;
       opacity: 0;
+      transition-delay: 400ms;
     }
 
     position: absolute;
-    bottom: 0;
     right: 0;
-    line-height: 0;
-
+    bottom: 0;
+    box-sizing: border-box;
     overflow: hidden;
-    border-radius: $scrollable-bar-size/2;
-    box-sizing:border-box;
-
-    user-focus: ignore;
-    user-input: disabled;
+    line-height: 0;
     user-select: none;
+    border-radius: $scrollable-bar-size / 2;
+    transition: opacity .5s;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    user-input: disabled;
+    user-focus: ignore;
+
+    &.is-hovering {
+      background: $scrollable-bar-hovering-color;
+    }
 
     &.is-dragging {
+      background: $scrollable-bar-dragging-color !important;
       opacity: 1;
     }
 
@@ -94,90 +97,85 @@ $scrollable-inverse-shadow-bar-color:          rgba($gray-lighter, (40/100));
     }
 
     &-handle {
-      transition: width, height 0.5s;
       position: absolute;
-
       top: 0;
       left: 0;
       line-height: 0;
-      background: $scrollable-bar-handle-color;
       cursor: pointer;
+      background: $scrollable-bar-handle-color;
+      border-radius: $scrollable-bar-size / 2;
+      transition: width, height .5s;
+    }
 
-      border-radius: $scrollable-bar-size/2px;
+    &.is-dragging &-handle {
+      background: $scrollable-bar-handle-dragging-color !important;
+    }
+
+    &.is-dragging,
+    &.is-hovering {
+      border-radius: $scrollable-bar-dragging-size / 2;
+      .#{$scrollable}-bar-handle {
+        border-radius: $scrollable-bar-dragging-size / 2;
+      }
     }
 
     &-vertical {
       width: $scrollable-bar-size;
-      margin: $scrollable-bar-handle-offset ($scrollable-bar-dragging-size - $scrollable-bar-size)/2;
-
       height: 100%;
-      $height: ($scrollable-bar-handle-offset*2);
-      height: calc(100% - #{$height});
-    }
-
-    &-vertical .#{$scrollable}-bar-handle {
-      width: 100%;
-    }
-
-    &-horizontal {
-      height: $scrollable-bar-size;
-      margin: ($scrollable-bar-dragging-size - $scrollable-bar-size)/2 $scrollable-bar-handle-offset;
-
-      width: 100%;
-      $width: ($scrollable-bar-handle-offset*2);
-      width: calc(100% - #{$width});
+      height: calc(100% - #{2 * $scrollable-bar-handle-offset});
+      margin: $scrollable-bar-handle-offset ($scrollable-bar-dragging-size - $scrollable-bar-size) / 2;
     }
 
     &-vertical {
-      &.is-dragging, &.is-hovering {
+      &.is-dragging,
+      &.is-hovering {
         width: $scrollable-bar-dragging-size;
-
         margin: $scrollable-bar-handle-offset 1px;
       }
     }
 
-    &-horizontal {
-      &.is-dragging, &.is-hovering {
-        height: $scrollable-bar-dragging-size;
+    &-vertical &-handle {
+      width: 100%;
+    }
 
+    &-horizontal {
+      width: 100%;
+      width: calc(100% - #{2 * $scrollable-bar-handle-offset});
+      height: $scrollable-bar-size;
+      margin: ($scrollable-bar-dragging-size - $scrollable-bar-size) / 2 $scrollable-bar-handle-offset;
+    }
+
+    &-horizontal {
+      &.is-dragging,
+      &.is-hovering {
+        height: $scrollable-bar-dragging-size;
         margin: 1px $scrollable-bar-handle-offset;
       }
     }
 
-    &-horizontal .#{$scrollable}-bar-handle {
+    &-horizontal &-handle {
       height: 100%;
-    }
-  }
-
-  &.is-dragging, &.is-hovering {
-    .#{$scrollable}-handle {
-      border-radius: $scrollable-bar-dragging-size;
-    }
-    .#{$scrollable}-bar-handle {
-      border-radius: $scrollable-bar-dragging-size;
     }
   }
 
   &.is-scrolling {
     .#{$scrollable}-bar {
-      transition: opacity 0;
       opacity: 1;
+      transition: opacity 0;
+    }
+  }
+
+  &.is-hovering {
+    .#{$scrollable}-bar-handle {
+      background: $scrollable-bar-handle-hovering-color;
     }
   }
 
   &.is-dragging {
-    user-focus: ignore;
-    user-input: disabled;
     user-select: none;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    .#{$scrollable}-bar-handle {
-      background: $scrollable-bar-handle-dragging-color !important;
-    }
+    user-input: disabled;
+    user-focus: ignore;
   }
 }
 

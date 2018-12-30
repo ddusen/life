@@ -3,6 +3,7 @@
 //
 
 .table {
+  background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
   th,
   td {
@@ -10,16 +11,17 @@
   }
 
   thead th {
-    border-bottom: $table-border-width solid $table-border-color;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
   }
+
   tbody + tbody {
-    border-top: $table-border-width solid $table-border-color;
+    border-top: (2 * $table-border-width) solid $table-border-color;
   }
+
   .table {
     background-color: $body-bg;
   }
 }
-
 
 // Bordered version
 //
@@ -41,7 +43,7 @@
 
 .table-striped {
   tbody tr:nth-of-type(odd) {
-    background-color: $table-bg-accent;
+    background-color: $table-accent-bg;
   }
 }
 
@@ -53,7 +55,7 @@
 .table-hover {
   tbody tr {
     @include hover {
-      background-color: $table-bg-hover;
+      background-color: $table-hover-bg;
     }
   }
 }
@@ -64,66 +66,82 @@
 // Exact selectors below required to override `.table-striped` and prevent
 // inheritance to nested tables.
 
-// Generate the contextual variants
-@include table-row-variant(active, $table-bg-active);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
-
-.thead-inverse {
-  th {
-    color: #fff;
-    background-color: $gray-dark;
-  }
-}
-.thead-default {
-  th {
-    color: $gray;
-    background-color: $gray-lighter;
-  }
+@each $color, $value in $theme-colors {
+  @include table-row-variant($color, theme-color-level($color, -9));
 }
 
-.table-inverse {
-  color: $gray-lighter;
-  background-color: $gray-dark;
+@include table-row-variant(active, $table-active-bg);
+
+
+// Dark styles
+//
+// Same table markup, but inverted color scheme: dark background and light text.
+
+// stylelint-disable-next-line no-duplicate-selectors
+.table {
+  .thead-dark {
+    th {
+      color: $table-dark-color;
+      background-color: $table-dark-bg;
+      border-color: $table-dark-border-color;
+    }
+  }
+
+  .thead-light {
+    th {
+      color: $table-head-color;
+      background-color: $table-head-bg;
+      border-color: $table-border-color;
+    }
+  }
+}
+
+.table-dark {
+  color: $table-dark-color;
+  background-color: $table-dark-bg;
 
   th,
   td,
   thead th {
-    border-color: $gray;
+    border-color: $table-dark-border-color;
   }
-}
 
+  &.table-bordered {
+    border: 0;
+  }
 
-.table-reflow {
-
-  th,
-  td {
-    border-top: $table-border-width solid $table-border-color;
-    border-left: $table-border-width solid $table-border-color;
-
-    &:last-child {
-      border-right: $table-border-width solid $table-border-color;
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-dark-accent-bg;
     }
   }
 
-  thead,
-  tbody,
-  tfoot {
-    &:last-child {
-      tr:last-child th,
-      tr:last-child td {
-        border-bottom: $table-border-width solid $table-border-color;
+  &.table-hover {
+    tbody tr {
+      @include hover {
+        background-color: $table-dark-hover-bg;
       }
     }
   }
+}
 
-  tr {
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
 
-    th,
-    td {
-      border: $table-border-width solid $table-border-color;
+.table-responsive {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        // Prevent double border on horizontal scroll due to use of `display: block;`
+        &.table-bordered {
+          border: 0;
+        }
+      }
     }
   }
 }

@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'dropify'; // import $ from 'jquery';
+  var NAME = 'dropify';
 
   var Dropify = function (_Plugin) {
     babelHelpers.inherits(Dropify, _Plugin);

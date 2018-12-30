@@ -2,25 +2,22 @@
 
 // var
 // =============================================================
-$dropdown-header-padding:          8px 20px 6px !default;
-
-$color-grey-arrow:                 rgba(204, 204, 204, 0.2);
-
-$bootstrap-select-error-border:    $state-danger-border;
-$bootstrap-select-width:           220px; // 3 960px-grid columns
-
-$bootstrap-select-notify-bg:       $dropdown-link-hover-bg;
-$bootstrap-select-notify-color:    $dropdown-link-hover-color;
-$bootstrap-select-notify-border:   $border-color-base;
-
-$bootstrap-select-no-result-bg:    $dropdown-link-hover-bg;
+$dropdown-header-padding: 8px 20px 6px !default;
+$color-grey-arrow: rgba(204, 204, 204, .2);
+$bootstrap-select-error-border: $state-danger-border;
+$bootstrap-select-width: 220px; // 3 960px-grid columns
+$bootstrap-select-notify-bg: $dropdown-link-hover-bg;
+$bootstrap-select-notify-color: $dropdown-link-hover-color;
+$bootstrap-select-notify-border: $border-color-base;
+$bootstrap-select-no-result-bg: $dropdown-link-hover-bg;
 $bootstrap-select-no-result-color: $dropdown-link-hover-color;
-
 $bootstrap-select-show-menu-arrow: $dropdown-border-color;
 
 // z-index
-$zindex-select-dropdown:           1450; // must be lower than a modal background (1500) but higher than the fixed navbar (1400)
-
+$zindex-select-dropdown: 1450; // must be lower than a modal background (1500) but higher than the fixed navbar (1400)
+// for v4a-v4b;
+$input-color-placeholder: $input-placeholder-color;
+$dropdown-link-padding: $dropdown-item-padding-y $dropdown-item-padding-x;
 
 // bootstrap-slect
 // =============================================================
@@ -36,21 +33,19 @@ $zindex-select-dropdown:           1450; // must be lower than a modal backgroun
   border: 1px solid $input-border;
   border-radius: $input-border-radius;
 
-  .btn-group.open &,
-  &:focus {
-    border-color: $input-border-focus !important;
+  .btn-group.open &, &:focus {
+    border-color: $input-focus-border-color !important;
     box-shadow: none;
   }
 }
 
 // Mixins
-@mixin cursor-disabled(){
+@mixin cursor-disabled() {
   cursor: not-allowed;
 }
 
 // Rules
-select.bs-select-hidden,
-select.selectpicker {
+select.bs-select-hidden, select.selectpicker {
   display: none !important;
 }
 
@@ -65,43 +60,41 @@ select.selectpicker {
 
   // The selectpicker button
   > .dropdown-toggle {
+    z-index: 1;
     width: 100%;
     padding-right: 25px;
-    z-index: 1;
 
-    &.bs-placeholder,
-    &.bs-placeholder:hover,
-    &.bs-placeholder:focus,
-    &.bs-placeholder:active { color: $input-color-placeholder; }
+    &.bs-placeholder, &.bs-placeholder:hover, &.bs-placeholder:focus, &.bs-placeholder:active {
+      color: $input-color-placeholder;
+    }
   }
 
   .icon {
     @include icon-fixed-width();
   }
 
-    > select {
+  > select {
     position: absolute !important;
     bottom: 0;
     left: 50%;
     display: block !important;
-    width: 0.5px !important;
+    width: .5px !important;
     height: 100% !important;
     padding: 0 !important;
-    opacity: 0 !important;
     border: none;
+    opacity: 0 !important;
 
     &.mobile-device {
       top: 0;
       left: 0;
+      z-index: 2;
       display: block !important;
       width: 100% !important;
-      z-index: 2;
     }
   }
 
   // Error display
-  .has-error & .dropdown-toggle,
-  .error & .dropdown-toggle {
+  .has-error & .dropdown-toggle, .error & .dropdown-toggle {
     border-color: $bootstrap-select-error-border;
   }
 
@@ -135,9 +128,9 @@ select.selectpicker {
       height: 0;
       margin-left: .3em;
       vertical-align: middle;
-      border-top:   4px solid;
+      border-top: 4px solid;
       border-right: 4px solid transparent;
-      border-left:  4px solid transparent;
+      border-left: 4px solid transparent;
       transition: .25s;
       transform: scale(1.001);
     }
@@ -149,8 +142,8 @@ select.selectpicker {
   }
 
   .dropdown-menu > li {
-    padding: 0px 5px;
-    margin: 2px 0px;
+    padding: 0 5px;
+    margin: 2px 0;
   }
 
   .dropdown-menu > .dropdown-header {
@@ -161,61 +154,55 @@ select.selectpicker {
     height: 1px;
     margin: 10px 0;
     overflow: hidden;
-    background-color: $gray-lighter;
+    background-color: $gray-200;
   }
 
   .dropdown-menu > li > a {
     display: block;
     padding: $dropdown-link-padding;
-    border-radius: $dropdown-link-border-radius;
     font-weight: normal;
     line-height: $line-height-base;
     color: $dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
+    border-radius: $dropdown-item-border-radius;
     transition: background-color .25s;
 
-    &:hover,
-    &:focus {
-      text-decoration: none;
+    &:hover, &:focus {
       color: $dropdown-link-hover-color;
+      text-decoration: none;
       background-color: $dropdown-link-hover-bg;
     }
   }
 
   // Active state
   .dropdown-menu > .active > a {
-    &,
-    &:hover,
-    &:focus {
+    &, &:hover, &:focus {
       color: $dropdown-link-active-color;
       text-decoration: none;
-      outline: 0;
       background-color: $dropdown-link-active-bg;
+      outline: 0;
     }
   }
   // disabled state
   .dropdown-menu > .disabled > a {
-    &,
-    &:hover,
-    &:focus {
+    &, &:hover, &:focus {
       color: $dropdown-link-disabled-color;
     }
 
     // Nuke hover/focus effects
-    &:hover,
-    &:focus {
+    &:hover, &:focus {
       text-decoration: none;
-      background-color: transparent;
-      background-image: none; // Remove CSS gradient
       // @include reset-filter;
       cursor: $cursor-disabled;
+      background-color: transparent;
+      background-image: none; // Remove CSS gradient
     }
   }
 }
 
 .bootstrap-select.form-control {
-  margin-bottom: 0;
   padding: 0;
+  margin-bottom: 0;
   border: none;
 
   &:not([class*="col-"]) {
@@ -235,30 +222,24 @@ select.selectpicker {
 
 // The selectpicker components
 .bootstrap-select.btn-group {
-  &:not(.input-group-btn),
-  &[class*="col-"] {
-    float: none;
+  &:not(.input-group-btn), &[class*="col-"] {
     display: inline-block;
+    float: none;
     margin-left: 0;
   }
 
   // Forces the pull to the right, if necessary
-  &,
-  &[class*="col-"],
-  .row &[class*="col-"] {
+  &, &[class*="col-"], .row &[class*="col-"] {
     &.dropdown-menu-right {
       float: right;
     }
   }
 
-  .form-inline &,
-  .form-horizontal &,
-  .form-group & {
+  .form-inline &, .form-horizontal &, .form-group & {
     margin-bottom: 0;
   }
 
-  .form-group-lg &.form-control,
-  .form-group-sm &.form-control {
+  .form-group-lg &.form-control, .form-group-sm &.form-control {
     padding: 0;
 
     .dropdown-toggle {
@@ -275,8 +256,7 @@ select.selectpicker {
     width: 100%;
   }
 
-  &.disabled,
-  > .disabled {
+  &.disabled, > .disabled {
     @include cursor-disabled();
 
     &:focus {
@@ -298,12 +278,12 @@ select.selectpicker {
   .dropdown-toggle {
     .filter-option {
       display: inline-block;
-      overflow: hidden;
       width: 100%;
+      overflow: hidden;
       text-align: left;
 
       > .icon {
-        margin-right: 0.3em;
+        margin-right: .3em;
       }
     }
 
@@ -322,16 +302,16 @@ select.selectpicker {
 
   // The selectpicker dropdown
   .dropdown-menu {
-    margin-top: 7px;
-    min-width: 100%;
     box-sizing: border-box;
+    min-width: 100%;
+    margin-top: 7px;
 
     &.inner {
       position: static;
       float: none;
-      border: 0;
       padding: 0;
       margin: 0;
+      border: 0;
       border-radius: 0;
       box-shadow: none;
     }
@@ -348,11 +328,11 @@ select.selectpicker {
       }
 
       a {
-        > .icon {
-          margin-right: 0.3em;
-        }
         cursor: pointer;
         user-select: none;
+        > .icon {
+          margin-right: .3em;
+        }
 
         &.opt {
           position: relative;
@@ -369,35 +349,35 @@ select.selectpicker {
       }
 
       small {
-        padding-left: 0.5em;
+        padding-left: .5em;
       }
     }
 
     .notify {
       position: absolute;
       bottom: 6px;
+      box-sizing: border-box;
       width: 94%;
-      margin: 0 3%;
       min-height: 26px;
       padding: 3px 5px;
+      margin: 0 3%;
       color: $bootstrap-select-notify-color;
+      pointer-events: none;
       background-color: $bootstrap-select-notify-bg;
       border: 1px solid $bootstrap-select-notify-border;
-      border-radius: $dropdown-link-border-radius;
+      border-radius: $dropdown-item-border-radius;
       box-shadow: inset 0 1px 1px rgba(rgb(0, 0, 0), (5/100));
-      pointer-events: none;
-      opacity: 0.9;
-      box-sizing: border-box;
+      opacity: .9;
     }
   }
 
   .no-results {
     padding: 5px 10px;
-    color: $bootstrap-select-no-result-color;
-    background-color: $bootstrap-select-no-result-bg;
     margin: 0 8px;
-    border-radius: $dropdown-link-border-radius;
+    color: $bootstrap-select-no-result-color;
     white-space: nowrap;
+    background-color: $bootstrap-select-no-result-bg;
+    border-radius: $dropdown-item-border-radius;
   }
 
   &.fit-width .dropdown-toggle {
@@ -415,8 +395,8 @@ select.selectpicker {
   &.show-tick .dropdown-menu li {
     &.selected a span.check-mark {
       position: absolute;
-      display: inline-block;
       right: 15px;
+      display: inline-block;
       margin-top: 5px;
     }
 
@@ -433,39 +413,39 @@ select.selectpicker {
 
   .dropdown-toggle {
     &:before {
-      content: '';
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-bottom: 8px solid $bootstrap-select-show-menu-arrow;
       position: absolute;
       bottom: -9px;
       left: 9px;
       display: none;
+      content: "";
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid $bootstrap-select-show-menu-arrow;
+      border-left: 8px solid transparent;
     }
 
     &:after {
-      content: '';
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-bottom: 7px solid white;
       position: absolute;
       bottom: -9px;
       left: 10px;
       display: none;
+      content: "";
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid white;
+      border-left: 7px solid transparent;
     }
   }
 
   &.dropup .dropdown-toggle {
     &:before {
-      bottom: auto;
       top: -8px;
+      bottom: auto;
       border-top: 8px solid $bootstrap-select-show-menu-arrow;
       border-bottom: 0;
     }
 
     &:after {
-      bottom: auto;
       top: -8px;
+      bottom: auto;
       border-top: 7px solid white;
       border-bottom: 0;
     }
@@ -484,22 +464,19 @@ select.selectpicker {
   }
 
   &.open > .dropdown-toggle {
-    &:before,
-    &:after {
+    &:before, &:after {
       display: block;
     }
   }
 }
 
-.bs-searchbox,
-.bs-actionsbox,
-.bs-donebutton {
+.bs-searchbox, .bs-actionsbox, .bs-donebutton {
   padding: 4px 8px;
 }
 
 .bs-actionsbox {
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 
   & .btn-group button {
     width: 50%;
@@ -507,9 +484,9 @@ select.selectpicker {
 }
 
 .bs-donebutton {
+  box-sizing: border-box;
   float: left;
   width: 100%;
-  box-sizing: border-box;
 
   & .btn-group button {
     width: 100%;
@@ -522,9 +499,9 @@ select.selectpicker {
   }
 
   & .form-control {
-    margin-bottom: 0;
-    width: 100%;
     float: none;
+    width: 100%;
+    margin-bottom: 0;
   }
 }
 

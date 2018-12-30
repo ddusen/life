@@ -6,16 +6,17 @@
  */
 
 .fix-sticky {
-  position: fixed;
-  z-index: 100;
+    position: fixed;
+    z-index: 100;
 }
 .fix-sticky thead {
-  background: #fff;
+    background: #fff;
 }
 
-.fix-sticky thead th, .fix-sticky thead th:first-child {
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 1px solid #eee;
-  border-radius: 0;
+.fix-sticky thead th,
+.fix-sticky thead th:first-child {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
 }

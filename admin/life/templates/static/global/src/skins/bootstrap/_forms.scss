@@ -1,3 +1,5 @@
+// scss-lint:disable QualifyingElement, VendorPrefix
+
 //
 // Textual form controls
 //
@@ -7,12 +9,20 @@
   background-color: $input-bg;
   border: $input-btn-border-width solid $input-border-color;
 
+  @include box-shadow($input-box-shadow);
+
+  // Unstyle the caret on `<select>`s in IE10+.
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
   // Customize the `:focus` state to imitate native WebKit styles.
   @include form-control-focus();
 
   // Placeholder
   &::placeholder {
-    color: $input-color-placeholder;
+    color: $input-placeholder-color;
   }
 
   // Disabled and read-only inputs
@@ -22,7 +32,8 @@
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
   &[readonly] {
-    background-color: $input-bg-disabled;
+    background-color: $input-disabled-bg;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
   }
 }
 
@@ -37,18 +48,32 @@ select.form-control {
     background-color: $input-bg;
   }
 }
-// Form validation states
-.has-success {
-  @include form-control-validation($brand-success);
 
+// Readonly controls as plain text
+//
+// Apply class to a readonly input to make it appear like regular plain
+// text (without any border, background color, focus indicator)
+
+.form-control-plaintext {
+  background-color: transparent;
+  border: solid transparent;
 }
 
-.has-warning {
-  @include form-control-validation($brand-warning);
-
+.form-check {
+  &.disabled {
+    .form-check-label {
+      color: $text-muted;
+    }
+  }
 }
 
-.has-danger {
-  @include form-control-validation($brand-danger);
-}
 
+// Form validation
+//
+// Provide feedback to users when form field values are valid or invalid. Works
+// primarily for client-side validation via scoped `:invalid` and `:valid`
+// pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
+// server side validation.
+
+@include form-validation-state("valid", $form-feedback-valid-color);
+@include form-validation-state("invalid", $form-feedback-invalid-color);

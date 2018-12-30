@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'owlCarousel'; // import $ from 'jquery';
+  var NAME = 'owlCarousel';
 
   var OwlCarousel = function (_Plugin) {
     babelHelpers.inherits(OwlCarousel, _Plugin);

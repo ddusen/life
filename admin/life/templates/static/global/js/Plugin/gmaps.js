@@ -19,8 +19,6 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var Config = babelHelpers.interopRequireWildcard(_Config);
-  // import $ from 'jquery';
   var NAME = 'gmaps';
 
   var GmapsPlugin = function (_Plugin) {
@@ -59,19 +57,19 @@
             featureType: 'road',
             elementType: 'labels.text.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '700')
+              color: (0, _Config.colors)('blue-grey', '700')
             }]
           }, {
             featureType: 'administrative',
             elementType: 'labels.text.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '500')
+              color: (0, _Config.colors)('blue-grey', '500')
             }]
           }, {
             featureType: 'road.highway',
             elementType: 'geometry.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '300')
+              color: (0, _Config.colors)('blue-grey', '300')
             }]
           }, {
             featureType: 'road.arterial',
@@ -83,7 +81,7 @@
             featureType: 'water',
             elementType: 'geometry.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '200')
+              color: (0, _Config.colors)('blue-grey', '200')
             }]
           }, {
             featureType: 'water',
@@ -95,7 +93,7 @@
             featureType: 'poi',
             elementType: 'labels.text.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '500')
+              color: (0, _Config.colors)('blue-grey', '500')
             }]
           }, {
             featureType: 'road',
@@ -119,7 +117,7 @@
             featureType: 'road.local',
             elementType: 'all',
             stylers: [{
-              color: Config.colors('blue-grey', '200')
+              color: (0, _Config.colors)('blue-grey', '200')
             }, {
               weight: 0.5
             }]
@@ -127,7 +125,7 @@
             featureType: 'road.arterial',
             elementType: 'geometry',
             stylers: [{
-              color: Config.colors('blue-grey', '300')
+              color: (0, _Config.colors)('blue-grey', '300')
             }]
           }, {
             featureType: 'road.arterial',
@@ -157,25 +155,25 @@
             stylers: [{
               visibility: 'on'
             }, {
-              color: Config.colors('blue-grey', '700')
+              color: (0, _Config.colors)('blue-grey', '700')
             }]
           }, {
             featureType: 'road.local',
             elementType: 'labels.text',
             stylers: [{
-              color: Config.colors('blue-grey', '700')
+              color: (0, _Config.colors)('blue-grey', '700')
             }]
           }, {
             featureType: 'transit',
             elementType: 'all',
             stylers: [{
-              color: Config.colors('blue-grey', '100')
+              color: (0, _Config.colors)('blue-grey', '100')
             }]
           }, {
             featureType: 'transit.station',
             elementType: 'labels.text.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '500')
+              color: (0, _Config.colors)('blue-grey', '500')
             }]
           }, {
             featureType: 'road',
@@ -187,13 +185,13 @@
             featureType: 'road',
             elementType: 'labels.text.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '600')
+              color: (0, _Config.colors)('blue-grey', '600')
             }]
           }, {
             featureType: 'administrative.neighborhood',
             elementType: 'labels.text',
             stylers: [{
-              color: Config.colors('blue-grey', '700')
+              color: (0, _Config.colors)('blue-grey', '700')
             }]
           }, {
             featureType: 'poi',
@@ -237,7 +235,7 @@
             featureType: 'water',
             elementType: 'labels.text.fill',
             stylers: [{
-              color: Config.colors('blue-grey', '600')
+              color: (0, _Config.colors)('blue-grey', '600')
             }]
           }]
         };

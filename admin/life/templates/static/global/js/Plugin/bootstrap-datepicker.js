@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'datepicker'; // import $ from 'jquery';
+  var NAME = 'datepicker';
 
   var Datepicker = function (_Plugin) {
     babelHelpers.inherits(Datepicker, _Plugin);

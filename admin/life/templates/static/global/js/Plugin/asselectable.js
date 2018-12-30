@@ -47,17 +47,17 @@
         var options = this.options;
 
         self.$element.on('change', options.allSelector, function () {
-          var value = (0, _jquery2.default)(this).prop("checked");
+          var value = (0, _jquery2.default)(this).prop('checked');
           self.getItems().each(function () {
             var $one = (0, _jquery2.default)(this);
-            $one.prop("checked", value).trigger('change', [true]);;
+            $one.prop('checked', value).trigger('change', [true]);
             self.selectRow($one, value);
           });
         });
 
         self.$element.on('click', options.itemSelector, function (e) {
           var $one = (0, _jquery2.default)(this);
-          var value = $one.prop("checked");
+          var value = $one.prop('checked');
           self.selectRow($one, value);
           e.stopPropagation();
         });
@@ -83,10 +83,10 @@
 
         if (options.rowSelectable) {
           self.$element.on('click', options.rowSelector, function (e) {
-            if ("checkbox" !== e.target.type && "button" !== e.target.type && "a" !== e.target.tagName.toLowerCase() && !(0, _jquery2.default)(e.target).parent("div.checkbox-custom").length) {
+            if ('checkbox' !== e.target.type && 'button' !== e.target.type && 'a' !== e.target.tagName.toLowerCase() && !(0, _jquery2.default)(e.target).parent('div.checkbox-custom').length) {
               var $checkbox = (0, _jquery2.default)(options.itemSelector, this);
-              var value = $checkbox.prop("checked");
-              $checkbox.prop("checked", !value);
+              var value = $checkbox.prop('checked');
+              $checkbox.prop('checked', !value);
               self.selectRow($checkbox, !value);
             }
           });

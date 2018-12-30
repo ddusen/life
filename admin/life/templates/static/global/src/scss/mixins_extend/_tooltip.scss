@@ -4,23 +4,19 @@
     background-color: $bg;
   }
 
-  &.bs-tether-element-attached-top .tooltip-inner::before,
-  &.tooltip-top .tooltip-inner::before {
-    border-bottom-color: $bg;
-  }
-
-  &.bs-tether-element-attached-right .tooltip-inner::before,
-  &.tooltip-right .tooltip-inner::before {
-    border-left-color: $bg;
-  }
-
-  &.bs-tether-element-attached-bottom .tooltip-inner::before,
-  &.tooltip-bottom .tooltip-inner::before {
+  &.bs-tooltip-top .arrow::before, &.tooltip-top .arrow::before {
     border-top-color: $bg;
   }
 
-  &.bs-tether-element-attached-left .tooltip-inner::before,
-  &.tooltip-left .tooltip-inner::before {
+  &.bs-tooltip-right .arrow::before, &.tooltip-right .arrow::before {
     border-right-color: $bg;
+  }
+
+  &.bs-tooltip-bottom .arrow::before, &.tooltip-bottom .arrow::before {
+    border-bottom-color: $bg;
+  }
+
+  &.bs-tooltip-left .arrow::before, &.tooltip-left .arrow::before {
+    border-left-color: $bg;
   }
 }

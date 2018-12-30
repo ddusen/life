@@ -4,9 +4,7 @@
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
   .table-#{$state} {
-    &,
-    > th,
-    > td {
+    &, > th, > td {
       color: $color;
       background-color: $background;
     }
@@ -26,8 +24,7 @@
       @include hover {
         background-color: $hover-background;
 
-        > td,
-        > th {
+        > td, > th {
           color: $color;
           background-color: $hover-background;
         }

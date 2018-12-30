@@ -3,36 +3,44 @@
 // Left/right controls for nav
 //
 
-.carousel-control {
+.carousel-control-prev,
+.carousel-control-next {
   color: $carousel-control-color;
-  text-shadow: $carousel-text-shadow;
-  // We can't have this transition here because WebKit cancels the carousel
+  // We can't have a transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
-
-  // Set gradients for backgrounds
-  &.left {
-    @include gradient-x($start-color: rgba(0,0,0,.5), $end-color: rgba(0,0,0,.0001));
-  }
-  &.right {
-    @include gradient-x($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,.5));
-  }
 
   // Hover/focus state
   @include hover-focus {
     color: $carousel-control-color;
   }
 }
+.carousel-control-prev {
+  @if $enable-gradients {
+    background: linear-gradient(90deg, rgba(0,0,0,.25), rgba(0,0,0,.001));
+  }
+}
+.carousel-control-next {
+  @if $enable-gradients {
+    background: linear-gradient(270deg, rgba(0,0,0,.25), rgba(0,0,0,.001));
+  }
+}
 
+// Icons for within
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background: transparent no-repeat center center;
+}
 
 // Optional indicator pips
 //
-// Add an unordered list with the following class and add a list item for each
+// Add an ordered list with the following class and add a list item for each
 // slide your carousel holds.
 
 .carousel-indicators {
   li {
-    border-color: $carousel-indicator-border-color;
+    background-color: rgba($carousel-indicator-active-bg, .5);
   }
+
   .active {
     background-color: $carousel-indicator-active-bg;
   }
@@ -41,9 +49,8 @@
 
 // Optional captions
 //
-// Hidden by default for smaller viewports.
+//
 
 .carousel-caption {
   color: $carousel-caption-color;
-  text-shadow: $carousel-text-shadow;
 }

@@ -1,36 +1,34 @@
 @import "vars";
-
-$site-menubar-section-title-color:  $gray-dark !default;
-$site-menubar-footer-height:        76px !default;
+$site-menubar-section-title-color: $gray-500 !default;
+$site-menubar-footer-height: 76px !default;
 
 .mm {
   &-hidden {
     display: none !important;
   }
 
-  &-panels,
-  &-panels > &-panel {
+  &-panels, &-panels > &-panel {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 0;
     width: 100%;
     margin: 0;
     background: inherit;
-    z-index: 0;
   }
 
   &-panels {
-    height: 100%;
     $height: calc(100% - #{$site-menubar-footer-height});
+    height: 100%;
     height: $height;
     overflow: hidden;
   }
 
   &-panel {
     height: 100%;
+    transition: transform .4s ease;
     -ms-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
-    transition: transform .4s ease;
 
     &.mm-opened {
       -ms-transform: translate(0, 0);
@@ -72,25 +70,23 @@ $site-menubar-footer-height:        76px !default;
       color: $site-menubar-section-title-color;
     }
 
-
     .mm-prev {
-      font-family: '#{$wb-font-family}';
       @include make-icon();
-
       position: absolute;
       left: 20px;
+      font-family: "#{$wb-font-family}";
 
       &:before {
-        content: '#{$wb-var-chevron-left-mini}';
+        content: "#{$wb-var-chevron-left-mini}";
       }
     }
 
     .mm-title {
       display: block;
       padding: 0 20px;
-      text-indent: 20px;
-      font-weight: $font-weight-medium;
       font-size: 16px;
+      font-weight: $font-weight-medium;
+      text-indent: 20px;
     }
   }
 
@@ -104,16 +100,18 @@ $site-menubar-footer-height:        76px !default;
   }
 
   &-page {
-    min-height: 100%;
     $height: calc(100% - 44px);
+    min-height: 100%;
     min-height: $height;
     background-color: $page-bg;
   }
 
   &-search {
-    padding: 7px 10px 10px 10px;
+    padding: 7px 10px 10px;
 
     input {
+
+      @include form-control-focus();
       display: block;
       width: 100%;
       height: $input-height-base;
@@ -125,10 +123,8 @@ $site-menubar-footer-height:        76px !default;
       background-image: none;
       border: 1px solid $input-border;
       border-radius: $input-border-radius;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
       transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-
-      @include form-control-focus();
 
       // @include placeholder();
 

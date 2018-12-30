@@ -1,27 +1,12 @@
-//
-// Progress animations
-//
-
-// IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
-@media screen and (min-width:0\0) {
-  .progress[width^="0"] {
-    color: $gray-light;
-  }
+.progress {
+  background-color: $progress-bg;
 }
 
-//
-// Variations
-//
+.progress-bar {
+  color: $progress-bar-color;
+  background-color: $progress-bar-bg;
+}
 
-.progress-success {
-  @include progress-variant($progress-bar-success-bg);
-}
-.progress-info {
-  @include progress-variant($progress-bar-info-bg);
-}
-.progress-warning {
-  @include progress-variant($progress-bar-warning-bg);
-}
-.progress-danger {
-  @include progress-variant($progress-bar-danger-bg);
+.progress-bar-striped {
+  @include gradient-striped();
 }

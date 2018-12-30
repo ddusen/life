@@ -1,4 +1,3 @@
-// import $ from 'jquery';
 import Plugin from 'Plugin';
 
 const NAME = 'alertify';
@@ -65,19 +64,27 @@ class Alertify extends Plugin {
 
     switch (options.type) {
       case 'confirm':
-        alertify.confirm(options.confirmTitle, () => {
-          alertify.success(options.successMessage);
-        }, () => {
-          alertify.error(options.errorMessage);
-        });
+        alertify.confirm(
+          options.confirmTitle,
+          () => {
+            alertify.success(options.successMessage);
+          },
+          () => {
+            alertify.error(options.errorMessage);
+          }
+        );
         break;
       case 'prompt':
-        alertify.prompt(options.promptTitle, (str, ev) => {
-          let message = options.successMessage.replace('%s', str);
-          alertify.success(message);
-        }, (ev) => {
-          alertify.error(options.errorMessage);
-        });
+        alertify.prompt(
+          options.promptTitle,
+          (str, ev) => {
+            let message = options.successMessage.replace('%s', str);
+            alertify.success(message);
+          },
+          ev => {
+            alertify.error(options.errorMessage);
+          }
+        );
         break;
       case 'log':
         alertify.log(options.logMessage);

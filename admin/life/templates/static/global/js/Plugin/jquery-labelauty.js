@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'labelauty'; // import $ from 'jquery';
+  var NAME = 'labelauty';
 
   var Labelauty = function (_Plugin) {
     babelHelpers.inherits(Labelauty, _Plugin);

@@ -1,12 +1,8 @@
-// .modal-open      - body class for killing the scroll
-// .modal           - container to scroll within
-// .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and shit
-
 // Actual modal
 .modal-content {
   background-color: $modal-content-bg;
   border: $modal-content-border-width solid $modal-content-border-color;
+  @include box-shadow($modal-content-box-shadow-xs);
 }
 
 // Modal background
@@ -23,4 +19,11 @@
 // Footer (for actions)
 .modal-footer {
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
+}
+
+// Scale up the modal
+@include media-breakpoint-up(sm) {
+  .modal-content {
+    @include box-shadow($modal-content-box-shadow-sm-up);
+  }
 }

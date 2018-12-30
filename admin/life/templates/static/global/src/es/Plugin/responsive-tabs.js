@@ -13,14 +13,18 @@ const defaults = {
 
 class responsiveHorizontalTabs {
   constructor(el, options) {
-    const $tabs = this.$tabs = $(el);
+    const $tabs = (this.$tabs = $(el));
     this.options = options = $.extend(true, {}, defaults, options);
 
-    const $nav = this.$nav = $tabs.find(this.options.navSelector);
-    const $dropdown = this.$dropdown = $nav.find(this.options.dropdownSelector);
-    const $items = this.$items = $nav.find(this.options.itemSelector).filter(function() {
-      return !$(this).is($dropdown);
-    });
+    const $nav = (this.$nav = $tabs.find(this.options.navSelector));
+    const $dropdown = (this.$dropdown = $nav.find(
+      this.options.dropdownSelector
+    ));
+    const $items = (this.$items = $nav
+      .find(this.options.itemSelector)
+      .filter(function() {
+        return !$(this).is($dropdown);
+      }));
 
     this.$dropdownItems = $dropdown.find(this.options.dropdownItemSelector);
     this.$tabPanel = this.$tabs.find(this.options.tabSelector);
@@ -41,8 +45,8 @@ class responsiveHorizontalTabs {
     this.$dropdown.show();
     this.breakpoints = [];
 
-    const length = this.length = this.$items.length;
-    const dropWidth = this.dropWidth = this.$dropdown.width();
+    const length = (this.length = this.$items.length);
+    const dropWidth = (this.dropWidth = this.$dropdown.width());
     let total = 0;
 
     this.flag = length;
@@ -53,8 +57,13 @@ class responsiveHorizontalTabs {
     }
 
     for (var i = 0; i < length - 2; i++) {
-      if (i === 0) this.breakpoints.push(this.$items.eq(i).outerWidth() + dropWidth);
-      else this.breakpoints.push(this.breakpoints[i - 1] + this.$items.eq(i).width());
+      if (i === 0) {
+        this.breakpoints.push(this.$items.eq(i).outerWidth() + dropWidth);
+      } else {
+        this.breakpoints.push(
+          this.breakpoints[i - 1] + this.$items.eq(i).width()
+        );
+      }
     }
 
     for (i = 0; i < length; i++) {
@@ -86,7 +95,10 @@ class responsiveHorizontalTabs {
     if (i === this.breakpoints.length) {
       this.$dropdown.hide();
       this.$items.show();
-      this.$items.eq(active).children().addClass(activeClassName);
+      this.$items
+        .eq(active)
+        .children()
+        .addClass(activeClassName);
     } else {
       this.$dropdown.show();
       for (let j = 0; j < this.length; j++) {
@@ -100,12 +112,14 @@ class responsiveHorizontalTabs {
       }
 
       if (active < i) {
-        this.$items.eq(active).children().addClass(activeClassName);
+        this.$items
+          .eq(active)
+          .children()
+          .addClass(activeClassName);
       } else {
         this.$dropdown.children().addClass(activeClassName);
         this.$dropdownItems.eq(active).addClass(activeClassName);
       }
-
     }
 
     this.flag = i;

@@ -19,7 +19,7 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var NAME = 'nprogress'; // import $ from 'jquery';
+  var NAME = 'nprogress';
 
   var Nprogress = function (_Plugin) {
     babelHelpers.inherits(Nprogress, _Plugin);
