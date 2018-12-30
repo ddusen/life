@@ -4,10 +4,10 @@ from life.base.views import (index, data, chart, analytics, )
 from life.base.api_views import(DataView, )
 
 urlpatterns = [
-    re_path(r'^$', index),
-    path('data', data),
-    path('chart', chart),
-    path('analytics', analytics),
+    re_path(r'^$', index, name='index'),
+    path('data', data, name='data'),
+    path('chart', chart, name='chart'),
+    path('analytics', analytics, name='analytics'),
 
     path('api/index', DataView.as_view()),
     path('api/data', DataView.as_view()),

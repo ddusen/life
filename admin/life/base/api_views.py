@@ -51,6 +51,7 @@ class DataView(BaseView):
         result = self.paging(queryset)
 
         m = lambda x : round(float(x) * 100, 2) 
+        c = lambda x : round(float(x), 1)
         def mk(items):
             mk_str = ''
             for item in items:
@@ -69,7 +70,7 @@ class DataView(BaseView):
                  'pubtime': r['pubtime'],
                  'mood': m(r['mood']),
                  'mood_keywords': mk(eval(r['mood_keywords'])),
-                 'consume': r['consume'],
+                 'consume': c(r['consume']),
                  'consume_keywords': ck_or_tk(eval(r['consume_keywords'])),
                  'time_keywords': ck_or_tk(eval(r['time_keywords'])),
             }, result)

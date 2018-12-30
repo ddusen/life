@@ -2,25 +2,25 @@
   <div class="site-menubar-body">
     <ul class="site-menu" data-plugin="menu">
       <li class="site-menu-item has-sub">
-        <a href="/">
+        <a href="{% url 'index' %}">
           <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
           <span class="site-menu-title">首页</span>
         </a>
       </li>
       <li class="site-menu-item has-sub">
-        <a href="/data">
+        <a href="{% url 'data' %}">
           <i class="site-menu-icon wb-file" aria-hidden="true"></i>
           <span class="site-menu-title">源数据</span>
         </a>
       </li>
       <li class="site-menu-item has-sub">
-        <a href="/chart">
+        <a href="{% url 'chart' %}">
           <i class="site-menu-icon wb-pie-chart" aria-hidden="true"></i>
           <span class="site-menu-title">统计图表</span>
         </a>
       </li>
       <li class="site-menu-item has-sub">
-        <a href="/analytics">
+        <a href="{% url 'analytics' %}">
           <i class="site-menu-icon wb-stats-bars" aria-hidden="true"></i>
           <span class="site-menu-title">综合分析</span>
         </a>

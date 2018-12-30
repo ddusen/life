@@ -13,21 +13,21 @@
 <div class="page">
   <div class="page-content">
     <!-- Panel Basic -->
-    <div class="panel" style="overflow: scroll;">
+    <div class="panel">
       <header class="panel-heading">
         <div class="panel-actions"></div>
-        <h3 class="panel-title">时间/事件日志数据</h3>
+        <h3 class="panel-title">Mood-Event-Consume</h3>
       </header>
       <div class="panel-body">
         <table class="table table-hover dataTable table-striped w-full" id="dataTables">
           <thead>
             <tr>
               <th width="10%">日期</th>
-              <th width="8%">心情</th>
+              <th width="15%">心情</th>
               <th width="10%">心情关键词</th>
-              <th width="10%">消费额(元)</th>
-              <th width="26%">消费关键词</th>
-              <th width="36%">时间分布(时)</th>
+              <th width="5%">消费额(元)</th>
+              <th width="25%">消费关键词</th>
+              <th width="35%">时间关键词(时)</th>
             </tr>
           </thead>
         </table>
@@ -53,7 +53,7 @@
 <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.print.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-buttons/buttons.colVis.js"></script>
 <script src="/templates/static/global/vendor/datatables.net-buttons-bs4/buttons.bootstrap4.js"></script>
-<script src="/templates/static/global/js/Plugin/datatables.js"></script>
+<!-- <script src="/templates/static/global/js/Plugin/datatables.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function() {
   $("#dataTables").DataTable({
@@ -75,7 +75,7 @@ $(document).ready(function() {
       { "width": "10%", "targets": 0 },
       { 
         "targets": [1], 
-        "width": "8%",
+        "width": "11%",
         "data": "mood", 
         "render": function(data, type, full) { 
           if(data < 10){
@@ -87,13 +87,13 @@ $(document).ready(function() {
           }else{
             color = 'success';
           }
-          return '<div class="progress progress-xs my-10 "><div class="progress-bar progress-bar-'+ color +'" style="width: '+ data +'%"></div></div>';
+          return '<div class="progress progress-xs mb-0 "><div class="progress-bar progress-bar-'+ color +'" style="width: '+ data +'%"></div></div>';
         },
       },
       { "width": "10%", "targets": 2 },
-      { "width": "10%", "targets": 3 },
-      { "width": "26%", "targets": 4 },
-      { "width": "36%", "targets": 5 },
+      { "width": "9%", "targets": 3 },
+      { "width": "25%", "targets": 4 },
+      { "width": "35%", "targets": 5 },
     ],
     "ajax": "/api/data",
     "language": {

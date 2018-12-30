@@ -1,4 +1,4 @@
-# shendu
+# LIFE'S ADMIN
 
 ## Using MySQL in Django-Python
 
@@ -7,7 +7,7 @@
 ``` bash
 
 # install virtualenv
-	$ cd api/
+	$ cd admin/
 	$ python3 -m venv ../VENV
 
 # install package
