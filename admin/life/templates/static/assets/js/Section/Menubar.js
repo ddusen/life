@@ -43,15 +43,14 @@
           list: '.site-menu',
           item: '> li',
           exception: '.site-menu-sub',
-          fixed: false,
-          boundary: 100,
-          onEnter: function onEnter() {
-            // $(this).siblings().removeClass('hover');
-            // $(this).addClass('hover');
-          },
-          onLeave: function onLeave() {
-            // $(this).removeClass('hover');
-          }
+          boundary: 100
+          // onEnter() {
+          //   // $(this).siblings().removeClass('hover');
+          //   // $(this).addClass('hover');
+          // },
+          // onLeave() {
+          //   // $(this).removeClass('hover');
+          // }
         }).data('asHoverScroll');
       }
     }, {
@@ -82,19 +81,19 @@
     return Hoverscroll;
   }();
 
-  var _class = function (_Component) {
-    babelHelpers.inherits(_class, _Component);
+  var Menubar = function (_Component) {
+    babelHelpers.inherits(Menubar, _Component);
 
-    function _class() {
+    function Menubar() {
       var _ref;
 
-      babelHelpers.classCallCheck(this, _class);
+      babelHelpers.classCallCheck(this, Menubar);
 
       for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
       }
 
-      var _this = babelHelpers.possibleConstructorReturn(this, (_ref = _class.__proto__ || Object.getPrototypeOf(_class)).call.apply(_ref, [this].concat(args)));
+      var _this = babelHelpers.possibleConstructorReturn(this, (_ref = Menubar.__proto__ || Object.getPrototypeOf(Menubar)).call.apply(_ref, [this].concat(args)));
 
       _this.$menuBody = _this.$el.children('.site-menubar-body');
       _this.$menu = _this.$el.find('[data-plugin=menu]');
@@ -105,36 +104,29 @@
         return babelHelpers.possibleConstructorReturn(_this);
       }
 
-      (0, _jquery2.default)('.site-menu-sub').on('touchstart', function (e) {
-        e.stopPropagation();
-      }).on('ponitstart', function (e) {
-        e.stopPropagation();
-      });
       _this.hoverscroll = new Hoverscroll(_this.$menuBody);
       _this.hoverscroll.enable();
+
+      // states
+      _this.type = 'open'; // open, hide
       return _this;
     }
 
-    babelHelpers.createClass(_class, [{
-      key: 'processed',
-      value: function processed() {
+    babelHelpers.createClass(Menubar, [{
+      key: 'initialize',
+      value: function initialize() {
         $HTML.removeClass('css-menubar').addClass('js-menubar');
 
-        this.change(this.getState('menubarType'));
+        this.change(this.type);
       }
     }, {
-      key: 'getDefaultState',
-      value: function getDefaultState() {
-        return {
-          menubarType: 'open' // open, hide;
-        };
-      }
-    }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        return {
-          menubarType: 'change'
-        };
+      key: 'process',
+      value: function process() {
+        (0, _jquery2.default)('.site-menu-sub').on('touchstart', function (e) {
+          e.stopPropagation();
+        }).on('ponitstart', function (e) {
+          e.stopPropagation();
+        });
       }
     }, {
       key: 'getMenuApi',
@@ -198,6 +190,8 @@
         this.animate(function () {
           $BODY.removeClass('site-menubar-unfold').addClass('site-menubar-hide');
         });
+
+        this.type = 'hide';
       }
     }, {
       key: 'open',
@@ -207,10 +201,12 @@
         }, function () {
           this.triggerResize();
         });
+
+        this.type = 'open';
       }
     }]);
-    return _class;
+    return Menubar;
   }(_Component3.default);
 
-  exports.default = _class;
+  exports.default = Menubar;
 });

@@ -1,11 +1,19 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(Config) {
-  "use strict";
-  Config.set('tour', {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/config/tour', ['Config'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('Config'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.Config);
+    global.configTour = mod.exports;
+  }
+})(this, function (_Config) {
+  'use strict';
+
+  (0, _Config.set)('tour', {
     steps: [{
       element: "#toggleMenubar",
       position: "right",
@@ -24,5 +32,4 @@
     prevLabel: "<i class='wb-chevron-left-mini'></i>Prev",
     showBullets: false
   });
-
-})(Config);
+});

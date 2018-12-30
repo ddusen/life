@@ -41,15 +41,18 @@
     }
 
     babelHelpers.createClass(Site, [{
-      key: 'willProcess',
-      value: function willProcess() {
+      key: 'initialize',
+      value: function initialize() {
         this.startLoading();
         this.initializePluginAPIs();
         this.initializePlugins();
+
+        this.initComponents();
+        this.setDefaultState();
       }
     }, {
-      key: 'processed',
-      value: function processed() {
+      key: 'process',
+      value: function process() {
         this.polyfillIEWidth();
         this.initBootstrap();
 
@@ -80,52 +83,48 @@
         return type;
       }
     }, {
-      key: 'getDefaultState',
-      value: function getDefaultState() {
-        var menubarType = this._getDefaultMeunbarType();
-        return {
-          menubarType: menubarType
+      key: 'menubarType',
+      value: function menubarType(type) {
+        var self = this,
+            toggle = function toggle($el) {
+          $el.toggleClass('hided', !(type === 'open'));
+          $el.toggleClass('unfolded', !(type === 'fold'));
         };
-      }
-    }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        return {
-          menubarType: function menubarType(type) {
-            var self = this,
-                toggle = function toggle($el) {
-              $el.toggleClass('hided', !(type === 'open'));
-              $el.toggleClass('unfolded', !(type === 'fold'));
-            };
 
-            (0, _jquery2.default)('[data-toggle="menubar"]').each(function () {
-              var $this = (0, _jquery2.default)(this);
-              var $hamburger = (0, _jquery2.default)(this).find('.hamburger');
+        (0, _jquery2.default)('[data-toggle="menubar"]').each(function () {
+          var $this = (0, _jquery2.default)(this);
+          var $hamburger = (0, _jquery2.default)(this).find('.hamburger');
 
-              if ($hamburger.length > 0) {
-                toggle($hamburger);
-              } else {
-                toggle($this);
-              }
-            });
+          if ($hamburger.length > 0) {
+            toggle($hamburger);
+          } else {
+            toggle($this);
           }
-        };
+        });
       }
     }, {
-      key: 'getDefaultChildren',
-      value: function getDefaultChildren() {
-        var menubar = new _Menubar2.default({
+      key: 'initComponents',
+      value: function initComponents() {
+        this.menubar = new _Menubar2.default({
           $el: (0, _jquery2.default)('.site-menubar')
         });
-        var sidebar = new _Sidebar2.default();
-        var children = [menubar, sidebar];
+        this.sidebar = new _Sidebar2.default();
         var $aside = (0, _jquery2.default)('.page-aside');
         if ($aside.length > 0) {
-          children.push(new _PageAside2.default({
+          this.aside = new _PageAside2.default({
             $el: $aside
-          }));
+          });
+
+          this.aside.run();
         }
-        return children;
+
+        this.menubar.run();
+        this.sidebar.run();
+      }
+    }, {
+      key: 'setDefaultState',
+      value: function setDefaultState() {
+        this.menubar.change(this._getDefaultMeunbarType());
       }
     }, {
       key: 'getCurrentBreakpoint',
@@ -213,7 +212,8 @@
         var _this2 = this;
 
         (0, _jquery2.default)(document).on('click', '[data-toggle="menubar"]', function () {
-          var type = _this2.getState('menubarType');
+          var type = _this2.menubar.type;
+
           switch (type) {
             case 'open':
               type = 'hide';
@@ -224,12 +224,14 @@
             // no default
           }
 
-          _this2.setState('menubarType', type);
+          _this2.menubar.change(type);
+          _this2.menubarType(type);
           return false;
         });
 
         Breakpoints.on('change', function () {
-          _this2.setState('menubarType', _this2._getDefaultMeunbarType());
+          _this2.menubar.type = _this2._getDefaultMeunbarType();
+          _this2.menubar.change(_this2.menubar.type);
         });
       }
     }, {
@@ -318,8 +320,8 @@
     site.run();
   }
 
-  exports.default = Site;
   exports.Site = Site;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = Site;
 });

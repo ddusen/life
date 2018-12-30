@@ -22,21 +22,20 @@
   var _Component3 = babelHelpers.interopRequireDefault(_Component2);
 
   var $BODY = (0, _jquery2.default)('body');
-  // const $HTML = $('html');
 
-  var _class = function (_Component) {
-    babelHelpers.inherits(_class, _Component);
+  var PageAside = function (_Component) {
+    babelHelpers.inherits(PageAside, _Component);
 
-    function _class() {
+    function PageAside() {
       var _ref;
 
-      babelHelpers.classCallCheck(this, _class);
+      babelHelpers.classCallCheck(this, PageAside);
 
       for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
       }
 
-      var _this = babelHelpers.possibleConstructorReturn(this, (_ref = _class.__proto__ || Object.getPrototypeOf(_class)).call.apply(_ref, [this].concat(args)));
+      var _this = babelHelpers.possibleConstructorReturn(this, (_ref = PageAside.__proto__ || Object.getPrototypeOf(PageAside)).call.apply(_ref, [this].concat(args)));
 
       _this.$scroll = _this.$el.find('.page-aside-scroll');
       _this.scrollable = _this.$scroll.asScrollable({
@@ -47,9 +46,9 @@
       return _this;
     }
 
-    babelHelpers.createClass(_class, [{
-      key: 'processed',
-      value: function processed() {
+    babelHelpers.createClass(PageAside, [{
+      key: 'process',
+      value: function process() {
         var _this2 = this;
 
         if ($BODY.is('.page-aside-fixed') || $BODY.is('.page-aside-scroll')) {
@@ -69,7 +68,7 @@
               });
             } else {
               _this2.$el.off('transitionend');
-              _this2.scrollable.disable();
+              _this2.scrollable.update();
             }
           }
         });
@@ -100,8 +99,8 @@
         });
       }
     }]);
-    return _class;
+    return PageAside;
   }(_Component3.default);
 
-  exports.default = _class;
+  exports.default = PageAside;
 });

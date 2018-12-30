@@ -19,8 +19,6 @@
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
-  var Config = babelHelpers.interopRequireWildcard(_Config);
-  // import $ from 'jquery';
   var NAME = 'switchery';
 
   var SwitcheryPlugin = function (_Plugin) {
@@ -48,7 +46,7 @@
       key: 'getDefaults',
       value: function getDefaults() {
         return {
-          color: Config.colors('primary', 600)
+          color: (0, _Config.colors)('primary', 600)
         };
       }
     }]);

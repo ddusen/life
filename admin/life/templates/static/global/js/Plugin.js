@@ -114,9 +114,6 @@
     return Plugin;
   }();
 
-  exports.default = Plugin;
-
-
   function getPluginAPI(name) {
     if (typeof name === 'undefined') {
       return apis;
@@ -172,4 +169,5 @@
   exports.getPlugin = getPlugin;
   exports.getDefaults = getDefaults;
   exports.pluginFactory = pluginFactory;
+  exports.default = Plugin;
 });

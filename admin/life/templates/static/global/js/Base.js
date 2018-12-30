@@ -21,15 +21,15 @@
 
   var _Component3 = babelHelpers.interopRequireDefault(_Component2);
 
-  var _class = function (_Component) {
-    babelHelpers.inherits(_class, _Component);
+  var Base = function (_Component) {
+    babelHelpers.inherits(Base, _Component);
 
-    function _class() {
-      babelHelpers.classCallCheck(this, _class);
-      return babelHelpers.possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    function Base() {
+      babelHelpers.classCallCheck(this, Base);
+      return babelHelpers.possibleConstructorReturn(this, (Base.__proto__ || Object.getPrototypeOf(Base)).apply(this, arguments));
     }
 
-    babelHelpers.createClass(_class, [{
+    babelHelpers.createClass(Base, [{
       key: 'initializePlugins',
       value: function initializePlugins() {
         var context = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
@@ -38,6 +38,7 @@
           var $this = (0, _jquery2.default)(this),
               name = $this.data('plugin'),
               plugin = (0, _Plugin.pluginFactory)(name, $this, $this.data());
+
           if (plugin) {
             plugin.initialize();
           }
@@ -55,8 +56,8 @@
         }
       }
     }]);
-    return _class;
+    return Base;
   }(_Component3.default);
 
-  exports.default = _class;
+  exports.default = Base;
 });

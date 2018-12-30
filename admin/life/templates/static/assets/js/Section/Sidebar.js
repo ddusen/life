@@ -21,17 +21,17 @@
 
   var _Base3 = babelHelpers.interopRequireDefault(_Base2);
 
-  var _class = function (_Base) {
-    babelHelpers.inherits(_class, _Base);
+  var Sidebar = function (_Base) {
+    babelHelpers.inherits(Sidebar, _Base);
 
-    function _class() {
-      babelHelpers.classCallCheck(this, _class);
-      return babelHelpers.possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    function Sidebar() {
+      babelHelpers.classCallCheck(this, Sidebar);
+      return babelHelpers.possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
     }
 
-    babelHelpers.createClass(_class, [{
-      key: 'processed',
-      value: function processed() {
+    babelHelpers.createClass(Sidebar, [{
+      key: 'process',
+      value: function process() {
         if (typeof _jquery2.default.slidePanel === 'undefined') {
           return;
         }
@@ -101,8 +101,8 @@
         });
       }
     }]);
-    return _class;
+    return Sidebar;
   }(_Base3.default);
 
-  exports.default = _class;
+  exports.default = Sidebar;
 });

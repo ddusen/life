@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta name="description" content="bootstrap admin template">
-  <meta name="author" content="">
+  <meta name="author" content="Sen Du">
   <title>Sdu's 2018</title>
   <link rel="apple-touch-icon" href="/templates/static/assets/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="/templates/static/assets/images/favicon.ico">
@@ -42,25 +42,21 @@
   </script>
 </head>
 
-<body class="animsition">
+<body class="animsition dashboard">
   <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
   {% include "pages/includes/site-navbar.html" %}
   {% include "pages/includes/site-menubar.html" %}
-
   <!-- Page -->
   {% block page %}{% endblock %}
   <!-- End Page -->
-
   <!-- Footer -->
   {% include "pages/includes/site-footer.html" %}
-
   <!-- Core  -->
-
   <script src="/templates/static/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
   <script src="/templates/static/global/vendor/jquery/jquery.js"></script>
-  <script src="/templates/static/global/vendor/tether/tether.js"></script>
+  <script src="/templates/static/global/vendor/popper-js/umd/popper.min.js"></script>
   <script src="/templates/static/global/vendor/bootstrap/bootstrap.js"></script>
   <script src="/templates/static/global/vendor/animsition/animsition.js"></script>
   <script src="/templates/static/global/vendor/mousewheel/jquery.mousewheel.js"></script>
@@ -68,12 +64,16 @@
   <script src="/templates/static/global/vendor/asscrollable/jquery-asScrollable.js"></script>
   <script src="/templates/static/global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
   <!-- Plugins -->
-  <script src="/templates/static/global/vendor/switchery/switchery.min.js"></script>
+  <script src="/templates/static/global/vendor/switchery/switchery.js"></script>
   <script src="/templates/static/global/vendor/intro-js/intro.js"></script>
   <script src="/templates/static/global/vendor/screenfull/screenfull.js"></script>
   <script src="/templates/static/global/vendor/slidepanel/jquery-slidePanel.js"></script>
+  <script src="/templates/static/global/vendor/chartist/chartist.js"></script>
+  <script src="/templates/static/global/vendor/raphael/raphael.min.js"></script>
+  <script src="/templates/static/global/vendor/morris/morris.min.js"></script>
+  <script src="/templates/static/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+  <script src="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
   <!-- Scripts -->
-  <script src="/templates/static/global/js/State.js"></script>
   <script src="/templates/static/global/js/Component.js"></script>
   <script src="/templates/static/global/js/Plugin.js"></script>
   <script src="/templates/static/global/js/Base.js"></script>
@@ -93,8 +93,8 @@
   <script src="/templates/static/global/js/Plugin/asscrollable.js"></script>
   <script src="/templates/static/global/js/Plugin/slidepanel.js"></script>
   <script src="/templates/static/global/js/Plugin/switchery.js"></script>
-  <script src="/templates/static/js/app.js"></script>
-  <script src="/templates/static/global/vendor/echarts/echarts.js"></script>
+  <script src="/templates/static/global/js/Plugin/matchheight.js"></script>
+  <script src="/templates/static/assets/examples/js/dashboard/analytics.js"></script>
   {% block scripts %}{% endblock %}
   <script>
   (function(document, window, $) {
