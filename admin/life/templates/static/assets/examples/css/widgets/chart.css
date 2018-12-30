@@ -7,9 +7,8 @@
 }
 
 .card {
-  margin-bottom: 30px;
-  height: -webkit-calc(100% - 30px);
   height: calc(100% - 30px);
+  margin-bottom: 30px;
 }
 
 .ct-chart .ct-label.ct-vertical, .ct-chart .ct-label.ct-horizontal {
@@ -26,15 +25,15 @@
 }
 
 #chartThreeLinearea .ct-chart .ct-series.ct-series-a .ct-area {
-  fill: #f96868;
+  fill: #ff4c52;
 }
 
 #chartThreeLinearea .ct-chart .ct-series.ct-series-b .ct-area {
-  fill: #f2a654;
+  fill: #eb6709;
 }
 
 #chartThreeLinearea .ct-chart .ct-series.ct-series-c .ct-area {
-  fill: #46be8a;
+  fill: #11c26d;
 }
 
 #chartLinePie .chart-line .ct-line, #chartLinePie .chart-line .ct-point {
@@ -50,24 +49,24 @@
 }
 
 #chartLinePie .chart-pie .ct-series.ct-series-a .ct-slice-donut {
-  stroke: #57c7d4;
+  stroke: #0bb2d4;
 }
 
 #chartLinePie .chart-pie .ct-series.ct-series-b .ct-slice-donut {
-  stroke: #f96868;
+  stroke: #ff4c52;
 }
 
 #chartBarPie .chart-bar .ct-bar {
-  stroke: #a2caee;
+  stroke: #79b2fc;
   stroke-width: 3%;
 }
 
 #chartBarPie .chart-pie .ct-series.ct-series-a .ct-slice-donut {
-  stroke: #926dde;
+  stroke: #9463f7;
 }
 
 #chartBarPie .chart-pie .ct-series.ct-series-b .ct-slice-donut {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
 }
 
 #chartBarStacked .ct-chart .ct-bar {
@@ -75,11 +74,11 @@
 }
 
 #chartBarStacked .ct-chart .ct-series.ct-series-a .ct-bar {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
 }
 
 #chartBarStacked .ct-chart .ct-series.ct-series-b .ct-bar {
-  stroke: #926dde;
+  stroke: #9463f7;
 }
 
 #chartBarStacked .ct-chart .ct-series.ct-series-c .ct-bar {
@@ -87,42 +86,42 @@
 }
 
 #chartPie .ct-chart .ct-series.ct-series-a .ct-slice-donut {
-  stroke: #926dde;
+  stroke: #9463f7;
 }
 
 #chartPie .ct-chart .ct-series.ct-series-b .ct-slice-donut {
-  stroke: #f96868;
+  stroke: #ff4c52;
 }
 
 #chartPie .ct-chart .ct-series.ct-series-c .ct-slice-donut {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
 }
 
 #chartBarSimple .ct-chart .ct-bar {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
   stroke-width: 2%;
 }
 
 #chartLineareaSimple .ct-chart .ct-line {
   stroke-width: 1px;
-  stroke: #fab4b4;
+  stroke: #ffa1a4;
 }
 
 #chartLineareaSimple .ct-chart .ct-area {
-  fill: #fad3d3;
+  fill: #ffbfc1;
 }
 
 #chartLineareaWithfooter .ct-chart .ct-area {
-  fill: #4e97d9;
+  fill: #247cf0;
 }
 
 #chartLineareaWithfooter .ct-chart .ct-line {
   stroke-width: 1px;
-  stroke: #a2caee;
+  stroke: #79b2fc;
 }
 
 #chartBarWithfooter .ct-chart .ct-series.ct-series-a .ct-bar {
-  stroke: #f96868;
+  stroke: #ff4c52;
   stroke-width: 2%;
 }
 
@@ -132,7 +131,7 @@
 }
 
 #chartLinebarLarge .chart-line .ct-line {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
   stroke-width: 2px;
 }
 
@@ -141,7 +140,7 @@
 }
 
 #chartLinebarLarge .chart-bar .ct-bar {
-  stroke: #57c7d4;
+  stroke: #0bb2d4;
   stroke-width: 5%;
 }
 
@@ -155,7 +154,7 @@
 }
 
 #chartLineTime .chart-pie-left .ct-series.ct-series-a .ct-slice-donut {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
 }
 
 #chartLineTime .chart-pie-left .ct-series.ct-series-b .ct-slice-donut {
@@ -163,7 +162,7 @@
 }
 
 #chartLineTime .chart-pie-right .ct-series.ct-series-a .ct-slice-donut {
-  stroke: #f96868;
+  stroke: #ff4c52;
 }
 
 #chartLineTime .chart-pie-right .ct-series.ct-series-b .ct-slice-donut {
@@ -175,15 +174,15 @@
 }
 
 #chartBarlineMix .chart-bar .ct-bar {
-  stroke: #fbce9d;
+  stroke: #fab06b;
   stroke-width: 2%;
 }
 
 #chartBarlineMix .chart-line {
-  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
 }
 
 #chartBarlineMix .chart-line .ct-line {
@@ -203,25 +202,25 @@
 }
 
 #chartBarlineMixTwo .small-bar-one .ct-bar {
-  stroke: #46be8a;
+  stroke: #11c26d;
 }
 
 #chartBarlineMixTwo .small-bar-two .ct-bar {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
 }
 
 #chartBarlineMixTwo .line-chart .ct-series.ct-series-a .ct-line {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
   stroke-width: 2px;
 }
 
 #chartBarlineMixTwo .line-chart .ct-series.ct-series-b .ct-line {
-  stroke: #46be8a;
+  stroke: #11c26d;
   stroke-width: 2px;
 }
 
-#chartBarlineMixTwo .line-chart .ct-labels > foreignobject:first-child .ct-label.ct-horizontal {
-  margin-left: 0px;
+#chartBarlineMixTwo .line-chart .ct-labels > foreignObject:first-child .ct-label.ct-horizontal {
+  margin-left: 0;
 }
 
 #chartBarlineMixTwo .line-chart .ct-label.ct-vertical {
@@ -241,11 +240,11 @@
 }
 
 #charLineareaTwo .ct-chart .ct-series.ct-series-a .ct-area {
-  fill: #d5e4f1;
+  fill: #b8d7ff;
 }
 
 #charLineareaTwo .ct-chart .ct-series.ct-series-b .ct-area {
-  fill: #cdf4f1;
+  fill: #92f0e6;
 }
 
 #chartLinepoint .header {
@@ -257,7 +256,7 @@
 }
 
 #chartLinepoint .ct-chart .ct-line, #chartLinepoint .ct-chart .ct-point {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
 }
 
 #chartLinepoint .ct-chart .ct-line {
@@ -281,7 +280,7 @@
 }
 
 #chartTimelineTwo .ct-chart .ct-series.ct-series-b .ct-area {
-  fill: #62a8ea;
+  fill: #3e8ef7;
 }
 
 #chartStackedBar .ct-chart .ct-label.ct-vertical, #chartStackedBar .ct-chart .ct-label.ct-horizontal {
@@ -297,7 +296,7 @@
 }
 
 #chartStackedBar .ct-chart .ct-series.ct-series-a .ct-bar {
-  stroke: #62a8ea;
+  stroke: #3e8ef7;
 }
 
 #chartStackedBar .ct-chart .ct-series.ct-series-b .ct-bar {

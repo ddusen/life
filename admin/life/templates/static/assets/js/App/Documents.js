@@ -29,12 +29,18 @@
     }
 
     babelHelpers.createClass(AppDocuments, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppDocuments.prototype.__proto__ || Object.getPrototypeOf(AppDocuments.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppDocuments.prototype.__proto__ || Object.getPrototypeOf(AppDocuments.prototype), 'initialize', this).call(this);
 
         this.scrollHandle();
         this.stickyfillHandle();
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppDocuments.prototype.__proto__ || Object.getPrototypeOf(AppDocuments.prototype), 'process', this).call(this);
+
         this.handleResize();
       }
     }, {
@@ -48,13 +54,17 @@
     }, {
       key: 'stickyfillHandle',
       value: function stickyfillHandle() {
-        $('#articleSticky').Stickyfill();
+        if (!window.Stickyfill) {
+          return false;
+        }
+        Stickyfill.add($('#articleSticky'));
+        // $('#articleSticky').Stickyfill();
       }
     }, {
       key: 'handleResize',
       value: function handleResize() {
         $(window).on('resize orientationchange', function () {
-          $(this).width() > 767 ? Stickyfill.init() : Stickyfill.stop();
+          $(this).width() > 767 ? Stickyfill.refreshAll() : Stickyfill.removeAll();
         }).resize();
       }
     }]);
@@ -76,8 +86,8 @@
     app.run();
   }
 
-  exports.default = AppDocuments;
   exports.AppDocuments = AppDocuments;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppDocuments;
 });

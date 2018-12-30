@@ -1,16 +1,24 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/pages/profile-v2', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.pagesProfileV2 = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
-    $(".user-posts .user-posts-list").slick({
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
+
+    $$$1(".user-posts .user-posts-list").slick({
       dots: false,
       infinite: true,
       slidesToShow: 3,
@@ -21,4 +29,4 @@
       swipeToSlide: true
     });
   });
-})(document, window, jQuery);
+});

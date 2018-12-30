@@ -1,18 +1,25 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/pages/map-vector', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.pagesMapVector = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function() {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function () {
+    (0, _Site.run)();
 
     var defaults = Plugin.getDefaults('vectorMap');
-    var options = $.extend({}, defaults, {
+    var options = _jquery2.default.extend({}, defaults, {
       markers: [{
         latLng: [1.3, 103.8],
         name: '940 Visits'
@@ -28,6 +35,6 @@
       }]
     }, true);
 
-    $('#world-map').vectorMap(options);
+    (0, _jquery2.default)('#world-map').vectorMap(options);
   });
-})(document, window, jQuery);
+});

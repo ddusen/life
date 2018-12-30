@@ -29,9 +29,9 @@
     }
 
     babelHelpers.createClass(AppNotebook, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppNotebook.prototype.__proto__ || Object.getPrototypeOf(AppNotebook.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppNotebook.prototype.__proto__ || Object.getPrototypeOf(AppNotebook.prototype), 'initialize', this).call(this);
 
         this.$listItem = $('.list-group-item');
         this.$actionBtn = $('.site-action');
@@ -39,6 +39,16 @@
         this.$newNote = $('#addNewNote');
         this.$mdEdit = $('#mdEdit');
         this.window = $(window);
+
+        // states
+        this.states = {
+          listItemActive: false
+        };
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppNotebook.prototype.__proto__ || Object.getPrototypeOf(AppNotebook.prototype), 'process', this).call(this);
 
         this.handleResize();
         this.steupListItem();
@@ -53,25 +63,16 @@
         });
       }
     }, {
-      key: 'getDefaultState',
-      value: function getDefaultState() {
-        return Object.assign(babelHelpers.get(AppNotebook.prototype.__proto__ || Object.getPrototypeOf(AppNotebook.prototype), 'getDefaultState', this).call(this), {
-          listItemActive: false
-        });
-      }
-    }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        return Object.assign(babelHelpers.get(AppNotebook.prototype.__proto__ || Object.getPrototypeOf(AppNotebook.prototype), 'getDefaultActions', this).call(this), {
-          listItemActive: function listItemActive(active) {
-            var api = this.$actionBtn.data('actionBtn');
-            if (active) {
-              api.show();
-            } else {
-              this.$listItem.removeClass('active');
-            }
-          }
-        });
+      key: 'listItemActive',
+      value: function listItemActive(active) {
+        var api = this.$actionBtn.data('actionBtn');
+        if (active) {
+          api.show();
+        } else {
+          this.$listItem.removeClass('active');
+        }
+
+        this.states.listItemActive = active;
       }
     }, {
       key: 'steupListItem',
@@ -81,7 +82,7 @@
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
 
-          self.setState('listItemActive', true);
+          self.listItemActive(true);
         });
       }
     }, {
@@ -90,8 +91,8 @@
         var _this2 = this;
 
         this.$toggle.on('click', function (e) {
-          if (_this2.getState('listItemActive')) {
-            _this2.setState('listItemActive', false);
+          if (_this2.states.listItemActive) {
+            _this2.listItemActive(false);
           } else {
             _this2.$newNote.modal('show');
             e.stopPropagation();
@@ -121,8 +122,8 @@
     app.run();
   }
 
-  exports.default = AppNotebook;
   exports.AppNotebook = AppNotebook;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppNotebook;
 });

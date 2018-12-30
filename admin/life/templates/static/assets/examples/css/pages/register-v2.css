@@ -20,19 +20,19 @@
 
 .page-register-v2 .page-brand-info .brand-text {
   display: inline-block;
-  vertical-align: middle;
   margin: 11px 0 11px 20px;
+  vertical-align: middle;
 }
 
 .page-register-v2 .page-brand-info p {
-  opacity: .6;
   max-width: 650px;
+  opacity: .6;
 }
 
 .page-register-v2 .page-register-main {
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
   height: auto;
   min-height: 100%;
   padding: 150px 60px 180px;
@@ -50,9 +50,9 @@
 
 .page-register-v2 .page-register-main .brand-text {
   display: inline-block;
-  vertical-align: middle;
   margin: 11px 0 11px 20px;
-  color: #62a8ea;
+  color: #3e8ef7;
+  vertical-align: middle;
 }
 
 .page-register-v2 form {
@@ -66,9 +66,9 @@
 
 .page-register-v2 footer {
   position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   margin: 50px 60px;
   text-align: center;
 }
@@ -93,20 +93,23 @@
   .page-register-v2 .page-register-main {
     padding-top: 80px;
   }
+
   .page-register-v2 .page-brand-info {
     margin: 160px 0 0 35px;
   }
+
   .page-register-v2 .page-brand-info > p {
-    opacity: 0;
     color: transparent;
+    opacity: 0;
   }
 }
 
 @media (max-width: 767px) {
   .page-register-v2 .page-register-main {
-    padding-top: 60px;
     width: 100%;
+    padding-top: 60px;
   }
+
   .page-register-v2 form {
     width: auto;
   }
@@ -116,12 +119,15 @@
   .page-register-v2 .page-brand-info {
     margin: 220px 0 0;
   }
+
   .page-register-v2 .page-register-main {
     padding: 50px 30px 180px;
   }
+
   .page-register-v2 form {
     width: auto;
   }
+
   .page-register-v2 footer {
     margin: 50px 30px;
   }

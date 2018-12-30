@@ -29,9 +29,10 @@
     }
 
     babelHelpers.createClass(AppContacts, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppContacts.prototype.__proto__ || Object.getPrototypeOf(AppContacts.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppContacts.prototype.__proto__ || Object.getPrototypeOf(AppContacts.prototype), 'initialize', this).call(this);
+
         this.$actionBtn = $('.site-action');
         this.$actionToggleBtn = this.$actionBtn.find('.site-action-toggle');
         this.$addMainForm = $('#addUserForm').modal({
@@ -39,30 +40,31 @@
         });
         this.$content = $('#contactsContent');
 
+        // states
+        this.states = {
+          checked: false
+        };
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppContacts.prototype.__proto__ || Object.getPrototypeOf(AppContacts.prototype), 'process', this).call(this);
+
         this.setupActionBtn();
         this.bindListChecked();
         this.handlSlidePanelContent();
       }
     }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        return Object.assign(babelHelpers.get(AppContacts.prototype.__proto__ || Object.getPrototypeOf(AppContacts.prototype), 'getDefaultActions', this).call(this), {
-          listChecked: function listChecked(checked) {
-            var api = this.$actionBtn.data('actionBtn');
-            if (checked) {
-              api.show();
-            } else {
-              api.hide();
-            }
-          }
-        });
-      }
-    }, {
-      key: 'getDefaultState',
-      value: function getDefaultState() {
-        return Object.assign(babelHelpers.get(AppContacts.prototype.__proto__ || Object.getPrototypeOf(AppContacts.prototype), 'getDefaultState', this).call(this), {
-          listChecked: false
-        });
+      key: 'listChecked',
+      value: function listChecked(checked) {
+        var api = this.$actionBtn.data('actionBtn');
+        if (checked) {
+          api.show();
+        } else {
+          api.hide();
+        }
+
+        this.states.checked = checked;
       }
     }, {
       key: 'setupActionBtn',
@@ -70,7 +72,7 @@
         var _this2 = this;
 
         this.$actionToggleBtn.on('click', function (e) {
-          if (!_this2.getState('listChecked')) {
+          if (!_this2.states.checked) {
             _this2.$addMainForm.modal('show');
             e.stopPropagation();
           }
@@ -82,7 +84,7 @@
         var _this3 = this;
 
         this.$content.on('asSelectable::change', function (e, api, checked) {
-          _this3.setState('listChecked', checked);
+          _this3.listChecked(checked);
         });
       }
     }, {
@@ -124,8 +126,8 @@
     app.run();
   }
 
-  exports.default = AppContacts;
   exports.AppContacts = AppContacts;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppContacts;
 });

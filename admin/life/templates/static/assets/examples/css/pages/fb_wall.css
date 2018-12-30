@@ -12,7 +12,7 @@
 }
 
 .wall-attrs .success {
-  color: #46be8a;
+  color: #11c26d;
 }
 
 .wall-attrs .attrs-meta {
@@ -34,8 +34,8 @@
 
 .wall-comment .comment-operation {
   position: absolute;
-  right: 0;
   top: -10px;
+  right: 0;
   display: none;
 }
 
@@ -53,8 +53,8 @@
 
 .wall-person-info {
   position: relative;
-  padding-left: 190px;
   padding-bottom: 45px;
+  padding-left: 190px;
 }
 
 .wall-person-info .person-avatar {
@@ -87,9 +87,9 @@
 }
 
 .wall-recent-comments .comments-view {
-  border-top: 1px solid #e4eaec;
   padding: 10px 0;
   text-align: center;
+  border-top: 1px solid #e4eaec;
 }
 
 @media (min-width: 1200px) {

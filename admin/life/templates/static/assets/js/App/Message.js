@@ -58,9 +58,9 @@
     }
 
     babelHelpers.createClass(AppMessage, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppMessage.prototype.__proto__ || Object.getPrototypeOf(AppMessage.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppMessage.prototype.__proto__ || Object.getPrototypeOf(AppMessage.prototype), 'initialize', this).call(this);
 
         this.newChatLists = [];
         this.$chatsWrap = $('.app-message-chats');
@@ -72,34 +72,35 @@
         this.$msgEdit = $('.message-input>.form-control');
         this.$sendBtn = $('.message-input-btn');
 
+        // states
+        this.states = {
+          chatListsLength: 0
+        };
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppMessage.prototype.__proto__ || Object.getPrototypeOf(AppMessage.prototype), 'process', this).call(this);
+
         this.steupMessage();
         this.setupTextarea();
       }
     }, {
-      key: 'getDefaultState',
-      value: function getDefaultState() {
-        return Object.assign(babelHelpers.get(AppMessage.prototype.__proto__ || Object.getPrototypeOf(AppMessage.prototype), 'getDefaultState', this).call(this), {
-          chatListsLength: 0
-        });
-      }
-    }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        return Object.assign(babelHelpers.get(AppMessage.prototype.__proto__ || Object.getPrototypeOf(AppMessage.prototype), 'getDefaultActions', this).call(this), {
-          chatListsLength: function chatListsLength(length) {
-            if (this.newChatLists[length - 1]) {
-              var $newMsg = $('<div class=\'chat-content\'><p>' + this.newChatLists[length - 1] + '</p></div>');
+      key: 'chatListsLength',
+      value: function chatListsLength(length) {
+        if (this.newChatLists[length - 1]) {
+          var $newMsg = $('<div class=\'chat-content\'><p>' + this.newChatLists[length - 1] + '</p></div>');
 
-              $('.chat').last().find('.chat-body').append($newMsg);
-              this.$msgEdit.attr('placeholder', '');
-              this.$msgEdit.val('');
-            } else {
-              this.$msgEdit.attr('placeholder', 'type text here...');
-            }
+          $('.chat').last().find('.chat-body').append($newMsg);
+          this.$msgEdit.attr('placeholder', '');
+          this.$msgEdit.val('');
+        } else {
+          this.$msgEdit.attr('placeholder', 'type text here...');
+        }
 
-            this.chatApi.scrollChatsToBottom();
-          }
-        });
+        this.chatApi.scrollChatsToBottom();
+
+        this.states.chatListsLength = length;
       }
     }, {
       key: 'setupTextarea',
@@ -119,9 +120,9 @@
         var _this4 = this;
 
         this.$sendBtn.on('click', function () {
-          var num = _this4.getState('chatListsLength');
+          var num = _this4.states.chatListsLength;
           _this4.newChatLists.push(_this4.getMsg());
-          _this4.setState('chatListsLength', ++num);
+          _this4.chatListsLength(++num);
         });
       }
     }, {
@@ -147,8 +148,8 @@
     app.run();
   }
 
-  exports.default = AppMessage;
   exports.AppMessage = AppMessage;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppMessage;
 });

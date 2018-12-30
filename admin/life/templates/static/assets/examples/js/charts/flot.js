@@ -1,21 +1,28 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/flot', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsFlot = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Flot Realtime
   // ---------------------
-  (function() {
-    if (!$.isFunction($.fn.plot) || $("#exampleFlotRealtime").length === 0) {
+  (function () {
+    if (!_jquery2.default.isFunction(_jquery2.default.fn.plot) || (0, _jquery2.default)("#exampleFlotRealtime").length === 0) {
       return;
     }
 
@@ -48,7 +55,7 @@
     // Set up the control widget
     var updateInterval = 30;
 
-    var plot = $.plot($("#exampleFlotRealtime"), [{
+    var plot = _jquery2.default.plot((0, _jquery2.default)("#exampleFlotRealtime"), [{
       data: getRandomData()
     }], {
 
@@ -106,35 +113,21 @@
       setTimeout(update, updateInterval);
     }
     update();
-
   })();
 
   // Example Flot Full-Bg Line
   // -------------------------
-  (function() {
-    var b = [
-      [1262304000000, 0],
-      [1264982400000, 500],
-      [1267401600000, 700],
-      [1270080000000, 1300],
-      [1272672000000, 2600],
-      [1275350400000, 1300],
-      [1277942400000, 1700],
-      [1280620800000, 1300],
-      [1283299200000, 1500],
-      [1285891200000, 2000],
-      [1288569600000, 1500],
-      [1291161600000, 1200]
-    ];
+  (function () {
+    var b = [[1262304000000, 0], [1264982400000, 500], [1267401600000, 700], [1270080000000, 1300], [1272672000000, 2600], [1275350400000, 1300], [1277942400000, 1700], [1280620800000, 1300], [1283299200000, 1500], [1285891200000, 2000], [1288569600000, 1500], [1291161600000, 1200]];
     var a = [{
       label: "Fish values",
       data: b
     }];
 
-    $.plot("#exampleFlotFullBg", a, {
+    _jquery2.default.plot("#exampleFlotFullBg", a, {
       xaxis: {
-        min: (new Date(2009, 12, 1)).getTime(),
-        max: (new Date(2010, 11, 2)).getTime(),
+        min: new Date(2009, 12, 1).getTime(),
+        max: new Date(2010, 11, 2).getTime(),
         mode: "time",
         tickSize: [1, "month"],
         monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -189,12 +182,11 @@
         show: false
       }
     });
-
   })();
 
   // Example Flot Curve
   // ------------------
-  (function() {
+  (function () {
     var dt1 = [];
     for (var i = 0; i < Math.PI * 2; i += 0.25) {
       dt1.push([i, Math.sin(i)]);
@@ -205,9 +197,9 @@
       dt2.push([i, Math.cos(i)]);
     }
 
-    var f_chart = $("#exampleFlotCurve");
+    var f_chart = (0, _jquery2.default)("#exampleFlotCurve");
 
-    $.plot(f_chart, [{
+    _jquery2.default.plot(f_chart, [{
       label: "sin(x)",
       data: dt1,
       color: Config.colors("primary", 400),
@@ -228,7 +220,7 @@
         radius: 3,
         fillColor: Config.colors("green", 600)
       }
-    }, ], {
+    }], {
       series: {
         shadowSize: 0,
         lines: {
@@ -242,15 +234,8 @@
         }
       },
       xaxes: [{
-          ticks: [
-            0, [Math.PI / 2, "\u03c0/2"],
-            [Math.PI, "\u03c0"],
-            [Math.PI * 3 / 2, "3\u03c0/2"],
-            [Math.PI * 2, "2\u03c0"]
-          ]
-        }
-
-      ],
+        ticks: [0, [Math.PI / 2, '\u03C0/2'], [Math.PI, '\u03C0'], [Math.PI * 3 / 2, '3\u03C0/2'], [Math.PI * 2, '2\u03C0']]
+      }],
       yaxes: [{
         ticks: 5,
         min: -2,
@@ -283,23 +268,17 @@
         show: false
       }
     });
-
   })();
 
   // Example Flot Mix
   // ----------------
-  (function() {
+  (function () {
     var b1 = [];
     for (var i = 0; i < 14; i += 0.5) {
       b1.push([i, Math.cos(i) + 1]);
     }
 
-    var b2 = [
-      [2, 3],
-      [4, 8],
-      [6, 5],
-      [9, 13]
-    ];
+    var b2 = [[2, 3], [4, 8], [6, 5], [9, 13]];
 
     var b3 = [];
     for (i = 0; i < 14; i += 0.5) {
@@ -313,7 +292,7 @@
 
     var b5 = [];
     for (i = 0; i < 14; i += 1.5) {
-      b5.push([i, (Math.cos(i) + 2 * Math.sin(i)) + 6]);
+      b5.push([i, Math.cos(i) + 2 * Math.sin(i) + 6]);
     }
 
     var b6 = [];
@@ -321,7 +300,7 @@
       b6.push([i, Math.sqrt(i + 2 * Math.cos(i)) - Math.sin(i) - 3]);
     }
 
-    $.plot("#exampleFlotMix", [{
+    _jquery2.default.plot("#exampleFlotMix", [{
       data: b2,
       bars: {
         show: true,
@@ -405,19 +384,13 @@
       series: {
         shadowSize: 0
       },
-      colors: [Config.colors("blue-grey", 100),
-        Config.colors("orange", 200),
-        Config.colors("green", 600),
-        Config.colors("yellow", 600),
-        Config.colors("primary", 600),
-        Config.colors("purple", 200)
-      ]
+      colors: [Config.colors("blue-grey", 100), Config.colors("orange", 200), Config.colors("green", 600), Config.colors("yellow", 600), Config.colors("primary", 600), Config.colors("purple", 200)]
     });
   })();
 
   // Example Flot Stack Bar
   // ----------------------
-  (function() {
+  (function () {
     var a1 = [];
     for (var i = 1; i <= 4; i += 1) {
       a1.push([i, parseInt(Math.random() * 30)]);
@@ -438,7 +411,7 @@
       a4.push([i, parseInt(Math.random() * 30 - 10)]);
     }
 
-    $.plot("#exampleFlotStackBar", [{
+    _jquery2.default.plot("#exampleFlotStackBar", [{
       data: a1,
       bars: {
         fill: true,
@@ -483,7 +456,7 @@
         color: "#474e54",
         min: 0,
         max: 5.5,
-        ticks: [1, 2, 3, 4, ],
+        ticks: [1, 2, 3, 4],
         font: {
           size: 14,
           weight: 300
@@ -519,7 +492,7 @@
 
   // Example Flot Horizontal Bar
   // ---------------------------
-  (function() {
+  (function () {
     var a11 = [];
     for (var i = 1; i <= 5; i += 1) {
       a11.push([parseInt(Math.random() * 30), i]);
@@ -535,7 +508,7 @@
       a33.push([parseInt(Math.random() * 30), i]);
     }
 
-    $.plot("#exampleFlotHorizontalBar", [{
+    _jquery2.default.plot("#exampleFlotHorizontalBar", [{
       data: a11,
       bars: {
         fill: true,
@@ -558,7 +531,7 @@
         stack: true,
         lines: {
           show: false,
-          fill: true,
+          fill: true
         },
         bars: {
           show: true,
@@ -608,9 +581,9 @@
 
   // Example Flot Pie
   // ----------------
-  (function() {
+  (function () {
     var pieData = [],
-      series = 2;
+        series = 2;
 
     for (var i = 0; i < series; i++) {
       pieData[i] = {
@@ -619,13 +592,13 @@
       };
     }
 
-    var placeholder = $("#exampleFlotPie");
+    var placeholder = (0, _jquery2.default)("#exampleFlotPie");
 
     // Default Options
-    $("#btnPieDefault").click(function() {
+    (0, _jquery2.default)("#btnPieDefault").click(function () {
       placeholder.unbind();
 
-      $.plot(placeholder, pieData, {
+      _jquery2.default.plot(placeholder, pieData, {
         series: {
           pie: {
             show: true
@@ -636,10 +609,10 @@
     });
 
     // Without Legend
-    $("#btnPieWithoutLegend").click(function() {
+    (0, _jquery2.default)("#btnPieWithoutLegend").click(function () {
       placeholder.unbind();
 
-      $.plot(placeholder, pieData, {
+      _jquery2.default.plot(placeholder, pieData, {
         series: {
           pie: {
             show: true,
@@ -656,10 +629,10 @@
     });
 
     // Label Radius
-    $("#btnPieLabelRadius").click(function() {
+    (0, _jquery2.default)("#btnPieLabelRadius").click(function () {
       placeholder.unbind();
 
-      $.plot(placeholder, pieData, {
+      _jquery2.default.plot(placeholder, pieData, {
         series: {
           pie: {
             show: true,
@@ -679,10 +652,10 @@
     });
 
     // Rectangular Pie
-    $("#btnPieRectangular").click(function() {
+    (0, _jquery2.default)("#btnPieRectangular").click(function () {
       placeholder.unbind();
 
-      $.plot(placeholder, pieData, {
+      _jquery2.default.plot(placeholder, pieData, {
         series: {
           pie: {
             show: true,
@@ -702,10 +675,10 @@
     });
 
     // Donut Hole
-    $("#btnPieDonutHole").click(function() {
+    (0, _jquery2.default)("#btnPieDonutHole").click(function () {
       placeholder.unbind();
 
-      $.plot(placeholder, pieData, {
+      _jquery2.default.plot(placeholder, pieData, {
         series: {
           pie: {
             innerRadius: 0.5,
@@ -717,10 +690,10 @@
     });
 
     // Interactivity
-    $("#btnPieInteractivity").click(function() {
+    (0, _jquery2.default)("#btnPieInteractivity").click(function () {
       placeholder.unbind();
 
-      $.plot(placeholder, pieData, {
+      _jquery2.default.plot(placeholder, pieData, {
         series: {
           pie: {
             show: true
@@ -734,16 +707,16 @@
 
       });
 
-      placeholder.bind("plothover", function(event, pos, obj) {
+      placeholder.bind("plothover", function (event, pos, obj) {
         if (!obj) {
           return;
         }
 
         var percent = parseFloat(obj.series.percent).toFixed(2);
-        $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
+        (0, _jquery2.default)("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
       });
 
-      placeholder.bind("plotclick", function(event, pos, obj) {
+      placeholder.bind("plotclick", function (event, pos, obj) {
         if (!obj) {
           return;
         }
@@ -754,7 +727,7 @@
     });
 
     // Show the initial default chart
-    $("#btnPieDefault").click();
+    (0, _jquery2.default)("#btnPieDefault").click();
 
     // A custom label formatter used by several of the plots
     console.log("out");
@@ -766,96 +739,8 @@
 
   // Example Flot Visitors
   // ---------------------
-  (function() {
-    var d = [
-      [1196463600000, 0],
-      [1196550000000, 0],
-      [1196636400000, 0],
-      [1196722800000, 77],
-      [1196809200000, 3636],
-      [1196895600000, 3575],
-      [1196982000000, 2736],
-      [1197068400000, 1086],
-      [1197154800000, 676],
-      [1197241200000, 1205],
-      [1197327600000, 906],
-      [1197414000000, 710],
-      [1197500400000, 639],
-      [1197586800000, 540],
-      [1197673200000, 435],
-      [1197759600000, 301],
-      [1197846000000, 575],
-      [1197932400000, 481],
-      [1198018800000, 591],
-      [1198105200000, 608],
-      [1198191600000, 459],
-      [1198278000000, 234],
-      [1198364400000, 1352],
-      [1198450800000, 686],
-      [1198537200000, 279],
-      [1198623600000, 449],
-      [1198710000000, 468],
-      [1198796400000, 392],
-      [1198882800000, 282],
-      [1198969200000, 208],
-      [1199055600000, 229],
-      [1199142000000, 177],
-      [1199228400000, 374],
-      [1199314800000, 436],
-      [1199401200000, 404],
-      [1199487600000, 253],
-      [1199574000000, 218],
-      [1199660400000, 476],
-      [1199746800000, 462],
-      [1199833200000, 448],
-      [1199919600000, 442],
-      [1200006000000, 403],
-      [1200092400000, 204],
-      [1200178800000, 194],
-      [1200265200000, 327],
-      [1200351600000, 374],
-      [1200438000000, 507],
-      [1200524400000, 546],
-      [1200610800000, 482],
-      [1200697200000, 283],
-      [1200783600000, 221],
-      [1200870000000, 483],
-      [1200956400000, 523],
-      [1201042800000, 528],
-      [1201129200000, 483],
-      [1201215600000, 452],
-      [1201302000000, 270],
-      [1201388400000, 222],
-      [1201474800000, 439],
-      [1201561200000, 559],
-      [1201647600000, 521],
-      [1201734000000, 477],
-      [1201820400000, 442],
-      [1201906800000, 252],
-      [1201993200000, 236],
-      [1202079600000, 525],
-      [1202166000000, 477],
-      [1202252400000, 386],
-      [1202338800000, 409],
-      [1202425200000, 408],
-      [1202511600000, 237],
-      [1202598000000, 193],
-      [1202684400000, 357],
-      [1202770800000, 414],
-      [1202857200000, 393],
-      [1202943600000, 353],
-      [1203030000000, 364],
-      [1203116400000, 215],
-      [1203202800000, 214],
-      [1203289200000, 356],
-      [1203375600000, 399],
-      [1203462000000, 334],
-      [1203548400000, 348],
-      [1203634800000, 243],
-      [1203721200000, 126],
-      [1203807600000, 157],
-      [1203894000000, 288]
-    ];
+  (function () {
+    var d = [[1196463600000, 0], [1196550000000, 0], [1196636400000, 0], [1196722800000, 77], [1196809200000, 3636], [1196895600000, 3575], [1196982000000, 2736], [1197068400000, 1086], [1197154800000, 676], [1197241200000, 1205], [1197327600000, 906], [1197414000000, 710], [1197500400000, 639], [1197586800000, 540], [1197673200000, 435], [1197759600000, 301], [1197846000000, 575], [1197932400000, 481], [1198018800000, 591], [1198105200000, 608], [1198191600000, 459], [1198278000000, 234], [1198364400000, 1352], [1198450800000, 686], [1198537200000, 279], [1198623600000, 449], [1198710000000, 468], [1198796400000, 392], [1198882800000, 282], [1198969200000, 208], [1199055600000, 229], [1199142000000, 177], [1199228400000, 374], [1199314800000, 436], [1199401200000, 404], [1199487600000, 253], [1199574000000, 218], [1199660400000, 476], [1199746800000, 462], [1199833200000, 448], [1199919600000, 442], [1200006000000, 403], [1200092400000, 204], [1200178800000, 194], [1200265200000, 327], [1200351600000, 374], [1200438000000, 507], [1200524400000, 546], [1200610800000, 482], [1200697200000, 283], [1200783600000, 221], [1200870000000, 483], [1200956400000, 523], [1201042800000, 528], [1201129200000, 483], [1201215600000, 452], [1201302000000, 270], [1201388400000, 222], [1201474800000, 439], [1201561200000, 559], [1201647600000, 521], [1201734000000, 477], [1201820400000, 442], [1201906800000, 252], [1201993200000, 236], [1202079600000, 525], [1202166000000, 477], [1202252400000, 386], [1202338800000, 409], [1202425200000, 408], [1202511600000, 237], [1202598000000, 193], [1202684400000, 357], [1202770800000, 414], [1202857200000, 393], [1202943600000, 353], [1203030000000, 364], [1203116400000, 215], [1203202800000, 214], [1203289200000, 356], [1203375600000, 399], [1203462000000, 334], [1203548400000, 348], [1203634800000, 243], [1203721200000, 126], [1203807600000, 157], [1203894000000, 288]];
 
     // first correct the timestamps - they are recorded as the daily
     // midnights in UTC+0100, but Flot always displays dates in UTC
@@ -870,11 +755,11 @@
     function weekendAreas(axes) {
 
       var markings = [],
-        d = new Date(axes.xaxis.min);
+          d = new Date(axes.xaxis.min);
 
       // go to the first Saturday
 
-      d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7));
+      d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 1) % 7);
       d.setUTCSeconds(0);
       d.setUTCMinutes(0);
       d.setUTCHours(0);
@@ -946,9 +831,9 @@
       }
     };
 
-    var _plot = $.plot("#exampleFlotVisitors", [d], options);
+    var _plot = _jquery2.default.plot("#exampleFlotVisitors", [d], options);
 
-    var overview = $.plot("#exampleFlotVisitorsOverview", [d], {
+    var overview = _jquery2.default.plot("#exampleFlotVisitorsOverview", [d], {
       series: {
         lines: {
           show: true,
@@ -988,10 +873,10 @@
     });
 
     // now connect the two
-    $("#exampleFlotVisitors").bind("plotselected", function(event, ranges) {
+    (0, _jquery2.default)("#exampleFlotVisitors").bind("plotselected", function (event, ranges) {
 
       // do the zooming
-      $.each(_plot.getXAxes(), function(_, axis) {
+      _jquery2.default.each(_plot.getXAxes(), function (_, axis) {
         var opts = axis.options;
         opts.min = ranges.xaxis.from;
         opts.max = ranges.xaxis.to;
@@ -1004,15 +889,15 @@
       overview.setSelection(ranges, true);
     });
 
-    $("#exampleFlotVisitorsOverview").bind("plotselected", function(event, ranges) {
+    (0, _jquery2.default)("#exampleFlotVisitorsOverview").bind("plotselected", function (event, ranges) {
       _plot.setSelection(ranges);
     });
   })();
 
   // Example Flot Tooltip
   // --------------------
-  (function() {
-    $("<div class='flot-tooltip'></div>").css({
+  (function () {
+    (0, _jquery2.default)("<div class='flot-tooltip'></div>").css({
       position: "absolute",
       color: "#fff",
       display: "none",
@@ -1022,50 +907,43 @@
       opacity: 0.80
     }).appendTo("body");
 
-    $("#exampleFlotCurve").bind("plothover", function(event, pos, item) {
+    (0, _jquery2.default)("#exampleFlotCurve").bind("plothover", function (event, pos, item) {
       if (item) {
         var x = item.datapoint[0].toFixed(2),
-          y = item.datapoint[1].toFixed(2);
-        $(".flot-tooltip").html(item.series.label + " of " + x + " = " + y)
-          .css({
-            top: item.pageY + 5,
-            left: item.pageX + 5
-          })
-          .fadeIn(200);
+            y = item.datapoint[1].toFixed(2);
+        (0, _jquery2.default)(".flot-tooltip").html(item.series.label + " of " + x + " = " + y).css({
+          top: item.pageY + 5,
+          left: item.pageX + 5
+        }).fadeIn(200);
       } else {
-        $(".flot-tooltip").hide();
+        (0, _jquery2.default)(".flot-tooltip").hide();
       }
     });
 
-    $("#exampleFlotFullBg").bind("plothover", function(event, pos, item) {
+    (0, _jquery2.default)("#exampleFlotFullBg").bind("plothover", function (event, pos, item) {
       if (item) {
         var x = item.datapoint[0].toFixed(2),
-          y = item.datapoint[1].toFixed(2);
-        $(".flot-tooltip").html(item.series.label + " of " + x + " = " + y)
-          .css({
-            top: item.pageY + 5,
-            left: item.pageX + 5
-          })
-          .fadeIn(200);
+            y = item.datapoint[1].toFixed(2);
+        (0, _jquery2.default)(".flot-tooltip").html(item.series.label + " of " + x + " = " + y).css({
+          top: item.pageY + 5,
+          left: item.pageX + 5
+        }).fadeIn(200);
       } else {
-        $(".flot-tooltip").hide();
+        (0, _jquery2.default)(".flot-tooltip").hide();
       }
     });
 
-    $("#exampleFlotRealtime").bind("plothover", function(event, pos, item) {
+    (0, _jquery2.default)("#exampleFlotRealtime").bind("plothover", function (event, pos, item) {
       if (item) {
         var x = item.datapoint[0].toFixed(2),
-          y = item.datapoint[1].toFixed(2);
-        $(".flot-tooltip").html("x | " + x + "," + " y | " + y)
-          .css({
-            top: item.pageY + 5,
-            left: item.pageX + 5
-          })
-          .fadeIn(200);
+            y = item.datapoint[1].toFixed(2);
+        (0, _jquery2.default)(".flot-tooltip").html("x | " + x + "," + " y | " + y).css({
+          top: item.pageY + 5,
+          left: item.pageX + 5
+        }).fadeIn(200);
       } else {
-        $(".flot-tooltip").hide();
+        (0, _jquery2.default)(".flot-tooltip").hide();
       }
     });
-
   })();
-})(document, window, jQuery);
+});

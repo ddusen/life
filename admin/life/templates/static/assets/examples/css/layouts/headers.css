@@ -5,13 +5,11 @@
 @media (max-width: 767px) {
   .page-header-actions {
     position: relative;
-    right: auto;
     top: auto;
+    right: auto;
     padding: 5px 0;
-    -webkit-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
     margin: auto;
+    -webkit-transform: none;
+    transform: none;
   }
 }

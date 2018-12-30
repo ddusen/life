@@ -1,20 +1,29 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/pages/code-editor', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.pagesCodeEditor = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  var _items;
+
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Treeview
   // ---------
-  (function() {
+  (function () {
     var data = [{
       text: 'assets',
       href: '#assets',
@@ -148,7 +157,7 @@
 
     var defaults = Plugin.getDefaults("treeview");
 
-    var options = $.extend({}, defaults, {
+    var options = _jquery2.default.extend({}, defaults, {
       levels: 1,
       color: false,
       backColor: false,
@@ -162,7 +171,7 @@
       highlightSelected: true
     });
 
-    $('#filesTree').treeview(options);
+    (0, _jquery2.default)('#filesTree').treeview(options);
   })();
 
   // Codemirror
@@ -176,7 +185,43 @@
 
   // Contextmenu
   // -----------
-  $("#filesTree").contextmenu({
-    target: "#filesContextMenu"
+  _jquery2.default.contextMenu({
+    selector: '#filesTree',
+    // callback: function(key, options) {
+    //   var m = "clicked: " + key;
+    //   window.console && console.log(m) || alert(m);
+    // },
+    items: (_items = {
+      "rename": {
+        name: "Rename ...",
+        icon: function icon() {
+          return 'context-menu-icon context-menu-extend-icon wb-pencil';
+        }
+      },
+      "search": {
+        name: "Find in...",
+        icon: function icon() {
+          return 'context-menu-icon context-menu-extend-icon wb-search';
+        }
+      },
+      "sep1": "---------",
+      "new": {
+        name: "New File",
+        icon: function icon() {
+          return 'context-menu-icon context-menu-extend-icon wb-file';
+        }
+      },
+      "new-folder": {
+        name: "New Folder",
+        icon: function icon() {
+          return 'context-menu-icon context-menu-extend-icon wb-folder';
+        }
+      }
+    }, babelHelpers.defineProperty(_items, 'sep1', "---------"), babelHelpers.defineProperty(_items, "delete", {
+      name: "Delete",
+      icon: function icon() {
+        return 'context-menu-icon context-menu-extend-icon wb-close';
+      }
+    }), _items)
   });
-})(document, window, jQuery);
+});

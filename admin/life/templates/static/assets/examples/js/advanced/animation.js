@@ -1,34 +1,40 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/advanced/animation', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.advancedAnimation = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
 
-    $(document).on('click', '.select-loader', function(e) {
-      var type = $(this).data('type'),
-        curr = $('.example-loading .loader').data('type');
+    $$$1(document).on('click', '.select-loader', function (e) {
+      var type = $$$1(this).data('type'),
+          curr = $$$1('.example-loading .loader').data('type');
 
       if (type === curr) return;
-      $('.example-loading .loader').removeClass('loader-' + curr).addClass('loader-' + type).data('type', type);
-
+      $$$1('.example-loading .loader').removeClass('loader-' + curr).addClass('loader-' + type).data('type', type);
     });
 
     // Example NProgress
     // -----------------
-    (function() {
+    (function () {
       // Start Progress Loader
       // NProgress.start();
 
       // On click event gather options and Init NProgress Plugin
-      $(document).on('click', '.btn', function(e) {
-        var $target = $(e.target);
+      $$$1(document).on('click', '.btn', function (e) {
+        var $target = $$$1(e.target);
         var id = $target.attr('id');
 
         switch (id) {
@@ -46,7 +52,7 @@
             NProgress.done(true);
             break;
 
-            // Loader Positions
+          // Loader Positions
           case 'exampleNProgressDefault':
             // ReConfigure Progress Loader
             NProgress.done(true);
@@ -72,7 +78,7 @@
             NProgress.start();
             break;
 
-            // Loader Contextuals
+          // Loader Contextuals
           case 'exampleNProgressPrimary':
             // ReConfigure Progress Loader
             NProgress.done(true);
@@ -133,4 +139,4 @@
       });
     })();
   });
-})(document, window, jQuery);
+});

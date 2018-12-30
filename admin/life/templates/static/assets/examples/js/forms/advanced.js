@@ -1,41 +1,46 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/forms/advanced', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.formsAdvanced = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Reset Current
   // ---------------------
-  (function() {
+  (function () {
     // Reset Current
-    $('#exampleTimeButton').on('click', function() {
-      $('#inputTextCurrent').timepicker('setTime', new Date());
+    (0, _jquery2.default)('#exampleTimeButton').on('click', function () {
+      (0, _jquery2.default)('#inputTextCurrent').timepicker('setTime', new Date());
     });
   })();
 
   // Example inline datepicker
   // ---------------------
-  (function() {
+  (function () {
     // Reset Current
-    $('#inlineDatepicker').datepicker();
-    $("#inlineDatepicker").on("changeDate", function(event) {
-      $("#inputHiddenInline").val(
-        $("#inlineDatepicker").datepicker('getFormattedDate')
-      );
+    (0, _jquery2.default)('#inlineDatepicker').datepicker();
+    (0, _jquery2.default)("#inlineDatepicker").on("changeDate", function (event) {
+      (0, _jquery2.default)("#inputHiddenInline").val((0, _jquery2.default)("#inlineDatepicker").datepicker('getFormattedDate'));
     });
   })();
 
   // Example Tokenfield With Typeahead
   // ---------------------------------
-  (function() {
+  (function () {
     var engine = new Bloodhound({
       local: [{
         value: 'red'
@@ -62,7 +67,7 @@
 
     // engine.initialize();
 
-    $('#inputTokenfieldTypeahead').tokenfield({
+    (0, _jquery2.default)('#inputTokenfieldTypeahead').tokenfield({
       typeahead: [null, {
         name: 'engine',
         displayKey: 'value',
@@ -73,43 +78,38 @@
 
   // Example Tokenfield Events
   // -------------------------
-  (function() {
-    $('#inputTokenfieldEvents')
-      .on('tokenfield:createtoken', function(e) {
-        var data = e.attrs.value.split('|');
-        e.attrs.value = data[1] || data[0];
-        e.attrs.label = data[1] ? data[0] + ' (' + data[1] + ')' : data[0];
-      })
-      .on('tokenfield:createdtoken', function(e) {
-        // Über-simplistic e-mail validation
-        var re = /\S+@\S+\.\S+/;
-        var valid = re.test(e.attrs.value);
-        if (!valid) {
-          $(e.relatedTarget).addClass('invalid');
-        }
-      })
-      .on('tokenfield:edittoken', function(e) {
-        if (e.attrs.label !== e.attrs.value) {
-          var label = e.attrs.label.split(' (');
-          e.attrs.value = label[0] + '|' + e.attrs.value;
-        }
-      })
-      .on('tokenfield:removedtoken', function(e) {
-        if (e.attrs.length > 1) {
-          var values = $.map(e.attrs, function(attrs) {
-            return attrs.value;
-          });
-          alert(e.attrs.length + ' tokens removed! Token values were: ' + values.join(', '));
-        } else {
-          alert('Token removed! Token value was: ' + e.attrs.value);
-        }
-      })
-      .tokenfield();
+  (function () {
+    (0, _jquery2.default)('#inputTokenfieldEvents').on('tokenfield:createtoken', function (e) {
+      var data = e.attrs.value.split('|');
+      e.attrs.value = data[1] || data[0];
+      e.attrs.label = data[1] ? data[0] + ' (' + data[1] + ')' : data[0];
+    }).on('tokenfield:createdtoken', function (e) {
+      // Über-simplistic e-mail validation
+      var re = /\S+@\S+\.\S+/;
+      var valid = re.test(e.attrs.value);
+      if (!valid) {
+        (0, _jquery2.default)(e.relatedTarget).addClass('invalid');
+      }
+    }).on('tokenfield:edittoken', function (e) {
+      if (e.attrs.label !== e.attrs.value) {
+        var label = e.attrs.label.split(' (');
+        e.attrs.value = label[0] + '|' + e.attrs.value;
+      }
+    }).on('tokenfield:removedtoken', function (e) {
+      if (e.attrs.length > 1) {
+        var values = _jquery2.default.map(e.attrs, function (attrs) {
+          return attrs.value;
+        });
+        alert(e.attrs.length + ' tokens removed! Token values were: ' + values.join(', '));
+      } else {
+        alert('Token removed! Token value was: ' + e.attrs.value);
+      }
+    }).tokenfield();
   })();
 
   // Example Tags Input Objects as tags
   // ----------------------------------
-  (function() {
+  (function () {
     var cities = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -117,7 +117,7 @@
     });
     cities.initialize();
 
-    var options = $.extend(true, {}, Plugin.getDefaults("tagsinput"), {
+    var options = _jquery2.default.extend(true, {}, Plugin.getDefaults("tagsinput"), {
       itemValue: 'value',
       itemText: 'text',
       typeaheadjs: [{
@@ -131,7 +131,7 @@
       }]
     });
 
-    var $input = $('#inputTagsObject');
+    var $input = (0, _jquery2.default)('#inputTagsObject');
     $input.tagsinput(options);
 
     $input.tagsinput('add', {
@@ -163,7 +163,7 @@
 
   // Example Tags Input Categorizing
   // -------------------------------
-  (function() {
+  (function () {
     var cities = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -171,8 +171,8 @@
     });
     cities.initialize();
 
-    var options = $.extend(true, {}, Plugin.getDefaults("tagsinput"), {
-      tagClass: function(item) {
+    var options = _jquery2.default.extend(true, {}, Plugin.getDefaults("tagsinput"), {
+      tagClass: function tagClass(item) {
         switch (item.continent) {
           case 'Europe':
             return 'badge badge-primary';
@@ -198,7 +198,7 @@
         source: cities.ttAdapter()
       }]
     });
-    var $input = $('#inputTagsCategorizing');
+    var $input = (0, _jquery2.default)('#inputTagsCategorizing');
 
     $input.tagsinput(options);
 
@@ -227,49 +227,48 @@
       "text": "Cairo",
       "continent": "Africa"
     });
-
   })();
 
   // Example AsSpinner
   // -----------------
-  (function() {
+  (function () {
     // Custom Format
-    var options = $.extend({}, Plugin.getDefaults("asSpinner"), {
-      format: function(value) {
+    var options = _jquery2.default.extend({}, Plugin.getDefaults("asSpinner"), {
+      format: function format(value) {
         return value + '%';
       }
     });
 
-    $('#inputSpinnerCustomFormat').asSpinner(options);
+    (0, _jquery2.default)('#inputSpinnerCustomFormat').asSpinner(options);
   })();
 
   // Example Multi-Select
   // --------------------
-  (function() {
+  (function () {
     // for multi-select public methods example
-    $('.multi-select-methods').multiSelect();
-    $('#buttonSelectAll').click(function() {
-      $('.multi-select-methods').multiSelect('select_all');
+    (0, _jquery2.default)('.multi-select-methods').multiSelect();
+    (0, _jquery2.default)('#buttonSelectAll').click(function () {
+      (0, _jquery2.default)('.multi-select-methods').multiSelect('select_all');
       return false;
     });
-    $('#buttonDeselectAll').click(function() {
-      $('.multi-select-methods').multiSelect('deselect_all');
+    (0, _jquery2.default)('#buttonDeselectAll').click(function () {
+      (0, _jquery2.default)('.multi-select-methods').multiSelect('deselect_all');
       return false;
     });
-    $('#buttonSelectSome').click(function() {
-      $('.multi-select-methods').multiSelect('select', ['Idaho', 'Montana', 'Arkansas']);
+    (0, _jquery2.default)('#buttonSelectSome').click(function () {
+      (0, _jquery2.default)('.multi-select-methods').multiSelect('select', ['Idaho', 'Montana', 'Arkansas']);
       return false;
     });
-    $('#buttonDeselectSome').click(function() {
-      $('.multi-select-methods').multiSelect('select', ['Idaho', 'Montana', 'Arkansas']);
+    (0, _jquery2.default)('#buttonDeselectSome').click(function () {
+      (0, _jquery2.default)('.multi-select-methods').multiSelect('select', ['Idaho', 'Montana', 'Arkansas']);
       return false;
     });
-    $('#buttonRefresh').on('click', function() {
-      $('.multi-select-methods').multiSelect('refresh');
+    (0, _jquery2.default)('#buttonRefresh').on('click', function () {
+      (0, _jquery2.default)('.multi-select-methods').multiSelect('refresh');
       return false;
     });
-    $('#buttonAdd').on('click', function() {
-      $('.multi-select-methods').multiSelect('addOption', {
+    (0, _jquery2.default)('#buttonAdd').on('click', function () {
+      (0, _jquery2.default)('.multi-select-methods').multiSelect('addOption', {
         value: 42,
         text: 'test 42',
         index: 0
@@ -280,22 +279,13 @@
 
   // Example Typeahead
   // -----------------
-  (function() {
-    var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-      'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-      'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-      'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-      'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-      'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-      'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-      'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-      'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-    ];
+  (function () {
+    var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
     // basic & Styled
     // --------------
-    (function() {
-      var substringMatcher = function(strs) {
+    (function () {
+      var substringMatcher = function substringMatcher(strs) {
         return function findMatches(q, cb) {
           var matches, substrRegex;
 
@@ -307,7 +297,7 @@
 
           // iterate through the pool of strings and for any string that
           // contains the substring `q`, add it to the `matches` array
-          $.each(strs, function(i, str) {
+          _jquery2.default.each(strs, function (i, str) {
             if (substrRegex.test(str)) {
               matches.push(str);
             }
@@ -317,7 +307,7 @@
         };
       };
 
-      $('#exampleTypeaheadBasic, #exampleTypeaheadStyle').typeahead({
+      (0, _jquery2.default)('#exampleTypeaheadBasic, #exampleTypeaheadStyle').typeahead({
         hint: true,
         highlight: true,
         minLength: 1
@@ -329,17 +319,8 @@
 
     // bloodhound
     // ----------
-    (function() {
-      var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-        'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-        'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-        'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-        'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-        'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-        'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-        'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-      ];
+    (function () {
+      var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
       // constructs the suggestion engine
       var state = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
@@ -348,7 +329,7 @@
         local: states
       });
 
-      $('#exampleTypeaheadBloodhound').typeahead({
+      (0, _jquery2.default)('#exampleTypeaheadBloodhound').typeahead({
         hint: true,
         highlight: true,
         minLength: 1
@@ -360,7 +341,7 @@
 
     // Prefetch typeahead
     // ----------------
-    (function() {
+    (function () {
       var countries = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -371,11 +352,10 @@
 
       // passing in `null` for the `options` arguments will result in the default
       // options being used
-      $('#exampleTypeaheadPrefetch').typeahead(null, {
+      (0, _jquery2.default)('#exampleTypeaheadPrefetch').typeahead(null, {
         name: 'countries',
         source: countries
       });
     })();
-
   })();
-})(document, window, jQuery);
+});

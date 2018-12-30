@@ -29,8 +29,8 @@
 
 .page-user .page-content .page-user-sortlist {
   position: absolute;
-  right: 0;
   top: 5px;
+  right: 0;
   z-index: 2;
 }
 
@@ -45,12 +45,15 @@
     display: block;
     text-align: center;
   }
+
   .page-user .page-content .list-group-item .media-body {
     width: auto;
   }
+
   .page-user .page-content .list-group-item .media-body {
     margin-top: 15px;
   }
+
   .page-user .page-content .tab-content nav {
     text-align: center;
   }

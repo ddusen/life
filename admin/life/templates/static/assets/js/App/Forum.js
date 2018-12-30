@@ -45,8 +45,8 @@
     app.run();
   }
 
-  exports.default = AppForum;
   exports.AppForum = AppForum;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppForum;
 });

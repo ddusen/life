@@ -1,27 +1,31 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/c3', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsC3 = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example C3 Simple Line
   // ----------------------
-  (function() {
+  (function () {
     var simple_line_chart = c3.generate({
       bindto: '#exampleC3SimpleLine',
       data: {
-        columns: [
-          ['data1', 100, 165, 140, 270, 200, 140, 220],
-          ['data2', 110, 80, 100, 85, 125, 90, 100]
-        ]
+        columns: [['data1', 100, 165, 140, 270, 200, 140, 220], ['data2', 110, 80, 100, 85, 125, 90, 100]]
       },
       color: {
         pattern: [Config.colors("primary", 600), Config.colors("green", 600)]
@@ -55,14 +59,11 @@
 
   // Example C3 Line Regions
   // -----------------------
-  (function() {
+  (function () {
     var line_regions_chart = c3.generate({
       bindto: '#exampleC3LineRegions',
       data: {
-        columns: [
-          ['data1', 100, 165, 140, 270, 200, 140, 220],
-          ['data2', 110, 80, 100, 85, 125, 90, 100]
-        ],
+        columns: [['data1', 100, 165, 140, 270, 200, 140, 220], ['data2', 110, 80, 100, 85, 125, 90, 100]],
         regions: {
           'data1': [{
             'start': 1,
@@ -108,16 +109,12 @@
 
   // Example C3 Timeseries
   // ---------------------
-  (function() {
+  (function () {
     var time_series_chart = c3.generate({
       bindto: '#exampleC3TimeSeries',
       data: {
         x: 'x',
-        columns: [
-          ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-          ['data1', 80, 125, 100, 220, 80, 160],
-          ['data2', 40, 85, 45, 155, 50, 65]
-        ]
+        columns: [['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'], ['data1', 80, 125, 100, 220, 80, 160], ['data2', 40, 85, 45, 155, 50, 65]]
       },
       color: {
         pattern: [Config.colors("primary", 600), Config.colors("green", 600), Config.colors("red", 500)]
@@ -153,25 +150,20 @@
       }
     });
 
-    setTimeout(function() {
+    setTimeout(function () {
       time_series_chart.load({
-        columns: [
-          ['data3', 210, 180, 260, 290, 250, 240]
-        ]
+        columns: [['data3', 210, 180, 260, 290, 250, 240]]
       });
     }, 1000);
   })();
 
   // Example C3 Spline
   // -----------------
-  (function() {
+  (function () {
     var spline_chart = c3.generate({
       bindto: '#exampleC3Spline',
       data: {
-        columns: [
-          ['data1', 100, 165, 140, 270, 200, 140, 220],
-          ['data2', 110, 80, 100, 85, 125, 90, 100]
-        ],
+        columns: [['data1', 100, 165, 140, 270, 200, 140, 220], ['data2', 110, 80, 100, 85, 125, 90, 100]],
         type: 'spline'
       },
       color: {
@@ -206,20 +198,15 @@
 
   // Example C3 Scatter
   // ------------------
-  (function() {
+  (function () {
     var scatter_chart = c3.generate({
       bindto: '#exampleC3Scatter',
       data: {
         xs: {
           setosa: 'setosa_x',
-          versicolor: 'versicolor_x',
+          versicolor: 'versicolor_x'
         },
-        columns: [
-          ["setosa_x", 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.2, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3],
-          ["versicolor_x", 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8],
-          ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
-          ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.6, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.2, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
-        ],
+        columns: [["setosa_x", 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.2, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3], ["versicolor_x", 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8], ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2], ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.6, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.2, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3]],
         type: 'scatter'
       },
       color: {
@@ -261,14 +248,11 @@
 
   // Example C3 Bar
   // --------------
-  (function() {
+  (function () {
     var bar_chart = c3.generate({
       bindto: '#exampleC3Bar',
       data: {
-        columns: [
-          ['data1', 30, 200, 100, 400, 150, 250],
-          ['data2', 130, 100, 140, 200, 150, 50]
-        ],
+        columns: [['data1', 30, 200, 100, 400, 150, 250], ['data2', 130, 100, 140, 200, 150, 50]],
         type: 'bar'
       },
       bar: {
@@ -292,30 +276,22 @@
       }
     });
 
-    setTimeout(function() {
+    setTimeout(function () {
       bar_chart.load({
-        columns: [
-          ['data3', 130, -150, 200, 300, -200, 100]
-        ]
+        columns: [['data3', 130, -150, 200, 300, -200, 100]]
       });
     }, 1000);
   })();
 
   // Example C3 Stacked Bar
   // ----------------------
-  (function() {
+  (function () {
     var stacked_bar_chart = c3.generate({
       bindto: '#exampleC3StackedBar',
       data: {
-        columns: [
-          ['data1', -30, 200, 300, 400, -150, 250],
-          ['data2', 130, 100, -400, 100, -150, 50],
-          ['data3', -230, 200, 200, -300, 250, 250]
-        ],
+        columns: [['data1', -30, 200, 300, 400, -150, 250], ['data2', 130, 100, -400, 100, -150, 50], ['data3', -230, 200, 200, -300, 250, 250]],
         type: 'bar',
-        groups: [
-          ['data1', 'data2']
-        ]
+        groups: [['data1', 'data2']]
       },
       color: {
         pattern: [Config.colors("primary", 500), Config.colors("blue-grey", 300), Config.colors("purple", 500), Config.colors("light-green", 500)]
@@ -335,50 +311,35 @@
       }
     });
 
-    setTimeout(function() {
-      stacked_bar_chart.groups([
-        ['data1', 'data2', 'data3']
-      ]);
+    setTimeout(function () {
+      stacked_bar_chart.groups([['data1', 'data2', 'data3']]);
     }, 1000);
 
-    setTimeout(function() {
+    setTimeout(function () {
       stacked_bar_chart.load({
-        columns: [
-          ['data4', 100, -250, 150, 200, -300, -100]
-        ]
+        columns: [['data4', 100, -250, 150, 200, -300, -100]]
       });
     }, 1500);
 
-    setTimeout(function() {
-      stacked_bar_chart.groups([
-        ['data1', 'data2', 'data3', 'data4']
-      ]);
+    setTimeout(function () {
+      stacked_bar_chart.groups([['data1', 'data2', 'data3', 'data4']]);
     }, 2000);
   })();
 
   // Example C3 Combination
   // ----------------------
-  (function() {
+  (function () {
     var combination_chart = c3.generate({
       bindto: '#exampleC3Combination',
       data: {
-        columns: [
-          ['data1', 30, 20, 50, 40, 60, 50],
-          ['data2', 200, 130, 90, 240, 130, 220],
-          ['data3', 300, 200, 160, 400, 250, 250],
-          ['data4', 200, 130, 90, 240, 130, 220],
-          ['data5', 130, 120, 150, 140, 160, 150],
-          ['data6', 90, 70, 20, 50, 60, 120],
-        ],
+        columns: [['data1', 30, 20, 50, 40, 60, 50], ['data2', 200, 130, 90, 240, 130, 220], ['data3', 300, 200, 160, 400, 250, 250], ['data4', 200, 130, 90, 240, 130, 220], ['data5', 130, 120, 150, 140, 160, 150], ['data6', 90, 70, 20, 50, 60, 120]],
         type: 'bar',
         types: {
           data3: 'spline',
           data4: 'line',
-          data6: 'area',
+          data6: 'area'
         },
-        groups: [
-          ['data1', 'data2']
-        ]
+        groups: [['data1', 'data2']]
       },
       color: {
         pattern: [Config.colors("blue-grey", 400), Config.colors("blue-grey", 200), Config.colors("yellow", 600), Config.colors("primary", 600), Config.colors("red", 400), Config.colors("green", 600)]
@@ -396,16 +357,13 @@
 
   // Example C3 Pie
   // --------------
-  (function() {
+  (function () {
     var pie_chart = c3.generate({
       bindto: '#exampleC3Pie',
       data: {
         // iris data from R
-        columns: [
-          ['data1', 100],
-          ['data2', 40],
-        ],
-        type: 'pie',
+        columns: [['data1', 100], ['data2', 40]],
+        type: 'pie'
       },
       color: {
         pattern: [Config.colors("primary", 500), Config.colors("blue-grey", 200)]
@@ -417,24 +375,20 @@
         label: {
           show: false
         },
-        onclick: function(d, i) {},
-        onmouseover: function(d, i) {},
-        onmouseout: function(d, i) {}
+        onclick: function onclick(d, i) {},
+        onmouseover: function onmouseover(d, i) {},
+        onmouseout: function onmouseout(d, i) {}
       }
     });
   })();
 
   // Example C3 Donut
   // ----------------
-  (function() {
+  (function () {
     var donut_chart = c3.generate({
       bindto: '#exampleC3Donut',
       data: {
-        columns: [
-          ['data1', 120],
-          ['data2', 40],
-          ['data3', 80]
-        ],
+        columns: [['data1', 120], ['data2', 40], ['data3', 80]],
         type: 'donut'
       },
       color: {
@@ -449,23 +403,20 @@
         },
         width: 10,
         title: "C3 Dount Chart",
-        onclick: function(d, i) {},
-        onmouseover: function(d, i) {},
-        onmouseout: function(d, i) {}
+        onclick: function onclick(d, i) {},
+        onmouseover: function onmouseover(d, i) {},
+        onmouseout: function onmouseout(d, i) {}
       }
     });
   })();
 
   // Example Sub Chart
   // ----------------
-  (function() {
+  (function () {
     var donut_chart = c3.generate({
       bindto: '#exampleC3Subchart',
       data: {
-        columns: [
-          ['data1', 100, 165, 140, 270, 200, 140, 220, 210, 190, 100, 170, 250],
-          ['data2', 110, 80, 100, 85, 125, 90, 100, 130, 120, 90, 100, 115]
-        ],
+        columns: [['data1', 100, 165, 140, 270, 200, 140, 220, 210, 190, 100, 170, 250], ['data2', 110, 80, 100, 85, 125, 90, 100, 130, 120, 90, 100, 115]],
         type: 'spline'
       },
       color: {
@@ -479,13 +430,11 @@
 
   // Example C3 Zoom
   // ----------------
-  (function() {
+  (function () {
     var donut_chart = c3.generate({
       bindto: '#exampleC3Zoom',
       data: {
-        columns: [
-          ['sample', 30, 200, 100, 400, 150, 250, 150, 200, 170, 240, 350, 150, 100, 400, 150, 250, 150, 200, 170, 240, 100, 150, 250, 150, 200, 170, 240, 30, 200, 100, 400, 150, 250, 150, 200, 170, 240, 350, 150, 100, 400, 350, 220, 250, 300, 270, 140, 150, 90, 150, 50, 120, 70, 40]
-        ],
+        columns: [['sample', 30, 200, 100, 400, 150, 250, 150, 200, 170, 240, 350, 150, 100, 400, 150, 250, 150, 200, 170, 240, 100, 150, 250, 150, 200, 170, 240, 30, 200, 100, 400, 150, 250, 150, 200, 170, 240, 350, 150, 100, 400, 350, 220, 250, 300, 270, 140, 150, 90, 150, 50, 120, 70, 40]],
         colors: {
           sample: Config.colors("primary", 600)
         }
@@ -495,4 +444,4 @@
       }
     });
   })();
-})(document, window, jQuery);
+});

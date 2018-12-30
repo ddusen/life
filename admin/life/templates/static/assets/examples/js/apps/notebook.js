@@ -1,66 +1,21 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-// (function(document, window, $) {
-//   'use strict';
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/apps/notebook', ['jquery'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery);
+    global.appsNotebook = mod.exports;
+  }
+})(this, function (_jquery) {
+  'use strict';
 
-//   window.AppNoteBook = App.extend({
-//     handleAction: function() {
-//       var $actionBtn = $('.site-action').actionBtn({
-//         toggleSelector: '.list-group-item',
-//         listSelector: '.site-action-buttons'
-//       }).data("actionBtn");
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-//       var $noteList = $(".list-group-item");
-
-//       $('.site-action-toggle').on("click", function(e) {
-//         if (!$noteList.hasClass("active")) {
-//           $('#addNewNote').modal('show');
-
-//           e.stopPropagation();
-//         }
-//       })
-
-//       $noteList.on("click", function() {
-//         $(this).siblings().removeClass("active");
-//         $(this).addClass("active");
-
-//         if ($(this).hasClass("active")) {
-//           $actionBtn.show();
-
-//           $(".site-action-toggle").on("click", function() {
-//             $(".list-group-item").removeClass("active");
-//             $actionBtn.hide();
-//           });
-//         }
-//       });
-//     },
-//     handleEdit: function() {
-//       $("#mdEdit").markdown({
-//         autofocus: false,
-//         savable: false
-//       });
-//     },
-//     handleResize: function() {
-//       var self = this;
-
-//       $(window).on("resize", function() {
-//         self.handleEdit();
-//       });
-//     },
-//     run: function(next) {
-//       this.handleAction();
-//       this.handleEdit();
-//     }
-//   });
-
-//   $(document).ready(function($) {
-//     AppNoteBook.run();
-//   })
-// }(document, window, jQuery));
-
-$(document).ready(function() {
-  AppNotebook.run();
+  (0, _jquery2.default)(document).ready(function () {
+    AppNotebook.run();
+  });
 });

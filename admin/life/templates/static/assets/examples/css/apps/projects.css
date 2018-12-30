@@ -22,8 +22,8 @@
 
 .app-projects .overlay {
   margin-bottom: 12px;
-  border-radius: .286rem;
   overflow: visible;
+  border-radius: .286rem;
 }
 
 .app-projects .overlay .btn-group {
@@ -45,8 +45,8 @@
 }
 
 .app-projects .overlay .project-button:hover {
-  background-color: white;
   color: #526069;
+  background-color: white;
 }
 
 .app-projects .overlay .dropdown .dropdown-menu > li > a {
@@ -62,9 +62,9 @@
 }
 
 .app-projects .overlay .dropdown-menu {
-  color: #76838f;
-  margin-top: 0;
   min-width: 110px;
+  margin-top: 0;
+  color: #76838f;
 }
 
 .app-projects .overlay .dropdown-menu a {

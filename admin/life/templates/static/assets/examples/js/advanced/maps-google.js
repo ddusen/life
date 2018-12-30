@@ -1,19 +1,26 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/advanced/maps-google', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.advancedMapsGoogle = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function() {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function () {
+    (0, _Site.run)();
 
     // Simple
     // ------------------
-    (function() {
+    (function () {
       var simpleMap = new GMaps({
         el: '#simpleGmap',
         zoom: 8,
@@ -26,7 +33,7 @@
 
     // Custom
     // ------------------
-    (function() {
+    (function () {
       var map = new GMaps({
         el: '#customGmap',
         lat: -12.043333,
@@ -46,13 +53,13 @@
       map.drawOverlay({
         lat: -12.043333,
         lng: -77.028333,
-        content: '<i class="wb-map" style="font-size:40px;color:' + Config.colors("red", 500) + ';"></i>',
+        content: '<i class="wb-map" style="font-size:40px;color:' + Config.colors("red", 500) + ';"></i>'
       });
 
       map.drawOverlay({
         lat: -12.05449279282314,
         lng: -77.04333,
-        content: '<i class="wb-map" style="font-size:32px;color:' + Config.colors("primary", 500) + ';"></i>',
+        content: '<i class="wb-map" style="font-size:32px;color:' + Config.colors("primary", 500) + ';"></i>'
       });
 
       map.addStyle({
@@ -63,16 +70,7 @@
 
       map.setStyle("map_style");
 
-      var path = [
-        [-12.044012922866312, -77.02470665341184],
-        [-12.05449279282314, -77.03024273281858],
-        [-12.055122327623378, -77.03039293652341],
-        [-12.075917129727586, -77.02764635449216],
-        [-12.07635776902266, -77.02792530422971],
-        [-12.076819390363665, -77.02893381481931],
-        [-12.088527520066453, -77.0241058385925],
-        [-12.090814532191756, -77.02271108990476]
-      ];
+      var path = [[-12.044012922866312, -77.02470665341184], [-12.05449279282314, -77.03024273281858], [-12.055122327623378, -77.03039293652341], [-12.075917129727586, -77.02764635449216], [-12.07635776902266, -77.02792530422971], [-12.076819390363665, -77.02893381481931], [-12.088527520066453, -77.0241058385925], [-12.090814532191756, -77.02271108990476]];
 
       map.drawPolyline({
         path: path,
@@ -84,7 +82,7 @@
 
     // Markers
     // ------------------
-    (function() {
+    (function () {
       var map = new GMaps({
         div: '#markersGmap',
         lat: -12.043333,
@@ -98,9 +96,8 @@
           database_id: 42,
           author: 'HPNeo'
         },
-        click: function(e) {
-          if (console.log)
-            console.log(e);
+        click: function click(e) {
+          if (console.log) console.log(e);
           alert('You clicked in this marker');
         }
       });
@@ -116,26 +113,17 @@
 
     // Polylines
     // ------------------
-    (function() {
+    (function () {
       var map = new GMaps({
         div: '#polylinesGmap',
         lat: -12.043333,
         lng: -77.028333,
-        click: function(e) {
+        click: function click(e) {
           console.log(e);
         }
       });
 
-      var path = [
-        [-12.044012922866312, -77.02470665341184],
-        [-12.05449279282314, -77.03024273281858],
-        [-12.055122327623378, -77.03039293652341],
-        [-12.075917129727586, -77.02764635449216],
-        [-12.07635776902266, -77.02792530422971],
-        [-12.076819390363665, -77.02893381481931],
-        [-12.088527520066453, -77.0241058385925],
-        [-12.090814532191756, -77.02271108990476]
-      ];
+      var path = [[-12.044012922866312, -77.02470665341184], [-12.05449279282314, -77.03024273281858], [-12.055122327623378, -77.03039293652341], [-12.075917129727586, -77.02764635449216], [-12.07635776902266, -77.02792530422971], [-12.076819390363665, -77.02893381481931], [-12.088527520066453, -77.0241058385925], [-12.090814532191756, -77.02271108990476]];
 
       map.drawPolyline({
         path: path,
@@ -147,19 +135,14 @@
 
     // Polygons
     // ------------------
-    (function() {
+    (function () {
       var map = new GMaps({
         div: '#polygonsGmap',
         lat: -12.043333,
         lng: -77.028333
       });
 
-      var path = [
-        [-12.040397656836609, -77.03373871559225],
-        [-12.040248585302038, -77.03993927003302],
-        [-12.050047116528843, -77.02448169303511],
-        [-12.044804866577001, -77.02154422636042]
-      ];
+      var path = [[-12.040397656836609, -77.03373871559225], [-12.040248585302038, -77.03993927003302], [-12.050047116528843, -77.02448169303511], [-12.044804866577001, -77.02154422636042]];
 
       map.drawPolygon({
         paths: path,
@@ -173,14 +156,14 @@
 
     // Fusion Tables layers
     // ------------------
-    (function() {
+    (function () {
       var infoWindow = new google.maps.InfoWindow({}),
-        map = new GMaps({
-          div: '#FTLGmap',
-          zoom: 11,
-          lat: 41.850033,
-          lng: -87.6500523
-        });
+          map = new GMaps({
+        div: '#FTLGmap',
+        zoom: 11,
+        lat: 41.850033,
+        lng: -87.6500523
+      });
 
       map.loadFromFusionTables({
         query: {
@@ -189,7 +172,7 @@
         },
         suppressInfoWindows: true,
         events: {
-          click: function(point) {
+          click: function click(point) {
             infoWindow.setContent('You clicked here!');
             infoWindow.setPosition(point.latLng);
             infoWindow.open(map.map);
@@ -200,7 +183,7 @@
 
     // Panoramas
     // ------------------
-    (function() {
+    (function () {
       var panorama = GMaps.createPanorama({
         el: '#panoramasGmap',
         lat: 42.3455,
@@ -210,7 +193,7 @@
 
     // Satellite
     // ------------------
-    (function() {
+    (function () {
       var simpleMap = new GMaps({
         div: "#satelliteGmap",
         lat: 0,
@@ -219,6 +202,5 @@
         scrollwheel: !1
       }).setMapTypeId(google.maps.MapTypeId.SATELLITE);
     })();
-
   });
-})(document, window, jQuery);
+});

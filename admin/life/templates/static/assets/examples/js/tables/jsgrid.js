@@ -1,15 +1,22 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/tables/jsgrid', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.tablesJsgrid = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   jsGrid.setDefaults({
@@ -17,56 +24,50 @@
   });
 
   jsGrid.setDefaults("text", {
-    _createTextBox: function() {
-      return $("<input>").attr("type", "text").attr("class", "form-control input-sm");
+    _createTextBox: function _createTextBox() {
+      return (0, _jquery2.default)("<input>").attr("type", "text").attr("class", "form-control input-sm");
     }
   });
 
   jsGrid.setDefaults("number", {
-    _createTextBox: function() {
-      return $("<input>").attr("type", "number").attr("class", "form-control input-sm");
+    _createTextBox: function _createTextBox() {
+      return (0, _jquery2.default)("<input>").attr("type", "number").attr("class", "form-control input-sm");
     }
   });
 
   jsGrid.setDefaults("textarea", {
-    _createTextBox: function() {
-      return $("<input>").attr("type", "textarea").attr("class", "form-control");
+    _createTextBox: function _createTextBox() {
+      return (0, _jquery2.default)("<input>").attr("type", "textarea").attr("class", "form-control");
     }
   });
 
   jsGrid.setDefaults("control", {
-    _createGridButton: function(cls, tooltip, clickHandler) {
+    _createGridButton: function _createGridButton(cls, tooltip, clickHandler) {
       var grid = this._grid;
 
-      return $("<button>").addClass(this.buttonClass)
-        .addClass(cls)
-        .attr({
-          type: "button",
-          title: tooltip
-        })
-        .on("click", function(e) {
-          clickHandler(grid, e);
-        });
+      return (0, _jquery2.default)("<button>").addClass(this.buttonClass).addClass(cls).attr({
+        type: "button",
+        title: tooltip
+      }).on("click", function (e) {
+        clickHandler(grid, e);
+      });
     }
   });
 
   jsGrid.setDefaults("select", {
-    _createSelect: function() {
-      var $result = $("<select>").attr("class", "form-control input-sm"),
-        valueField = this.valueField,
-        textField = this.textField,
-        selectedIndex = this.selectedIndex;
+    _createSelect: function _createSelect() {
+      var $result = (0, _jquery2.default)("<select>").attr("class", "form-control input-sm"),
+          valueField = this.valueField,
+          textField = this.textField,
+          selectedIndex = this.selectedIndex;
 
-      $.each(this.items, function(index, item) {
+      _jquery2.default.each(this.items, function (index, item) {
         var value = valueField ? item[valueField] : index,
-          text = textField ? item[textField] : item;
+            text = textField ? item[textField] : item;
 
-        var $option = $("<option>")
-          .attr("value", value)
-          .text(text)
-          .appendTo($result);
+        var $option = (0, _jquery2.default)("<option>").attr("value", value).text(text).appendTo($result);
 
-        $option.prop("selected", (selectedIndex === index));
+        $option.prop("selected", selectedIndex === index);
       });
 
       return $result;
@@ -75,8 +76,8 @@
 
   // Example Basic
   // -------------------
-  (function() {
-    $('#exampleBasic').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleBasic').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -123,9 +124,9 @@
   })();
 
   // Example Static Data
-  // ----------------------------
-  (function() {
-    $('#exampleStaticData').jsGrid({
+  // -------------------
+  (function () {
+    (0, _jquery2.default)('#exampleStaticData').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -162,8 +163,8 @@
 
   // Example OData Service
   // -------------------
-  (function() {
-    $('#exampleOData').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleOData').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -172,13 +173,13 @@
       autoload: true,
 
       controller: {
-        loadData: function() {
-          var d = $.Deferred();
+        loadData: function loadData() {
+          var d = _jquery2.default.Deferred();
 
-          $.ajax({
+          _jquery2.default.ajax({
             url: "http://services.odata.org/V3/(S(3mnweai3qldmghnzfshavfok))/OData/OData.svc/Products",
             dataType: "json"
-          }).done(function(response) {
+          }).done(function (response) {
             d.resolve(response.value);
           });
 
@@ -198,14 +199,14 @@
         type: "number",
         width: 50,
         align: "center",
-        itemTemplate: function(value) {
-          return $("<div>").addClass("rating text-nowrap").append(Array(value + 1).join('<i class="icon wb-star orange-600 mr-3"></i>'));
+        itemTemplate: function itemTemplate(value) {
+          return (0, _jquery2.default)("<div>").addClass("rating text-nowrap").append(Array(value + 1).join('<i class="icon wb-star orange-600 mr-3"></i>'));
         }
       }, {
         name: "Price",
         type: "number",
         width: 50,
-        itemTemplate: function(value) {
+        itemTemplate: function itemTemplate(value) {
           return value.toFixed(2) + "$";
         }
       }]
@@ -214,8 +215,8 @@
 
   // Example Sorting
   // ---------------
-  (function() {
-    $('#exampleSorting').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleSorting').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -249,16 +250,16 @@
       }]
     });
 
-    $("#sortingField").on('change', function() {
-      var field = $(this).val();
-      $("#exampleSorting").jsGrid("sort", field);
+    (0, _jquery2.default)("#sortingField").on('change', function () {
+      var field = (0, _jquery2.default)(this).val();
+      (0, _jquery2.default)("#exampleSorting").jsGrid("sort", field);
     });
   })();
 
   // Example Loading Data by Page
   // ----------------------------
-  (function() {
-    $('#exampleLoadingByPage').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleLoadingByPage').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -269,7 +270,7 @@
       pageIndex: 2,
 
       controller: {
-        loadData: function(filter) {
+        loadData: function loadData(filter) {
           var startIndex = (filter.pageIndex - 1) * filter.pageSize;
           return {
             data: db.clients.slice(startIndex, startIndex + filter.pageSize),
@@ -303,16 +304,16 @@
       }]
     });
 
-    $("#pager").on("change", function() {
-      var page = parseInt($(this).val(), 10);
-      $("#exampleLoadingByPage").jsGrid("openPage", page);
+    (0, _jquery2.default)("#pager").on("change", function () {
+      var page = parseInt((0, _jquery2.default)(this).val(), 10);
+      (0, _jquery2.default)("#exampleLoadingByPage").jsGrid("openPage", page);
     });
   })();
 
   // Example Custom View
   // -------------------
-  (function() {
-    $('#exampleCustomView').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleCustomView').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -357,16 +358,16 @@
       }]
     });
 
-    $(".views").on("change", function() {
-      var $cb = $(this);
-      $("#exampleCustomView").jsGrid("option", $cb.attr("value"), $cb.is(":checked"));
+    (0, _jquery2.default)(".views").on("change", function () {
+      var $cb = (0, _jquery2.default)(this);
+      (0, _jquery2.default)("#exampleCustomView").jsGrid("option", $cb.attr("value"), $cb.is(":checked"));
     });
   })();
 
   // Example Custom Row Renderer
   // ---------------------------
-  (function() {
-    $('#exampleCustomRowRenderer').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleCustomRowRenderer').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -374,13 +375,13 @@
       paging: true,
 
       controller: {
-        loadData: function() {
-          var deferred = $.Deferred();
+        loadData: function loadData() {
+          var deferred = _jquery2.default.Deferred();
 
-          $.ajax({
+          _jquery2.default.ajax({
             url: 'http://api.randomuser.me/?results=40',
             dataType: 'json',
-            success: function(data) {
+            success: function success(data) {
               deferred.resolve(data.results);
             }
           });
@@ -389,24 +390,11 @@
         }
       },
 
-      rowRenderer: function(item) {
-        var $photo = $("<div>").addClass("pr-20").append(
-          $('<a>').addClass('avatar avatar-lg').attr('href', 'javascript:void(0)').append(
-            $("<img>").attr("src", item.picture.medium)
-          )
-        );
-        var $info = $("<div>").addClass("media-body")
-          .append($("<p>").append($("<strong>").text(item.name.first.capitalize() + " " + item.name.last.capitalize())))
-          .append($("<p>").text("Location: " + item.location.city.capitalize() + ", " + item.location.street))
-          .append($("<p>").text("Email: " + item.email))
-          .append($("<p>").text("Phone: " + item.phone))
-          .append($("<p>").text("Cell: " + item.cell));
+      rowRenderer: function rowRenderer(item) {
+        var $photo = (0, _jquery2.default)("<div>").addClass("pr-20").append((0, _jquery2.default)('<a>').addClass('avatar avatar-lg').attr('href', 'javascript:void(0)').append((0, _jquery2.default)("<img>").attr("src", item.picture.medium)));
+        var $info = (0, _jquery2.default)("<div>").addClass("media-body").append((0, _jquery2.default)("<p>").append((0, _jquery2.default)("<strong>").text(item.name.first.capitalize() + " " + item.name.last.capitalize()))).append((0, _jquery2.default)("<p>").text("Location: " + item.location.city.capitalize() + ", " + item.location.street)).append((0, _jquery2.default)("<p>").text("Email: " + item.email)).append((0, _jquery2.default)("<p>").text("Phone: " + item.phone)).append((0, _jquery2.default)("<p>").text("Cell: " + item.cell));
 
-        return $("<tr>").append(
-          $('<td>').append(
-            $('<div class="media">').append($photo).append($info)
-          )
-        );
+        return (0, _jquery2.default)("<tr>").append((0, _jquery2.default)('<td>').append((0, _jquery2.default)('<div class="media">').append($photo).append($info)));
       },
 
       fields: [{
@@ -414,15 +402,15 @@
       }]
     });
 
-    String.prototype.capitalize = function() {
+    String.prototype.capitalize = function () {
       return this.charAt(0).toUpperCase() + this.slice(1);
     };
   })();
 
   // Example Batch Delete
   // --------------------
-  (function() {
-    $('#exampleBatchDelete').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleBatchDelete').jsGrid({
       height: "500px",
       width: "100%",
 
@@ -430,22 +418,20 @@
       confirmDeleting: false,
       paging: true,
       controller: {
-        loadData: function() {
+        loadData: function loadData() {
           return db.clients;
         }
       },
       fields: [{
-        headerTemplate: function() {
-          return $("<button>").attr("type", "button").attr("class", "btn btn-primary btn-xs").text("Delete")
-            .on("click", function() {
-              deleteSelectedItems();
-            });
+        headerTemplate: function headerTemplate() {
+          return (0, _jquery2.default)("<button>").attr("type", "button").attr("class", "btn btn-primary btn-xs").text("Delete").on("click", function () {
+            deleteSelectedItems();
+          });
         },
-        itemTemplate: function(_, item) {
-          return $("<input>").attr("type", "checkbox")
-            .on("change", function() {
-              $(this).is(":checked") ? selectItem(item) : unselectItem(item);
-            });
+        itemTemplate: function itemTemplate(_, item) {
+          return (0, _jquery2.default)("<input>").attr("type", "checkbox").on("change", function () {
+            (0, _jquery2.default)(this).is(":checked") ? selectItem(item) : unselectItem(item);
+          });
         },
         align: "center",
         width: 50
@@ -466,23 +452,22 @@
 
     var selectedItems = [];
 
-    var selectItem = function(item) {
+    var selectItem = function selectItem(item) {
       selectedItems.push(item);
     };
 
-    var unselectItem = function(item) {
-      selectedItems = $.grep(selectedItems, function(i) {
+    var unselectItem = function unselectItem(item) {
+      selectedItems = _jquery2.default.grep(selectedItems, function (i) {
         return i !== item;
       });
     };
 
-    var deleteSelectedItems = function() {
-      if (!selectedItems.length || !confirm("Are you sure?"))
-        return;
+    var deleteSelectedItems = function deleteSelectedItems() {
+      if (!selectedItems.length || !confirm("Are you sure?")) return;
 
-      var $grid = $("#exampleBatchDelete");
+      var $grid = (0, _jquery2.default)("#exampleBatchDelete");
 
-      $.each(selectedItems, function(_, item) {
+      _jquery2.default.each(selectedItems, function (_, item) {
         $grid.jsGrid("deleteItem", item);
       });
 
@@ -492,19 +477,19 @@
 
   // Example Rows Reordering
   // -----------------------
-  (function() {
-    $('#exampleRowsReordering').jsGrid({
+  (function () {
+    (0, _jquery2.default)('#exampleRowsReordering').jsGrid({
       height: "500px",
       width: "100%",
 
       autoload: true,
 
-      rowClass: function(item, itemIndex) {
+      rowClass: function rowClass(item, itemIndex) {
         return "client-" + itemIndex;
       },
 
       controller: {
-        loadData: function() {
+        loadData: function loadData() {
           return db.clients.slice(0, 15);
         }
       },
@@ -535,22 +520,22 @@
       }]
     });
 
-    var $gridData = $("#exampleRowsReordering .jsgrid-grid-body tbody");
+    var $gridData = (0, _jquery2.default)("#exampleRowsReordering .jsgrid-grid-body tbody");
 
     $gridData.sortable({
-      update: function(e, ui) {
+      update: function update(e, ui) {
         // array of indexes
         var clientIndexRegExp = /\s+client-(\d+)\s+/;
-        var indexes = $.map($gridData.sortable("toArray", {
+        var indexes = _jquery2.default.map($gridData.sortable("toArray", {
           attribute: "class"
-        }), function(classes) {
+        }), function (classes) {
           return clientIndexRegExp.exec(classes)[1];
         });
         alert("Reordered indexes: " + indexes.join(", "));
 
         // arrays of items
-        var items = $.map($gridData.find("tr"), function(row) {
-          return $(row).data("JSGridItem");
+        var items = _jquery2.default.map($gridData.find("tr"), function (row) {
+          return (0, _jquery2.default)(row).data("JSGridItem");
         });
         console && console.log("Reordered items", items);
       }
@@ -559,47 +544,45 @@
 
   // Example Custom Grid Field
   // -------------------------
-  (function() {
-    var MyDateField = function(config) {
+  (function () {
+    var MyDateField = function MyDateField(config) {
       jsGrid.Field.call(this, config);
     };
 
     MyDateField.prototype = new jsGrid.Field({
-      sorter: function(date1, date2) {
+      sorter: function sorter(date1, date2) {
         return new Date(date1) - new Date(date2);
       },
 
-      itemTemplate: function(value) {
+      itemTemplate: function itemTemplate(value) {
         return new Date(value).toDateString();
       },
 
-      insertTemplate: function() {
-        if (!this.inserting)
-          return "";
+      insertTemplate: function insertTemplate() {
+        if (!this.inserting) return "";
 
         var $result = this.insertControl = this._createTextBox();
         return $result;
       },
 
-      editTemplate: function(value) {
-        if (!this.editing)
-          return this.itemTemplate(value);
+      editTemplate: function editTemplate(value) {
+        if (!this.editing) return this.itemTemplate(value);
 
         var $result = this.editControl = this._createTextBox();
         $result.val(value);
         return $result;
       },
 
-      insertValue: function() {
+      insertValue: function insertValue() {
         return this.insertControl.datepicker("getDate");
       },
 
-      editValue: function() {
+      editValue: function editValue() {
         return this.editControl.datepicker("getDate");
       },
 
-      _createTextBox: function() {
-        return $("<input>").attr("type", "text").addClass('form-control input-sm').datepicker({
+      _createTextBox: function _createTextBox() {
+        return (0, _jquery2.default)("<input>").attr("type", "text").addClass('form-control input-sm').datepicker({
           autoclose: true
         });
       }
@@ -607,7 +590,7 @@
 
     jsGrid.fields.myDateField = MyDateField;
 
-    $("#exampleCustomGridField").jsGrid({
+    (0, _jquery2.default)("#exampleCustomGridField").jsGrid({
       height: "500px",
       width: "100%",
 
@@ -636,6 +619,5 @@
         modeSwitchButton: false
       }]
     });
-
   })();
-})(document, window, jQuery);
+});

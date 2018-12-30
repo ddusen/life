@@ -9,8 +9,8 @@
 }
 
 .page-email .email-more {
-  margin-top: 40px;
   padding: 35px 0 10px;
+  margin-top: 40px;
   text-align: center;
   border-top: 1px solid #e4eaec;
 }
@@ -28,14 +28,14 @@
 }
 
 .page-email .email-more-social a {
-  margin: 0 7px;
   padding: 5px;
+  margin: 0 7px;
   text-decoration: none;
 }
 
 .page-email .email-more-social .icon {
-  color: rgba(55, 71, 79, .4);
   font-size: 1.143rem;
+  color: rgba(55, 71, 79, .4);
 }
 
 .page-email .email-more-social .icon:hover, .page-email .email-more-social .icon:focus {
@@ -85,13 +85,12 @@
 }
 
 .page-email-news .panel {
-  -webkit-box-shadow: none;
   box-shadow: none;
 }
 
 .page-email-news .panel-body > .card {
-  margin-left: -17px;
   margin-right: -17px;
+  margin-left: -17px;
 }
 
 .page-email-news .panel-body > .card > .card-block {
@@ -100,13 +99,13 @@
 }
 
 .page-email-news [class^="col-"] {
-  padding-left: 3px;
   padding-right: 3px;
+  padding-left: 3px;
 }
 
 .page-email-news .news .img-fluid {
-  height: 318px;
   width: 100%;
+  height: 318px;
 }
 
 .page-email-news .news .card span {
@@ -127,30 +126,30 @@
 }
 
 .page-email-news .news-time {
-  right: 0;
   top: 15px;
+  right: 0;
   padding: 5px 12px;
   background-color: #76838f;
   opacity: .8;
 }
 
 .page-email-news .news-category {
-  background-color: #62a8ea;
-  left: 0;
   bottom: 39px;
+  left: 0;
   padding: 8px 10px;
   text-transform: uppercase;
+  background-color: #62a8ea;
 }
 
 .page-email-news .news-title {
-  left: 0;
   bottom: 0;
-  padding: 10px 10px;
-  font-size: 16px;
-  background-color: #263238;
-  margin-bottom: 0;
+  left: 0;
   max-width: 95%;
+  padding: 10px;
+  margin-bottom: 0;
   overflow: hidden;
+  font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
+  background-color: #263238;
 }

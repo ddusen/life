@@ -122,7 +122,6 @@
 
 #exampleLineAnimation .ct-series.ct-series-a .ct-line {
   -webkit-animation: dashoffset 1s linear infinite;
-  -o-animation: dashoffset 1s linear infinite;
   animation: dashoffset 1s linear infinite;
   fill: none;
   stroke-width: 4px;
@@ -243,7 +242,6 @@
 
 #exampleLineAnimation .ct-point {
   -webkit-animation: bouncing-stroke .5s ease infinite;
-  -o-animation: bouncing-stroke .5s ease infinite;
   animation: bouncing-stroke .5s ease infinite;
 }
 
@@ -254,7 +252,6 @@
 
 #exampleLineAnimation .ct-point {
   -webkit-animation: exploding-stroke 1s ease-out infinite;
-  -o-animation: exploding-stroke 1s ease-out infinite;
   animation: exploding-stroke 1s ease-out infinite;
 }
 
@@ -273,15 +270,7 @@
   0% {
     stroke-dashoffset: 0;
   }
-  100% {
-    stroke-dashoffset: -20px;
-  }
-}
 
-@-o-keyframes dashoffset {
-  0% {
-    stroke-dashoffset: 0;
-  }
   100% {
     stroke-dashoffset: -20px;
   }
@@ -291,6 +280,7 @@
   0% {
     stroke-dashoffset: 0;
   }
+
   100% {
     stroke-dashoffset: -20px;
   }
@@ -300,21 +290,11 @@
   0% {
     stroke-width: 5px;
   }
-  50% {
-    stroke-width: 10px;
-  }
-  100% {
-    stroke-width: 5px;
-  }
-}
 
-@-o-keyframes bouncing-stroke {
-  0% {
-    stroke-width: 5px;
-  }
   50% {
     stroke-width: 10px;
   }
+
   100% {
     stroke-width: 5px;
   }
@@ -324,9 +304,11 @@
   0% {
     stroke-width: 5px;
   }
+
   50% {
     stroke-width: 10px;
   }
+
   100% {
     stroke-width: 5px;
   }
@@ -337,17 +319,7 @@
     opacity: 1;
     stroke-width: 2px;
   }
-  100% {
-    opacity: 0;
-    stroke-width: 20px;
-  }
-}
 
-@-o-keyframes exploding-stroke {
-  0% {
-    opacity: 1;
-    stroke-width: 2px;
-  }
   100% {
     opacity: 0;
     stroke-width: 20px;
@@ -359,6 +331,7 @@
     opacity: 1;
     stroke-width: 2px;
   }
+
   100% {
     opacity: 0;
     stroke-width: 20px;

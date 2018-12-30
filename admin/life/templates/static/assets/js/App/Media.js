@@ -29,9 +29,9 @@
     }
 
     babelHelpers.createClass(AppMedia, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppMedia.prototype.__proto__ || Object.getPrototypeOf(AppMedia.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppMedia.prototype.__proto__ || Object.getPrototypeOf(AppMedia.prototype), 'initialize', this).call(this);
 
         this.$arrGrid = $('#arrangement-grid');
         this.$arrList = $('#arrangement-list');
@@ -40,6 +40,17 @@
         this.$content = $('#mediaContent');
         this.$fileupload = $('#fileupload');
 
+        // states
+        this.states = {
+          list: false,
+          checked: false
+        };
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppMedia.prototype.__proto__ || Object.getPrototypeOf(AppMedia.prototype), 'process', this).call(this);
+
         this.steupArrangement();
         this.setupActionBtn();
         this.bindListChecked();
@@ -47,39 +58,33 @@
         this.bindDropdownAction();
       }
     }, {
-      key: 'getDefaultState',
-      value: function getDefaultState() {
-        return Object.assign(babelHelpers.get(AppMedia.prototype.__proto__ || Object.getPrototypeOf(AppMedia.prototype), 'getDefaultState', this).call(this), {
-          list: false,
-          checked: false
-        });
+      key: 'list',
+      value: function list(active) {
+        if (active) {
+          this.$arrGrid.removeClass('active');
+          this.$arrList.addClass('active');
+          $('.media-list').removeClass('is-grid').addClass('is-list');
+          $('.media-list>ul>li').removeClass('animation-scale-up').addClass('animation-fade');
+        } else {
+          this.$arrList.removeClass('active');
+          this.$arrGrid.addClass('active');
+          $('.media-list').removeClass('is-list').addClass('is-grid');
+          $('.media-list>ul>li').removeClass('animation-fade').addClass('animation-scale-up');
+        }
+
+        this.states.list = active;
       }
     }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        return Object.assign(babelHelpers.get(AppMedia.prototype.__proto__ || Object.getPrototypeOf(AppMedia.prototype), 'getDefaultActions', this).call(this), {
-          list: function list(active) {
-            if (active) {
-              this.$arrGrid.removeClass('active');
-              this.$arrList.addClass('active');
-              $('.media-list').removeClass('is-grid').addClass('is-list');
-              $('.media-list>ul>li').removeClass('animation-scale-up').addClass('animation-fade');
-            } else {
-              this.$arrList.removeClass('active');
-              this.$arrGrid.addClass('active');
-              $('.media-list').removeClass('is-list').addClass('is-grid');
-              $('.media-list>ul>li').removeClass('animation-fade').addClass('animation-scale-up');
-            }
-          },
-          checked: function checked(_checked) {
-            var api = this.$actionBtn.actionBtn().data('actionBtn');
-            if (_checked) {
-              api.show();
-            } else {
-              api.hide();
-            }
-          }
-        });
+      key: 'checked',
+      value: function checked(_checked) {
+        var api = this.$actionBtn.actionBtn().data('actionBtn');
+        if (_checked) {
+          api.show();
+        } else {
+          api.hide();
+        }
+
+        this.states.checked = _checked;
       }
     }, {
       key: 'steupArrangement',
@@ -89,13 +94,15 @@
           if ($(this).hasClass('active')) {
             return;
           }
-          self.setState('list', false);
+
+          self.list(false);
         });
         this.$arrList.on('click', function () {
           if ($(this).hasClass('active')) {
             return;
           }
-          self.setState('list', true);
+
+          self.list(true);
         });
       }
     }, {
@@ -104,7 +111,7 @@
         var _this2 = this;
 
         this.$actionToggleBtn.on('click', function (e) {
-          if (!_this2.getState('checked')) {
+          if (!_this2.states.checked) {
             _this2.$fileupload.trigger('click');
             e.stopPropagation();
           }
@@ -116,7 +123,7 @@
         var _this3 = this;
 
         this.$content.on('asSelectable::change', function (e, api, checked) {
-          _this3.setState('checked', checked);
+          _this3.checked(checked);
         });
       }
     }, {
@@ -161,8 +168,8 @@
     app.run();
   }
 
-  exports.default = AppMedia;
   exports.AppMedia = AppMedia;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppMedia;
 });

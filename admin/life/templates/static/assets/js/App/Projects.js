@@ -29,11 +29,17 @@
     }
 
     babelHelpers.createClass(AppProjects, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppProjects.prototype.__proto__ || Object.getPrototypeOf(AppProjects.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppProjects.prototype.__proto__ || Object.getPrototypeOf(AppProjects.prototype), 'initialize', this).call(this);
 
         this.handleSelective();
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppProjects.prototype.__proto__ || Object.getPrototypeOf(AppProjects.prototype), 'process', this).call(this);
+
         this.handleProject();
       }
     }, {
@@ -132,8 +138,8 @@
     app.run();
   }
 
-  exports.default = AppProjects;
   exports.AppProjects = AppProjects;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppProjects;
 });

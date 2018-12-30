@@ -71,10 +71,10 @@
       value: function handleMarkers() {
         /* add markercluster Plugin */
         // this mapbox's Plugins,you can get it to here ==> [ https://github.com/Leaflet/Leaflet.markercluster.git ]
-        var markers = new L.MarkerClusterGroup({
+        var markers = new L.markerClusterGroup({
           removeOutsideVisibleBounds: false,
           polygonOptions: {
-            color: '#444'
+            color: '#444444'
           }
         });
 
@@ -161,9 +161,9 @@
     }
 
     babelHelpers.createClass(AppLocation, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppLocation.prototype.__proto__ || Object.getPrototypeOf(AppLocation.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppLocation.prototype.__proto__ || Object.getPrototypeOf(AppLocation.prototype), 'initialize', this).call(this);
 
         this.window = $(window);
         this.$listItem = $('.app-location .page-aside .list-group');
@@ -177,6 +177,17 @@
 
         this.markersInMap = null;
         this.friendNum = null;
+
+        // states
+        this.states = {
+          mapChanged: true,
+          listItemActive: false
+        };
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppLocation.prototype.__proto__ || Object.getPrototypeOf(AppLocation.prototype), 'process', this).call(this);
 
         this.handleResize();
         this.steupListItem();
@@ -192,37 +203,39 @@
         });
       }
     }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        return Object.assign(babelHelpers.get(AppLocation.prototype.__proto__ || Object.getPrototypeOf(AppLocation.prototype), 'getDefaultActions', this).call(this), {
-          mapChange: function mapChange(change) {
-            if (change) {
-              console.log('map change');
-            } else {
-              var friendsInList = [];
+      key: 'mapChange',
+      value: function mapChange(change) {
+        if (change) {
+          console.log('map change');
+        } else {
+          var friendsInList = [];
 
-              this.markersInMap = this.markers.getMarkersInMap();
-              for (var i = 0; i < this.allMarkers.length; i++) {
-                if (this.markersInMap.indexOf(i) === -1) {
-                  $(this.allFriends[i]).hide();
-                } else {
-                  $(this.allFriends[i]).show();
-                  friendsInList.push($(this.allFriends[i]));
-                }
-              }
-
-              this.friendsInList = friendsInList;
-            }
-          },
-          listItemActive: function listItemActive(active) {
-            if (active) {
-              this.map.panTo(this.allMarkers[this.friendNum].getLatLng());
-              this.allMarkers[this.friendNum].openPopup();
+          this.markersInMap = this.markers.getMarkersInMap();
+          for (var i = 0; i < this.allMarkers.length; i++) {
+            if (this.markersInMap.indexOf(i) === -1) {
+              $(this.allFriends[i]).hide();
             } else {
-              console.log('listItem unactive');
+              $(this.allFriends[i]).show();
+              friendsInList.push($(this.allFriends[i]));
             }
           }
-        });
+
+          this.friendsInList = friendsInList;
+        }
+
+        this.states.mapChanged = change;
+      }
+    }, {
+      key: 'listItemActive',
+      value: function listItemActive(active) {
+        if (active) {
+          this.map.panTo(this.allMarkers[this.friendNum].getLatLng());
+          this.allMarkers[this.friendNum].openPopup();
+        } else {
+          console.log('listItem unactive');
+        }
+
+        this.states.listItemActived = active;
       }
     }, {
       key: 'getAllFriends',
@@ -250,11 +263,11 @@
 
           self.friendNum = self.allFriends.indexOf(this);
 
-          self.setState('listItemActive', true);
+          self.listItemActive(true);
         });
 
         this.$allFriends.on('mouseup', function () {
-          _this2.setState('listItemActive', false);
+          _this2.listItemActive(false);
         });
       }
     }, {
@@ -263,11 +276,11 @@
         var _this3 = this;
 
         this.map.on('viewreset move', function () {
-          _this3.setState('mapChange', true);
+          _this3.mapChange(true);
         });
 
         this.map.on('ready blur moveend dragend zoomend', function () {
-          _this3.setState('mapChange', false);
+          _this3.mapChange(false);
         });
       }
     }, {
@@ -331,8 +344,8 @@
     app.run();
   }
 
-  exports.default = AppLocation;
   exports.AppLocation = AppLocation;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppLocation;
 });

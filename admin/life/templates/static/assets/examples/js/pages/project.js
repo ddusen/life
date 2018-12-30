@@ -1,76 +1,40 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/pages/project', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.pagesProject = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example File Upload
   // -------------------
-  $('#projectUploadForm').fileupload({
+  (0, _jquery2.default)('#projectUploadForm').fileupload({
     url: '../../server/fileupload/',
-    dropzone: $('#projectUploadForm'),
-    filesContainer: $('.file-list'),
+    dropzone: (0, _jquery2.default)('#projectUploadForm'),
+    filesContainer: (0, _jquery2.default)('.file-list'),
     uploadTemplateId: false,
     downloadTemplateId: false,
-    uploadTemplate: tmpl(
-      '{% for (var i=0, file; file=o.files[i]; i++) { %}' +
-      '<div class="file-item-wrap template-upload fade col-xxl-2 col-xl-3 col-md-4 col-sm-6 {%=file.type.search("image") !== -1? "image" : "other-file"%}">' +
-      '<div class="file-item">' +
-      '<div class="preview vertical-align">' +
-      '<div class="file-action-wrap">' +
-      '<div class="file-action">' +
-      '{% if (!i && !o.options.autoUpload) { %}' +
-      '<i class="icon wb-upload start" data-toggle="tooltip" data-original-title="Upload file" aria-hidden="true"></i>' +
-      '{% } %}' +
-      '{% if (!i) { %}' +
-      '<i class="icon wb-close cancel" data-toggle="tooltip" data-original-title="Stop upload file" aria-hidden="true"></i>' +
-      '{% } %}' +
-      '</div>' +
-      '</div>' +
-      '</div>' +
-      '<div class="info-wrap">' +
-      '<div class="title">{%=file.name%}</div>' +
-      '</div>' +
-      '<div class="progress progress-striped active" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" role="progressbar">' +
-      '<div class="progress-bar progress-bar-success" style="width:0%;"></div>' +
-      '</div>' +
-      '</div>' +
-      '</div>' +
-      '{% } %}'
-    ),
-    downloadTemplate: tmpl(
-      '{% for (var i=0, file; file=o.files[i]; i++) { %}' +
-      '<div class="file-item-wrap template-download fade col-xxl-2 col-xl-3 col-md-4 col-sm-6 {%=file.type.search("image") !== -1? "image" : "other-file"%}">' +
-      '<div class="file-item">' +
-      '<div class="preview vertical-align">' +
-      '<div class="file-action-wrap">' +
-      '<div class="file-action">' +
-      '<i class="icon wb-trash delete" data-toggle="tooltip" data-original-title="Delete files" aria-hidden="true"></i>' +
-      '</div>' +
-      '</div>' +
-      '<img src="{%=file.url%}"/>' +
-      '</div>' +
-      '<div class="info-wrap">' +
-      '<div class="title">{%=file.name%}</div>' +
-      '</div>' +
-      '</div>' +
-      '</div>' +
-      '{% } %}'
-    ),
+    uploadTemplate: tmpl('{% for (var i=0, file; file=o.files[i]; i++) { %}' + '<div class="file-item-wrap template-upload fade col-xxl-2 col-xl-3 col-md-4 col-sm-6 {%=file.type.search("image") !== -1? "image" : "other-file"%}">' + '<div class="file-item">' + '<div class="preview vertical-align">' + '<div class="file-action-wrap">' + '<div class="file-action">' + '{% if (!i && !o.options.autoUpload) { %}' + '<i class="icon wb-upload start" data-toggle="tooltip" data-original-title="Upload file" aria-hidden="true"></i>' + '{% } %}' + '{% if (!i) { %}' + '<i class="icon wb-close cancel" data-toggle="tooltip" data-original-title="Stop upload file" aria-hidden="true"></i>' + '{% } %}' + '</div>' + '</div>' + '</div>' + '<div class="info-wrap">' + '<div class="title">{%=file.name%}</div>' + '</div>' + '<div class="progress progress-striped active" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" role="progressbar">' + '<div class="progress-bar progress-bar-success" style="width:0%;"></div>' + '</div>' + '</div>' + '</div>' + '{% } %}'),
+    downloadTemplate: tmpl('{% for (var i=0, file; file=o.files[i]; i++) { %}' + '<div class="file-item-wrap template-download fade col-xxl-2 col-xl-3 col-md-4 col-sm-6 {%=file.type.search("image") !== -1? "image" : "other-file"%}">' + '<div class="file-item">' + '<div class="preview vertical-align">' + '<div class="file-action-wrap">' + '<div class="file-action">' + '<i class="icon wb-trash delete" data-toggle="tooltip" data-original-title="Delete files" aria-hidden="true"></i>' + '</div>' + '</div>' + '<img src="{%=file.url%}"/>' + '</div>' + '<div class="info-wrap">' + '<div class="title">{%=file.name%}</div>' + '</div>' + '</div>' + '</div>' + '{% } %}'),
     forceResize: true,
     previewCanvas: false,
     previewMaxWidth: false,
     previewMaxHeight: false,
     previewThumbnail: false
-  }).on('fileuploadprocessalways', function(e, data) {
+  }).on('fileuploadprocessalways', function (e, data) {
     var length = data.files.length;
 
     for (var i = 0; i < length; i++) {
@@ -80,44 +44,44 @@
         data.files[i].filetype = 'image';
       }
     }
-  }).on('fileuploadadded', function(e) {
-    var $this = $(e.target);
+  }).on('fileuploadadded', function (e) {
+    var $this = (0, _jquery2.default)(e.target);
 
     if ($this.find('.file-item-wrap').length > 0) {
       $this.addClass('has-file');
     } else {
       $this.removeClass('has-file');
     }
-  }).on('fileuploadfinished', function(e) {
-    var $this = $(e.target);
+  }).on('fileuploadfinished', function (e) {
+    var $this = (0, _jquery2.default)(e.target);
 
     if ($this.find('.file-item-wrap').length > 0) {
       $this.addClass('has-file');
     } else {
       $this.removeClass('has-file');
     }
-  }).on('fileuploaddestroyed', function(e) {
-    var $this = $(e.target);
+  }).on('fileuploaddestroyed', function (e) {
+    var $this = (0, _jquery2.default)(e.target);
 
     if ($this.find('.file-item-wrap').length > 0) {
       $this.addClass('has-file');
     } else {
       $this.removeClass('has-file');
     }
-  }).on('click', function(e) {
-    if ($(e.target).parents('.file-item-wrap').length === 0) $('#inputUpload').trigger('click');
+  }).on('click', function (e) {
+    if ((0, _jquery2.default)(e.target).parents('.file-item-wrap').length === 0) (0, _jquery2.default)('#inputUpload').trigger('click');
   });
 
-  $(document).bind('dragover', function(e) {
-    var dropZone = $('#projectUploadForm'),
-      timeout = window.dropZoneTimeout;
+  (0, _jquery2.default)(document).bind('dragover', function (e) {
+    var dropZone = (0, _jquery2.default)('#projectUploadForm'),
+        timeout = window.dropZoneTimeout;
     if (!timeout) {
       dropZone.addClass('in');
     } else {
       clearTimeout(timeout);
     }
     var found = false,
-      node = e.target;
+        node = e.target;
     do {
       if (node === dropZone[0]) {
         found = true;
@@ -130,39 +94,39 @@
     } else {
       dropZone.removeClass('hover');
     }
-    window.dropZoneTimeout = setTimeout(function() {
+    window.dropZoneTimeout = setTimeout(function () {
       window.dropZoneTimeout = null;
       dropZone.removeClass('in hover');
     }, 100);
   });
 
-  $('#inputUpload').on('click', function(e) {
+  (0, _jquery2.default)('#inputUpload').on('click', function (e) {
     e.stopPropagation();
   });
 
-  $('#uploadlink').on('click', function(e) {
+  (0, _jquery2.default)('#uploadlink').on('click', function (e) {
     e.stopPropagation();
   });
 
-  (function() {
+  (function () {
     // bind checklist and progress bar
-    $('input[type=checkbox]').on('click', function() {
-      var $checklistItems = $('.project-checklist .checkbox-custom');
+    (0, _jquery2.default)('input[type=checkbox]').on('click', function () {
+      var $checklistItems = (0, _jquery2.default)('.project-checklist .checkbox-custom');
       var allLength = $checklistItems.length;
       var checkedLength = 0;
       for (var i = 0; i < allLength; i++) {
-        if ($($checklistItems[i]).find('input').prop('checked')) {
+        if ((0, _jquery2.default)($checklistItems[i]).find('input').prop('checked')) {
           checkedLength++;
         }
-      };
+      }
       var percent = 100 * (checkedLength / allLength);
-      $('.project-checklist [data-plugin="progress"]').asProgress('go', percent);
+      (0, _jquery2.default)('.project-checklist [data-plugin="progress"]').asProgress('go', percent);
     });
 
     //bind add checklist btn
-    $('.project-checklist .btn-add').on('click', function() {
-      var $projectChecklist = $('.project-checklist');
+    (0, _jquery2.default)('.project-checklist .btn-add').on('click', function () {
+      var $projectChecklist = (0, _jquery2.default)('.project-checklist');
       $projectChecklist.toggleClass('checklist-editable');
     });
   })();
-})(document, window, jQuery);
+});

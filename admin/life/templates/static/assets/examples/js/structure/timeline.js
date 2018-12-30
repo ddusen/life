@@ -1,28 +1,35 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/structure/timeline', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.structureTimeline = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
 
-    $('.timeline-item').appear();
+    $$$1('.timeline-item').appear();
 
-    $('.timeline-item').not(':appeared').each(function() {
-      var $item = $(this);
+    $$$1('.timeline-item').not(':appeared').each(function () {
+      var $item = $$$1(this);
       $item.addClass('timeline-invisible');
       $item.find('.timeline-dot').addClass('invisible');
       $item.find('.timeline-info').addClass('invisible');
       $item.find('.timeline-content').addClass('invisible');
     });
 
-    $(document).on('appear', '.timeline-item.timeline-invisible', function(e) {
-      var $item = $(this);
+    $$$1(document).on('appear', '.timeline-item.timeline-invisible', function (e) {
+      var $item = $$$1(this);
       $item.removeClass('timeline-invisible');
 
       $item.find('.timeline-dot').removeClass('invisible').addClass('animation-scale-up');
@@ -36,4 +43,4 @@
       }
     });
   });
-})(document, window, jQuery);
+});

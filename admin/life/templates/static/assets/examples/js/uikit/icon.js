@@ -1,41 +1,49 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/uikit/icon', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.uikitIcon = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  $(document).ready(function($) {
-    Site.run();
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-    $('#icon_change').asRange({
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
+
+    $$$1('#icon_change').asRange({
       tip: false,
       scale: false,
-      onChange: function(value) {
-        $('#icon_size').text(value + "px");
-        $('.panel .icon').css('font-size', value);
+      onChange: function onChange(value) {
+        $$$1('#icon_size').text(value + "px");
+        $$$1('.panel .icon').css('font-size', value);
       }
     });
-    $('.input-search input[type=text]').on('keyup', function() {
-      var val = $(this).val();
+
+    $$$1('.input-search input[type=text]').on('keyup', function () {
+      var val = $$$1(this).val();
       if (val !== '') {
-        $('[data-name]').addClass('is-hide');
-        $('[data-name*=' + val + ']').removeClass('is-hide');
+        $$$1('[data-name]').addClass('is-hide');
+        $$$1('[data-name*=' + val + ']').removeClass('is-hide');
       } else {
-        $('[data-name]').removeClass('is-hide');
+        $$$1('[data-name]').removeClass('is-hide');
       }
 
-      $('.icon-group').each(function() {
-        var $group = $(this);
+      $$$1('.icon-group').each(function () {
+        var $group = $$$1(this);
         if ($group.find('[data-name]:not(.is-hide)').length === 0) {
           $group.hide();
         } else {
           $group.show();
         }
       });
-
     });
-
   });
-})(document, window, jQuery);
+});

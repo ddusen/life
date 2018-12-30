@@ -1031,16 +1031,22 @@
     }
 
     babelHelpers.createClass(AppTaskboard, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppTaskboard.prototype.__proto__ || Object.getPrototypeOf(AppTaskboard.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppTaskboard.prototype.__proto__ || Object.getPrototypeOf(AppTaskboard.prototype), 'initialize', this).call(this);
+
         this.$taskboard = $('#taskboardStages');
         this.stageList = null;
-        this.init();
+        this.createStageList();
 
         this.$floatBtn = $('.site-floataction');
         this.$model = $('#addStageFrom');
         this.$stageCreateBtn = this.$model.find('#taskboardStageCreat');
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppTaskboard.prototype.__proto__ || Object.getPrototypeOf(AppTaskboard.prototype), 'process', this).call(this);
 
         this.bindFloatBtn();
         this.bindStageCreateBtn();
@@ -1048,8 +1054,8 @@
         this.handleSlidePandelAction();
       }
     }, {
-      key: 'init',
-      value: function init() {
+      key: 'createStageList',
+      value: function createStageList() {
         var _this5 = this;
 
         var assets = Config.get('assets');
@@ -1111,8 +1117,8 @@
     app.run();
   }
 
-  exports.default = AppTaskboard;
   exports.AppTaskboard = AppTaskboard;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppTaskboard;
 });

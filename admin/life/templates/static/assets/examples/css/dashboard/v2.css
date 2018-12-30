@@ -1,11 +1,9 @@
 .dashboard .page-header {
   background-image: url("../../images/dashboard2-header.jpg");
-  -webkit-background-size: cover;
   background-size: cover;
 }
 
 .dashboard .card, .dashboard .panel {
-  height: -webkit-calc(100% - 30px);
   height: calc(100% - 30px);
 }
 
@@ -18,11 +16,11 @@
 }
 
 #widgetLinearea .ct-chart .ct-series.ct-series-a .ct-area {
-  fill: #d5e4f1;
+  fill: #b8d7ff;
 }
 
 #widgetLinearea .ct-chart .ct-series.ct-series-b .ct-area {
-  fill: #cdf4f1;
+  fill: #92f0e6;
 }
 
 #widgetLinearea ul .icon {
@@ -34,6 +32,6 @@
 }
 
 #widgetGmap .map {
-  border: none;
   padding: 0;
+  border: none;
 }

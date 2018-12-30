@@ -1,106 +1,105 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/peity', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsPeity = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Peity Default
   // ---------------------
-  (function() {
+  (function () {
     /* dynamic example */
-    var dynamicChart = $("#examplePeityDynamic").peity("line", {
+    var dynamicChart = (0, _jquery2.default)("#examplePeityDynamic").peity("line", {
       width: 64,
       fill: [Config.colors("primary", 200)],
       stroke: Config.colors("primary", 500),
       height: 22
     });
 
-    setInterval(function() {
+    setInterval(function () {
       var random = Math.round(Math.random() * 10);
       var values = dynamicChart.text().split(",");
       values.shift();
       values.push(random);
 
-      dynamicChart
-        .text(values.join(","))
-        .change();
+      dynamicChart.text(values.join(",")).change();
     }, 1000);
   })();
 
   // Example Peity Red
   // -------------------
-  (function() {
+  (function () {
     /* dynamic example */
-    var dynamicRedChart = $("#examplePeityDynamicRed").peity("line", {
+    var dynamicRedChart = (0, _jquery2.default)("#examplePeityDynamicRed").peity("line", {
       width: 64,
       fill: [Config.colors("red", 200)],
       stroke: Config.colors("red", 500),
       height: 22
     });
 
-    setInterval(function() {
+    setInterval(function () {
       var random = Math.round(Math.random() * 10);
       var values = dynamicRedChart.text().split(",");
       values.shift();
       values.push(random);
 
-      dynamicRedChart
-        .text(values.join(","))
-        .change();
+      dynamicRedChart.text(values.join(",")).change();
     }, 1000);
   })();
 
   // Example Peity Green
   // -------------------
-  (function() {
+  (function () {
     /* dynamic example */
-    var dynamicGreenChart = $("#examplePeityDynamicGreen").peity("line", {
+    var dynamicGreenChart = (0, _jquery2.default)("#examplePeityDynamicGreen").peity("line", {
       width: 64,
       fill: [Config.colors("green", 200)],
       stroke: Config.colors("green", 500),
       height: 22
     });
 
-    setInterval(function() {
+    setInterval(function () {
       var random = Math.round(Math.random() * 10);
       var values = dynamicGreenChart.text().split(",");
       values.shift();
       values.push(random);
 
-      dynamicGreenChart
-        .text(values.join(","))
-        .change();
+      dynamicGreenChart.text(values.join(",")).change();
     }, 1000);
   })();
 
   // Example Peity Orange
   // --------------------
-  (function() {
+  (function () {
     /* dynamic example */
-    var dynamicOrangeChart = $("#examplePeityDynamicOrange").peity("line", {
+    var dynamicOrangeChart = (0, _jquery2.default)("#examplePeityDynamicOrange").peity("line", {
       width: 64,
       fill: [Config.colors("orange", 200)],
       stroke: Config.colors("orange", 500),
       height: 22
     });
 
-    setInterval(function() {
+    setInterval(function () {
       var random = Math.round(Math.random() * 10);
       var values = dynamicOrangeChart.text().split(",");
       values.shift();
       values.push(random);
 
-      dynamicOrangeChart
-        .text(values.join(","))
-        .change();
+      dynamicOrangeChart.text(values.join(",")).change();
     }, 1000);
   })();
-})(document, window, jQuery);
+});

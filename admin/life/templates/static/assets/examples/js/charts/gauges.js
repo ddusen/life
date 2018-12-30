@@ -1,23 +1,30 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/gauges', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsGauges = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Gauge Dynamic
   // ---------------------
-  $(document).ready(function($) {
-    var dynamicGauge = $("#exampleDynamicGauge").data('gauge');
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    var dynamicGauge = $$$1("#exampleDynamicGauge").data('gauge');
 
-    setInterval(function() {
+    setInterval(function () {
       var random = Math.round(Math.random() * 1000);
 
       var options = {
@@ -29,17 +36,16 @@
         options.strokeColor = Config.colors("green", 500);
       }
 
-      dynamicGauge.setOptions(options)
-        .set(random);
+      dynamicGauge.setOptions(options).set(random);
     }, 1500);
   });
 
   // Example Donut Dynamic
   // ---------------------
-  $(document).ready(function($) {
-    var dynamicDonut = $("#exampleDynamicDonut").data('donut');
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    var dynamicDonut = $$$1("#exampleDynamicDonut").data('donut');
 
-    setInterval(function() {
+    setInterval(function () {
       var random = Math.round(Math.random() * 1000);
 
       var options = {
@@ -51,8 +57,7 @@
         options.strokeColor = Config.colors("green", 500);
       }
 
-      dynamicDonut.setOptions(options)
-        .set(random);
+      dynamicDonut.setOptions(options).set(random);
     }, 1500);
   });
-})(document, window, jQuery);
+});

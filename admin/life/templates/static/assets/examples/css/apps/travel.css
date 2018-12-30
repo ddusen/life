@@ -1,13 +1,7 @@
 .page-aside {
   width: 50%;
   background-color: #f3f7f9;
-  -webkit-transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
-  -o-transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
-  transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
-}
-
-.page-aside + .page-main {
-  margin-left: 0;
+  transition: visibility .1s ease, top .3s ease, left .5s ease, right .5s ease, width .5s;
 }
 
 .page-aside-inner {
@@ -15,7 +9,6 @@
 }
 
 .page-aside-switch {
-  left: -webkit-calc(100% - 1px);
   left: calc(100% - 1px);
 }
 
@@ -24,12 +17,11 @@
   background-color: #fff;
 }
 
-.nav-tabs {
+.page-nav-tabs .nav-tabs {
   padding: 0 30px;
 }
 
 .page-aside-content {
-  height: -webkit-calc(100% - 44px);
   height: calc(100% - 44px);
 }
 
@@ -38,9 +30,9 @@
 }
 
 .spots-list, .hotels-list {
-  margin: 0;
-  padding-right: 15px;
   padding-top: 15px;
+  padding-right: 15px;
+  margin: 0;
 }
 
 .spots-list .card, .hotels-list .card {
@@ -54,7 +46,7 @@
 }
 
 .spot-info .card-text.type-link a {
-  color: #5cd29d;
+  color: #28d17c;
 }
 
 .spot-info .card-actions .text-active {
@@ -67,7 +59,7 @@
 
 .spot-info .card-actions.active .text-active {
   display: inline-block;
-  color: #f96197;
+  color: #f74584;
 }
 
 .spot-info .item-title {
@@ -104,8 +96,8 @@
 }
 
 .reviews-list .review-info {
-  border-bottom: 1px solid #e4eaec;
   cursor: pointer;
+  border-bottom: 1px solid #e4eaec;
 }
 
 .reviews-list .review-info:hover {
@@ -123,7 +115,7 @@
 .percent {
   margin-right: 5px;
   font-weight: 400;
-  color: #5cd29d;
+  color: #28d17c;
 }
 
 .page-main {
@@ -143,10 +135,8 @@
 .marker-icon {
   position: relative;
   display: inline-block;
-  border: 3px solid #62a8ea;
+  border: 3px solid #3e8ef7;
   border-radius: 50%;
-  -webkit-transition: .4s ease-in-out all;
-  -o-transition: .4s ease-in-out all;
   transition: .4s ease-in-out all;
 }
 
@@ -157,35 +147,33 @@
 }
 
 .marker-icon::before {
-  content: "";
   position: absolute;
   top: 58px;
   left: 10px;
   z-index: -1;
-  height: 0;
   width: 0;
-  border-width: 17px 21px 0;
-  border-color: #62a8ea transparent transparent;
+  height: 0;
+  content: "";
+  border-color: #3e8ef7 transparent transparent;
   border-style: solid;
-  -webkit-transition: .4s ease-in-out all;
-  -o-transition: .4s ease-in-out all;
+  border-width: 17px 21px 0;
   transition: .4s ease-in-out all;
 }
 
 .marker-icon:hover {
-  border-color: #a2caee;
+  border-color: #79b2fc;
 }
 
 .marker-icon:hover::before {
-  border-color: #a2caee transparent transparent;
+  border-color: #79b2fc transparent transparent;
 }
 
 .marker-active .marker-icon {
-  border-color: #a2caee;
+  border-color: #79b2fc;
 }
 
 .marker-active .marker-icon::before {
-  border-color: #a2caee transparent transparent;
+  border-color: #79b2fc transparent transparent;
 }
 
 .marker-cluster-small {
@@ -201,14 +189,14 @@
 }
 
 .detail {
-  background-color: #a2caee !important;
+  background-color: #79b2fc !important;
 }
 
 .leaflet-popup-pane:hover h3 {
-  color: #a2caee !important;
+  color: #79b2fc !important;
 }
 
-@media (min-width: 1199px) and (max-width: 1599px) {
+@media (min-width: 992px) and (max-width: 1599px) {
   .hotel-info .card {
     height: 280px;
   }
@@ -223,24 +211,29 @@
 @media (max-width: 767px) {
   .page-aside {
     width: 0;
-    left: 0;
   }
+
   .page-aside + .page-main {
-    width: 100%;
     left: 0;
+    width: 100%;
   }
+
   .page-aside.open {
     width: 300px;
   }
+
   .page-aside-inner {
     overflow: hidden !important;
   }
+
   .nav-tabs {
     padding: 0 20px;
   }
+
   .nav-tabs .nav-link {
     padding: 10px 12px;
   }
+
   .reviews-list .list-group-item {
     padding: 13px 10px;
   }

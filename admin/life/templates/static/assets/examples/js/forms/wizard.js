@@ -1,22 +1,29 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/forms/wizard', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.formsWizard = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Wizard Form
   // -------------------
-  (function() {
+  (function () {
     // set up formvalidation
-    $('#exampleAccountForm').formValidation({
+    (0, _jquery2.default)('#exampleAccountForm').formValidation({
       framework: 'bootstrap',
       fields: {
         username: {
@@ -55,29 +62,27 @@
       }
     });
 
-    $("#exampleBillingForm").formValidation({
+    (0, _jquery2.default)("#exampleBillingForm").formValidation({
       framework: 'bootstrap',
       fields: {
         number: {
           validators: {
             notEmpty: {
               message: 'The credit card number is required'
-            }
-            // creditCard: {
-            //   message: 'The credit card number is not valid'
-            // }
-          }
+              // creditCard: {
+              //   message: 'The credit card number is not valid'
+              // }
+            } }
         },
         cvv: {
           validators: {
             notEmpty: {
               message: 'The CVV number is required'
-            }
-            // cvv: {
-            //   creditCardField: 'number',
-            //   message: 'The CVV number is not valid'
-            // }
-          }
+              // cvv: {
+              //   creditCardField: 'number',
+              //   message: 'The CVV number is not valid'
+              // }
+            } }
         }
       },
       err: {
@@ -90,16 +95,16 @@
 
     // init the wizard
     var defaults = Plugin.getDefaults("wizard");
-    var options = $.extend(true, {}, defaults, {
+    var options = _jquery2.default.extend(true, {}, defaults, {
       buttonsAppendTo: '.panel-body'
     });
 
-    var wizard = $("#exampleWizardForm").wizard(options).data('wizard');
+    var wizard = (0, _jquery2.default)("#exampleWizardForm").wizard(options).data('wizard');
 
     // setup validator
     // http://formvalidation.io/api/#is-valid
-    wizard.get("#exampleAccount").setValidator(function() {
-      var fv = $("#exampleAccountForm").data('formValidation');
+    wizard.get("#exampleAccount").setValidator(function () {
+      var fv = (0, _jquery2.default)("#exampleAccountForm").data('formValidation');
       fv.validate();
 
       if (!fv.isValid()) {
@@ -109,8 +114,8 @@
       return true;
     });
 
-    wizard.get("#exampleBilling").setValidator(function() {
-      var fv = $("#exampleBillingForm").data('formValidation');
+    wizard.get("#exampleBilling").setValidator(function () {
+      var fv = (0, _jquery2.default)("#exampleBillingForm").data('formValidation');
       fv.validate();
 
       if (!fv.isValid()) {
@@ -124,11 +129,12 @@
   // Example Wizard Form Container
   // -----------------------------
   // http://formvalidation.io/api/#is-valid-container
-  (function() {
+  (function () {
     var defaults = Plugin.getDefaults("wizard");
-    var options = $.extend(true, {}, defaults, {
-      onInit: function() {
-        $('#exampleFormContainer').formValidation({
+
+    var options = _jquery2.default.extend(true, {}, defaults, {
+      onInit: function onInit() {
+        (0, _jquery2.default)('#exampleFormContainer').formValidation({
           framework: 'bootstrap',
           fields: {
             username: {
@@ -168,10 +174,10 @@
           }
         });
       },
-      validator: function() {
-        var fv = $('#exampleFormContainer').data('formValidation');
+      validator: function validator() {
+        var fv = (0, _jquery2.default)('#exampleFormContainer').data('formValidation');
 
-        var $this = $(this);
+        var $this = (0, _jquery2.default)(this);
 
         // Validate the container
         fv.validateContainer($this);
@@ -183,30 +189,26 @@
 
         return true;
       },
-      onFinish: function() {
+      onFinish: function onFinish() {
         // $('#exampleFormContainer').submit();
       },
       buttonsAppendTo: '.panel-body'
     });
 
-    $("#exampleWizardFormContainer").wizard(options);
+    (0, _jquery2.default)("#exampleWizardFormContainer").wizard(options);
   })();
 
   // Example Wizard Pager
   // --------------------------
-  (function() {
+  (function () {
     var defaults = Plugin.getDefaults("wizard");
 
-    var options = $.extend(true, {}, defaults, {
+    var options = _jquery2.default.extend(true, {}, defaults, {
       step: '.wizard-pane',
       templates: {
-        buttons: function() {
+        buttons: function buttons() {
           var options = this.options;
-          var html = '<div class="btn-group btn-group-sm">' +
-            '<a class="btn btn-default btn-outline" href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' +
-            '<a class="btn btn-success btn-outline float-right" href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' +
-            '<a class="btn btn-default btn-outline float-right" href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' +
-            '</div>';
+          var html = '<div class="btn-group btn-group-sm">' + '<a class="btn btn-default btn-outline" href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' + '<a class="btn btn-success btn-outline float-right" href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' + '<a class="btn btn-default btn-outline float-right" href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' + '</div>';
           return html;
         }
       },
@@ -219,29 +221,29 @@
       buttonsAppendTo: '.panel-actions'
     });
 
-    $("#exampleWizardPager").wizard(options);
+    (0, _jquery2.default)("#exampleWizardPager").wizard(options);
   })();
 
   // Example Wizard Progressbar
   // --------------------------
-  (function() {
+  (function () {
     var defaults = Plugin.getDefaults("wizard");
 
-    var options = $.extend(true, {}, defaults, {
+    var options = _jquery2.default.extend(true, {}, defaults, {
       step: '.wizard-pane',
-      onInit: function() {
+      onInit: function onInit() {
         this.$progressbar = this.$element.find('.progress-bar').addClass('progress-bar-striped');
       },
-      onBeforeShow: function(step) {
+      onBeforeShow: function onBeforeShow(step) {
         step.$element.tab('show');
       },
-      onFinish: function() {
+      onFinish: function onFinish() {
         this.$progressbar.removeClass('progress-bar-striped').addClass('progress-bar-success');
       },
-      onAfterChange: function(prev, step) {
+      onAfterChange: function onAfterChange(prev, step) {
         var total = this.length();
         var current = step.index + 1;
-        var percent = (current / total) * 100;
+        var percent = current / total * 100;
 
         this.$progressbar.css({
           width: percent + '%'
@@ -250,16 +252,16 @@
       buttonsAppendTo: '.panel-body'
     });
 
-    $("#exampleWizardProgressbar").wizard(options);
+    (0, _jquery2.default)("#exampleWizardProgressbar").wizard(options);
   })();
 
   // Example Wizard Tabs
   // -------------------
-  (function() {
+  (function () {
     var defaults = Plugin.getDefaults("wizard");
-    var options = $.extend(true, {}, defaults, {
+    var options = _jquery2.default.extend(true, {}, defaults, {
       step: '> .nav > li > a',
-      onBeforeShow: function(step) {
+      onBeforeShow: function onBeforeShow(step) {
         step.$element.tab('show');
       },
       classes: {
@@ -268,20 +270,20 @@
           error: 'color-error'
         }
       },
-      onFinish: function() {
+      onFinish: function onFinish() {
         alert('finish');
       },
       buttonsAppendTo: '.tab-content'
     });
 
-    $("#exampleWizardTabs").wizard(options);
+    (0, _jquery2.default)("#exampleWizardTabs").wizard(options);
   })();
 
   // Example Wizard Accordion
   // ------------------------
-  (function() {
+  (function () {
     var defaults = Plugin.getDefaults("wizard");
-    var options = $.extend(true, {}, defaults, {
+    var options = _jquery2.default.extend(true, {}, defaults, {
       step: '.panel-title[data-toggle="collapse"]',
       classes: {
         step: {
@@ -290,25 +292,25 @@
         }
       },
       templates: {
-        buttons: function() {
+        buttons: function buttons() {
           return '<div class="panel-footer">' + defaults.templates.buttons.call(this) + '</div>';
         }
       },
-      onBeforeShow: function(step) {
+      onBeforeShow: function onBeforeShow(step) {
         step.$pane.collapse('show');
       },
 
-      onBeforeHide: function(step) {
+      onBeforeHide: function onBeforeHide(step) {
         step.$pane.collapse('hide');
       },
 
-      onFinish: function() {
+      onFinish: function onFinish() {
         alert('finish');
       },
 
       buttonsAppendTo: '.panel-collapse'
     });
 
-    $("#exampleWizardAccordion").wizard(options);
+    (0, _jquery2.default)("#exampleWizardAccordion").wizard(options);
   })();
-})(document, window, jQuery);
+});

@@ -1,6 +1,6 @@
 .card-completed-options .pie-progress {
-  max-width: 120px;
   min-width: 120px;
+  max-width: 120px;
   margin: 10px 0;
 }
 
@@ -26,8 +26,8 @@
 }
 
 #teamCompletedWidget .counter-number-group span:first-child {
-  color: #f96868;
   font-size: 48px;
+  color: #ff4c52;
 }
 
 #teamCompletedWidget .counter-number-group span:last-child {
@@ -51,13 +51,13 @@
 }
 
 #teamCompletedWidget .list-inline li:first-child::before, #teamCompletedWidget .list-inline li:last-child::before {
-  display: inline-block;
   position: absolute;
   bottom: 5px;
   left: -22px;
-  content: "";
+  display: inline-block;
   width: 10px;
   height: 10px;
+  content: "";
 }
 
 #teamCompletedWidget .list-inline li:first-child {
@@ -66,7 +66,7 @@
 }
 
 #teamCompletedWidget .list-inline li:first-child::before {
-  background-color: #57c7d4;
+  background-color: #0bb2d4;
 }
 
 #teamCompletedWidget .list-inline li:last-child {
@@ -74,7 +74,7 @@
 }
 
 #teamCompletedWidget .list-inline li:last-child::before {
-  background-color: #a58add;
+  background-color: #a57afa;
 }
 
 #teamCompletedWidget .card-block {
@@ -112,8 +112,6 @@
 
 #teamCompletedWidget .ct-series .ct-point, #teamCompletedWidget .ct-series .ct-point-content {
   opacity: 0;
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
   transition: all .3s;
 }
 
@@ -122,59 +120,58 @@
 }
 
 #teamCompletedWidget .ct-series.ct-series-a .ct-area {
-  fill: #a58add;
+  fill: #a57afa;
 }
 
 #teamCompletedWidget .ct-series.ct-series-a .ct-line {
-  stroke: #a58add;
+  stroke: #a57afa;
   stroke-width: 1px;
 }
 
 #teamCompletedWidget .ct-series.ct-series-a .ct-point {
-  stroke: #926dde;
-  stroke-width: 12px;
   cursor: pointer;
+  stroke: #9463f7;
+  stroke-width: 12px;
 }
 
 #teamCompletedWidget .ct-series.ct-series-a .ct-point-content {
+  pointer-events: none;
   stroke: #fff;
   stroke-width: 6px;
   stroke-linecap: round;
-  pointer-events: none;
 }
 
 #teamCompletedWidget .ct-series.ct-series-b .ct-area {
-  fill: #77d6e1;
+  fill: #28c0de;
 }
 
 #teamCompletedWidget .ct-series.ct-series-b .ct-line {
-  stroke: #77d6e1;
+  stroke: #28c0de;
   stroke-width: 1px;
 }
 
 #teamCompletedWidget .ct-series.ct-series-b .ct-point {
-  stroke: #57c7d4;
-  stroke-width: 12px;
   cursor: pointer;
+  stroke: #0bb2d4;
+  stroke-width: 12px;
 }
 
 #teamCompletedWidget .ct-series.ct-series-b .ct-point-content {
+  pointer-events: none;
   stroke: #fff;
   stroke-width: 6px;
   stroke-linecap: round;
-  pointer-events: none;
 }
 
 #personalCompletedWidget {
-  height: -webkit-calc(100% - 30px);
   height: calc(100% - 30px);
 }
 
 #personalCompletedWidget .card-header {
-  display: inline-block;
   position: relative;
-  height: 270px;
+  display: inline-block;
   width: 100%;
+  height: 270px;
   text-align: center;
 }
 
@@ -200,15 +197,15 @@
 }
 
 #personalCompletedWidget .table-responsive {
-  border: none;
   margin-bottom: 0;
+  border: none;
 }
 
 #personalCompletedWidget caption {
   padding-top: 0;
   padding-bottom: 10px;
-  color: #37474f;
   font-weight: 400;
+  color: #37474f;
 }
 
 #personalCompletedWidget .table {
@@ -217,8 +214,8 @@
 }
 
 #personalCompletedWidget .table td {
-  padding: 20px 0 19px;
   width: 40%;
+  padding: 20px 0 19px;
 }
 
 #personalCompletedWidget .table td:last-child {
@@ -233,7 +230,6 @@
 }
 
 #toDoListWidget {
-  height: -webkit-calc(100% - 30px);
   height: calc(100% - 30px);
 }
 
@@ -267,9 +263,9 @@
 #toDoListWidget .list-group-item {
   padding: 20px 0;
   margin-bottom: 0;
+  cursor: pointer;
   border: none;
   border-top: 1px solid #e5e5e5;
-  cursor: pointer;
 }
 
 #toDoListWidget .list-group-item::after {
@@ -283,8 +279,8 @@
 }
 
 #toDoListWidget .list-group-item .checkbox-custom label {
-  padding-left: 20px;
   padding-bottom: 2px;
+  padding-left: 20px;
 }
 
 #toDoListWidget .list-group-item .checkbox-custom input:checked + label {
@@ -296,8 +292,8 @@
 }
 
 #toDoListWidget .item-due-date span {
-  line-height: 34px;
   margin-left: 44px;
+  line-height: 34px;
 }
 
 #toDoListWidget .item-members {
@@ -316,15 +312,15 @@
 }
 
 #toDoListWidget .item-members li {
-  float: left;
   position: relative;
+  float: left;
   margin-left: 10px;
 }
 
 #toDoListWidget .item-members li:not(:hover) .avatar + button {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
   opacity: 0;
 }
 
@@ -343,7 +339,6 @@
 }
 
 #recentActivityWidget {
-  height: -webkit-calc(100% - 30px);
   height: calc(100% - 30px);
 }
 
@@ -355,22 +350,22 @@
 
 #recentActivityWidget .card-header .badge {
   padding: 3px 21px;
-  line-height: 26px;
   font-size: 14px;
   font-weight: 400;
+  line-height: 26px;
   color: #76838f;
   cursor: pointer;
 }
 
 #recentActivityWidget .timeline {
-  margin-left: 50px;
   margin-right: 30px;
   margin-bottom: 0;
+  margin-left: 50px;
 }
 
 #recentActivityWidget .timeline::before {
-  left: 0;
   top: 20px;
+  left: 0;
   width: 1px;
   height: 85%;
   margin-left: 0;
@@ -379,10 +374,10 @@
 
 #recentActivityWidget .timeline > li {
   width: 100%;
-  padding-left: 49px;
   padding-right: 0;
-  margin-bottom: 0;
+  padding-left: 49px;
   margin-top: 0;
+  margin-bottom: 0;
   cursor: pointer;
 }
 
@@ -494,31 +489,36 @@
   }
 }
 
-@media (min-width: 767px) and (max-width: 991px) {
+@media (min-width: 480px) and (max-width: 991px) {
   .card-completed-options {
-    height: -webkit-calc(100% - 30px);
     height: calc(100% - 30px);
   }
+
   .card-completed-options .pie-progress {
     min-width: 50px;
   }
+
   .card-completed-options .col-xs-6 {
     width: 100%;
   }
+
   .card-completed-options .counter::after {
     display: block;
     clear: both;
     content: "";
   }
+
   .card-completed-options .counter-label {
     display: inline-block;
   }
+
   .card-completed-options .counter-number {
     float: left;
     margin-right: 20px;
     font-size: 14px !important;
     font-weight: 400;
   }
+
   .card-completed-options .pie-progress {
     margin: 20px auto 10px;
   }
@@ -528,16 +528,18 @@
   .card-completed-options .pie-progress {
     min-width: 100px;
   }
+
   #recentActivityWidget .timeline-content .operates > li {
     display: block;
-    margin-right: 0;
-    margin-top: 10px;
     padding-bottom: 1px;
+    margin-top: 10px;
+    margin-right: 0;
   }
+
   #recentActivityWidget .timeline-content .operates .btn {
+    width: 85px;
     height: 25px;
     line-height: 11px;
-    width: 85px;
   }
 }
 
@@ -546,6 +548,7 @@
     font-size: 10px;
     line-height: 22px;
   }
+
   #personalCompletedWidget .card-block {
     padding: 30px 15px 0;
   }

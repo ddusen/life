@@ -29,9 +29,9 @@
     }
 
     babelHelpers.createClass(AppWork, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppWork.prototype.__proto__ || Object.getPrototypeOf(AppWork.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppWork.prototype.__proto__ || Object.getPrototypeOf(AppWork.prototype), 'initialize', this).call(this);
 
         this.items = [];
 
@@ -39,11 +39,17 @@
         this.handleSelective();
       }
     }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppWork.prototype.__proto__ || Object.getPrototypeOf(AppWork.prototype), 'process', this).call(this);
+
+        this.bindChart();
+      }
+    }, {
       key: 'handleChart',
       value: function handleChart() {
         /* create line chart */
-        var scoreChart = function scoreChart(data) {
-
+        this.scoreChart = function (data) {
           var scoreChart = new Chartist.Line(data, {
             labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
             series: [{
@@ -105,7 +111,7 @@
         // };
 
         /* create bar chart */
-        var barChart = function barChart(data) {
+        this.barChart = function (data) {
           var barChart = new Chartist.Bar(data, {
             labels: ['Damon', 'Jimmy', 'Jhon', 'Alex', 'Lucy', 'Peter', 'Chris'],
             series: [[3.3, 3.5, 2.5, 2, 3.7, 2.7, 1.9], [2, 4, 3.5, 2.7, 3.3, 3.5, 2.5]]
@@ -138,17 +144,22 @@
             }
           });
         };
+      }
+    }, {
+      key: 'bindChart',
+      value: function bindChart() {
+        var _this2 = this;
 
         /* run chart */
         $(document).on('slidePanel::afterLoad', function () {
-          scoreChart('.trends-chart');
-          barChart('.member-chart');
+          _this2.scoreChart('.trends-chart');
+          _this2.barChart('.member-chart');
         });
       }
     }, {
       key: 'handleSelective',
       value: function handleSelective() {
-        var _this2 = this;
+        var _this3 = this;
 
         var self = this;
         var member = [{
@@ -204,7 +215,7 @@
           for (var i = 0; i < num; i++) {
             items.push(isSame(items));
           }
-          _this2.items = items;
+          _this3.items = items;
         };
 
         var setItems = function setItems(membersNum) {
@@ -269,8 +280,8 @@
     app.run();
   }
 
-  exports.default = AppWork;
   exports.AppWork = AppWork;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppWork;
 });

@@ -1,22 +1,27 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/dashboard/team', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.dashboardTeam = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Top Line Chart With Tooltips
-  // ------------------------------
-  (function() {
-
-    // options for style
+  // ----------------------------
+  (function () {
     var options = {
       showArea: true,
       low: 0,
@@ -28,7 +33,7 @@
       },
       axisY: {
         offset: 30,
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function labelInterpolationFnc(value) {
           if (value == 0) {
             return null;
           }
@@ -40,9 +45,7 @@
         bottom: 12,
         left: 10
       },
-      plugins: [
-        Chartist.plugins.tooltip()
-      ]
+      plugins: [Chartist.plugins.tooltip()]
     };
 
     // team total completed data
@@ -57,15 +60,14 @@
 
     };
 
-    var newScoreLineChart = function(chartId, labelList, series1List, series2List, options) {
-
+    var newScoreLineChart = function newScoreLineChart(chartId, labelList, series1List, series2List, options) {
       var lineChart = new Chartist.Line(chartId, {
         labels: labelList,
         series: [series1List, series2List]
       }, options);
 
       //start create
-      lineChart.on('draw', function(data) {
+      lineChart.on('draw', function (data) {
         var elem, parent;
         if (data.type === 'point') {
           elem = data.element;
@@ -80,19 +82,17 @@
           });
         }
       });
-      //end create
-    }
+    };
 
-    newScoreLineChart("#teamCompletedWidget .ct-chart", labelList,
-      series1List, series2List, options);
-
+    newScoreLineChart("#teamCompletedWidget .ct-chart", labelList, series1List, series2List, options);
   })();
 
   // item dialog
-  (function() {
+  // -----------
+  (function () {
 
     //handleSelective
-    var handleSelective = function(handleSelectiveItem) {
+    var handleSelective = function handleSelective(handleSelectiveItem) {
       var member = [{
         id: 'uid_1',
         name: 'Herman Beck',
@@ -113,41 +113,31 @@
 
       var items = handleSelectiveItem;
 
-      $('.plugin-selective').selective({
+      (0, _jquery2.default)('.plugin-selective').selective({
         namespace: 'addMember',
         local: member,
         selected: items,
         buildFromHtml: false,
         tpl: {
-          optionValue: function(data) {
+          optionValue: function optionValue(data) {
             return data.id;
           },
-          frame: function() {
-            return '<div class="' + this.namespace + '">' +
-              this.options.tpl.items.call(this) +
-              '<div class="' + this.namespace + '-trigger">' +
-              this.options.tpl.triggerButton.call(this) +
-              '<div class="' + this.namespace + '-trigger-dropdown">' +
-              this.options.tpl.list.call(this) +
-              '</div>' +
-              '</div>' +
-              '</div>'
+          frame: function frame() {
+            return '<div class="' + this.namespace + '">' + this.options.tpl.items.call(this) + '<div class="' + this.namespace + '-trigger">' + this.options.tpl.triggerButton.call(this) + '<div class="' + this.namespace + '-trigger-dropdown">' + this.options.tpl.list.call(this) + '</div>' + '</div>' + '</div>';
           },
-          triggerButton: function() {
+          triggerButton: function triggerButton() {
             return '<div class="' + this.namespace + '-trigger-button"><i class="wb-plus"></i></div>';
           },
-          listItem: function(data) {
+          listItem: function listItem(data) {
             return '<li class="' + this.namespace + '-list-item"><img class="avatar" src="' + data.avatar + '">' + data.name + '</li>';
           },
-          item: function(data) {
-            return '<li class="' + this.namespace + '-item"><img class="avatar" src="' + data.avatar + '" title="' + data.name + '">' +
-              this.options.tpl.itemRemove.call(this) +
-              '</li>';
+          item: function item(data) {
+            return '<li class="' + this.namespace + '-item"><img class="avatar" src="' + data.avatar + '" title="' + data.name + '">' + this.options.tpl.itemRemove.call(this) + '</li>';
           },
-          itemRemove: function() {
+          itemRemove: function itemRemove() {
             return '<span class="' + this.namespace + '-remove"><i class="wb-minus-circle"></i></span>';
           },
-          option: function(data) {
+          option: function option(data) {
             return '<option value="' + this.options.tpl.optionValue.call(this, data) + '">' + data.name + '</option>';
           }
         }
@@ -155,7 +145,7 @@
     };
 
     // add Item Dialog
-    $('#addNewItemBtn').on('click', function() {
+    (0, _jquery2.default)('#addNewItemBtn').on('click', function () {
       //default handleSelectiveItem for add dialog
       var handleSelectiveItem = [{
         id: 'uid_1',
@@ -169,30 +159,29 @@
 
       handleSelective(handleSelectiveItem);
 
-      $('#addtodoItemForm').modal('show');
+      (0, _jquery2.default)('#addtodoItemForm').modal('show');
     });
 
     // edit Item Dialog
-    $("#toDoListWidget .list-group-item input").on('click', function(e) {
+    (0, _jquery2.default)("#toDoListWidget .list-group-item input").on('click', function (e) {
       e.stopPropagation();
     });
 
-    $('#toDoListWidget .list-group-item').on('click', function() {
-      var oldTitle = $(this).find(".item-title").text();
-      var dueDate = $(this).find(".item-due-date > span").text();
+    (0, _jquery2.default)('#toDoListWidget .list-group-item').on('click', function () {
+      var oldTitle = (0, _jquery2.default)(this).find(".item-title").text();
+      var dueDate = (0, _jquery2.default)(this).find(".item-due-date > span").text();
       if (dueDate == "No due date") {
         dueDate = null;
       } else {
         dueDate = "8/25/2015";
       }
 
-      $("#editTitle").val(oldTitle);
-      $("#editDueDate").val(dueDate);
+      (0, _jquery2.default)("#editTitle").val(oldTitle);
+      (0, _jquery2.default)("#editDueDate").val(dueDate);
       var handleSelectiveItem = [];
       handleSelective(handleSelectiveItem);
 
-      $('#edittodoItemForm').modal('show');
+      (0, _jquery2.default)('#edittodoItemForm').modal('show');
     });
-
   })();
-})(document, window, jQuery);
+});

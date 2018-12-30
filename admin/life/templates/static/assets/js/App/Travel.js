@@ -176,9 +176,9 @@
     }
 
     babelHelpers.createClass(AppTravel, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppTravel.prototype.__proto__ || Object.getPrototypeOf(AppTravel.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppTravel.prototype.__proto__ || Object.getPrototypeOf(AppTravel.prototype), 'initialize', this).call(this);
 
         this.window = $(window);
         this.$pageAside = $('.page-aside');
@@ -200,6 +200,18 @@
         this.spotsNum = null;
         this.hotelsNum = null;
         this.reviewsNum = null;
+
+        // states
+        this.states = {
+          mapChange: true,
+          listItemActive: false,
+          optionChange: 'spots'
+        };
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppTravel.prototype.__proto__ || Object.getPrototypeOf(AppTravel.prototype), 'process', this).call(this);
 
         this.handleResize();
 
@@ -223,47 +235,45 @@
         return allListItems;
       }
     }, {
-      key: 'getDefaultState',
-      value: function getDefaultState() {
-        return Object.assign(babelHelpers.get(AppTravel.prototype.__proto__ || Object.getPrototypeOf(AppTravel.prototype), 'getDefaultState', this).call(this), {
-          mapChange: true,
-          listItemActive: false,
-          optionChange: 'spots'
-        });
+      key: 'optionChange',
+      value: function optionChange(change) {
+        var self = this;
+
+        this.states.optionChange = change;
+
+        if (change) {
+          console.log('tab change');
+          if (self.markers.markers) {
+            self.markers.deleteMarkers();
+          }
+          var tabOption = self.states.optionChange; // spots,hotels,reviews
+          self.markers.addMarkersByOption(tabOption);
+          self.changeListItemsByOption(tabOption);
+        }
       }
     }, {
-      key: 'getDefaultActions',
-      value: function getDefaultActions() {
-        var self = this;
-        return Object.assign(babelHelpers.get(AppTravel.prototype.__proto__ || Object.getPrototypeOf(AppTravel.prototype), 'getDefaultActions', this).call(this), {
-          optionChange: function optionChange(change) {
-            if (change) {
-              console.log('tab change');
-              if (self.markers.markers) {
-                self.markers.deleteMarkers();
-              }
-              var tabOption = self.getState('optionChange'); // spots,hotels,reviews
-              self.markers.addMarkersByOption(tabOption);
-              self.changeListItemsByOption(tabOption);
-            }
-          },
-          mapChange: function mapChange(change) {
-            if (change) {
-              console.log('map change');
-            } else {
-              var tabOption = self.getState('optionChange');
-              self.changeListItemsByOption(tabOption);
-            }
-          },
-          listItemActive: function listItemActive(active) {
-            if (active) {
-              var tabOption = self.getState('optionChange');
-              this.changeMapOnListActiveByOption(tabOption);
-            } else {
-              console.log('listItem unactive');
-            }
-          }
-        });
+      key: 'mapChange',
+      value: function mapChange(change) {
+        if (change) {
+          console.log('map change');
+        } else {
+          var tabOption = this.states.optionChange;
+          this.changeListItemsByOption(tabOption);
+        }
+
+        this.states.mapChange = change;
+      }
+    }, {
+      key: 'listItemActive',
+      value: function listItemActive(active) {
+        if (active) {
+          var tabOption = this.states.optionChange;
+          this.changeMapOnListActiveByOption(tabOption);
+        } else {
+          console.log('listItem unactive');
+        }
+
+        this.states.listItemActive = active;
       }
     }, {
       key: 'changeListItems',
@@ -338,11 +348,11 @@
           });
 
           self[option + 'Num'] = self['all' + optionString].indexOf(this);
-          self.setState('listItemActive', true);
+          self.listItemActive(true);
         });
 
         this['$all' + optionString].on('mouseup', function () {
-          _this2.setState('listItemActive', false);
+          _this2.listItemActive(false);
         });
       }
     }, {
@@ -354,7 +364,8 @@
 
           if (href) {
             var option = href.substring(1);
-            self.setState('optionChange', '' + option);
+
+            self.optionChange('' + option);
           }
           // e.relatedTarget; /* previous active tab */
         });
@@ -365,11 +376,11 @@
         var _this3 = this;
 
         this.map.on('viewreset move', function () {
-          _this3.setState('mapChange', true);
+          _this3.mapChange(true);
         });
 
         this.map.on('ready blur moveend dragend zoomend', function () {
-          _this3.setState('mapChange', false);
+          _this3.mapChange(false);
         });
       }
     }, {
@@ -378,7 +389,7 @@
         var self = this;
         $(document).on('click', '.page-aside .page-aside-switch', function (event) {
           if (self.$pageAside.hasClass('open')) {
-            var tabOption = self.getState('optionChange');
+            var tabOption = self.states.optionChange;
             self.changeListItemsByOption(tabOption);
           } else {
             event.stopPropagation();
@@ -420,8 +431,8 @@
     app.run();
   }
 
-  exports.default = AppTravel;
   exports.AppTravel = AppTravel;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppTravel;
 });

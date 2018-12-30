@@ -1,64 +1,71 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/uikit/panel-actions', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.uikitPanelActions = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
 
-    var $panel = $('#examplePanel');
+    var $panel = $$$1('#examplePanel');
     var PanelClass = new Plugin.getPlugin('panel');
     var api = new PanelClass($panel, $panel.data());
     api.render();
 
     // Fullscreen
-    $('#exampleTogglFullscreene').on('click', function() {
+    $$$1('#exampleTogglFullscreene').on('click', function () {
       api.toggleFullscreen();
     });
 
-    $('#exampleEnterFullscreen').on('click', function() {
+    $$$1('#exampleEnterFullscreen').on('click', function () {
       api.enterFullscreen();
     });
 
-    $('#exampleLeaveFullscreen').on('click', function() {
+    $$$1('#exampleLeaveFullscreen').on('click', function () {
       api.leaveFullscreen();
     });
 
     // Content
-    $('#exampleToggleContent').on('click', function() {
+    $$$1('#exampleToggleContent').on('click', function () {
       api.toggleContent();
     });
 
-    $('#exampleShowContent').on('click', function() {
+    $$$1('#exampleShowContent').on('click', function () {
       api.showContent();
     });
 
-    $('#exampleHideContent').on('click', function() {
+    $$$1('#exampleHideContent').on('click', function () {
       api.hideContent();
     });
 
     // Open / Close
-    $('#exampleToggle').on('click', function() {
+    $$$1('#exampleToggle').on('click', function () {
       api.toggle();
     });
 
-    $('#exampleOpen').on('click', function() {
+    $$$1('#exampleOpen').on('click', function () {
       api.open();
     });
 
-    $('#exampleClose').on('click', function() {
+    $$$1('#exampleClose').on('click', function () {
       api.close();
     });
 
     // Refresh
     var even = false;
-    $('#exampleReplace').on('click', function() {
-      api.load(function() {
+    $$$1('#exampleReplace').on('click', function () {
+      api.load(function () {
 
         var content;
 
@@ -71,28 +78,27 @@
         }
 
         var self = this;
-        setTimeout(function() {
+        setTimeout(function () {
           self.$panelBody.html(content);
           self.done();
         }, 1000);
       });
     });
 
-    $('#exampleLoad').on('click', function() {
+    $$$1('#exampleLoad').on('click', function () {
       api.load();
     });
 
-    $('#exampleDone').on('click', function() {
+    $$$1('#exampleDone').on('click', function () {
       api.done();
     });
   });
 
-  window.customRefreshCallback = function() {
+  window.customRefreshCallback = function () {
     var self = this;
-    setTimeout(function() {
+    setTimeout(function () {
       self.done();
       self.$panelBody.html('Lorem ipsum Ad reprehenderit pariatur qui labore nulla elit non velit non consectetur dolore veniam qui ullamco incididunt laboris quis incididunt nisi culpa incididunt sit est occaecat pariatur nulla aliqua amet est voluptate.');
     }, 1000);
   };
-
-})(document, window, jQuery);
+});

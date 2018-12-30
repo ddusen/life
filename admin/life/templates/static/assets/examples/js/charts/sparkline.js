@@ -1,28 +1,35 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/sparkline', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsSparkline = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Sparkline Basic
   // ---------------
   // Pie Chart
-  $(".sparkline-pie-chart").sparkline([4, 2, 6], {
+  (0, _jquery2.default)(".sparkline-pie-chart").sparkline([4, 2, 6], {
     type: 'pie',
     height: '162px',
     sliceColors: [Config.colors("primary", 500), Config.colors("primary", 700), Config.colors("primary", 600)]
   });
 
   // line chart
-  $(".sparkline-line-chart").sparkline([1, 3, 4, 2, 3, 6, 5, 3], {
+  (0, _jquery2.default)(".sparkline-line-chart").sparkline([1, 3, 4, 2, 3, 6, 5, 3], {
     type: 'line',
     height: '162px',
     width: '200px',
@@ -36,7 +43,7 @@
   });
 
   // bar chart
-  $(".sparkline-bar-chart").sparkline([4, 7, 3, 2, 5, 6, 8, 5, 4, 8], {
+  (0, _jquery2.default)(".sparkline-bar-chart").sparkline([4, 7, 3, 2, 5, 6, 8, 5, 4, 8], {
     type: 'bar',
     height: '162px',
     barWidth: 10,
@@ -46,7 +53,7 @@
   });
 
   // composite bar chart
-  $('.sparkline-compositebar-chart').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-compositebar-chart').sparkline('html', {
     type: 'bar',
     height: '162px',
     barWidth: 10,
@@ -54,13 +61,13 @@
     barColor: Config.colors("blue-grey", 300)
   });
 
-  $('.sparkline-compositebar-chart').sparkline([4, 5, 6, 6, 5, 5, 3, 6, 4, 2], {
+  (0, _jquery2.default)('.sparkline-compositebar-chart').sparkline([4, 5, 6, 6, 5, 5, 3, 6, 4, 2], {
     composite: true,
     fillColor: false,
     lineColor: Config.colors("purple", 400)
   });
 
-  $('.sparkline-compositebar-chart').sparkline([1, 4, 5, 2, 3, 5, 6, 1, 3, 6], {
+  (0, _jquery2.default)('.sparkline-compositebar-chart').sparkline([1, 4, 5, 2, 3, 5, 6, 1, 3, 6], {
     composite: true,
     fillColor: false,
     lineColor: Config.colors("red", 400)
@@ -69,7 +76,7 @@
   // Sparkline Types
   // ---------------
   // Line charts taking their values from the tag
-  $('.sparkline-line').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-line').sparkline('html', {
     height: '32px',
     width: '150px',
     lineColor: Config.colors("red", 600),
@@ -77,7 +84,7 @@
   });
 
   // Bar charts using inline values
-  $('.sparkline-bar').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-bar').sparkline('html', {
     type: 'bar',
     height: '32px',
     barWidth: 10,
@@ -88,7 +95,7 @@
   });
 
   // Composite line charts, the second using values supplied via javascript
-  $('.sparkline-compositeline').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-compositeline').sparkline('html', {
     height: '32px',
     width: '150px',
     fillColor: false,
@@ -99,7 +106,7 @@
     changeRangeMin: 0,
     chartRangeMax: 10
   });
-  $('.sparkline-compositeline').sparkline([4, 1, 5, 7, 9, 8, 7, 6, 6, 4, 7, 8, 4, 3, 2, 5, 6, 7], {
+  (0, _jquery2.default)('.sparkline-compositeline').sparkline([4, 1, 5, 7, 9, 8, 7, 6, 6, 4, 7, 8, 4, 3, 2, 5, 6, 7], {
     composite: true,
     fillColor: false,
     height: '32px',
@@ -113,7 +120,7 @@
   });
 
   // Line charts with normal range marker
-  $('.sparkline-normalline').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-normalline').sparkline('html', {
     fillColor: false,
     height: '32px',
     width: '150px',
@@ -127,7 +134,7 @@
   });
 
   // Bar + line composite charts
-  $('.sparkline-compositebar').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-compositebar').sparkline('html', {
     type: 'bar',
     height: '32px',
     barWidth: 10,
@@ -135,7 +142,7 @@
     barColor: Config.colors("primary", 500)
   });
 
-  $('.sparkline-compositebar').sparkline([4, 1, 5, 7, 9, 9, 8, 7, 6, 6, 4, 7, 8, 4, 3, 2, 2, 5, 6, 7], {
+  (0, _jquery2.default)('.sparkline-compositebar').sparkline([4, 1, 5, 7, 9, 9, 8, 7, 6, 6, 4, 7, 8, 4, 3, 2, 2, 5, 6, 7], {
     composite: true,
     fillColor: false,
     lineColor: Config.colors("red", 600),
@@ -143,14 +150,14 @@
   });
 
   // Discrete charts
-  $('.sparkline-discrete1').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-discrete1').sparkline('html', {
     type: 'discrete',
     height: '32px',
     lineColor: Config.colors("primary", 500),
     xwidth: 36
   });
 
-  $('.sparkline-discrete2').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-discrete2').sparkline('html', {
     type: 'discrete',
     height: '32px',
     lineColor: Config.colors("primary", 500),
@@ -159,7 +166,7 @@
   });
 
   // Bullet charts
-  $('.sparkline-bullet').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-bullet').sparkline('html', {
     type: 'bullet',
     targetColor: Config.colors("red", 500),
     targetWidth: '2',
@@ -168,7 +175,7 @@
   });
 
   // Customized line chart
-  $('.sparkline-linecustom').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-linecustom').sparkline('html', {
     height: '32px',
     width: '150px',
     lineColor: Config.colors("red", 400),
@@ -180,7 +187,7 @@
   });
 
   // Tri-state charts using inline values
-  $('.sparkline-tristate').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-tristate').sparkline('html', {
     type: 'tristate',
     height: '32px',
     barWidth: 10,
@@ -190,7 +197,7 @@
     zeroBarColor: Config.colors("red", 500)
   });
 
-  $('.sparkline-tristatecols').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-tristatecols').sparkline('html', {
     type: 'tristate',
     height: '32px',
     barWidth: 10,
@@ -206,7 +213,7 @@
   });
 
   // Box plots
-  $('.sparkline-boxplot').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-boxplot').sparkline('html', {
     type: 'box',
     height: '20px',
     width: '68px',
@@ -221,7 +228,7 @@
   });
 
   // Box plots raw
-  $('.sparkline-boxplotraw').sparkline([1, 3, 5, 8, 10, 15, 18], {
+  (0, _jquery2.default)('.sparkline-boxplotraw').sparkline([1, 3, 5, 8, 10, 15, 18], {
     type: 'box',
     height: '20px',
     width: '78px',
@@ -239,15 +246,15 @@
   });
 
   // Pie charts
-  $('.sparkline-pie').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-pie').sparkline('html', {
     type: 'pie',
     height: '30px',
     sliceColors: [Config.colors("primary", 500), Config.colors("primary", 700), Config.colors("primary", 600)]
   });
 
-  $('.sparkline-pie-1').sparkline('html', {
+  (0, _jquery2.default)('.sparkline-pie-1').sparkline('html', {
     type: 'pie',
     height: '30px',
     sliceColors: [Config.colors("primary", 500), Config.colors("blue-grey", 300)]
   });
-})(document, window, jQuery);
+});

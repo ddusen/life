@@ -30,11 +30,18 @@
     }
 
     babelHelpers.createClass(BaseApp, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(BaseApp.prototype.__proto__ || Object.getPrototypeOf(BaseApp.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(BaseApp.prototype.__proto__ || Object.getPrototypeOf(BaseApp.prototype), 'initialize', this).call(this);
 
         this.handlSlidePanelPlugin();
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(BaseApp.prototype.__proto__ || Object.getPrototypeOf(BaseApp.prototype), 'process', this).call(this);
+
+        this.bindSlidePanelPlugin();
       }
     }, {
       key: 'handlSlidePanelPlugin',
@@ -66,7 +73,11 @@
             (0, _jquery2.default)(document).off('click.slidePanelDatepicker');
           }
         }, this.getSlidePanelOptions());
-
+      }
+    }, {
+      key: 'bindSlidePanelPlugin',
+      value: function bindSlidePanelPlugin() {
+        var self = this;
         (0, _jquery2.default)(document).on('click', '[data-toggle="slidePanel"]', function (e) {
 
           self.openSlidePanel((0, _jquery2.default)(this).data('url'));

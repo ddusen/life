@@ -1,19 +1,73 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/tables/editable', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.tablesEditable = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example editable Table
   // ----------------------
-  $('#editableTable').editableTableWidget().numericInputExample().find('td:first').focus();
+  /* this is an example for validation and change events */
+  _jquery2.default.fn.numericInputExample = function () {
+    'use strict';
 
-})(document, window, jQuery);
+    var element = (0, _jquery2.default)(this),
+        footer = element.find('tfoot tr'),
+        dataRows = element.find('tbody tr'),
+        initialTotal = function initialTotal() {
+      var column, total;
+      for (column = 1; column < footer.children().length; column++) {
+        total = 0;
+        dataRows.each(function () {
+          var row = (0, _jquery2.default)(this);
+          total += parseFloat(row.children().eq(column).text());
+        });
+        footer.children().eq(column).text(total);
+      }
+    };
+    element.find('td').on('change', function (evt) {
+      var cell = (0, _jquery2.default)(this),
+          column = cell.index(),
+          total = 0;
+      if (column === 0) {
+        return;
+      }
+      element.find('tbody tr').each(function () {
+        var row = (0, _jquery2.default)(this);
+        total += parseFloat(row.children().eq(column).text());
+      });
+      if (column === 1 && total > 5000) {
+        (0, _jquery2.default)('.alert').show();
+        return false; // changes can be rejected
+      } else {
+        (0, _jquery2.default)('.alert').hide();
+        footer.children().eq(column).text(total);
+      }
+    }).on('validate', function (evt, value) {
+      var cell = (0, _jquery2.default)(this),
+          column = cell.index();
+      if (column === 0) {
+        return !!value && value.trim().length > 0;
+      } else {
+        return !isNaN(parseFloat(value)) && isFinite(value);
+      }
+    });
+    initialTotal();
+    return this;
+  };
+  (0, _jquery2.default)('#editableTable').editableTableWidget().numericInputExample().find('td:first').focus();
+});

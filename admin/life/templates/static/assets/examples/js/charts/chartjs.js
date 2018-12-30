@@ -1,22 +1,29 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/chartjs', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsChartjs = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   Chart.defaults.global.responsive = true;
 
   // Example Chartjs Line
   // --------------------
-  (function() {
+  (function () {
     var lineChartData = {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [{
@@ -65,7 +72,7 @@
 
   // Example Chartjs Bar
   // --------------------
-  (function() {
+  (function () {
     var barChartData = {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [{
@@ -104,7 +111,7 @@
 
   // Example Chartjs Radar
   // --------------------
-  (function() {
+  (function () {
     var radarChartData = {
       labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Partying", "Running"],
       pointLabelFontSize: 14,
@@ -149,29 +156,14 @@
 
   // Example Chartjs Ploar Area
   // --------------------------
-  (function() {
+  (function () {
     var chartData = {
       datasets: [{
-        data: [
-          300,
-          200,
-          150,
-          100
-        ],
-        backgroundColor: [
-          Config.colors("red", 400),
-          Config.colors("green", 400),
-          Config.colors("yellow", 400),
-          Config.colors("blue", 400)
-        ],
+        data: [300, 200, 150, 100],
+        backgroundColor: [Config.colors("red", 400), Config.colors("green", 400), Config.colors("yellow", 400), Config.colors("blue", 400)],
         label: 'My dataset' // for legend
       }],
-      labels: [
-        "Red",
-        "Green",
-        "Yellow",
-        "Blue"
-      ]
+      labels: ["Red", "Green", "Yellow", "Blue"]
     };
 
     var myPolarArea = new Chart(document.getElementById("exampleChartjsPloarArea").getContext("2d"), {
@@ -190,25 +182,13 @@
 
   // Example Chartjs Pie
   // -------------------
-  (function() {
+  (function () {
     var pieData = {
-      labels: [
-        "Red",
-        "Blue",
-        "Yellow"
-      ],
+      labels: ["Red", "Blue", "Yellow"],
       datasets: [{
         data: [300, 50, 100],
-        backgroundColor: [
-          Config.colors("red", 400),
-          Config.colors("green", 400),
-          Config.colors("yellow", 400)
-        ],
-        hoverBackgroundColor: [
-          Config.colors("red", 600),
-          Config.colors("green", 600),
-          Config.colors("yellow", 600)
-        ]
+        backgroundColor: [Config.colors("red", 400), Config.colors("green", 400), Config.colors("yellow", 400)],
+        hoverBackgroundColor: [Config.colors("red", 600), Config.colors("green", 600), Config.colors("yellow", 600)]
       }]
     };
 
@@ -223,25 +203,13 @@
 
   // Example Chartjs Donut
   // ---------------------
-  (function() {
+  (function () {
     var doughnutData = {
-      labels: [
-        "Red",
-        "Blue",
-        "Yellow"
-      ],
+      labels: ["Red", "Blue", "Yellow"],
       datasets: [{
         data: [300, 50, 100],
-        backgroundColor: [
-          Config.colors("red", 400),
-          Config.colors("green", 400),
-          Config.colors("yellow", 400)
-        ],
-        hoverBackgroundColor: [
-          Config.colors("red", 600),
-          Config.colors("green", 600),
-          Config.colors("yellow", 600)
-        ]
+        backgroundColor: [Config.colors("red", 400), Config.colors("green", 400), Config.colors("yellow", 400)],
+        hoverBackgroundColor: [Config.colors("red", 600), Config.colors("green", 600), Config.colors("yellow", 600)]
       }]
     };
 
@@ -253,4 +221,4 @@
       }
     });
   })();
-})(document, window, jQuery);
+});

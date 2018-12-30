@@ -20,8 +20,6 @@
 
   var _Site3 = babelHelpers.interopRequireDefault(_Site2);
 
-  var Config = babelHelpers.interopRequireWildcard(_Config);
-
   var AppCalendar = function (_Site) {
     babelHelpers.inherits(AppCalendar, _Site);
 
@@ -31,14 +29,19 @@
     }
 
     babelHelpers.createClass(AppCalendar, [{
-      key: 'processed',
-      value: function processed() {
-        babelHelpers.get(AppCalendar.prototype.__proto__ || Object.getPrototypeOf(AppCalendar.prototype), 'processed', this).call(this);
+      key: 'initialize',
+      value: function initialize() {
+        babelHelpers.get(AppCalendar.prototype.__proto__ || Object.getPrototypeOf(AppCalendar.prototype), 'initialize', this).call(this);
 
         this.$actionToggleBtn = $('.site-action-toggle');
         this.$addNewCalendarForm = $('#addNewCalendar').modal({
           show: false
         });
+      }
+    }, {
+      key: 'process',
+      value: function process() {
+        babelHelpers.get(AppCalendar.prototype.__proto__ || Object.getPrototypeOf(AppCalendar.prototype), 'process', this).call(this);
 
         this.handleFullcalendar();
         this.handleSelective();
@@ -56,14 +59,14 @@
           title: 'Long Event',
           start: '2016-10-07',
           end: '2016-10-10',
-          backgroundColor: Config.colors('cyan', 600),
-          borderColor: Config.colors('cyan', 600)
+          backgroundColor: (0, _Config.colors)('cyan', 600),
+          borderColor: (0, _Config.colors)('cyan', 600)
         }, {
           id: 999,
           title: 'Repeating Event',
           start: '2016-10-09T16:00:00',
-          backgroundColor: Config.colors('red', 600),
-          borderColor: Config.colors('red', 600)
+          backgroundColor: (0, _Config.colors)('red', 600),
+          borderColor: (0, _Config.colors)('red', 600)
         }, {
           title: 'Conference',
           start: '2016-10-11',
@@ -107,14 +110,15 @@
           windowResize: function windowResize(view) {
             var width = $(window).outerWidth();
             var options = Object.assign({}, myOptions);
-            options.events = view.calendar.getEventCache();
+
+            options.events = view.calendar.clientEvents();
             options.aspectRatio = width < 667 ? 0.5 : 1.35;
 
             $('#calendar').fullCalendar('destroy');
             $('#calendar').fullCalendar(options);
           },
           eventClick: function eventClick(event) {
-            var color = event.backgroundColor ? event.backgroundColor : Config.colors('blue', 600);
+            var color = event.backgroundColor ? event.backgroundColor : (0, _Config.colors)('blue', 600);
             $('#editEname').val(event.title);
 
             if (event.start) {
@@ -131,7 +135,7 @@
             $('#editColor [type=radio]').each(function () {
               var $this = $(this),
                   _value = $this.data('color').split('|'),
-                  value = Config.colors(_value[0], _value[1]);
+                  value = (0, _Config.colors)(_value[0], _value[1]);
               if (value === color) {
                 $this.prop('checked', true);
               } else {
@@ -143,7 +147,7 @@
               event.title = $('#editEname').val();
 
               var color = $('#editColor [type=radio]:checked').data('color').split('|');
-              color = Config.colors(color[0], color[1]);
+              color = (0, _Config.colors)(color[0], color[1]);
               event.backgroundColor = color;
               event.borderColor = color;
 
@@ -257,8 +261,8 @@
           $this.data('event', {
             title: $this.data('title'),
             stick: $this.data('stick'),
-            backgroundColor: Config.colors(color[0], color[1]),
-            borderColor: Config.colors(color[0], color[1])
+            backgroundColor: (0, _Config.colors)(color[0], color[1]),
+            borderColor: (0, _Config.colors)(color[0], color[1])
           });
           $this.draggable({
             zIndex: 999,
@@ -266,7 +270,7 @@
             revertDuration: 0,
             appendTo: '.page',
             helper: function helper() {
-              return '<a class="fc-day-grid-event fc-event fc-start fc-end" style="background-color:' + Config.colors(color[0], color[1]) + ';border-color:' + Config.colors(color[0], color[1]) + '">\n          <div class="fc-content">\n            <span class="fc-title">' + $this.data('title') + '</span>\n          </div>\n          </a>';
+              return '<a class="fc-day-grid-event fc-event fc-start fc-end" style="background-color:' + (0, _Config.colors)(color[0], color[1]) + ';border-color:' + (0, _Config.colors)(color[0], color[1]) + '">\n          <div class="fc-content">\n            <span class="fc-title">' + $this.data('title') + '</span>\n          </div>\n          </a>';
             }
           });
         });
@@ -312,8 +316,8 @@
     app.run();
   }
 
-  exports.default = AppCalendar;
   exports.AppCalendar = AppCalendar;
   exports.run = run;
   exports.getInstance = getInstance;
+  exports.default = AppCalendar;
 });

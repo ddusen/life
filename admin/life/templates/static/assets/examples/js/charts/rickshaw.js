@@ -1,32 +1,35 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/rickshaw', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsRickshaw = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Lines
   // -------------
-  (function() {
-    var seriesData = [
-      [],
-      [],
-      []
-    ];
+  (function () {
+    var seriesData = [[], [], []];
     var random = new Rickshaw.Fixtures.RandomData(150);
 
     for (var i = 0; i < 150; i++) {
       random.addData(seriesData);
     }
 
-    var $element = $('#exampleChart');
+    var $element = (0, _jquery2.default)('#exampleChart');
     var graph = new Rickshaw.Graph({
       element: $element.get(0),
       width: $element.width(),
@@ -49,11 +52,10 @@
 
     graph.render();
 
-    setInterval(function() {
+    setInterval(function () {
       random.removeData(seriesData);
       random.addData(seriesData);
       graph.update();
-
     }, 2000);
 
     var hoverDetail = new Rickshaw.Graph.HoverDetail({
@@ -76,7 +78,7 @@
     });
     axes.render();
 
-    $(window).on('resize', function() {
+    (0, _jquery2.default)(window).on('resize', function () {
       graph.configure({
         width: $element.width()
       });
@@ -86,19 +88,15 @@
 
   // Example Scatter Plot
   // --------------------
-  (function() {
-    var seriesData = [
-      [],
-      [],
-      []
-    ];
+  (function () {
+    var seriesData = [[], [], []];
     var random = new Rickshaw.Fixtures.RandomData(150);
 
     for (var i = 0; i < 150; i++) {
       random.addData(seriesData);
     }
 
-    var $element = $('#exampleScatterChart');
+    var $element = (0, _jquery2.default)('#exampleScatterChart');
     var graph = new Rickshaw.Graph({
       element: $element.get(0),
       width: $element.width(),
@@ -135,30 +133,25 @@
       legend: legend
     });
 
-    $(window).on('resize', function() {
+    (0, _jquery2.default)(window).on('resize', function () {
       graph.configure({
         width: $element.width()
       });
       graph.render();
     });
-
   })();
 
   // Example Stacked Bars
   // --------------------
-  (function() {
-    var seriesData = [
-      [],
-      [],
-      []
-    ];
+  (function () {
+    var seriesData = [[], [], []];
     var random = new Rickshaw.Fixtures.RandomData(150);
 
     for (var i = 0; i < 150; i++) {
       random.addData(seriesData);
     }
 
-    var $element = $('#exampleStackedChart');
+    var $element = (0, _jquery2.default)('#exampleStackedChart');
     var graph = new Rickshaw.Graph({
       element: $element.get(0),
       width: $element.width(),
@@ -181,11 +174,10 @@
 
     graph.render();
 
-    setInterval(function() {
+    setInterval(function () {
       random.removeData(seriesData);
       random.addData(seriesData);
       graph.update();
-
     }, 2000);
 
     var hoverDetail = new Rickshaw.Graph.HoverDetail({
@@ -202,7 +194,7 @@
       legend: legend
     });
 
-    $(window).on('resize', function() {
+    (0, _jquery2.default)(window).on('resize', function () {
       graph.configure({
         width: $element.width()
       });
@@ -212,19 +204,15 @@
 
   // Example Area
   // ------------
-  (function() {
-    var seriesData = [
-      [],
-      [],
-      []
-    ];
+  (function () {
+    var seriesData = [[], [], []];
     var random = new Rickshaw.Fixtures.RandomData(150);
 
     for (var i = 0; i < 150; i++) {
       random.addData(seriesData);
     }
 
-    var $element = $('#exampleAreaChart');
+    var $element = (0, _jquery2.default)('#exampleAreaChart');
     var graph = new Rickshaw.Graph({
       element: $element.get(0),
       width: $element.width(),
@@ -248,11 +236,10 @@
 
     graph.render();
 
-    setInterval(function() {
+    setInterval(function () {
       random.removeData(seriesData);
       random.addData(seriesData);
       graph.update();
-
     }, 2000);
 
     var hoverDetail = new Rickshaw.Graph.HoverDetail({
@@ -269,32 +256,25 @@
       legend: legend
     });
 
-    $(window).on('resize', function() {
+    (0, _jquery2.default)(window).on('resize', function () {
       graph.configure({
         width: $element.width()
       });
       graph.render();
     });
-
   })();
 
   // Example Multiple Renderers
   // ---------------------------
-  (function() {
-    var seriesData = [
-      [],
-      [],
-      [],
-      [],
-      []
-    ];
+  (function () {
+    var seriesData = [[], [], [], [], []];
     var random = new Rickshaw.Fixtures.RandomData(50);
 
     for (var i = 0; i < 75; i++) {
       random.addData(seriesData);
     }
 
-    var $element = $('#exampleMultipleChart');
+    var $element = (0, _jquery2.default)('#exampleMultipleChart');
     var graph = new Rickshaw.Graph({
       element: $element.get(0),
       width: $element.width(),
@@ -318,21 +298,21 @@
         renderer: 'scatterplot'
       }, {
         name: 'pop',
-        data: seriesData.shift().map(function(d) {
+        data: seriesData.shift().map(function (d) {
           return {
             x: d.x,
             y: d.y / 4
-          }
+          };
         }),
         color: Config.colors("indigo", 500),
         renderer: 'bar'
       }, {
         name: 'humidity',
-        data: seriesData.shift().map(function(d) {
+        data: seriesData.shift().map(function (d) {
           return {
             x: d.x,
             y: d.y * 1.5
-          }
+          };
         }),
         renderer: 'line',
         color: Config.colors("red", 500)
@@ -358,8 +338,8 @@
     var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({
       graph: graph,
       legend: legend,
-      disabledColor: function() {
-        return 'rgba(0, 0, 0, 0.2)'
+      disabledColor: function disabledColor() {
+        return 'rgba(0, 0, 0, 0.2)';
       }
     });
 
@@ -368,11 +348,11 @@
       legend: legend
     });
 
-    $(window).on('resize', function() {
+    (0, _jquery2.default)(window).on('resize', function () {
       graph.configure({
         width: $element.width()
       });
       graph.render();
     });
   })();
-})(document, window, jQuery);
+});

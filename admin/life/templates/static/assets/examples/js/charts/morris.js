@@ -1,20 +1,27 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/charts/morris', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.chartsMorris = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Morris Line
   // -------------------
-  (function() {
+  (function () {
     Morris.Line({
       element: 'exampleMorrisLine',
       data: [{
@@ -66,7 +73,7 @@
 
   // Example Morris Area
   // -------------------
-  (function() {
+  (function () {
     Morris.Area({
       element: 'exampleMorrisArea',
       data: [{
@@ -125,30 +132,29 @@
 
   // Example Morris Bar
   // ------------------
-  (function() {
+  (function () {
     Morris.Bar({
       element: 'exampleMorrisBar',
       data: [{
-          y: '2013-6',
-          a: 350,
-          b: 410
-        }, {
-          y: '2013-7',
-          a: 110,
-          b: 300
-        }, {
-          y: '2013-8',
-          a: 460,
-          b: 130
-        }, {
-          y: '2013-9',
-          a: 250,
-          b: 310
-        }
+        y: '2013-6',
+        a: 350,
+        b: 410
+      }, {
+        y: '2013-7',
+        a: 110,
+        b: 300
+      }, {
+        y: '2013-8',
+        a: 460,
+        b: 130
+      }, {
+        y: '2013-9',
+        a: 250,
+        b: 310
         // { y: '2013-10', a: 50, b: 40 },
         // { y: '2013-11', a: 75, b: 65 },
         // { y: '2013-12', a: 100, b: 90 }
-      ],
+      }],
       xkey: 'y',
       ykeys: ['a', 'b'],
       labels: ['Series A', 'Series B'],
@@ -169,7 +175,7 @@
 
   // Example Morris Donut
   // --------------------
-  (function() {
+  (function () {
     Morris.Donut({
       element: 'exampleMorrisDonut',
       data: [{
@@ -181,10 +187,10 @@
       }, {
         label: "Mail-Order Sales",
         value: 22
-      }, ],
+      }],
       // barSizeRatio: 0.35,
       resize: true,
       colors: [Config.colors("red", 500), Config.colors("primary", 500), Config.colors("blue-grey", 300)]
     });
   })();
-})(document, window, jQuery);
+});

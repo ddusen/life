@@ -19,29 +19,29 @@
 .sitemap-list > li > a {
   display: block;
   padding: 14px 15px;
-  border-radius: 5px;
-  border: 1px solid #e4eaec;
   line-height: 1;
   text-decoration: none;
+  border: 1px solid #e4eaec;
+  border-radius: 5px;
 }
 
 .sitemap-list > li > ul {
   position: relative;
-  list-style-type: none;
-  margin: 0;
   padding: 10px 10px 20px 40px;
+  margin: 0;
+  list-style-type: none;
 }
 
 .sitemap-list > li > ul a:hover {
-  color: #62a8ea;
+  color: #3e8ef7;
 }
 
 .sitemap-list > li > ul::before {
   position: absolute;
-  left: 20px;
   top: 0;
-  height: 100%;
+  left: 20px;
   width: 1px;
+  height: 100%;
   content: " ";
   background: #e4eaec;
 }
@@ -52,9 +52,9 @@
   min-width: 220px;
   padding: 10px;
   margin-bottom: 5px;
-  border: 1px solid #e4eaec;
   line-height: 1;
   text-decoration: none;
+  border: 1px solid #e4eaec;
 }
 
 .sitemap-list > li > ul > li > a::before, .sitemap-list > li > ul > li > a::after {
@@ -73,8 +73,8 @@
 
 .sitemap-list > li > ul > li > a::after {
   left: -23px;
-  height: 5px;
   width: 5px;
+  height: 5px;
   margin-top: -3px;
   border-radius: 50%;
 }
@@ -90,8 +90,8 @@
   position: absolute;
   top: 0;
   left: 20px;
-  height: 100%;
   width: 1px;
+  height: 100%;
   content: " ";
   background: #e4eaec;
 }
@@ -103,15 +103,15 @@
 
 .sitemap-list-sub > li::before, .sitemap-list-sub > li::after {
   position: absolute;
-  left: -22px;
   top: 50%;
+  left: -22px;
   content: " ";
   background: #e4eaec;
 }
 
 .sitemap-list-sub > li::before {
-  height: 1px;
   width: 15px;
+  height: 1px;
   margin-top: -1px;
 }
 
@@ -127,47 +127,59 @@
     padding-left: 40px;
     list-style-type: disc;
   }
+
   .sitemap-list .icon {
     display: none;
   }
+
   .sitemap-list > li:first-child {
     margin-bottom: 20px;
-    list-style-type: none;
     margin-left: -16px;
+    list-style-type: none;
   }
+
   .sitemap-list > li > a {
     display: inline;
     padding: 10px;
     border: none;
   }
+
   .sitemap-list > li > a i {
     display: none;
   }
+
   .sitemap-list > li > ul {
-    list-style-type: circle;
     padding: 5px 0 5px 26px;
+    list-style-type: circle;
   }
+
   .sitemap-list > li > ul::before {
     display: none;
   }
+
   .sitemap-list > li > ul > li > a {
     display: inline;
-    border: none;
     padding: 10px 0;
+    border: none;
   }
+
   .sitemap-list > li > ul > li > a::before, .sitemap-list > li > ul > li > a::after {
     display: none;
   }
+
   .sitemap-list-sub {
     padding: 5px 0 5px 20px;
     list-style-type: square;
   }
+
   .sitemap-list-sub::before {
     display: none;
   }
+
   .sitemap-list-sub > li {
     line-height: normal;
   }
+
   .sitemap-list-sub > li::before, .sitemap-list-sub > li::after {
     display: none;
   }

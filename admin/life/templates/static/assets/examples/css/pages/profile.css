@@ -36,9 +36,9 @@
 .page-profile .profile-stat-count {
   display: block;
   margin-bottom: 3px;
-  color: #526069;
   font-size: 20px;
   font-weight: 100;
+  color: #526069;
 }
 
 .page-profile .profile-stat-count + span {
@@ -72,8 +72,8 @@
 
 .page-profile .page-content .list-group-item .media-heading span {
   margin-left: 5px;
-  color: #76838f;
   font-size: 1rem;
+  color: #76838f;
 }
 
 .page-profile .page-content .list-group-item .media .media:first-child {
@@ -89,9 +89,9 @@
 }
 
 .page-profile .profile-uploaded {
-  max-width: 220px;
+  float: left;
   width: 100%;
+  max-width: 220px;
   max-height: 150px;
-  padding-right: 20px;
-  margin-bottom: 5px;
+  padding: 0 20px 20px 0;
 }

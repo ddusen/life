@@ -1,19 +1,28 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/widgets/weather', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.widgetsWeather = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
+
   // Widget Weather
-  $(document).ready(function() {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function () {
+    (0, _Site.run)();
   });
+
   // Example1 sunny
   // -----------------------------
-  (function() {
+  (function () {
     var ex1_sunny = new Skycons({
       "color": "white"
     });
@@ -23,23 +32,13 @@
 
   // Example5
   // -----------------------------
-  (function() {
+  (function () {
     var ex5 = new Skycons({
-        "color": "white"
-      }),
-      ex5_list = [
-        "ex5-partly-cloudy",
-        "ex5-sunny",
-        "ex5-cloudy",
-        "ex5-rain"
-      ],
-      ex5_type = [
-        "partly-cloudy-day",
-        "clear-day",
-        "cloudy",
-        "rain"
-      ],
-      ex5_i;
+      "color": "white"
+    }),
+        ex5_list = ["ex5-partly-cloudy", "ex5-sunny", "ex5-cloudy", "ex5-rain"],
+        ex5_type = ["partly-cloudy-day", "clear-day", "cloudy", "rain"],
+        ex5_i;
 
     for (ex5_i = ex5_list.length; ex5_i--;) {
       ex5.set(ex5_list[ex5_i], ex5_type[ex5_i]);
@@ -50,7 +49,7 @@
 
   // Example6 Snow
   // -----------------------------
-  (function() {
+  (function () {
     var ex6_snow = new Skycons({
       "color": "white"
     });
@@ -60,11 +59,11 @@
 
   // Example7 Sleet
   // -----------------------------
-  (function() {
+  (function () {
     var ex7_sleet = new Skycons({
       "color": "#212121"
     });
     ex7_sleet.set(document.getElementById("ex7-sleet"), "sleet");
     ex7_sleet.play();
   })();
-})(document, window, jQuery);
+});

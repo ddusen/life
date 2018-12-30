@@ -1,20 +1,27 @@
-/*!
- * remark (http://getbootstrapadmin.com/remark)
- * Copyright 2017 amazingsurge
- * Licensed under the Themeforest Standard Licenses
- */
-(function(document, window, $) {
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define('/advanced/lightbox', ['jquery', 'Site'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'), require('Site'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jQuery, global.Site);
+    global.advancedLightbox = mod.exports;
+  }
+})(this, function (_jquery, _Site) {
   'use strict';
 
-  var Site = window.Site;
+  var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  $(document).ready(function($) {
-    Site.run();
+  (0, _jquery2.default)(document).ready(function ($$$1) {
+    (0, _Site.run)();
   });
 
   // Example Popup Zoom Gallery
   // --------------------------
-  $('#exampleZoomGallery').magnificPopup({
+  (0, _jquery2.default)('#exampleZoomGallery').magnificPopup({
     delegate: 'a',
     type: 'image',
     closeOnContentClick: false,
@@ -22,7 +29,7 @@
     mainClass: 'mfp-with-zoom mfp-img-mobile',
     image: {
       verticalFit: true,
-      titleSrc: function(item) {
+      titleSrc: function titleSrc(item) {
         return item.el.attr('title') + ' &middot; <a class="image-source-link" href="' + item.el.attr('data-source') + '" target="_blank">image source</a>';
       }
     },
@@ -32,7 +39,7 @@
     zoom: {
       enabled: true,
       duration: 300, // don't foget to change the duration also in CSS
-      opener: function(element) {
+      opener: function opener(element) {
         return element.find('img');
       }
     }
@@ -40,7 +47,7 @@
 
   // Example Popup Gallery
   // ---------------------
-  $('#exampleGallery').magnificPopup({
+  (0, _jquery2.default)('#exampleGallery').magnificPopup({
     delegate: 'a',
     type: 'image',
     tLoading: 'Loading image #%curr%...',
@@ -52,7 +59,7 @@
     },
     image: {
       tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-      titleSrc: function(item) {
+      titleSrc: function titleSrc(item) {
         return item.el.attr('title') + '<small>by amazingSurge</small>';
       }
     }
@@ -60,12 +67,12 @@
 
   // Example Popup With Css Animation
   // --------------------------------
-  $('.popup-with-css-anim').magnificPopup({
+  (0, _jquery2.default)('.popup-with-css-anim').magnificPopup({
     type: 'image',
     removalDelay: 500,
     preloader: true,
     callbacks: {
-      beforeOpen: function() {
+      beforeOpen: function beforeOpen() {
         this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
         this.st.mainClass = this.st.el.attr('data-effect');
       }
@@ -76,7 +83,7 @@
 
   // Example Popup With Video Rr Map
   // -------------------------------
-  $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+  (0, _jquery2.default)('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
     disableOn: 700,
     type: 'iframe',
     mainClass: 'mfp-fade',
@@ -88,7 +95,7 @@
 
   // Example Popup With Video Rr Map
   // -------------------------------
-  $('#examplePopupForm').magnificPopup({
+  (0, _jquery2.default)('#examplePopupForm').magnificPopup({
     type: 'inline',
     preloader: false,
     focus: '#inputName',
@@ -96,8 +103,8 @@
     // When elemened is focused, some mobile browsers in some cases zoom in
     // It looks not nice, so we disable it:
     callbacks: {
-      beforeOpen: function() {
-        if ($(window).width() < 700) {
+      beforeOpen: function beforeOpen() {
+        if ((0, _jquery2.default)(window).width() < 700) {
           this.st.focus = false;
         } else {
           this.st.focus = '#inputName';
@@ -108,31 +115,30 @@
 
   // Example Ajax Popup
   // ------------------
-  $('#examplePopupAjaxAlignTop').magnificPopup({
+  (0, _jquery2.default)('#examplePopupAjaxAlignTop').magnificPopup({
     type: 'ajax',
     alignTop: true,
     overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
   });
 
-  $('#examplePopupAjax').magnificPopup({
+  (0, _jquery2.default)('#examplePopupAjax').magnificPopup({
     type: 'ajax'
   });
 
   // Example Popup Modal
   // -------------------
-  $('.popup-modal').magnificPopup({
+  (0, _jquery2.default)('.popup-modal').magnificPopup({
     type: 'inline',
     preloader: false,
     modal: true
   });
 
-  $(document).on('click', '.popup-modal-dismiss', function(e) {
+  (0, _jquery2.default)(document).on('click', '.popup-modal-dismiss', function (e) {
     e.preventDefault();
-    $.magnificPopup.close();
+    _jquery2.default.magnificPopup.close();
   });
 
   // Example Error Handling
   // ----------------------
-  $('#exampleBrokenImage, #exampleBrokenAjax').magnificPopup({});
-
-})(document, window, jQuery);
+  (0, _jquery2.default)('#exampleBrokenImage, #exampleBrokenAjax').magnificPopup({});
+});

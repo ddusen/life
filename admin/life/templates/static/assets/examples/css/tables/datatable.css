@@ -14,13 +14,12 @@
   .dataTables_length {
     float: left;
   }
+
   #exampleAddRow_wrapper .col-sm-12 {
     overflow-x: auto;
   }
 }
 
 .page-content th > .form-control {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }

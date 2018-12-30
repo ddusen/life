@@ -11,13 +11,13 @@
 }
 
 .app-media .blocks {
-  margin-left: -5px;
   margin-right: -5px;
+  margin-left: -5px;
 }
 
 .app-media .blocks > li {
-  padding-left: 5px;
   padding-right: 5px;
+  padding-left: 5px;
   margin-bottom: 0;
 }
 
@@ -56,18 +56,18 @@
 }
 
 .app-media .media-list.is-grid .media-item {
+  position: relative;
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: .286rem;
-  border: 1px solid transparent;
-  position: relative;
   cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: .286rem;
 }
 
 .app-media .media-list.is-grid .media-item:hover, .app-media .media-list.is-grid .media-item.active {
-  border-color: #e4eaec;
   background-color: #f3f7f9;
+  border-color: #e4eaec;
 }
 
 .app-media .media-list.is-grid .media-item:hover .dropdown, .app-media .media-list.is-grid .media-item.active .dropdown {
@@ -76,10 +76,10 @@
 
 .app-media .media-list.is-grid .media-item .checkbox-custom {
   position: absolute;
-  margin: 0;
-  padding: 0;
   top: 9px;
   left: 34px;
+  padding: 0;
+  margin: 0;
 }
 
 .app-media .media-list.is-grid .media-item .image-wrap {
@@ -87,8 +87,8 @@
 }
 
 .app-media .media-list.is-grid .media-item .dropdown {
-  float: right;
   display: none;
+  float: right;
 }
 
 .app-media .media-list.is-grid .media-item .dropdown.open .dropdown-toggle, .app-media .media-list.is-grid .media-item .dropdown.open .dropdown-toggle:hover {
@@ -101,11 +101,8 @@
 
 .app-media .media-list.is-grid .media-item .dropdown-menu {
   -webkit-transform-origin: 100% 0;
-  -ms-transform-origin: 100% 0;
-  -o-transform-origin: 100% 0;
   transform-origin: 100% 0;
   -webkit-animation-duration: .3s;
-  -o-animation-duration: .3s;
   animation-duration: .3s;
 }
 
@@ -118,8 +115,8 @@
 }
 
 .app-media .media-list.is-list {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }
 
 .app-media .media-list.is-list .blocks > li {
@@ -127,8 +124,8 @@
 }
 
 .app-media .media-list.is-list .media-item {
-  padding: 20px 30px;
   position: relative;
+  padding: 20px 30px;
   white-space: nowrap;
 }
 
@@ -145,14 +142,13 @@
 }
 
 .app-media .media-list.is-list .media-item:after {
-  content: "";
-  display: block;
-  border-bottom: 1px solid #e4eaec;
-  width: -webkit-calc(100% - 60px);
-  width: calc(100% - 60px);
   position: absolute;
-  left: 30px;
   bottom: 0;
+  left: 30px;
+  display: block;
+  width: calc(100% - 60px);
+  content: "";
+  border-bottom: 1px solid #e4eaec;
 }
 
 .app-media .media-list.is-list .checkbox-custom {
@@ -167,10 +163,10 @@
 }
 
 .app-media .media-list.is-list .image-wrap:before {
-  content: "";
   display: inline-block;
   height: 100%;
   vertical-align: middle;
+  content: "";
 }
 
 .app-media .media-list.is-list .info-wrap {
@@ -178,9 +174,9 @@
 }
 
 .app-media .media-list.is-list .info-wrap .title {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .app-media .media-list.is-list .dropdown {
@@ -192,13 +188,13 @@
 }
 
 .app-media .media-list.is-list .media-item-actions .btn-icon {
-  color: #a3afb7;
   margin-left: 1px;
+  color: #a3afb7;
 }
 
 .app-media .slidePanel-header {
-  height: 350px;
   width: 100%;
+  height: 350px;
 }
 
 .app-media .slidePanel-header .slidePanel-actions {
@@ -206,9 +202,9 @@
 }
 
 .app-media .slidePanel .overlay-top {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .app-media .slidePanel .overlay-background {
@@ -231,8 +227,8 @@
 }
 
 .app-media .slidePanel .media-header .share {
-  float: right;
   display: inline-block;
+  float: right;
 }
 
 .app-media .slidePanel .media-header .tags {
@@ -248,28 +244,30 @@
     display: block !important;
     padding-left: 60px;
   }
+
   .app-media .is-list .info-wrap::after {
     display: block;
     clear: both;
     content: "";
   }
+
   .app-media .is-list .media-item-actions {
     display: block;
     margin-top: 5px;
   }
+
   .app-media .page-header .page-header-actions {
-    margin-top: 20px;
     position: relative;
     top: 0;
     right: 0;
+    margin-top: 20px;
     -webkit-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
     transform: none;
   }
+
   .app-media .slidePanel .media-header .share {
-    float: none;
     display: block;
+    float: none;
     margin-top: 20px;
   }
 }
