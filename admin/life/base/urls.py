@@ -6,7 +6,6 @@ from life.base.api_views import(DataView, )
 urlpatterns = [
     re_path(r'^$', index, name='index'),
     path('data', data, name='data'),
-    path('chart', chart, name='chart'),
     path('analytics', analytics, name='analytics'),
 
     path('api/index', DataView.as_view()),

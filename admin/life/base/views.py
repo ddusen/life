@@ -9,9 +9,5 @@ def data(request):
     return render(request, 'pages/data.html')
 
 
-def chart(request):
-    return render(request, 'pages/chart.html')
-
-
 def analytics(request):
     return render(request, 'pages/analytics.html')
