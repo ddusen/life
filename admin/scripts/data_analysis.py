@@ -82,7 +82,7 @@ def consume():
             consume_keywords = {}
 
             for r in raw_data:
-                price = float(r['price'])
+                price = 0 if float(r['price']) < 0  else float(r['price'])
                 amount += price
                 consume_keywords[r['category']] = price if not consume_keywords.get(r['category']) else consume_keywords[r['category']] + price
             edit_consume_keywords(pubtime, amount, consume_keywords)

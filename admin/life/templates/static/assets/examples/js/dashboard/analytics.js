@@ -1,6 +1,6 @@
-(function (global, factory) {
+(function(global, factory) {
   if (typeof define === "function" && define.amd) {
-    define('/dashboard/analytics', ['jquery', 'Site'], factory);
+    define('/', ['jquery', 'Site'], factory);
   } else if (typeof exports !== "undefined") {
     factory(require('jquery'), require('Site'));
   } else {
@@ -10,18 +10,18 @@
     factory(global.jQuery, global.Site);
     global.dashboardAnalytics = mod.exports;
   }
-})(this, function (_jquery, _Site) {
+})(this, function(_jquery, _Site) {
   'use strict';
 
   var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
-  (0, _jquery2.default)(document).ready(function ($$$1) {
+  (0, _jquery2.default)(document).ready(function($$$1) {
     (0, _Site.run)();
   });
 
   // Top Line Chart With Tooltips
   // ----------------------------
-  (function () {
+  (function() {
 
     // common options for common style
     var options = {
@@ -87,7 +87,7 @@
       }, options);
 
       //start create
-      lineChart.on('draw', function (data) {
+      lineChart.on('draw', function(data) {
         var elem, parent;
         if (data.type === 'point') {
           elem = data.element;
@@ -127,26 +127,35 @@
     createKindChart();
 
     //create for click
-    (0, _jquery2.default)(".product-filters li a").on("click", function () {
+    (0, _jquery2.default)(".product-filters li a").on("click", function() {
       createKindChart((0, _jquery2.default)(this));
     });
   })();
 
   //// Overlapping Bars One ~ Four
   // ------------------------------
-  (function () {
+  (function() {
     //Four Overlapping Bars Data
     var overlappingBarsDataOne = {
       labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-      series: [[3, 4, 6, 10, 8, 6, 3, 4], [2, 3, 5, 8, 6, 5, 4, 3]]
+      series: [
+        [3, 4, 6, 10, 8, 6, 3, 4],
+        [2, 3, 5, 8, 6, 5, 4, 3]
+      ]
     };
     var overlappingBarsDataTwo = {
       labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-      series: [[2, 4, 5, 10, 6, 8, 3, 5], [3, 5, 6, 5, 4, 6, 3, 3]]
+      series: [
+        [2, 4, 5, 10, 6, 8, 3, 5],
+        [3, 5, 6, 5, 4, 6, 3, 3]
+      ]
     };
     var overlappingBarsDataThree = {
       labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-      series: [[5, 2, 6, 7, 10, 8, 6, 5], [4, 3, 5, 6, 8, 6, 4, 3]]
+      series: [
+        [5, 2, 6, 7, 10, 8, 6, 5],
+        [4, 3, 5, 6, 8, 6, 4, 3]
+      ]
     };
     var barsData = [overlappingBarsDataOne, overlappingBarsDataTwo, overlappingBarsDataThree, overlappingBarsDataThree];
 
@@ -174,31 +183,36 @@
       }
     };
 
-    var responsiveOptions = [['screen and (max-width: 640px)', {
-      seriesBarDistance: 6,
-      axisX: {
-        labelInterpolationFnc: function labelInterpolationFnc(value) {
-          return value[0];
+    var responsiveOptions = [
+      ['screen and (max-width: 640px)', {
+        seriesBarDistance: 6,
+        axisX: {
+          labelInterpolationFnc: function labelInterpolationFnc(value) {
+            return value[0];
+          }
         }
-      }
-    }]];
+      }]
+    ];
 
     // create Four Bars
     var createBar = function createBar(chartId, data, options, responsiveOptions) {
       new Chartist.Bar(chartId, data, options, responsiveOptions);
     };
 
-    (0, _jquery2.default)("#productOptionsData .ct-chart").each(function (index) {
+    (0, _jquery2.default)("#productOptionsData .ct-chart").each(function(index) {
       createBar(this, barsData[index], overlappingBarsOptions, responsiveOptions);
     });
   })();
 
   //// Stacked Week Bar Chart
   // ------------------------
-  (function () {
+  (function() {
     new Chartist.Bar('#weekStackedBarChart', {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      series: [[4, 4.5, 5, 6, 7, 7.5, 7], [6, 5.5, 5, 4, 3, 2.5, 3]]
+      series: [
+        [4, 4.5, 5, 6, 7, 7.5, 7],
+        [6, 5.5, 5, 4, 3, 2.5, 3]
+      ]
     }, {
       stackBars: true,
       axisY: {
@@ -207,7 +221,7 @@
       axisX: {
         offset: 60
       }
-    }).on('draw', function (data) {
+    }).on('draw', function(data) {
       if (data.type === 'bar') {
         data.element.attr({
           style: 'stroke-width: 20px'
@@ -218,7 +232,7 @@
 
   // Example Morris Donut
   // --------------------
-  (function () {
+  (function() {
 
     Morris.Donut({
       resize: true,
@@ -238,7 +252,7 @@
       }],
       colors: ['#f96868', '#62a9eb', '#f3a754']
       //valueColors: ['#37474f', '#f96868', '#76838f']
-    }).on('click', function (i, row) {
+    }).on('click', function(i, row) {
       console.log(i, row);
     });
   })();

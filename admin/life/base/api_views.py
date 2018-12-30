@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from life.base.models import (Data, )
-from life.base.service.base import (DataQueryset, )
+from life.base.service.base import (DashboardQueryset, DataQueryset, )
 
 
 class BaseView(APIView):
@@ -31,6 +31,28 @@ class BaseView(APIView):
             results = paginator.page(paginator.num_pages)
 
         return results
+
+
+class DashboardView(BaseView):
+
+    def __init__(self):
+        super(DashboardView, self).__init__()
+    
+    def set_params(self, request):
+        super(DashboardView, self).set_params(request.GET)
+
+    def serialize(self, queryset):
+        data = {
+        }
+
+        return queryset
+
+    def get(self, request):
+        self.set_params(request)
+
+        queryset = DashboardQueryset(params=self.query_params).get_all()
+
+        return Response(self.serialize(queryset))
 
 
 class DataView(BaseView):
