@@ -26,29 +26,61 @@ class DashboardQueryset(Abstract):
         queryset = Data.objects.order_by(
             '-pubtime').filter(**args).values(*fields)
 
-        length = 0
+        return {
+            'annual_consume': self.annual_consume(queryset),
+        }
+
+    def annual_consume(self, queryset):
+        amount = 0
+        max_amount = 0
         month_amount = 0
         consume_data = {}
         consume_data_table = []
-        consume_data_pie = {}
-        consume_data_bar = {'series': [[],[]], 'max': 0 }
+        consume_data_pie = []
+        consume_data_bar = [[], []]
         for q in queryset:
             if q['pubtime'].day == 1:
                 month_amount = round(month_amount, 2)
-                consume_data_bar['series'][0].append(month_amount)
-                consume_data_bar['max'] = month_amount if month_amount > consume_data_bar['max'] else consume_data_bar['max']
+                amount += month_amount
+                consume_data_bar[0].append(month_amount)
+                max_amount = month_amount if month_amount > max_amount else max_amount
                 month_amount = 0
             for k, v in eval(q['consume_keywords']).items():
-                month_amount+=v
+                month_amount += v
                 if not consume_data.get(k):
-                    length += 1
                     consume_data[k] = 0
                 consume_data[k] += v
 
-        consume_data_bar['series'][0].reverse()
-        consume_data_bar['series'][1] = [round(consume_data_bar['max']+1000-consume, 2) for consume in consume_data_bar['series'][0]]
+        index = 0
+        amount_first5 = 0 
+        for k in sorted(consume_data, key=consume_data.get, reverse=True):
+            value = round(consume_data[k], 2)
+            consume_data_table.append({
+                'icon': '/templates/static/img/%s.png' % k.lower(),
+                'category': k,
+                'amount': value,
+            })
+            consume_data_pie.append({
+                'label': k,
+                'value': value,
+            })
+            amount_first5 += value if index < 5 else 0
+            index += 1
 
-        return consume_data_bar
+        consume_data_table = consume_data_table[:5]
+        consume_data_pie = consume_data_pie[:5]
+        consume_data_pie.insert(6, {
+            'label': 'Others',
+            'value': round(amount-amount_first5, 2),
+        })
+        consume_data_bar[0].reverse()
+        consume_data_bar[1] = [round(max_amount+1000-consume, 2) for consume in consume_data_bar[0]]
+
+        return {
+            'consume_data_table': consume_data_table,
+            'consume_data_pie': consume_data_pie,
+            'consume_data_bar': consume_data_bar,
+        }
 
 
 class DataQueryset(Abstract):

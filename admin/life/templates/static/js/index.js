@@ -209,6 +209,7 @@
   (function() {
     new Chartist.Bar('#weekStackedBarChart', {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      // labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
       series: [
         [
           301.9,
@@ -266,15 +267,12 @@
       data: [{
         label: 'Chrome',
         value: 4625,
-        //label: 'From last week'
       }, {
         label: 'Firfox',
         value: 1670
-        //label: 'From last month'
       }, {
         label: 'Safari',
         value: 1100
-        //label: 'From last year'
       }],
       colors: ['#f96868', '#62a9eb', '#f3a754'],
       // valueColors: ['#37474f', '#f96868', '#76838f']
