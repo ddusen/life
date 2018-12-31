@@ -32,11 +32,11 @@ def data_consume_log():
     with open('/mnt/f/downloads/DailyCost.csv','r') as f:
         raw_data = f.readline()
         while raw_data:
-            # 不读取文件第一行数据
-            if index == 0:
-                continue
-
             index+=1
+            # 不读取文件第一行数据
+            if index == 1:
+                raw_data = f.readline()
+                continue
             #sleep
             thread_sleep(index)
             
