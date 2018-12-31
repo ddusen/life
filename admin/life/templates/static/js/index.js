@@ -34,6 +34,10 @@
     function annualTime(timeData) {
       document.getElementById('validTimeRate').innerHTML = timeData['valid_time_rate'];
       document.getElementById('invalidTimeRate').innerHTML = timeData['invalid_time_rate'];
+      document.getElementById('studyTime').innerHTML = timeData['study_time_amount'];
+      document.getElementById('codingTime').innerHTML = timeData['coding_time_amount'];
+      document.getElementById('fitnessTime').innerHTML = timeData['fitness_time_amount'];
+      document.getElementById('sleepTime').innerHTML = timeData['sleep_time_amount'];
       // common options for common style
       var options = {
         showArea: true,
@@ -111,34 +115,32 @@
         createKindChart((0, _jquery2.default)(this));
       });
 
-      //Four Overlapping Bars Data
-      var overlappingBarsDataOne = {
-        labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-        series: [
-          [3, 4, 6, 10, 8, 6, 3, 4],
-          [2, 3, 5, 8, 6, 5, 4, 3]
-        ]
+      //study time bar data
+      var studyTimeBarData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        series: timeData['study_time_bar'],
       };
-      var overlappingBarsDataTwo = {
-        labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-        series: [
-          [2, 4, 5, 10, 6, 8, 3, 5],
-          [3, 5, 6, 5, 4, 6, 3, 3]
-        ]
+      //coding time bar data
+      var codingTimeBarData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        series: timeData['coding_time_bar'],
       };
-      var overlappingBarsDataThree = {
-        labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-        series: [
-          [5, 2, 6, 7, 10, 8, 6, 5],
-          [4, 3, 5, 6, 8, 6, 4, 3]
-        ]
+      //fitness time bar data
+      var fitnessTimeBarData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        series: timeData['fitness_time_bar'],
       };
-      var barsData = [overlappingBarsDataOne, overlappingBarsDataTwo, overlappingBarsDataThree, overlappingBarsDataThree];
+      //sleep time bar data
+      var sleepTimeBarData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        series: timeData['sleep_time_bar'],
+      };
+      var barsData = [studyTimeBarData, codingTimeBarData, fitnessTimeBarData, sleepTimeBarData];
 
       //Common OverlappingBarsOptions
       var overlappingBarsOptions = {
         low: 0,
-        high: 10,
+        high: timeData['max_amount'],
         seriesBarDistance: 6,
         fullWidth: true,
         axisX: {

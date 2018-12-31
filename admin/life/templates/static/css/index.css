@@ -130,35 +130,35 @@
   stroke-width: 4px
 }
 
-#productOptionsData .ct-chart[data-counter-type=productVist] .ct-series-a .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=studyTimeBar] .ct-series-a .ct-bar {
   stroke: #a57afa
 }
 
-#productOptionsData .ct-chart[data-counter-type=productVist] .ct-series-b .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=studyTimeBar] .ct-series-b .ct-bar {
   stroke: #28c0de
 }
 
-#productOptionsData .ct-chart[data-counter-type=productVistors] .ct-series-a .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=codingTimeBar] .ct-series-a .ct-bar {
   stroke: #ff5e97
 }
 
-#productOptionsData .ct-chart[data-counter-type=productVistors] .ct-series-b .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=codingTimeBar] .ct-series-b .ct-bar {
   stroke: #7d8efa
 }
 
-#productOptionsData .ct-chart[data-counter-type=productPageViews] .ct-series-a .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=fitnessTimeBar] .ct-series-a .ct-bar {
   stroke: #5cc99a
 }
 
-#productOptionsData .ct-chart[data-counter-type=productPageViews] .ct-series-b .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=fitnessTimeBar] .ct-series-b .ct-bar {
   stroke: #ffdc2e
 }
 
-#productOptionsData .ct-chart[data-counter-type=productBounceRate] .ct-series-a .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=sleepTimeBar] .ct-series-a .ct-bar {
   stroke: #589ffc
 }
 
-#productOptionsData .ct-chart[data-counter-type=productBounceRate] .ct-series-b .ct-bar {
+#productOptionsData .ct-chart[data-counter-type=sleepTimeBar] .ct-series-b .ct-bar {
   stroke: #eb6709
 }
 

@@ -33,6 +33,22 @@ class DashboardQueryset(Abstract):
         }
 
     def annual_time(self, queryset):
+        study_time_amount = 0
+        study_time_month_amount = 0
+        study_time_bar = [[], []]
+
+        coding_time_amount = 0
+        coding_time_month_amount = 0
+        coding_time_bar = [[], []]
+
+        fitness_time_amount = 0
+        fitness_time_month_amount = 0
+        fitness_time_bar = [[], []]
+
+        sleep_time_amount = 0
+        sleep_time_month_amount = 0
+        sleep_time_bar = [[], []]
+
         year_amount = 0
         blank_year_amount = 0
         month_amount = 0
@@ -43,26 +59,71 @@ class DashboardQueryset(Abstract):
             if q['pubtime'].day == 1:
                 month_amount = round(month_amount, 1)
                 blank_month_amount = round(blank_month_amount, 1)
+                study_time_month_amount = round(study_time_month_amount, 1)
+                coding_time_month_amount = round(coding_time_month_amount, 1)
+                fitness_time_month_amount = round(fitness_time_month_amount, 1)
+                sleep_time_month_amount = round(sleep_time_month_amount, 1)
+
                 year_amount += month_amount
                 blank_year_amount += blank_month_amount
+                study_time_amount += study_time_month_amount
+                coding_time_amount += coding_time_month_amount
+                fitness_time_amount += fitness_time_month_amount
+                sleep_time_amount += sleep_time_month_amount
+
                 max_month_amount = month_amount if month_amount > max_month_amount else max_month_amount
+
                 annual_time_line[0].append(month_amount)
                 annual_time_line[1].append(blank_month_amount)
+                study_time_bar[1].append(study_time_month_amount)
+                coding_time_bar[1].append(study_time_month_amount)
+                fitness_time_bar[1].append(study_time_month_amount)
+                sleep_time_bar[1].append(study_time_month_amount)
+
                 month_amount = 0
                 blank_month_amount = 0
+                study_time_month_amount = 0
+                coding_time_month_amount = 0
+                fitness_time_month_amount = 0
+                sleep_time_month_amount = 0
             for k, v in eval(q['time_keywords']).items():
+                if k == 'Study':
+                    study_time_month_amount += v
+                elif k == 'Coding':
+                    coding_time_month_amount += v
+                elif k == 'Fitness':
+                    fitness_time_month_amount += v
+                elif k == 'Sleep':
+                    sleep_time_month_amount += v
+
                 if k == 'Blank':
                     blank_month_amount += v
                 else:
                     month_amount += v
         annual_time_line[0].reverse()
         annual_time_line[1].reverse()
+        study_time_bar[0] = annual_time_line[0]
+        study_time_bar[1].reverse()
+        coding_time_bar[0] = annual_time_line[0]
+        coding_time_bar[1].reverse()
+        fitness_time_bar[0] = annual_time_line[0]
+        fitness_time_bar[1].reverse()
+        sleep_time_bar[0] = annual_time_line[0]
+        sleep_time_bar[1].reverse()
         return {
             'invalid_time_rate': round(blank_year_amount / (year_amount + blank_year_amount) * 100, 0),
             'valid_time_rate': 100 - round(blank_year_amount / (year_amount + blank_year_amount) * 100, 0),
             'valid_time': annual_time_line[0],
             'invalid_time': annual_time_line[1],
             'max_amount': max_month_amount+50,
+            'study_time_amount': round(study_time_amount, 0),
+            'coding_time_amount': round(coding_time_amount, 0),
+            'fitness_time_amount': round(fitness_time_amount, 0),
+            'sleep_time_amount': round(sleep_time_amount, 0),
+            'study_time_bar': study_time_bar,
+            'coding_time_bar': coding_time_bar,
+            'fitness_time_bar': fitness_time_bar,
+            'sleep_time_bar': sleep_time_bar,
         }
 
     def annual_consume(self, queryset):
