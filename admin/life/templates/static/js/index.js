@@ -26,61 +26,12 @@
       var xmlHttp = new XMLHttpRequest();
       xmlHttp.open("GET", reqUrl, false); // false for synchronous request
       xmlHttp.send(null);
-      return xmlHttp.responseText;
+      return JSON.parse(xmlHttp.responseText);
     };
     var responseText = httpGet('/api/index');
 
     // Top Line Chart With Tooltips
-    function annualTime(responseText) {
-      new Chartist.Bar('#weekStackedBarChart', {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        // labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-        series: [
-          [
-            301.9,
-            1435.45,
-            5317.98,
-            2999.67,
-            6248.36,
-            3190.33,
-            3295.59,
-            3707.47,
-            2778.14,
-            4317.16,
-            4671.26,
-            3635.02,
-          ],
-          [
-            6946.46,
-            5812.91,
-            1930.38,
-            4248.69,
-            1000.0,
-            4058.03,
-            3952.77,
-            3540.89,
-            4470.22,
-            2931.2,
-            2577.1,
-            3613.34,
-          ],
-        ]
-      }, {
-        stackBars: true,
-        axisY: {
-          offset: 0
-        },
-        axisX: {
-          offset: 60
-        }
-      }).on('draw', function(data) {
-        if (data.type === 'bar') {
-          data.element.attr({
-            style: 'stroke-width: 20px'
-          });
-        }
-      });
-
+    function annualTime(timeData) {
       // common options for common style
       var options = {
         showArea: true,
@@ -260,24 +211,45 @@
     annualTime(responseText);
 
     // Overlapping Bars One ~ Four
-    function annualConsume(responseText) {
+    function annualConsume(consumeData) {
+      //table
+      var tableData = consumeData['consume_data_table'];
+      var tableNode = document.getElementById('consume_table');
+      var new_node = ''
+      for (var i = 0; i < tableData.length; i++) {
+        new_node += '<tr><td><img src="'+ tableData[i]['icon'] +'" title="'+ tableData[i]['category'] +'" alt="'+ tableData[i]['category'] +'"></td><td>'+ tableData[i]['category'] +'</td><td>'+ tableData[i]['amount'] +'</td></tr>';
+      }
+      tableNode.innerHTML = new_node;
+
+      //pie
       Morris.Donut({
         resize: true,
         element: 'browersVistsDonut',
-        data: [{
-          label: 'Chrome',
-          value: 4625,
-        }, {
-          label: 'Firfox',
-          value: 1670
-        }, {
-          label: 'Safari',
-          value: 1100
-        }],
-        colors: ['#f96868', '#62a9eb', '#f3a754'],
-        // valueColors: ['#37474f', '#f96868', '#76838f']
+        data: consumeData['consume_data_pie'],
+        // colors: ['#f96868', '#62a9eb', '#f3a754'],
+        colors: ['#3E8EF7', '#17B3A3', '#11C26D', '#FFCD17', '#FF4C52', '#9463F7'],
+      });
+
+      new Chartist.Bar('#weekStackedBarChart', {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        // labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        series: consumeData['consume_data_bar'],
+      }, {
+        stackBars: true,
+        axisY: {
+          offset: 0
+        },
+        axisX: {
+          offset: 60
+        }
+      }).on('draw', function(data) {
+        if (data.type === 'bar') {
+          data.element.attr({
+            style: 'stroke-width: 20px'
+          });
+        }
       });
     };
-    annualConsume(responseText);
+    annualConsume(responseText['annual_consume']);
   })();
 });

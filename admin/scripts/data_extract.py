@@ -11,7 +11,7 @@ def thread_sleep(index):
 
 #处理每日时间消费信息
 def data_time_log():
-    with open('/home/sdu/Downloads/time-log.enex','r') as f:
+    with open('/mnt/f/downloads/time_log.enex','r') as f:
         raw_data = f.read()
         title_pattern = re.compile(r'<title>(......)</title>')
         title_list = title_pattern.findall(raw_data)
@@ -29,7 +29,7 @@ def data_time_log():
 #处理每日金钱消费信息
 def data_consume_log():
     index = 0
-    with open('/home/sdu/Downloads/DailyCost.csv','r') as f:
+    with open('/mnt/f/downloads/DailyCost.csv','r') as f:
         raw_data = f.readline()
         while raw_data:
             index+=1
@@ -46,7 +46,7 @@ def data_consume_log():
 #处理每日日志信息
 def data_event_log():
     index = 0
-    with open('/home/sdu/Downloads/mood-log.html','r') as f:
+    with open('/mnt/f/downloads/mood_log.html','r') as f:
         raw_data = f.read()
         title_pattern = re.compile(r'<h1>(......)</h1>')
         title_list = title_pattern.findall(raw_data)
@@ -61,6 +61,6 @@ def data_event_log():
             edit_event_log(pubtime, content)
 
 def run():
-    data_time_log()
+    # data_time_log()
     data_consume_log()
-    data_event_log()
+    # data_event_log()
