@@ -210,11 +210,11 @@
     };
     annualTime(responseText);
 
-    // Overlapping Bars One ~ Four
+    // annual consume
     function annualConsume(consumeData) {
       //table
       var tableData = consumeData['consume_data_table'];
-      var tableNode = document.getElementById('consume_table');
+      var tableNode = document.getElementById('consumeTable');
       var new_node = ''
       for (var i = 0; i < tableData.length; i++) {
         new_node += '<tr><td><img src="'+ tableData[i]['icon'] +'" title="'+ tableData[i]['category'] +'" alt="'+ tableData[i]['category'] +'"></td><td>'+ tableData[i]['category'] +'</td><td>'+ tableData[i]['amount'] +'</td></tr>';
@@ -251,5 +251,18 @@
       });
     };
     annualConsume(responseText['annual_consume']);
+
+    // annual mood keywords
+    function annualKeywords(keywordsData){
+       //table
+      var tableData = keywordsData;
+      var tableNode = document.getElementById('keywordsTable');
+      var new_node = ''
+      for (var i = 0; i < tableData.length; i++) {
+        new_node += '<tr><td><img src="'+ tableData[i]['icon'] +'" title="'+ tableData[i]['keywords'] +'" alt="'+ tableData[i]['keywords'] +'"><span class="country-name">'+ tableData[i]['keywords'] +'</span></td><td>'+ tableData[i]['count'] +'</td><td><div class="progress progress-xs mb-0"><div class="progress-bar progress-bar-info bg-blue-600" style="width: '+ tableData[i]['rate'] +'%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="'+ tableData[i]['rate'] +'" role="progressbar"></div></div><span class="progress-percent">'+ tableData[i]['rate'] +'%</span></td></tr>';
+      }
+      tableNode.innerHTML = new_node;
+    };
+    annualKeywords(responseText['annual_keywords'])
   })();
 });

@@ -162,16 +162,16 @@
   stroke: #eb6709
 }
 
-#browsersFlowWidget {
+#annumalConsume {
   height: 100%;
   margin-bottom: 0 !important
 }
 
-#browsersFlowWidget .card-block {
+#annumalConsume .card-block {
   padding: 0 15px
 }
 
-#browsersFlowWidget .card-block:after {
+#annumalConsume .card-block:after {
   display: block;
   clear: both;
   content: ""
@@ -203,22 +203,22 @@
   vertical-align: middle
 }
 
-#browsersFlowWidget tr:nth-of-type(even) {
+#annumalConsume tr:nth-of-type(even) {
   background-color: #fafafa
 }
 
-#browsersFlowWidget td {
+#annumalConsume td {
   padding: 20px 0
 }
 
-#weekStackedBarChart {
+#annumalConsumeBarChart {
   position: relative;
   max-width: 350px;
   height: 180px;
   margin: 24px auto 0
 }
 
-#weekStackedBarChart .ct-chart-bar .ct-labels .ct-horizontal {
+#annumalConsumeBarChart .ct-chart-bar .ct-labels .ct-horizontal {
   display: block;
   padding-top: 12px;
   font-size: 14px;
@@ -226,29 +226,29 @@
   text-align: center
 }
 
-#weekStackedBarChart .ct-chart-bar .ct-labels .ct-vertical {
+#annumalConsumeBarChart .ct-chart-bar .ct-labels .ct-vertical {
   display: none
 }
 
-#weekStackedBarChart .ct-chart-bar .ct-grids .ct-grid {
+#annumalConsumeBarChart .ct-chart-bar .ct-grids .ct-grid {
   stroke: none
 }
 
-#weekStackedBarChart .ct-chart-bar .ct-series-a .ct-bar {
+#annumalConsumeBarChart .ct-chart-bar .ct-series-a .ct-bar {
   stroke: #3e8ef7
 }
 
-#weekStackedBarChart .ct-chart-bar .ct-series-b .ct-bar {
+#annumalConsumeBarChart .ct-chart-bar .ct-series-b .ct-bar {
   stroke: #f3f7f9
 }
 
-#browersVistsDonut {
+#annumalConsumePieChart {
   position: relative;
   height: 250px;
   margin: 0 auto
 }
 
-#browersVistsDonut svg path[fill=none] {
+#annumalConsumePieChart svg path[fill=none] {
   opacity: 0 !important
 }
 
@@ -292,7 +292,7 @@
 }
 
 @media screen and (max-width:1400px) {
-  #browsersFlowWidget {
+  #annumalConsume {
     margin-bottom: 30px !important
   }
 }

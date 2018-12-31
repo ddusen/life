@@ -13,7 +13,7 @@ class DashboardQueryset(Abstract):
         super(DashboardQueryset, self).__init__(params)
 
     def get_all(self):
-        fields = ('pubtime', 'consume_keywords', )
+        fields = ('pubtime', 'consume_keywords', 'mood_keywords', )
 
         cond = {
             'pubtime__gte': date(2018, 1, 1),
@@ -28,6 +28,7 @@ class DashboardQueryset(Abstract):
 
         return {
             'annual_consume': self.annual_consume(queryset),
+            'annual_keywords': self.annual_keywords(queryset),
         }
 
     def annual_consume(self, queryset):
@@ -82,6 +83,30 @@ class DashboardQueryset(Abstract):
             'consume_data_bar': consume_data_bar,
         }
 
+    def annual_keywords(self, queryset):
+        count = 0
+        prop = {}
+        adj = {}
+        for q in queryset:
+            for mood in eval(q['mood_keywords']):
+                count+=1
+                p_mood = mood['prop']
+                a_mood = mood['adj']
+                if not a_mood:
+                    continue
+                prop[p_mood] = 1 if not prop.get(p_mood) else prop[p_mood]+1
+                adj[a_mood] = 1 if not adj.get(a_mood) else adj[a_mood]+1
+
+        annual_keywords_data = []
+        for k in sorted(adj, key=adj.get, reverse=True):
+            annual_keywords_data.append({
+                'icon': '/templates/static/img/%s.png' % k,
+                'keywords': k, 
+                'count': adj[k], 
+                'rate': round(adj[k]/count*100, 2),
+            })
+
+        return annual_keywords_data[:5]
 
 class DataQueryset(Abstract):
 
