@@ -148,7 +148,7 @@ def time_keywords():
         end += 10
 
 def run():
-    # mood()
-    # mood_keywords()
-    # consume()
+    mood()
+    mood_keywords()
+    consume()
     time_keywords()

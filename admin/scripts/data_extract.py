@@ -32,6 +32,10 @@ def data_consume_log():
     with open('/mnt/f/downloads/DailyCost.csv','r') as f:
         raw_data = f.readline()
         while raw_data:
+            # 不读取文件第一行数据
+            if index == 0:
+                continue
+
             index+=1
             #sleep
             thread_sleep(index)
@@ -61,6 +65,6 @@ def data_event_log():
             edit_event_log(pubtime, content)
 
 def run():
-    # data_time_log()
+    data_time_log()
     data_consume_log()
-    # data_event_log()
+    data_event_log()
