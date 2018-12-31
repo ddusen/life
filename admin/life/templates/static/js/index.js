@@ -224,13 +224,13 @@
       //pie
       Morris.Donut({
         resize: true,
-        element: 'browersVistsDonut',
+        element: 'annumalConsumePieChart',
         data: consumeData['consume_data_pie'],
         // colors: ['#f96868', '#62a9eb', '#f3a754'],
         colors: ['#3E8EF7', '#17B3A3', '#11C26D', '#FFCD17', '#FF4C52', '#9463F7'],
       });
 
-      new Chartist.Bar('#weekStackedBarChart', {
+      new Chartist.Bar('#annumalConsumeBarChart', {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         // labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
         series: consumeData['consume_data_bar'],
