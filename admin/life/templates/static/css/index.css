@@ -162,16 +162,16 @@
   stroke: #eb6709
 }
 
-#annumalConsume {
+#annualConsume {
   height: 100%;
   margin-bottom: 0 !important
 }
 
-#annumalConsume .card-block {
+#annualConsume .card-block {
   padding: 0 15px
 }
 
-#annumalConsume .card-block:after {
+#annualConsume .card-block:after {
   display: block;
   clear: both;
   content: ""
@@ -203,22 +203,22 @@
   vertical-align: middle
 }
 
-#annumalConsume tr:nth-of-type(even) {
+#annualConsume tr:nth-of-type(even) {
   background-color: #fafafa
 }
 
-#annumalConsume td {
+#annualConsume td {
   padding: 20px 0
 }
 
-#annumalConsumeBarChart {
+#annualConsumeBarChart {
   position: relative;
   max-width: 350px;
   height: 180px;
   margin: 24px auto 0
 }
 
-#annumalConsumeBarChart .ct-chart-bar .ct-labels .ct-horizontal {
+#annualConsumeBarChart .ct-chart-bar .ct-labels .ct-horizontal {
   display: block;
   padding-top: 12px;
   font-size: 14px;
@@ -226,29 +226,29 @@
   text-align: center
 }
 
-#annumalConsumeBarChart .ct-chart-bar .ct-labels .ct-vertical {
+#annualConsumeBarChart .ct-chart-bar .ct-labels .ct-vertical {
   display: none
 }
 
-#annumalConsumeBarChart .ct-chart-bar .ct-grids .ct-grid {
+#annualConsumeBarChart .ct-chart-bar .ct-grids .ct-grid {
   stroke: none
 }
 
-#annumalConsumeBarChart .ct-chart-bar .ct-series-a .ct-bar {
+#annualConsumeBarChart .ct-chart-bar .ct-series-a .ct-bar {
   stroke: #3e8ef7
 }
 
-#annumalConsumeBarChart .ct-chart-bar .ct-series-b .ct-bar {
+#annualConsumeBarChart .ct-chart-bar .ct-series-b .ct-bar {
   stroke: #f3f7f9
 }
 
-#annumalConsumePieChart {
+#annualConsumePieChart {
   position: relative;
   height: 250px;
   margin: 0 auto
 }
 
-#annumalConsumePieChart svg path[fill=none] {
+#annualConsumePieChart svg path[fill=none] {
   opacity: 0 !important
 }
 
@@ -292,7 +292,7 @@
 }
 
 @media screen and (max-width:1400px) {
-  #annumalConsume {
+  #annualConsume {
     margin-bottom: 30px !important
   }
 }

@@ -30,13 +30,15 @@
     };
     var responseText = httpGet('/api/index');
 
-    // Top Line Chart With Tooltips
+    // annual time
     function annualTime(timeData) {
+      document.getElementById('validTimeRate').innerHTML = timeData['valid_time_rate'];
+      document.getElementById('invalidTimeRate').innerHTML = timeData['invalid_time_rate'];
       // common options for common style
       var options = {
         showArea: true,
         low: 0,
-        high: 8000,
+        high: timeData['max_amount'],
         height: 240,
         fullWidth: true,
         axisX: {
@@ -48,7 +50,7 @@
             if (value == 0) {
               return null;
             }
-            return value / 1000 + 'k';
+            return value;
           },
           scaleMinSpace: 40
         },
@@ -56,36 +58,15 @@
       };
 
       //day data
-      var dayLabelList = ['AUG 8', 'SEP 15', 'OCT 22', 'NOV 29', 'DEC 8', 'JAN 15', 'FEB 22', ''];
+      var dayLabelList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      // var dayLabelList = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];   
       var daySeries1List = {
-        name: 'series-1',
-        data: [0, 7300, 6200, 6833, 7568, 4620, 4856, 2998]
+        name: '有效时间(时)',
+        data: timeData['valid_time'],
       };
       var daySeries2List = {
-        name: 'series-2',
-        data: [0, 3100, 7200, 5264, 5866, 2200, 3850, 1032]
-      };
-
-      //week data
-      var weekLabelList = ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', ''];
-      var weekSeries1List = {
-        name: 'series-1',
-        data: [0, 2400, 6200, 7833, 5568, 3620, 4856, 2998]
-      };
-      var weekSeries2List = {
-        name: 'series-2',
-        data: [0, 4100, 6800, 5264, 5866, 3200, 2850, 1032]
-      };
-
-      //month data
-      var monthLabelList = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', ''];
-      var monthSeries1List = {
-        name: 'series-1',
-        data: [0, 6400, 5200, 7833, 5568, 3620, 5856, 0]
-      };
-      var monthSeries2List = {
-        name: 'series-2',
-        data: [0, 3100, 4800, 5264, 6866, 3200, 2850, 1032]
+        name: '无效时间(时)',
+        data: timeData['invalid_time'],
       };
 
       var newScoreLineChart = function newScoreLineChart(chartId, labelList, series1List, series2List, options) {
@@ -119,17 +100,7 @@
         var clickli = clickli || (0, _jquery2.default)("#productOverviewWidget .product-filters").find(".active");
 
         var chartId = clickli.attr("href");
-        switch (chartId) {
-          case "#scoreLineToDay":
-            newScoreLineChart(chartId, dayLabelList, daySeries1List, daySeries2List, options);
-            break;
-          case "#scoreLineToWeek":
-            newScoreLineChart(chartId, weekLabelList, weekSeries1List, weekSeries2List, options);
-            break;
-          case "#scoreLineToMonth":
-            newScoreLineChart(chartId, monthLabelList, monthSeries1List, monthSeries2List, options);
-            break;
-        }
+        newScoreLineChart(chartId, dayLabelList, daySeries1List, daySeries2List, options);
       };
 
       //default create chart whithout click
@@ -208,7 +179,7 @@
         createBar(this, barsData[index], overlappingBarsOptions, responsiveOptions);
       });
     };
-    annualTime(responseText);
+    annualTime(responseText['annual_time']);
 
     // annual consume
     function annualConsume(consumeData) {
@@ -224,13 +195,13 @@
       //pie
       Morris.Donut({
         resize: true,
-        element: 'annumalConsumePieChart',
+        element: 'annualConsumePieChart',
         data: consumeData['consume_data_pie'],
         // colors: ['#f96868', '#62a9eb', '#f3a754'],
         colors: ['#3E8EF7', '#17B3A3', '#11C26D', '#FFCD17', '#FF4C52', '#9463F7'],
       });
 
-      new Chartist.Bar('#annumalConsumeBarChart', {
+      new Chartist.Bar('#annualConsumeBarChart', {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         // labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
         series: consumeData['consume_data_bar'],

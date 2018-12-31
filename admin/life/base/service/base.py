@@ -13,7 +13,7 @@ class DashboardQueryset(Abstract):
         super(DashboardQueryset, self).__init__(params)
 
     def get_all(self):
-        fields = ('pubtime', 'consume_keywords', 'mood_keywords', )
+        fields = ('pubtime', 'consume_keywords', 'mood_keywords', 'time_keywords', )
 
         cond = {
             'pubtime__gte': date(2018, 1, 1),
@@ -27,8 +27,42 @@ class DashboardQueryset(Abstract):
             '-pubtime').filter(**args).values(*fields)
 
         return {
+            'annual_time': self.annual_time(queryset),
             'annual_consume': self.annual_consume(queryset),
             'annual_keywords': self.annual_keywords(queryset),
+        }
+
+    def annual_time(self, queryset):
+        year_amount = 0
+        blank_year_amount = 0
+        month_amount = 0
+        max_month_amount = 0
+        blank_month_amount = 0
+        annual_time_line = [[], []]
+        for q in queryset:
+            if q['pubtime'].day == 1:
+                month_amount = round(month_amount, 1)
+                blank_month_amount = round(blank_month_amount, 1)
+                year_amount += month_amount
+                blank_year_amount += blank_month_amount
+                max_month_amount = month_amount if month_amount > max_month_amount else max_month_amount
+                annual_time_line[0].append(month_amount)
+                annual_time_line[1].append(blank_month_amount)
+                month_amount = 0
+                blank_month_amount = 0
+            for k, v in eval(q['time_keywords']).items():
+                if k == 'Blank':
+                    blank_month_amount += v
+                else:
+                    month_amount += v
+        annual_time_line[0].reverse()
+        annual_time_line[1].reverse()
+        return {
+            'invalid_time_rate': round(blank_year_amount / (year_amount + blank_year_amount) * 100, 0),
+            'valid_time_rate': 100 - round(blank_year_amount / (year_amount + blank_year_amount) * 100, 0),
+            'valid_time': annual_time_line[0],
+            'invalid_time': annual_time_line[1],
+            'max_amount': max_month_amount+50,
         }
 
     def annual_consume(self, queryset):

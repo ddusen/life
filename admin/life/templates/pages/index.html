@@ -29,7 +29,7 @@
                   <div class="col-sm-6">
                     <div class="counter counter-md">
                       <div class="counter-number-group text-nowrap">
-                        <span class="counter-number">76</span>
+                        <span class="counter-number" id="validTimeRate">86</span>
                         <span class="counter-number-related">%</span>
                       </div>
                       <div class="counter-label blue-grey-400">有效时间</div>
@@ -38,7 +38,7 @@
                   <div class="col-sm-6">
                     <div class="counter counter-md">
                       <div class="counter-number-group text-nowrap">
-                        <span class="counter-number">24</span>
+                        <span class="counter-number" id="invalidTimeRate">14</span>
                         <span class="counter-number-related">%</span>
                       </div>
                       <div class="counter-label blue-grey-400">无效时间</div>
@@ -56,10 +56,10 @@
             </div>
             <ul class="list-inline text-center mb-0">
               <li class="list-inline-item">
-                <i class="icon wb-large-point cyan-400 mr-10" aria-hidden="true"></i> 有效时间
+                <i class="icon wb-large-point purple-400 mr-10" aria-hidden="true"></i> 有效时间
               </li>
               <li class="list-inline-item ml-35">
-                <i class="icon wb-large-point purple-400 mr-10" aria-hidden="true"></i> 无效时间
+                <i class="icon wb-large-point cyan-400 mr-10" aria-hidden="true"></i> 无效时间
               </li>
             </ul>
           </div>
@@ -124,7 +124,7 @@
       </div>
       <div class="col-xl-7 col-12">
         <!-- Browser Flow Card -->
-        <div id="annumalConsume" class="card card-shadow card-md">
+        <div id="annualConsume" class="card card-shadow card-md">
           <div class="card-header card-header-transparent pb-15">
             <p class="font-size-15 blue-grey-700 mb-0">年度消费TOP5</p>
           </div>
@@ -147,10 +147,10 @@
               </div>
               <div class="col-md-6 px-0">
                 <!-- MorrisDonut -->
-                <div id="annumalConsumePieChart"></div>
+                <div id="annualConsumePieChart"></div>
                 <!-- End MorrisDonut -->
                 <!-- Stacked BarChart -->
-                <div id="annumalConsumeBarChart"></div>
+                <div id="annualConsumeBarChart"></div>
                 <!--End Stacked BarChart -->
               </div>
             </div>
