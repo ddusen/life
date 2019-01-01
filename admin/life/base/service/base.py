@@ -76,9 +76,9 @@ class DashboardQueryset(Abstract):
                 annual_time_line[0].append(month_amount)
                 annual_time_line[1].append(blank_month_amount)
                 study_time_bar[1].append(study_time_month_amount)
-                coding_time_bar[1].append(study_time_month_amount)
-                fitness_time_bar[1].append(study_time_month_amount)
-                sleep_time_bar[1].append(study_time_month_amount)
+                coding_time_bar[1].append(coding_time_month_amount)
+                fitness_time_bar[1].append(fitness_time_month_amount)
+                sleep_time_bar[1].append(sleep_time_month_amount)
 
                 month_amount = 0
                 blank_month_amount = 0

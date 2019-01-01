@@ -79,7 +79,7 @@ $(document).ready(function() {
 
     //finally new a chart according to the state
     var createKindChart = function createKindChart(clickli) {
-      var clickli = clickli || (0, _jquery2.default)("#productOverviewWidget .product-filters").find(".active");
+      var clickli = clickli || (0, _jquery2.default)("#annualTime .product-filters").find(".active");
 
       var chartId = clickli.attr("href");
       newScoreLineChart(chartId, dayLabelList, daySeries1List, daySeries2List, options);
@@ -155,7 +155,7 @@ $(document).ready(function() {
       new Chartist.Bar(chartId, data, options, responsiveOptions);
     };
 
-    (0, _jquery2.default)("#productOptionsData .ct-chart").each(function(index) {
+    (0, _jquery2.default)("#annualTimeData .ct-chart").each(function(index) {
       createBar(this, barsData[index], overlappingBarsOptions, responsiveOptions);
     });
   };
@@ -178,7 +178,7 @@ $(document).ready(function() {
       element: 'annualConsumePieChart',
       data: consumeData['consume_data_pie'],
       // colors: ['#f96868', '#62a9eb', '#f3a754'],
-      colors: ['#3E8EF7', '#17B3A3', '#11C26D', '#FFCD17', '#FF4C52', '#9463F7'],
+      colors: ['#589FFC', '#28C7B7', '#28D17C', '#FFDC2E', '#FF666B', '#A57AFA'],
     });
 
     new Chartist.Bar('#annualConsumeBarChart', {
