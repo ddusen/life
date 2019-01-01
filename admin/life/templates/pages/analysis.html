@@ -2,7 +2,6 @@
 {% block css %}
 <!-- Plugins -->
 <link rel="stylesheet" href="/templates/static/global/vendor/chartist/chartist.css">
-<link rel="stylesheet" href="/templates/static/global/vendor/jvectormap/jquery-jvectormap.css">
 <link rel="stylesheet" href="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
 <!-- Page -->
 <link rel="stylesheet" href="/templates/static/css/analysis.css">
@@ -17,38 +16,38 @@
     <div class="row" data-plugin="matchHeight" data-by-row="true">
       <div class="col-xxl-6 col-lg-12">
         <!-- Widget OVERALL VIEWS -->
-        <div class="card card-shadow card-responsive" id="widgetOverallViews">
+        <div class="card card-shadow card-responsive" id="consumeMoodLineChart">
           <div class="card-block p-30">
             <div class="row pb-30" style="height:calc(100% - 250px);">
-              <div class="col-sm-4">
+              <div class="col-sm-8">
                 <div class="counter counter-md text-left">
-                  <div class="counter-label">OVERALL VIEWS</div>
-                  <div class="counter-number-group text-truncate">
-                    <span class="counter-number-related red-600">$</span>
-                    <span class="counter-number red-600">432,852</span>
-                  </div>
-                  <div class="counter-label">2% higher than last month</div>
+                  <div class="counter-label">消费与心情的关系</div>
                 </div>
               </div>
               <div class="col-sm-4">
-                <div class="counter counter-sm text-left inline-block">
-                  <div class="counter-label">MY BALANCE</div>
-                  <div class="counter-number-group">
-                    <span class="counter-number-related">$</span>
-                    <span class="counter-number">12,346</span>
-                  </div>
+                <div class="card-header-actions">
+                  <ul class="nav nav-pills nav-pills-rounded product-filters">
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" id="dayConsumeMood">日</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" id="weekConsumeMood">周</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="active nav-link" data-toggle="tab" id="monthConsumeMood">月</a>
+                    </li>
+                  </ul>
                 </div>
-                <div class="ct-chart inline-block small-bar-one"></div>
               </div>
-              <div class="col-sm-4">
-                <div class="counter counter-sm text-left inline-block">
-                  <div class="counter-label">NEW ORDERS</div>
-                  <div class="counter-number-group">
-                    <span class="counter-number-related">$</span>
-                    <span class="counter-number">17,555</span>
-                  </div>
-                </div>
-                <div class="ct-chart inline-block small-bar-two"></div>
+              <div class="col-sm-12">
+                <ul class="list-inline text-center mb-0">
+                  <li class="list-inline-item">
+                    <i class="icon wb-minus blue-500 mr-10" aria-hidden="true"></i> 消费
+                  </li>
+                  <li class="list-inline-item ml-35">
+                    <i class="icon wb-minus green-500 mr-10" aria-hidden="true"></i> 心情
+                  </li>
+                </ul>
               </div>
             </div>
             <div class="ct-chart line-chart h-250"></div>
@@ -67,8 +66,6 @@
 <script src="/templates/static/global/vendor/chartist/chartist.min.js"></script>
 <script src="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
 <script src="/templates/static/global/vendor/aspieprogress/jquery-asPieProgress.min.js"></script>
-<script src="/templates/static/global/vendor/jvectormap/jquery-jvectormap.min.js"></script>
-<script src="/templates/static/global/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js"></script>
 <script src="/templates/static/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
 <!-- Page -->
 <script src="/templates/static/global/js/Plugin/matchheight.js"></script>

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from life.base.models import (Data, )
-from life.base.service.base import (DashboardQueryset, DataQueryset, )
+from life.base.service.base import (DashboardQueryset, DataQueryset, AnalysisQueryset, )
 
 
 class BaseView(APIView):
