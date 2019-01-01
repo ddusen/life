@@ -40,14 +40,14 @@ $(document).ready(function() {
     };
 
     //day data
-    var dayLabelList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    // var dayLabelList = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];   
+    // var dayLabelList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var dayLabelList = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];   
     var daySeries1List = {
-      name: '有效时间(时)',
+      name: '有效时间(小时)',
       data: timeData['valid_time'],
     };
     var daySeries2List = {
-      name: '无效时间(时)',
+      name: '无效时间(小时)',
       data: timeData['invalid_time'],
     };
 
@@ -136,7 +136,8 @@ $(document).ready(function() {
         //   right: 115,
         //   bottom: 55,
         left: 30
-      }
+      },
+      plugins: [Chartist.plugins.tooltip()]
     };
 
     var responsiveOptions = [
@@ -182,8 +183,8 @@ $(document).ready(function() {
     });
 
     new Chartist.Bar('#annualConsumeBarChart', {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      // labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      // labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
       series: consumeData['consume_data_bar'],
     }, {
       stackBars: true,
@@ -192,7 +193,8 @@ $(document).ready(function() {
       },
       axisX: {
         offset: 60
-      }
+      },
+      plugins: [Chartist.plugins.tooltip()]
     }).on('draw', function(data) {
       if (data.type === 'bar') {
         data.element.attr({

@@ -15,151 +15,151 @@
   color: #76838f
 }
 
-#productOverviewWidget .btn-sale {
+#annualTime .btn-sale {
   color: #37474f;
   text-transform: uppercase
 }
 
-#productOverviewWidget .dropdown-menu {
+#annualTime .dropdown-menu {
   text-transform: capitalize
 }
 
-#productOverviewWidget .ct-grids .ct-vertical {
+#annualTime .ct-grids .ct-vertical {
   stroke-dasharray: 6
 }
 
-#productOverviewWidget .ct-grids .ct-horizontal {
+#annualTime .ct-grids .ct-horizontal {
   stroke: none
 }
 
-#productOverviewWidget .ct-grids .ct-point-label {
+#annualTime .ct-grids .ct-point-label {
   stroke: #fff;
   stroke-width: 60px
 }
 
-#productOverviewWidget .ct-labels .ct-horizontal {
+#annualTime .ct-labels .ct-horizontal {
   display: block;
   padding-top: 10px;
   font-size: 14px;
   color: #76838f
 }
 
-#productOverviewWidget .ct-area {
+#annualTime .ct-area {
   fill-opacity: .8
 }
 
-#productOverviewWidget .ct-series .ct-point,
-#productOverviewWidget .ct-series .ct-point-content {
+#annualTime .ct-series .ct-point,
+#annualTime .ct-series .ct-point-content {
   opacity: 0;
   transition: all .3s
 }
 
-#productOverviewWidget .ct-series:hover .ct-point,
-#productOverviewWidget .ct-series:hover .ct-point-content {
+#annualTime .ct-series:hover .ct-point,
+#annualTime .ct-series:hover .ct-point-content {
   opacity: 1
 }
 
-#productOverviewWidget .ct-series.ct-series-a .ct-area {
+#annualTime .ct-series.ct-series-a .ct-area {
   fill: #a57afa
 }
 
-#productOverviewWidget .ct-series.ct-series-a .ct-line {
+#annualTime .ct-series.ct-series-a .ct-line {
   stroke: #a57afa;
   stroke-width: 1px
 }
 
-#productOverviewWidget .ct-series.ct-series-a .ct-point {
+#annualTime .ct-series.ct-series-a .ct-point {
   cursor: pointer;
   stroke: #9463f7;
   stroke-width: 12px
 }
 
-#productOverviewWidget .ct-series.ct-series-a .ct-point-content {
+#annualTime .ct-series.ct-series-a .ct-point-content {
   pointer-events: none;
   stroke: #fff;
   stroke-width: 6px;
   stroke-linecap: round
 }
 
-#productOverviewWidget .ct-series.ct-series-b .ct-area {
+#annualTime .ct-series.ct-series-b .ct-area {
   fill: #28c0de
 }
 
-#productOverviewWidget .ct-series.ct-series-b .ct-line {
+#annualTime .ct-series.ct-series-b .ct-line {
   stroke: #28c0de;
   stroke-width: 1px
 }
 
-#productOverviewWidget .ct-series.ct-series-b .ct-point {
+#annualTime .ct-series.ct-series-b .ct-point {
   cursor: pointer;
   stroke: #0bb2d4;
   stroke-width: 12px
 }
 
-#productOverviewWidget .ct-series.ct-series-b .ct-point-content {
+#annualTime .ct-series.ct-series-b .ct-point-content {
   pointer-events: none;
   stroke: #fff;
   stroke-width: 6px;
   stroke-linecap: round
 }
 
-#productOverviewWidget .nav-pills .nav-link {
+#annualTime .nav-pills .nav-link {
   padding: 10px 15px;
   border-radius: 1000px
 }
 
-#productOptionsData {
+#annualTimeData {
   padding: 80px 30px 30px
 }
 
-#productOptionsData .counter-number-group {
+#annualTimeData .counter-number-group {
   font-size: 36px
 }
 
-#productOptionsData .ct-chart {
+#annualTimeData .ct-chart {
   width: 200px;
   height: 60px;
   margin: 10px auto
 }
 
-#productOptionsData .ct-chart .ct-series-a .ct-bar {
+#annualTimeData .ct-chart .ct-series-a .ct-bar {
   stroke-width: 4px
 }
 
-#productOptionsData .ct-chart .ct-series-b .ct-bar {
+#annualTimeData .ct-chart .ct-series-b .ct-bar {
   stroke-width: 4px
 }
 
-#productOptionsData .ct-chart[data-counter-type=studyTimeBar] .ct-series-a .ct-bar {
-  stroke: #a57afa
+#annualTimeData .ct-chart[data-counter-type=studyTimeBar] .ct-series-a .ct-bar {
+  stroke: #A57AFA
 }
 
-#productOptionsData .ct-chart[data-counter-type=studyTimeBar] .ct-series-b .ct-bar {
-  stroke: #28c0de
+#annualTimeData .ct-chart[data-counter-type=studyTimeBar] .ct-series-b .ct-bar {
+  stroke: #589FFC
 }
 
-#productOptionsData .ct-chart[data-counter-type=codingTimeBar] .ct-series-a .ct-bar {
-  stroke: #ff5e97
+#annualTimeData .ct-chart[data-counter-type=codingTimeBar] .ct-series-a .ct-bar {
+  stroke: #A57AFA
 }
 
-#productOptionsData .ct-chart[data-counter-type=codingTimeBar] .ct-series-b .ct-bar {
-  stroke: #7d8efa
+#annualTimeData .ct-chart[data-counter-type=codingTimeBar] .ct-series-b .ct-bar {
+  stroke: #FFDC2E
 }
 
-#productOptionsData .ct-chart[data-counter-type=fitnessTimeBar] .ct-series-a .ct-bar {
-  stroke: #5cc99a
+#annualTimeData .ct-chart[data-counter-type=fitnessTimeBar] .ct-series-a .ct-bar {
+  stroke: #A57AFA
 }
 
-#productOptionsData .ct-chart[data-counter-type=fitnessTimeBar] .ct-series-b .ct-bar {
-  stroke: #ffdc2e
+#annualTimeData .ct-chart[data-counter-type=fitnessTimeBar] .ct-series-b .ct-bar {
+  stroke: #FF666B
 }
 
-#productOptionsData .ct-chart[data-counter-type=sleepTimeBar] .ct-series-a .ct-bar {
-  stroke: #589ffc
+#annualTimeData .ct-chart[data-counter-type=sleepTimeBar] .ct-series-a .ct-bar {
+  stroke: #A57AFA
 }
 
-#productOptionsData .ct-chart[data-counter-type=sleepTimeBar] .ct-series-b .ct-bar {
-  stroke: #eb6709
+#annualTimeData .ct-chart[data-counter-type=sleepTimeBar] .ct-series-b .ct-bar {
+  stroke: #28D17C
 }
 
 #annualConsume {
@@ -308,23 +308,23 @@
 }
 
 @media (max-width:1199px) {
-  #productOptionsData {
+  #annualTimeData {
     padding-bottom: 20px
   }
 
-  #productOptionsData .counter {
+  #annualTimeData .counter {
     margin-bottom: 40px
   }
 }
 
 @media screen and (min-width:568px) and (max-width:768px) {
-  #productOptionsData .col-xs-12 {
+  #annualTimeData .col-xs-12 {
     width: 50%
   }
 }
 
 @media screen and (min-width:480px) and (max-width:567px) {
-  #productOptionsData .ct-chart {
+  #annualTimeData .ct-chart {
     width: 250px
   }
 }
@@ -347,28 +347,28 @@
     border-radius: 15px
   }
 
-  #productOverviewWidget .nav-pills .nav-link {
+  #annualTime .nav-pills .nav-link {
     padding: 5px 8px
   }
 
-  #productOverviewWidget .card-header-actions {
+  #annualTime .card-header-actions {
     float: none;
     margin: 10px 0
   }
 }
 
 @media (max-width:479px) {
-  #productOptionsData .ct-chart {
+  #annualTimeData .ct-chart {
     width: 200px
   }
 }
 
 @media screen and (max-width:360px) {
-  #productOptionsData .ct-chart {
+  #annualTimeData .ct-chart {
     width: 160px
   }
 
-  #productOverviewWidget .nav-pills .nav-link {
+  #annualTime .nav-pills .nav-link {
     width: 44px;
     padding: 5px 6px;
     margin-right: 3px;

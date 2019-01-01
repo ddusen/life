@@ -42,9 +42,6 @@ class DashboardView(BaseView):
         super(DashboardView, self).set_params(request.GET)
 
     def serialize(self, queryset):
-        data = {
-        }
-
         return queryset
 
     def get(self, request):
@@ -104,5 +101,24 @@ class DataView(BaseView):
         self.set_params(request)
 
         queryset = DataQueryset(params=self.query_params).get_all()
+
+        return Response(self.serialize(queryset))
+
+
+class AnalysisView(BaseView):
+
+    def __init__(self):
+        super(AnalysisView, self).__init__()
+    
+    def set_params(self, request):
+        super(AnalysisView, self).set_params(request.GET)
+
+    def serialize(self, queryset):
+        return queryset
+
+    def get(self, request):
+        self.set_params(request)
+
+        queryset = AnalysisQueryset(params=self.query_params).get_all()
 
         return Response(self.serialize(queryset))

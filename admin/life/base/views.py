@@ -9,5 +9,5 @@ def data(request):
     return render(request, 'pages/data.html')
 
 
-def analytics(request):
-    return render(request, 'pages/analytics.html')
+def analysis(request):
+    return render(request, 'pages/analysis.html')

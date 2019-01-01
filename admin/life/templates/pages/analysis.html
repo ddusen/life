@@ -1,0 +1,76 @@
+{% extends "pages/abstract/_layout.html" %}
+{% block css %}
+<!-- Plugins -->
+<link rel="stylesheet" href="/templates/static/global/vendor/chartist/chartist.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/jvectormap/jquery-jvectormap.css">
+<link rel="stylesheet" href="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+<!-- Page -->
+<link rel="stylesheet" href="/templates/static/css/analysis.css">
+{% endblock %}
+{% block page %}
+<!-- Page -->
+<div class="page">
+  <div class="page-header">
+    <h6 class="page-title">综合分析</h6>
+  </div>
+  <div class="page-content container-fluid">
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+      <div class="col-xxl-6 col-lg-12">
+        <!-- Widget OVERALL VIEWS -->
+        <div class="card card-shadow card-responsive" id="widgetOverallViews">
+          <div class="card-block p-30">
+            <div class="row pb-30" style="height:calc(100% - 250px);">
+              <div class="col-sm-4">
+                <div class="counter counter-md text-left">
+                  <div class="counter-label">OVERALL VIEWS</div>
+                  <div class="counter-number-group text-truncate">
+                    <span class="counter-number-related red-600">$</span>
+                    <span class="counter-number red-600">432,852</span>
+                  </div>
+                  <div class="counter-label">2% higher than last month</div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="counter counter-sm text-left inline-block">
+                  <div class="counter-label">MY BALANCE</div>
+                  <div class="counter-number-group">
+                    <span class="counter-number-related">$</span>
+                    <span class="counter-number">12,346</span>
+                  </div>
+                </div>
+                <div class="ct-chart inline-block small-bar-one"></div>
+              </div>
+              <div class="col-sm-4">
+                <div class="counter counter-sm text-left inline-block">
+                  <div class="counter-label">NEW ORDERS</div>
+                  <div class="counter-number-group">
+                    <span class="counter-number-related">$</span>
+                    <span class="counter-number">17,555</span>
+                  </div>
+                </div>
+                <div class="ct-chart inline-block small-bar-two"></div>
+              </div>
+            </div>
+            <div class="ct-chart line-chart h-250"></div>
+          </div>
+        </div>
+        <!-- End Widget OVERALL VIEWS -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+{% endblock %}
+{% block scripts %}
+<!-- Plugins -->
+<script src="/templates/static/global/vendor/skycons/skycons.js"></script>
+<script src="/templates/static/global/vendor/chartist/chartist.min.js"></script>
+<script src="/templates/static/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
+<script src="/templates/static/global/vendor/aspieprogress/jquery-asPieProgress.min.js"></script>
+<script src="/templates/static/global/vendor/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="/templates/static/global/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js"></script>
+<script src="/templates/static/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+<!-- Page -->
+<script src="/templates/static/global/js/Plugin/matchheight.js"></script>
+<script src="/templates/static/js/analysis.js"></script>
+{% endblock %}

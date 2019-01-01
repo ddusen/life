@@ -1,0 +1,28 @@
+.dashboard .card {
+  height: calc(100% - 30px)
+}
+
+.dashboard .card-block {
+  border-radius: 3px
+}
+
+#widgetOverallViews .small-bar-one,
+#widgetOverallViews .small-bar-two {
+  width: 105px;
+  height: 44px;
+  padding-left: 20px
+}
+
+#widgetOverallViews .small-bar-one .ct-bar {
+  stroke: #11c26d
+}
+
+#widgetOverallViews .ct-chart .ct-bar {
+  stroke-width: 4px
+}
+
+@media (max-width:479px) {
+  #widgetOverallViews .ct-chart {
+    padding: 0
+  }
+}
