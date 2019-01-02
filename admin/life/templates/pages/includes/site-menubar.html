@@ -2,19 +2,19 @@
   <div class="site-menubar-body">
     <ul class="site-menu" data-plugin="menu">
       <li class="site-menu-item has-sub">
-        <a href="{% url 'index' %}">
+        <a href="{% url 'index' %}" ontouchend="window.location.href='/'">
             <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
             <span class="site-menu-title">整体概览</span>
         </a>
       </li>
       <li class="site-menu-item has-sub">
-        <a href="{% url 'data' %}">
+        <a href="{% url 'data' %}" ontouchend="window.location.href='/data'">
             <i class="site-menu-icon wb-file" aria-hidden="true"></i>
             <span class="site-menu-title">源数据</span>
         </a>
       </li>
       <li class="site-menu-item has-sub">
-        <a href="{% url 'analysis' %}">
+        <a href="{% url 'analysis' %}" ontouchend="window.location.href='/analysis'">
           <i class="site-menu-icon wb-stats-bars" aria-hidden="true"></i>
           <span class="site-menu-title">综合分析</span>
         </a>
