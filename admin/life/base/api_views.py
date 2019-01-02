@@ -62,8 +62,9 @@ class DataView(BaseView):
 
     def paging(self, queryset):
         start = self.query_params.get('start')
-        start = int(start) / 10 + 1 if start else 1
-        return super(DataView, self).paging(queryset, start, self.query_params.get('length', 10))
+        length = self.query_params.get('length', 10)
+        start = 1 if not start else int(start) / int(length) + 1 
+        return super(DataView, self).paging(queryset, start, length)
     
     def serialize(self, queryset):
         total = queryset.count()
