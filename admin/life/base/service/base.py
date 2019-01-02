@@ -5,6 +5,7 @@ from django.db.models import Count, Q, F
 
 from life.base.models import (Data, )
 from life.base.service.abstract import Abstract
+from life.utils.string import (consume_en_to_zh, )
 
 
 class DashboardQueryset(Abstract):
@@ -154,11 +155,11 @@ class DashboardQueryset(Abstract):
             value = round(consume_data[k], 2)
             consume_data_table.append({
                 'icon': '/templates/static/img/%s.png' % k.lower(),
-                'category': k,
+                'category': consume_en_to_zh(k),
                 'amount': value,
             })
             consume_data_pie.append({
-                'label': k,
+                'label': consume_en_to_zh(k),
                 'value': value,
             })
             amount_first5 += value if index < 5 else 0
@@ -167,7 +168,7 @@ class DashboardQueryset(Abstract):
         consume_data_table = consume_data_table[:5]
         consume_data_pie = consume_data_pie[:5]
         consume_data_pie.insert(6, {
-            'label': 'Others',
+            'label': '其它',
             'value': round(amount - amount_first5, 2),
         })
         consume_data_bar[0].reverse()

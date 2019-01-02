@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 
 from life.base.models import (Data, )
 from life.base.service.base import (DashboardQueryset, DataQueryset, AnalysisQueryset, )
-
+from life.utils.string import (consume_en_to_zh, time_en_to_zh, )
 
 class BaseView(APIView):
 
@@ -76,11 +76,16 @@ class DataView(BaseView):
             for item in items:
                 mk_str += '%s%s ' % (item['prop'], item['adj'], )
             return mk_str
-        def ck_or_tk(d_dict):
-            k_str = ''
+        def ck(d_dict):
+            ck_str = ''
             for k, v in d_dict.items():
-                k_str += '%s(%0.1f) ' % (k, v, )
-            return k_str
+                ck_str += '%s(%0.1f) ' % (consume_en_to_zh(k), v, )
+            return ck_str
+        def tk(d_dict):
+            tk_str = ''
+            for k, v in d_dict.items():
+                tk_str += '%s(%0.1f) ' % (time_en_to_zh(k), v, )
+            return tk_str
 
         data = {
             'recordsTotal': total,
@@ -90,8 +95,8 @@ class DataView(BaseView):
                  'mood': m(r['mood']),
                  'mood_keywords': mk(eval(r['mood_keywords'])),
                  'consume': c(r['consume']),
-                 'consume_keywords': ck_or_tk(eval(r['consume_keywords'])),
-                 'time_keywords': ck_or_tk(eval(r['time_keywords'])),
+                 'consume_keywords': ck(eval(r['consume_keywords'])),
+                 'time_keywords': tk(eval(r['time_keywords'])),
             }, result)
         }
 

@@ -56,3 +56,44 @@ def calculate_time_format(d_dict):
         formated_dict[k] = round(v/60, 1)
     formated_dict['Blank'] = round(0 if 24*60-amount < 0 else (24*60-amount)/60, 1)
     return formated_dict
+
+# 消费 english to chinese
+def consume_en_to_zh(key):
+    en_to_zh = {
+            'General': '一般',
+            'Food': '餐饮',
+            'Drinks': '饮料',
+            'Groceries': '水果',
+            'Shopping': '购物',
+            'Personal': '个人',
+            'Entertail': '娱乐',
+            'Movies': '电影',
+            'Social': '社交',
+            'Transport': '交通',
+            'App Store': 'App',
+            'Mobile': '通讯',
+            'Computer': '电脑',
+            'Gifts': '礼品',
+            'Housing': '房租',
+            'Travel': '旅行',
+            'Tickets': '门票',
+            'Books': '书籍',
+            'Medical': '医疗',
+            'Transter': '转账',
+    }
+    return '其它' if not en_to_zh.get(key) else en_to_zh[key]
+
+# 时间使用 english to Chinese
+def time_en_to_zh(key):
+    en_to_zh = {
+        'Study': '学习',
+        'Coding': '工作',
+        'Fitness': '健身',
+        'Eat':  '餐饮',
+        'Sleep': '睡眠',
+        'Entertainment': '娱乐',
+        'Walk': '行走',
+        'Others': '其它',
+        'Blank': '空白',
+    }
+    return '其它' if not en_to_zh.get(key) else en_to_zh[key]
