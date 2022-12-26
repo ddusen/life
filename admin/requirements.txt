@@ -2,7 +2,7 @@
 # Install with: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
 # Wheel
-wheel == 0.30.0
+wheel == 0.38.1
 
 # Django
 django == 2.0.0
